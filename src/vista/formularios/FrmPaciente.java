@@ -57,6 +57,7 @@ public class FrmPaciente extends javax.swing.JInternalFrame {
         jLabel12 = new javax.swing.JLabel();
         jTextField3 = new javax.swing.JTextField();
 
+        setIconifiable(true);
         setTitle("ADMISIÓN PACIENTE");
 
         jLabel1.setFont(new java.awt.Font("Times New Roman", 0, 12)); // NOI18N
