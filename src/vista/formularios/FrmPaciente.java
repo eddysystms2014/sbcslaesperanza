@@ -57,12 +57,12 @@ public class FrmPaciente extends javax.swing.JInternalFrame {
         jLabel12 = new javax.swing.JLabel();
         jTextField3 = new javax.swing.JTextField();
 
-        setTitle("PRIMERA ADMISIÓN");
+        setTitle("ADMISIÓN PACIENTE");
 
         jLabel1.setFont(new java.awt.Font("Times New Roman", 0, 12)); // NOI18N
         jLabel1.setText("1. REGISTRO DE PRIMERA ADMISIÓN");
 
-        jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Registro Paciente", 0, 0, new java.awt.Font("Times New Roman", 0, 10))); // NOI18N
+        jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Registro Paciente", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Times New Roman", 0, 10))); // NOI18N
 
         jPanel2.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
