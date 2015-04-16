@@ -5,6 +5,10 @@
  */
 package vista.formularios;
 
+import controlador.ControlUsuario;
+import javax.swing.JOptionPane;
+import modelo.entidades.Usuario;
+
 /**
  *
  * @author JC-PC
@@ -14,9 +18,12 @@ public class FrmLogin extends javax.swing.JFrame {
     /**
      * Creates new form FrmLogin1
      */
+    ControlUsuario CU;
+
     public FrmLogin() {
         initComponents();
         this.setLocationRelativeTo(null);
+        CU = new ControlUsuario();
     }
 
     /**
@@ -51,6 +58,11 @@ public class FrmLogin extends javax.swing.JFrame {
         jButton1.setText("ENTRAR");
         jButton1.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
         jButton1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         jButton2.setText("SALIR");
         jButton2.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
@@ -107,6 +119,29 @@ public class FrmLogin extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+
+        String usuario = txtUsuario.getText();
+        String password = new String(txtPassword.getPassword());
+        Usuario validar_usuario = CU.Validar_Usuario(usuario, password);
+        if (validar_usuario == null) {
+            
+        } else {
+            if ("Administrador".equals(validar_usuario.getTipousuario())) {
+                VistaPrincipal VP = new VistaPrincipal();
+                VP.setVisible(true);
+                this.setVisible(false);
+
+            } else if ("Usuario".equals(validar_usuario.getTipousuario())) {
+                VistaPrincipal VP = new VistaPrincipal();
+                VP.setVisible(true);
+                this.setVisible(false);
+            }
+
+        }
+
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
      * @param args the command line arguments
