@@ -51,6 +51,8 @@ public class FrmMedicos extends javax.swing.JInternalFrame {
         JPImagen = new javax.swing.JPanel();
         btnAbrirE = new javax.swing.JButton();
 
+        setTitle("MÉDICOS");
+
         jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED), "Datos"));
 
         jTextField1.setBorder(javax.swing.BorderFactory.createEtchedBorder());
