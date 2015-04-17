@@ -146,7 +146,7 @@ public class FrmLogin extends javax.swing.JFrame {
 
             } else if ("Usuario".equals(validar_usuario.getTipousuario())) {
                 VistaPrincipal VP = new VistaPrincipal();
-                VP.setVisible(true);
+//                VP.setVisible(true);
                 this.setVisible(false);
             }
 

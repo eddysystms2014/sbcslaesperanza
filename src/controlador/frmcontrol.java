@@ -25,17 +25,12 @@ import modelo.entidades.Medico;
 public class frmcontrol {
 
     EntityManagerFactory emf = Persistence.createEntityManagerFactory("SBCSLaEsperanzaPU");
-    private MedicoJpaController medicosJpacontrolador = new MedicoJpaController(emf);
     private EspecialidadJpaController especialidadJpacontrolador = new EspecialidadJpaController(emf);
 
     DefaultTableModel modelo;
 
     public List<Especialidad> getEspecialidad() {
         return especialidadJpacontrolador.findEspecialidadEntities();
-    }
-
-    public List<Medico> getMedicos() {
-        return medicosJpacontrolador.findMedicoEntities();
     }
 
     public void guardarEspecialidad(String nombreEspecialidad) {
@@ -86,42 +81,4 @@ public class frmcontrol {
         }
     }
 
-    public void guardarMedico(int idMedico, Especialidad idEspecialidad, String nombresMedico,
-            String domiciliomedico, String tlfMedico, byte[] imgMedico, String estadoMedico) {
-        int i = 0;
-        Medico mee = new Medico();
-        try {
-            for (Medico me : getMedicos()) {
-                if (me.getIdespecialidad().getIdespecialidad() == idEspecialidad.getIdespecialidad()
-                        && me.getNombremedico().equalsIgnoreCase(nombresMedico) && me.getDomiciliomedico().equalsIgnoreCase(domiciliomedico)) {
-                    i = 1;
-                    mee = me;
-                    break;
-                }
-            }
-            if (i == 1) {
-
-                if (mee.getEstadomedico().equals("NO")) {
-                    JOptionPane.showMessageDialog(null, "Ya existe el medico pero se encuentra Inabilitado", "Información", 1);
-                    mee = null;
-                } else {
-                    JOptionPane.showMessageDialog(null, "Ya existe el medico", "Información", 1);
-                    mee = null;
-                }
-            } else {
-                Medico m = new Medico();
-                m.setIdmedico(idMedico);
-                m.setIdespecialidad(idEspecialidad);
-                m.setNombremedico(nombresMedico);
-                m.setDomiciliomedico(domiciliomedico);
-                m.setTelefonomedico(tlfMedico);
-                m.setImagenmedico(imgMedico);
-                m.setEstadomedico(estadoMedico);
-                medicosJpacontrolador.create(m);
-                JOptionPane.showMessageDialog(null, "El medico fue creado exitosamente", "Información", 1);
-            }
-        } catch (Exception e) {
-
-        }
-    }
 }
