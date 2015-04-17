@@ -64,4 +64,14 @@ public class ControlMedico {
 
         }
     }
+
+    public Medico buscarMedico(int cedula) {
+
+        for (Medico md : medicosJpacontrolador.findMedicoEntities()) {
+            if (md.getIdmedico().equals(cedula)) {
+                return md;
+            }
+        }
+        return null;
+    }
 }

@@ -81,4 +81,14 @@ public class frmcontrol {
         }
     }
 
+    public Especialidad buscarEspecialidad(int id) {
+
+        for (Especialidad esp : especialidadJpacontrolador.findEspecialidadEntities()) {
+            if (esp.getIdespecialidad().equals(id)) {
+                return esp;
+            }
+        }
+        return null;
+    }
+
 }
