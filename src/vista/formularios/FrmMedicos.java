@@ -14,6 +14,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import javax.swing.UIManager;
+import javax.swing.UnsupportedLookAndFeelException;
 import modelo.entidades.Especialidad;
 import modelo.entidades.Medico;
 import test.CargarImagen;
@@ -30,8 +31,9 @@ public class FrmMedicos extends javax.swing.JInternalFrame {
     ControlMedico CM;
     frmcontrol FC;
 
-    public FrmMedicos() {
-        try {
+    public FrmMedicos() throws IllegalAccessException {
+       
+try {
             UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
         } catch (Exception e) {
             e.printStackTrace();
@@ -75,6 +77,7 @@ public class FrmMedicos extends javax.swing.JInternalFrame {
         JPImagen = new javax.swing.JPanel();
         btnAbrirE = new javax.swing.JButton();
 
+        setClosable(true);
         setIconifiable(true);
         setTitle("MÉDICOS");
 
@@ -288,6 +291,7 @@ public class FrmMedicos extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void btnAbrirEActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAbrirEActionPerformed
+
         JPImagen.removeAll();
         m.Abrir_Dialogo(JPImagen);
         ImagenURL = m.ObtenerUrl();
@@ -296,11 +300,18 @@ public class FrmMedicos extends javax.swing.JInternalFrame {
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
         Medico md = new Medico();
         int cedula = Integer.valueOf(txtIdMedico.getText());
+        String r;
+        if (CM.buscarMedico(cedula).getEstadomedico().equals("SI")) {
+            r = "Activo";
+        } else {
+            r = "Inactivo";
+        }
+
         txtNombreMedico.setText(CM.buscarMedico(cedula).getNombremedico());
         txtDireccion.setText(CM.buscarMedico(cedula).getDomiciliomedico());
         txtTlf.setText(CM.buscarMedico(cedula).getTelefonomedico());
         cbtIdEspecialidad.setSelectedItem(CM.buscarMedico(cedula).getIdespecialidad());
-        cbtEstadoMedico.setSelectedItem(CM.buscarMedico(cedula).getEstadomedico());
+        cbtEstadoMedico.setSelectedItem(r);
         URL url;
         try {
             byte[] byteArray = CM.buscarMedico(cedula).getImagenmedico();
