@@ -5,6 +5,9 @@
  */
 package vista.formularios;
 
+import java.util.Locale;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import vista.formularios.FrmPaciente;
 
 /**
@@ -19,6 +22,8 @@ public class VistaPrincipal extends javax.swing.JFrame {
     public VistaPrincipal() {
         initComponents();
         this.setLocationRelativeTo(this);
+        mnid.setVisible(false);
+        mnPass.setVisible(false);
     }
 
     /**
@@ -36,7 +41,26 @@ public class VistaPrincipal extends javax.swing.JFrame {
         jMenuItem1 = new javax.swing.JMenuItem();
         jMenuItem2 = new javax.swing.JMenuItem();
         jMenuItem3 = new javax.swing.JMenuItem();
+        jMenu3 = new javax.swing.JMenu();
+        jMenuItem4 = new javax.swing.JMenuItem();
+        jMenuItem5 = new javax.swing.JMenuItem();
+        jMenu4 = new javax.swing.JMenu();
+        jMenuItem6 = new javax.swing.JMenuItem();
+        jMenuItem7 = new javax.swing.JMenuItem();
+        jMenuItem8 = new javax.swing.JMenuItem();
+        jMenu5 = new javax.swing.JMenu();
+        jMenuItem11 = new javax.swing.JMenuItem();
+        jMenuItem12 = new javax.swing.JMenuItem();
+        jMenu6 = new javax.swing.JMenu();
+        jMenuItem13 = new javax.swing.JMenuItem();
         jMenu2 = new javax.swing.JMenu();
+        mnid = new javax.swing.JMenu();
+        mnLb = new javax.swing.JMenu();
+        mnNomUs = new javax.swing.JMenu();
+        jMenuItem9 = new javax.swing.JMenuItem();
+        jMenuItem10 = new javax.swing.JMenuItem();
+        mnRol = new javax.swing.JMenu();
+        mnPass = new javax.swing.JMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -44,14 +68,20 @@ public class VistaPrincipal extends javax.swing.JFrame {
         jDesktopPane1.setLayout(jDesktopPane1Layout);
         jDesktopPane1Layout.setHorizontalGroup(
             jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addGap(0, 747, Short.MAX_VALUE)
         );
         jDesktopPane1Layout.setVerticalGroup(
             jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 326, Short.MAX_VALUE)
+            .addGap(0, 510, Short.MAX_VALUE)
         );
 
         jMenu1.setText("Archivo");
+        jMenu1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jMenu1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenu1ActionPerformed(evt);
+            }
+        });
 
         jMenuItem1.setText("Admision Paciente");
         jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
@@ -77,10 +107,101 @@ public class VistaPrincipal extends javax.swing.JFrame {
         });
         jMenu1.add(jMenuItem3);
 
+        jMenu3.setText("Pacientes");
+
+        jMenuItem4.setText("Nuevo");
+        jMenu3.add(jMenuItem4);
+
+        jMenuItem5.setText("Buscar");
+        jMenu3.add(jMenuItem5);
+
+        jMenu1.add(jMenu3);
+
+        jMenu4.setText("Medicos");
+
+        jMenuItem6.setText("Nuevo Medico");
+        jMenuItem6.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem6ActionPerformed(evt);
+            }
+        });
+        jMenu4.add(jMenuItem6);
+
+        jMenuItem7.setText("Activar Medico");
+        jMenuItem7.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem7ActionPerformed(evt);
+            }
+        });
+        jMenu4.add(jMenuItem7);
+
+        jMenuItem8.setText("Modificar Medico");
+        jMenuItem8.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem8ActionPerformed(evt);
+            }
+        });
+        jMenu4.add(jMenuItem8);
+
+        jMenu1.add(jMenu4);
+
+        jMenu5.setText("Usuarios");
+
+        jMenuItem11.setText("Agregar");
+        jMenuItem11.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem11ActionPerformed(evt);
+            }
+        });
+        jMenu5.add(jMenuItem11);
+
+        jMenuItem12.setText("Modificar, Eliminar");
+        jMenuItem12.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem12ActionPerformed(evt);
+            }
+        });
+        jMenu5.add(jMenuItem12);
+
+        jMenu1.add(jMenu5);
+
         jMenuBar1.add(jMenu1);
 
+        jMenu6.setText("Gestion De Turno");
+        jMenu6.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+
+        jMenuItem13.setText("Turnos");
+        jMenuItem13.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem13ActionPerformed(evt);
+            }
+        });
+        jMenu6.add(jMenuItem13);
+
+        jMenuBar1.add(jMenu6);
+
         jMenu2.setText("Ayuda");
+        jMenu2.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jMenuBar1.add(jMenu2);
+        jMenuBar1.add(mnid);
+        jMenuBar1.add(mnLb);
+
+        mnNomUs.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+
+        jMenuItem9.setText("Cambiar Contraseña");
+        jMenuItem9.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem9ActionPerformed(evt);
+            }
+        });
+        mnNomUs.add(jMenuItem9);
+
+        jMenuItem10.setText("Salir");
+        mnNomUs.add(jMenuItem10);
+
+        jMenuBar1.add(mnNomUs);
+        jMenuBar1.add(mnRol);
+        jMenuBar1.add(mnPass);
 
         setJMenuBar(jMenuBar1);
 
@@ -107,9 +228,15 @@ public class VistaPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_jMenuItem1ActionPerformed
 
     private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
-        FrmMedicos FM = new FrmMedicos();
-        FM.show();
-        jDesktopPane1.add(FM);
+        FrmMedicos FM;
+        try {
+            FM = new FrmMedicos();
+            FM.show();
+            jDesktopPane1.add(FM);
+        } catch (IllegalAccessException ex) {
+            Logger.getLogger(VistaPrincipal.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
     }//GEN-LAST:event_jMenuItem2ActionPerformed
 
     private void jMenuItem3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem3ActionPerformed
@@ -117,6 +244,105 @@ public class VistaPrincipal extends javax.swing.JFrame {
         FE.show();
         jDesktopPane1.add(FE);
     }//GEN-LAST:event_jMenuItem3ActionPerformed
+
+    private void jMenu1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenu1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jMenu1ActionPerformed
+
+    private void jMenuItem6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem6ActionPerformed
+        FrmMedicos FE;
+        try {
+            FE = new FrmMedicos();
+            FE.show();
+            jDesktopPane1.add(FE);
+            FrmMedicos.btnModificarMedico.setVisible(false);
+            FrmMedicos.jButton3.setVisible(false);
+            FrmMedicos.jButton4.setVisible(false);
+            FrmMedicos.jPanel5.setVisible(false);
+            FrmMedicos.jButton2.setVisible(false);
+
+        } catch (IllegalAccessException ex) {
+            Logger.getLogger(VistaPrincipal.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+
+    }//GEN-LAST:event_jMenuItem6ActionPerformed
+
+    private void jMenuItem7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem7ActionPerformed
+        FrmMedicos FE;
+        try {
+            FE = new FrmMedicos();
+            FE.show();
+            jDesktopPane1.add(FE);
+            FrmMedicos.btnModificarMedico.setVisible(false);
+            FrmMedicos.jButton3.setVisible(false);
+            FrmMedicos.jButton4.setVisible(true);
+            FrmMedicos.jPanel2.setVisible(false);
+            FrmMedicos.jPanel3.setVisible(false);
+            FrmMedicos.jPanel4.setVisible(false);
+            FrmMedicos.jButton1.setVisible(false);
+            FrmMedicos.btnAbrirE.setVisible(false);
+            FrmMedicos.txtNombreMedico.setEnabled(false);
+            FrmMedicos.txtTlf.setEnabled(false);
+            FrmMedicos.txtid.setEnabled(false);
+            FrmMedicos.cbtIdEspecialidad.setEnabled(false);
+        } catch (IllegalAccessException ex) {
+            Logger.getLogger(VistaPrincipal.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+    }//GEN-LAST:event_jMenuItem7ActionPerformed
+
+    private void jMenuItem8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem8ActionPerformed
+        FrmMedicos FE;
+        try {
+            FE = new FrmMedicos();
+            FE.show();
+            jDesktopPane1.add(FE);
+            FrmMedicos.btnModificarMedico.setVisible(true);
+            FrmMedicos.jButton3.setVisible(false);
+            FrmMedicos.jButton4.setVisible(true);
+            FrmMedicos.jPanel5.setVisible(true);
+            FrmMedicos.jButton1.setVisible(false);
+            FrmMedicos.jButton2.setVisible(false);
+            FrmMedicos.jPanel2.setVisible(false);
+            FrmMedicos.jPanel3.setVisible(false);
+            FrmMedicos.jPanel4.setVisible(false);
+            FrmMedicos.txtid.setEnabled(false);
+
+        } catch (IllegalAccessException ex) {
+            Logger.getLogger(VistaPrincipal.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_jMenuItem8ActionPerformed
+
+    private void jMenuItem9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem9ActionPerformed
+        FrmContraseña FC = new FrmContraseña();
+        FC.show();
+        jDesktopPane1.add(FC);
+    }//GEN-LAST:event_jMenuItem9ActionPerformed
+
+    private void jMenuItem11ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem11ActionPerformed
+        FrmUsuario FU = new FrmUsuario();
+        FU.show();
+        FU.setSize(460, 450);
+        jDesktopPane1.add(FU);
+        FrmUsuario.btnModificar.setVisible(false);
+        FrmUsuario.btnEliminar.setVisible(false);
+    }//GEN-LAST:event_jMenuItem11ActionPerformed
+
+    private void jMenuItem12ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem12ActionPerformed
+        FrmUsuario FU = new FrmUsuario();
+        FU.show();
+        jDesktopPane1.add(FU);
+        FrmUsuario.btnGuardar.setVisible(false);
+        
+    }//GEN-LAST:event_jMenuItem12ActionPerformed
+
+    private void jMenuItem13ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem13ActionPerformed
+        // TODO add your handling code here:
+        FrmTurnos FT=new FrmTurnos();
+        FT.show();
+        jDesktopPane1.add(FT);
+    }//GEN-LAST:event_jMenuItem13ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -158,9 +384,28 @@ public class VistaPrincipal extends javax.swing.JFrame {
     private javax.swing.JDesktopPane jDesktopPane1;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
+    private javax.swing.JMenu jMenu3;
+    private javax.swing.JMenu jMenu4;
+    private javax.swing.JMenu jMenu5;
+    private javax.swing.JMenu jMenu6;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenuItem jMenuItem1;
+    private javax.swing.JMenuItem jMenuItem10;
+    private javax.swing.JMenuItem jMenuItem11;
+    private javax.swing.JMenuItem jMenuItem12;
+    private javax.swing.JMenuItem jMenuItem13;
     private javax.swing.JMenuItem jMenuItem2;
     private javax.swing.JMenuItem jMenuItem3;
+    private javax.swing.JMenuItem jMenuItem4;
+    private javax.swing.JMenuItem jMenuItem5;
+    private javax.swing.JMenuItem jMenuItem6;
+    private javax.swing.JMenuItem jMenuItem7;
+    private javax.swing.JMenuItem jMenuItem8;
+    private javax.swing.JMenuItem jMenuItem9;
+    public static javax.swing.JMenu mnLb;
+    public static javax.swing.JMenu mnNomUs;
+    public static javax.swing.JMenu mnPass;
+    public static javax.swing.JMenu mnRol;
+    public static javax.swing.JMenu mnid;
     // End of variables declaration//GEN-END:variables
 }

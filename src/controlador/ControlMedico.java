@@ -26,14 +26,13 @@ public class ControlMedico {
         return medicosJpacontrolador.findMedicoEntities();
     }
 
-    public void guardarMedico(int idMedico, Especialidad idEspecialidad, String nombresMedico,
+    public void guardarMedico(Especialidad idEspecialidad, String nombresMedico,
             String domiciliomedico, String tlfMedico, byte[] imgMedico, String estadoMedico) {
         int i = 0;
         Medico mee = new Medico();
         try {
             for (Medico me : getMedicos()) {
-                if (me.getIdespecialidad().getIdespecialidad() == idEspecialidad.getIdespecialidad()
-                        && me.getNombremedico().equalsIgnoreCase(nombresMedico) && me.getDomiciliomedico().equalsIgnoreCase(domiciliomedico)) {
+                if (me.getDomiciliomedico().equals(domiciliomedico)) {
                     i = 1;
                     mee = me;
                     break;
@@ -50,7 +49,6 @@ public class ControlMedico {
                 }
             } else {
                 Medico m = new Medico();
-                m.setIdmedico(idMedico);
                 m.setIdespecialidad(idEspecialidad);
                 m.setNombremedico(nombresMedico);
                 m.setDomiciliomedico(domiciliomedico);
@@ -65,10 +63,10 @@ public class ControlMedico {
         }
     }
 
-    public Medico buscarMedico(int cedula) {
+    public Medico buscarMedico(String cedula) {
 
         for (Medico md : medicosJpacontrolador.findMedicoEntities()) {
-            if (md.getIdmedico().equals(cedula)) {
+            if (md.getDomiciliomedico().equals(cedula)) {
                 return md;
             }
         }

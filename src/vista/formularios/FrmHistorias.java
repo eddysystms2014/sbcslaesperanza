@@ -27,6 +27,7 @@ public class FrmHistorias extends javax.swing.JInternalFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        setClosable(true);
         setTitle("HISTORIAS");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());

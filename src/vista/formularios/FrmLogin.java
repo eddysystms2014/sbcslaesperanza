@@ -143,11 +143,21 @@ public class FrmLogin extends javax.swing.JFrame {
                 VistaPrincipal VP = new VistaPrincipal();
                 VP.setVisible(true);
                 this.setVisible(false);
+                VistaPrincipal.mnid.setText(CU.buscarRol(usuario, password).getIdusuario().toString());
+                VistaPrincipal.mnLb.setText("Usuario Actual: ");
+                VistaPrincipal.mnNomUs.setText(CU.buscarRol(usuario, password).getNombreusuario().toString());
+                VistaPrincipal.mnRol.setText(CU.buscarRol(usuario, password).getTipousuario().toString());
+                VistaPrincipal.mnPass.setText(CU.buscarRol(usuario, password).getContrasena().toString());
 
             } else if ("Usuario".equals(validar_usuario.getTipousuario())) {
                 VistaPrincipal VP = new VistaPrincipal();
-//                VP.setVisible(true);
+                VP.setVisible(true);
                 this.setVisible(false);
+                VistaPrincipal.mnid.setText(CU.buscarRol(usuario, password).getIdusuario().toString());
+                VistaPrincipal.mnLb.setText("Usuario Actual: ");
+                VistaPrincipal.mnNomUs.setText(CU.buscarRol(usuario, password).getNombreusuario().toString());
+                VistaPrincipal.mnRol.setText(CU.buscarRol(usuario, password).getTipousuario().toString());
+                VistaPrincipal.mnPass.setText(CU.buscarRol(usuario, password).getContrasena().toString());
             }
 
         }

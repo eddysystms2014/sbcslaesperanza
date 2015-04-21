@@ -35,10 +35,25 @@ public class frmcontrol {
 
     public void guardarEspecialidad(String nombreEspecialidad) {
         try {
-            Especialidad e = new Especialidad();
-            e.setNombreespecialidad(nombreEspecialidad);
-            especialidadJpacontrolador.create(e);
-            JOptionPane.showMessageDialog(null, "La especialidad se creo exitosamente", "Información", 1);
+            int i = 0;
+            for (Especialidad me : getEspecialidad()) {
+                if (me.getNombreespecialidad().equals(nombreEspecialidad)) {
+                    i = 1;
+                    break;
+                }
+            }
+            if (i == 1) {
+                JOptionPane.showMessageDialog(null, "Esa Especialidad Ya Esta Registrada", "Información", 1);
+
+            } else if (nombreEspecialidad != "") {
+                Especialidad e = new Especialidad();
+                e.setNombreespecialidad(nombreEspecialidad);
+                especialidadJpacontrolador.create(e);
+                JOptionPane.showMessageDialog(null, "La especialidad se creo exitosamente", "Información", 1);
+
+            } else {
+                JOptionPane.showMessageDialog(null, "Ponga Un Nombre de Especialidad", "Información", 1);
+            }
 
         } catch (Exception e) {
         }
@@ -50,9 +65,14 @@ public class frmcontrol {
             if (dat == null) {
                 return false;
             }
-            dat.setNombreespecialidad(nombreEspecialidad);
-            especialidadJpacontrolador.edit(dat);
-            JOptionPane.showMessageDialog(null, "La especialidad se Modifico exitosamente", "Información", 1);
+            if (nombreEspecialidad != "") {
+                dat.setNombreespecialidad(nombreEspecialidad);
+                especialidadJpacontrolador.edit(dat);
+                JOptionPane.showMessageDialog(null, "La especialidad se Modifico exitosamente", "Información", 1);
+
+            } else {
+                JOptionPane.showMessageDialog(null, "Ponga Un Nombre de Especialidad", "Información", 1);
+            }
 
         } catch (Exception e) {
         }
@@ -72,8 +92,8 @@ public class frmcontrol {
         modelo = new DefaultTableModel();
         tabla.setModel(modelo);
         Object[] fila = new Object[2];
-        modelo.addColumn("Id");
-        modelo.addColumn("Nombre");
+        modelo.addColumn("Nro");
+        modelo.addColumn("Nombre Especialidad");
         for (Especialidad e : f) {
             fila[0] = e.getIdespecialidad();
             fila[1] = e.getNombreespecialidad();
@@ -85,6 +105,16 @@ public class frmcontrol {
 
         for (Especialidad esp : especialidadJpacontrolador.findEspecialidadEntities()) {
             if (esp.getIdespecialidad().equals(id)) {
+                return esp;
+            }
+        }
+        return null;
+    }
+
+    public Especialidad buscarEspecialidadPorNombre(String nombre) {
+
+        for (Especialidad esp : especialidadJpacontrolador.findEspecialidadEntities()) {
+            if (esp.getNombreespecialidad().equals(nombre)) {
                 return esp;
             }
         }
