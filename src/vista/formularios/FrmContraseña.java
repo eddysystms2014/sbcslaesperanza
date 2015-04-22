@@ -125,22 +125,22 @@ ControlUsuario usuarioControlador = new ControlUsuario();
 
     private void btnAceptarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAceptarActionPerformed
 
-        String pass = VistaPrincipal.mnPass.getText();
-        int id = Integer.parseInt(VistaPrincipal.mnid.getText());
-        if (txtNueva.getText().equals(txtConfirmar.getText())) {
-            if (pass.equals(txtClave.getText())) {
-                usuarioControlador.editarPass(id, txtNueva.getText());
-                VistaPrincipal.mnPass.setText("");
-                VistaPrincipal.mnPass.setText(txtNueva.getText());
-                JOptionPane.showMessageDialog(null, "Datos Guardados");
-                this.dispose();
-            } else {
-                JOptionPane.showMessageDialog(null, "Error Contraseña Anterior");
-            }
-
-        } else {
-            JOptionPane.showMessageDialog(null, "Contraseña no Coinciden");
-        }
+//        String pass = VistaPrincipal.mnPass.getText();
+//        int id = Integer.parseInt(VistaPrincipal.mnid.getText());
+//        if (txtNueva.getText().equals(txtConfirmar.getText())) {
+//            if (pass.equals(txtClave.getText())) {
+//                usuarioControlador.editarPass(id, txtNueva.getText());
+//                VistaPrincipal.mnPass.setText("");
+//                VistaPrincipal.mnPass.setText(txtNueva.getText());
+//                JOptionPane.showMessageDialog(null, "Datos Guardados");
+//                this.dispose();
+//            } else {
+//                JOptionPane.showMessageDialog(null, "Error Contraseña Anterior");
+//            }
+//
+//        } else {
+//            JOptionPane.showMessageDialog(null, "Contraseña no Coinciden");
+//        }
     }//GEN-LAST:event_btnAceptarActionPerformed
 
     private void btnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarActionPerformed
