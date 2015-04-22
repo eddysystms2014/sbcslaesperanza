@@ -20,7 +20,8 @@ public class FrmContraseña extends javax.swing.JInternalFrame {
     public FrmContraseña() {
         initComponents();
     }
-ControlUsuario usuarioControlador = new ControlUsuario();
+    ControlUsuario usuarioControlador = new ControlUsuario();
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -125,22 +126,22 @@ ControlUsuario usuarioControlador = new ControlUsuario();
 
     private void btnAceptarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAceptarActionPerformed
 
-//        String pass = VistaPrincipal.mnPass.getText();
-//        int id = Integer.parseInt(VistaPrincipal.mnid.getText());
-//        if (txtNueva.getText().equals(txtConfirmar.getText())) {
-//            if (pass.equals(txtClave.getText())) {
-//                usuarioControlador.editarPass(id, txtNueva.getText());
-//                VistaPrincipal.mnPass.setText("");
-//                VistaPrincipal.mnPass.setText(txtNueva.getText());
-//                JOptionPane.showMessageDialog(null, "Datos Guardados");
-//                this.dispose();
-//            } else {
-//                JOptionPane.showMessageDialog(null, "Error Contraseña Anterior");
-//            }
-//
-//        } else {
-//            JOptionPane.showMessageDialog(null, "Contraseña no Coinciden");
-//        }
+        String pass = VistaPrincipal.mnPass.getText();
+        int id = Integer.parseInt(VistaPrincipal.mnid.getText());
+        if (txtNueva.getText().equals(txtConfirmar.getText())) {
+            if (pass.equals(txtClave.getText())) {
+                usuarioControlador.editarPass(id, txtNueva.getText());
+                VistaPrincipal.mnPass.setText("");
+                VistaPrincipal.mnPass.setText(txtNueva.getText());
+                JOptionPane.showMessageDialog(null, "Datos Guardados");
+                this.dispose();
+            } else {
+                JOptionPane.showMessageDialog(null, "Error Contraseña Actual");
+            }
+
+        } else {
+            JOptionPane.showMessageDialog(null, "Contraseña no Coinciden");
+        }
     }//GEN-LAST:event_btnAceptarActionPerformed
 
     private void btnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarActionPerformed

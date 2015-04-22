@@ -7,6 +7,7 @@ package vista.formularios;
 
 import controlador.ControlUsuario;
 import javax.swing.JOptionPane;
+import modelo.entidades.Usuario;
 //import modelo.entidades.Usuario;
 //import vista.formularios.VistaPrincipal;
 //import vista.formularios.VistaPrincipal;
@@ -133,34 +134,32 @@ public class FrmLogin extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
 
-//        String usuario = txtUsuario.getText();
-//        String password = new String(txtPassword.getPassword());
-//        Usuario validar_usuario = CU.Validar_Usuario(usuario, password);
-//        if (validar_usuario == null) {
-//
-//        } else {
-//            if ("Administrador".equals(validar_usuario.getTipousuario())) {
-//                VistaPrincipal VP = new VistaPrincipal();
-//                VP.setVisible(true);
-//                this.setVisible(false);
-//                VistaPrincipal.mnid.setText(CU.buscarRol(usuario, password).getIdusuario().toString());
-//                VistaPrincipal.mnLb.setText("Usuario Actual: ");
-//                VistaPrincipal.mnNomUs.setText(CU.buscarRol(usuario, password).getNombreusuario().toString());
-//                VistaPrincipal.mnRol.setText(CU.buscarRol(usuario, password).getTipousuario().toString());
-//                VistaPrincipal.mnPass.setText(CU.buscarRol(usuario, password).getContrasena().toString());
-//
-//            } else if ("Usuario".equals(validar_usuario.getTipousuario())) {
-//                VistaPrincipal VP = new VistaPrincipal();
-//                VP.setVisible(true);
-//                this.setVisible(false);
-//                VistaPrincipal.mnid.setText(CU.buscarRol(usuario, password).getIdusuario().toString());
-//                VistaPrincipal.mnLb.setText("Usuario Actual: ");
-//                VistaPrincipal.mnNomUs.setText(CU.buscarRol(usuario, password).getNombreusuario().toString());
-//                VistaPrincipal.mnRol.setText(CU.buscarRol(usuario, password).getTipousuario().toString());
-//                VistaPrincipal.mnPass.setText(CU.buscarRol(usuario, password).getContrasena().toString());
-//            }
-//
-//        }
+        String usuario = txtUsuario.getText();
+        String password = new String(txtPassword.getPassword());
+        Usuario validar_usuario = CU.Validar_Usuario(usuario, password);
+        if (validar_usuario == null) {
+
+        } else {
+            if ("Administrador".equals(validar_usuario.getTipousuario())) {
+                VistaPrincipal VP = new VistaPrincipal();
+                VP.setVisible(true);
+                this.setVisible(false);
+                VistaPrincipal.mnid.setText(CU.buscarRol(usuario, password).getIdusuario().toString());
+                VistaPrincipal.mnNomUs.setText(CU.buscarRol(usuario, password).getNombreusuario().toString());
+                VistaPrincipal.mnRol.setText(CU.buscarRol(usuario, password).getTipousuario().toString());
+                VistaPrincipal.mnPass.setText(CU.buscarRol(usuario, password).getContrasena().toString());
+
+            } else if ("Usuario".equals(validar_usuario.getTipousuario())) {
+                VistaPrincipal VP = new VistaPrincipal();
+                VP.setVisible(true);
+                this.setVisible(false);
+                VistaPrincipal.mnid.setText(CU.buscarRol(usuario, password).getIdusuario().toString());
+                VistaPrincipal.mnNomUs.setText(CU.buscarRol(usuario, password).getNombreusuario().toString());
+                VistaPrincipal.mnRol.setText(CU.buscarRol(usuario, password).getTipousuario().toString());
+                VistaPrincipal.mnPass.setText(CU.buscarRol(usuario, password).getContrasena().toString());
+            }
+
+        }
 
     }//GEN-LAST:event_jButton1ActionPerformed
 

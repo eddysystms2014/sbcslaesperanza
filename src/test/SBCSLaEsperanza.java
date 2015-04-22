@@ -9,6 +9,7 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.GregorianCalendar;
 import java.util.StringTokenizer;
+import vista.formularios.FrmLogin;
 
 /**
  *
@@ -24,6 +25,8 @@ public class SBCSLaEsperanza {
         Date fecha1 = new Date();
 
         System.out.println(fecha1.toLocaleString());
+        FrmLogin fr=new FrmLogin();
+        fr.show();
 }
 
 }
