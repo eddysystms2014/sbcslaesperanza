@@ -70,6 +70,7 @@ import javax.xml.bind.annotation.XmlTransient;
     @NamedQuery(name = "Paciente.findByCodadmisionista", query = "SELECT p FROM Paciente p WHERE p.codadmisionista = :codadmisionista"),
     @NamedQuery(name = "Paciente.findByEstadopaciente", query = "SELECT p FROM Paciente p WHERE p.estadopaciente = :estadopaciente")})
 public class Paciente implements Serializable {
+
     private static final long serialVersionUID = 1L;
     @Column(name = "INSTPACIENTE")
     private String instpaciente;
@@ -520,5 +521,67 @@ public class Paciente implements Serializable {
     public String toString() {
         return "modelo.entidades.Paciente[ idpaciente=" + idpaciente + " ]";
     }
-    
+
+    public boolean buscarApellidoPaterno(String inicio) {
+        if (inicio.isEmpty() || inicio.length() > apeppaciente.length()) {
+            return false;
+        }
+        for (int i = 0; i < inicio.length(); ++i) {
+            if (inicio.charAt(i) != apeppaciente.charAt(i)) {
+                return false;
+            }
+        }
+        return true;
+    }
+
+    public boolean buscarApellidoMaterno(String inicio) {
+        if (inicio.isEmpty() || inicio.length() > apempaciente.length()) {
+            return false;
+        }
+        for (int i = 0; i < inicio.length(); ++i) {
+            if (inicio.charAt(i) != apempaciente.charAt(i)) {
+                return false;
+            }
+        }
+        return true;
+    }
+
+    public boolean buscarPrimerNombre(String inicio) {
+        if (inicio.isEmpty() || inicio.length() > nom1paciente.length()) {
+            return false;
+        }
+        for (int i = 0; i < inicio.length(); ++i) {
+            if (inicio.charAt(i) != nom2paciente.charAt(i)) {
+                return false;
+            }
+        }
+        return true;
+    }
+
+    public boolean buscarSegundoNombre(String inicio) {
+        if (inicio.isEmpty() || inicio.length() > nom2paciente.length()) {
+            return false;
+        }
+        for (int i = 0; i < inicio.length(); ++i) {
+            if (inicio.charAt(i) != nom2paciente.charAt(i)) {
+                return false;
+            }
+        }
+        return true;
+    }
+
+    public boolean buscarCedula(String inicio) {
+        if (inicio.isEmpty() || inicio.length() > cedpaciente.length()) {
+            return false;
+        }
+        for (int i = 0; i < inicio.length(); ++i) {
+            if (inicio.charAt(i) != canpaciente.charAt(i)) {
+                return false;
+            }
+        }
+        return true;
+    }
+
+  
+
 }

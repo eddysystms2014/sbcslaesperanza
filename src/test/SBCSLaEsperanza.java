@@ -8,6 +8,7 @@ package test;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.GregorianCalendar;
+import java.util.StringTokenizer;
 
 /**
  *
@@ -23,8 +24,6 @@ public class SBCSLaEsperanza {
         Date fecha1 = new Date();
 
         System.out.println(fecha1.toLocaleString());
-
-
-    }
+}
 
 }

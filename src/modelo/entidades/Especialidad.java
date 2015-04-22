@@ -32,6 +32,7 @@ import javax.xml.bind.annotation.XmlTransient;
     @NamedQuery(name = "Especialidad.findByIdespecialidad", query = "SELECT e FROM Especialidad e WHERE e.idespecialidad = :idespecialidad"),
     @NamedQuery(name = "Especialidad.findByNombreespecialidad", query = "SELECT e FROM Especialidad e WHERE e.nombreespecialidad = :nombreespecialidad")})
 public class Especialidad implements Serializable {
+
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -99,5 +100,19 @@ public class Especialidad implements Serializable {
     public String toString() {
         return "modelo.entidades.Especialidad[ idespecialidad=" + idespecialidad + " ]";
     }
-    
+    public String toString1() {
+        return "ID" + idespecialidad + "  Nombre especialidad ;"+nombreespecialidad;
+    }
+
+    public boolean empiezaPor(String inicio) {
+        if (inicio.isEmpty() || inicio.length() > nombreespecialidad.length()) {
+            return false;
+        }
+        for (int i = 0; i < inicio.length(); ++i) {
+            if (inicio.charAt(i) != nombreespecialidad.charAt(i)) {
+                return false;
+            }
+        }
+        return true;
+    }
 }

@@ -17,6 +17,8 @@ import modelo.dao.exceptions.IllegalOrphanException;
 import modelo.dao.exceptions.NonexistentEntityException;
 import modelo.entidades.Especialidad;
 import modelo.entidades.Medico;
+import modelo.entidades.Turno;
+import vista.formularios.frmEspecialidad;
 
 /**
  *
@@ -119,6 +121,18 @@ public class frmcontrol {
             }
         }
         return null;
+    }
+
+    public void empiezaPor1() {
+        String cadenaInformativa = "";
+
+        for (int i = 0; i < getEspecialidad().size(); ++i) {
+            if (getEspecialidad().get(i).empiezaPor(frmEspecialidad.jTextField1.getText())) {
+                cadenaInformativa += getEspecialidad().get(i).toString1() + "\n\n";
+            }
+        }
+
+        frmEspecialidad.jTextArea1.setText(cadenaInformativa);
     }
 
 }
