@@ -38,27 +38,29 @@ public class VistaPrincipal extends javax.swing.JFrame {
         jDesktopPane1 = new javax.swing.JDesktopPane();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
-        jMenuItem1 = new javax.swing.JMenuItem();
-        jMenuItem2 = new javax.swing.JMenuItem();
-        jMenuItem3 = new javax.swing.JMenuItem();
+        jMenu8 = new javax.swing.JMenu();
         jMenu3 = new javax.swing.JMenu();
         jMenuItem5 = new javax.swing.JMenuItem();
         jMenuItem4 = new javax.swing.JMenuItem();
         jMenuItem6 = new javax.swing.JMenuItem();
         jMenu4 = new javax.swing.JMenu();
         jMenuItem7 = new javax.swing.JMenuItem();
+        jMenu9 = new javax.swing.JMenu();
+        jMenuItem1 = new javax.swing.JMenuItem();
+        jMenuItem11 = new javax.swing.JMenuItem();
+        jMenu10 = new javax.swing.JMenu();
+        jMenuItem2 = new javax.swing.JMenuItem();
+        jMenu6 = new javax.swing.JMenu();
+        jMenuItem10 = new javax.swing.JMenuItem();
         jMenu5 = new javax.swing.JMenu();
         jMenuItem8 = new javax.swing.JMenuItem();
         jMenuItem9 = new javax.swing.JMenuItem();
-        jMenu6 = new javax.swing.JMenu();
-        jMenuItem11 = new javax.swing.JMenuItem();
         mnid = new javax.swing.JMenu();
         jMenu7 = new javax.swing.JMenu();
         mnNomUs = new javax.swing.JMenu();
-        jMenuItem10 = new javax.swing.JMenuItem();
+        jMenu2 = new javax.swing.JMenu();
         mnRol = new javax.swing.JMenu();
         mnPass = new javax.swing.JMenu();
-        jMenu2 = new javax.swing.JMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -74,30 +76,11 @@ public class VistaPrincipal extends javax.swing.JFrame {
         );
 
         jMenu1.setText("Archivo");
+        jMenu1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jMenuBar1.add(jMenu1);
 
-        jMenuItem1.setText("Admision Paciente");
-        jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem1ActionPerformed(evt);
-            }
-        });
-        jMenu1.add(jMenuItem1);
-
-        jMenuItem2.setText("Medicos");
-        jMenuItem2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem2ActionPerformed(evt);
-            }
-        });
-        jMenu1.add(jMenuItem2);
-
-        jMenuItem3.setText("Especialidad");
-        jMenuItem3.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem3ActionPerformed(evt);
-            }
-        });
-        jMenu1.add(jMenuItem3);
+        jMenu8.setText("Admision");
+        jMenu8.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
 
         jMenu3.setText("Medicos");
 
@@ -120,7 +103,7 @@ public class VistaPrincipal extends javax.swing.JFrame {
         });
         jMenu3.add(jMenuItem6);
 
-        jMenu1.add(jMenu3);
+        jMenu8.add(jMenu3);
 
         jMenu4.setText("Especialidad");
 
@@ -132,7 +115,52 @@ public class VistaPrincipal extends javax.swing.JFrame {
         });
         jMenu4.add(jMenuItem7);
 
-        jMenu1.add(jMenu4);
+        jMenu8.add(jMenu4);
+
+        jMenu9.setText("Paciente");
+
+        jMenuItem1.setText("Admision Paciente");
+        jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem1ActionPerformed(evt);
+            }
+        });
+        jMenu9.add(jMenuItem1);
+
+        jMenuItem11.setText("Busqueda");
+        jMenuItem11.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem11ActionPerformed(evt);
+            }
+        });
+        jMenu9.add(jMenuItem11);
+
+        jMenu8.add(jMenu9);
+
+        jMenu10.setText("Historias");
+
+        jMenuItem2.setText("jMenuItem2");
+        jMenuItem2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem2ActionPerformed(evt);
+            }
+        });
+        jMenu10.add(jMenuItem2);
+
+        jMenu8.add(jMenu10);
+
+        jMenuBar1.add(jMenu8);
+
+        jMenu6.setText("Control");
+        jMenu6.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+
+        jMenuItem10.setText("Cofigurar Cuenta");
+        jMenuItem10.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem10ActionPerformed(evt);
+            }
+        });
+        jMenu6.add(jMenuItem10);
 
         jMenu5.setText("Usuario");
 
@@ -152,19 +180,7 @@ public class VistaPrincipal extends javax.swing.JFrame {
         });
         jMenu5.add(jMenuItem9);
 
-        jMenu1.add(jMenu5);
-
-        jMenuBar1.add(jMenu1);
-
-        jMenu6.setText("Gestion");
-
-        jMenuItem11.setText("Busqueda");
-        jMenuItem11.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem11ActionPerformed(evt);
-            }
-        });
-        jMenu6.add(jMenuItem11);
+        jMenu6.add(jMenu5);
 
         jMenuBar1.add(jMenu6);
 
@@ -175,25 +191,16 @@ public class VistaPrincipal extends javax.swing.JFrame {
         jMenuBar1.add(jMenu7);
 
         mnNomUs.setText("jMenu8");
-
-        jMenuItem10.setText("Cofigurar Cuenta");
-        jMenuItem10.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem10ActionPerformed(evt);
-            }
-        });
-        mnNomUs.add(jMenuItem10);
-
         jMenuBar1.add(mnNomUs);
+
+        jMenu2.setText("Tipo :");
+        jMenuBar1.add(jMenu2);
 
         mnRol.setText("jMenu9");
         jMenuBar1.add(mnRol);
 
         mnPass.setText("jMenu");
         jMenuBar1.add(mnPass);
-
-        jMenu2.setText("Ayuda");
-        jMenuBar1.add(jMenu2);
 
         setJMenuBar(jMenuBar1);
 
@@ -219,25 +226,6 @@ public class VistaPrincipal extends javax.swing.JFrame {
         FP.show();
         jDesktopPane1.add(FP);
     }//GEN-LAST:event_jMenuItem1ActionPerformed
-
-    private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
-        FrmMedicos FM;
-        try {
-            FM = new FrmMedicos();
-
-            FM.show();
-            jDesktopPane1.add(FM);
-        } catch (IllegalAccessException ex) {
-            Logger.getLogger(VistaPrincipal.class.getName()).log(Level.SEVERE, null, ex);
-        }
-
-    }//GEN-LAST:event_jMenuItem2ActionPerformed
-
-    private void jMenuItem3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem3ActionPerformed
-        frmEspecialidad FE = new frmEspecialidad();
-        FE.show();
-        jDesktopPane1.add(FE);
-    }//GEN-LAST:event_jMenuItem3ActionPerformed
 
     private void jMenuItem5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem5ActionPerformed
         // TODO add your handling code here:
@@ -324,6 +312,10 @@ public class VistaPrincipal extends javax.swing.JFrame {
         jDesktopPane1.add(FT);
     }//GEN-LAST:event_jMenuItem11ActionPerformed
 
+    private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jMenuItem2ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -363,20 +355,22 @@ public class VistaPrincipal extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JDesktopPane jDesktopPane1;
+    public static javax.swing.JDesktopPane jDesktopPane1;
     private javax.swing.JMenu jMenu1;
+    private javax.swing.JMenu jMenu10;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenu jMenu3;
     private javax.swing.JMenu jMenu4;
     private javax.swing.JMenu jMenu5;
     private javax.swing.JMenu jMenu6;
     private javax.swing.JMenu jMenu7;
+    private javax.swing.JMenu jMenu8;
+    public static javax.swing.JMenu jMenu9;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JMenuItem jMenuItem10;
     private javax.swing.JMenuItem jMenuItem11;
     private javax.swing.JMenuItem jMenuItem2;
-    private javax.swing.JMenuItem jMenuItem3;
     private javax.swing.JMenuItem jMenuItem4;
     private javax.swing.JMenuItem jMenuItem5;
     private javax.swing.JMenuItem jMenuItem6;
