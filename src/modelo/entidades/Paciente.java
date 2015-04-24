@@ -523,11 +523,12 @@ public class Paciente implements Serializable {
     }
 
     public boolean buscarApellidoPaterno(String inicio) {
-        if (inicio.isEmpty() || inicio.length() > apeppaciente.length()) {
+        if (inicio.isEmpty() || inicio.length() > (apeppaciente.length()+apempaciente.length()+nom1paciente.length()+nom2paciente.length()+3)) {
             return false;
         }
         for (int i = 0; i < inicio.length(); ++i) {
-            if (inicio.charAt(i) != apeppaciente.charAt(i)) {
+            String r=apeppaciente+""+apempaciente+" "+nom1paciente+" "+nom2paciente;
+            if (inicio.charAt(i) != (r.charAt(i))) {
                 return false;
             }
         }
@@ -539,7 +540,7 @@ public class Paciente implements Serializable {
             return false;
         }
         for (int i = 0; i < inicio.length(); ++i) {
-            if (inicio.charAt(i) != apempaciente.charAt(i)) {
+            if (inicio != apempaciente) {
                 return false;
             }
         }

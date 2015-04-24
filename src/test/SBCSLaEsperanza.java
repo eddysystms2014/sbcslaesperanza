@@ -5,6 +5,7 @@
  */
 package test;
 
+import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.GregorianCalendar;
@@ -20,13 +21,17 @@ public class SBCSLaEsperanza {
     /**
      * @param args the command line arguments
      */
+    
+
     public static void main(String[] args) {
 
         Date fecha1 = new Date();
 
         System.out.println(fecha1.toLocaleString());
-        FrmLogin fr=new FrmLogin();
+        FrmLogin fr = new FrmLogin();
         fr.show();
-}
+
+  
+    }
 
 }

@@ -5,6 +5,7 @@
  */
 package controlador;
 
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 import javax.persistence.EntityManager;
@@ -85,15 +86,15 @@ public class ControlPaciente {
         modelo.addColumn("Apellido_Materno");
         modelo.addColumn("Primer_nombre");
         modelo.addColumn("Segundo_nombre");
-        for (int i = 0; i < getPacientes().size(); ++i) {
+        for (int i = 0; i < getPacientes().size(); i++) {
 
 //            for (Paciente e : getPacientes()) {
-            if (getPacientes().get(i).buscarApellidoPaterno(FrmBusquedas.jTextField1.getText())) {
+            if (getPacientes().get(i).buscarApellidoPaterno(FrmBusquedas.txtBusquedaNombres.getText())) {
 
                 fila[0] = getPacientes().get(i).getIdpaciente();
                 fila[1] = getPacientes().get(i).getCedpaciente();
                 fila[2] = getPacientes().get(i).getApeppaciente();
-                fila[3] = getPacientes().get(i).getApempaciente();   
+                fila[3] = getPacientes().get(i).getApempaciente();
                 fila[4] = getPacientes().get(i).getNom1paciente();
                 fila[5] = getPacientes().get(i).getNom2paciente();
                 modelo.addRow(fila);
@@ -101,7 +102,8 @@ public class ControlPaciente {
 //            }
         }
     }
-        public void BuscarApeMat() {
+
+    public void BuscarApeMat() {
         String cadenaInformativa = "";
         modelo = new DefaultTableModel();
         FrmBusquedas.jTable1.setModel(modelo);
@@ -115,17 +117,82 @@ public class ControlPaciente {
         for (int i = 0; i < getPacientes().size(); ++i) {
 
 //            for (Paciente e : getPacientes()) {
-            if (getPacientes().get(i).buscarApellidoPaterno(FrmBusquedas.jTextField2.getText())) {
+            if (getPacientes().get(i).buscarApellidoMaterno(FrmBusquedas.jTextField2.getText())) {
 
                 fila[0] = getPacientes().get(i).getIdpaciente();
                 fila[1] = getPacientes().get(i).getCedpaciente();
                 fila[2] = getPacientes().get(i).getApeppaciente();
-                fila[3] = getPacientes().get(i).getApempaciente();   
+                fila[3] = getPacientes().get(i).getApempaciente();
                 fila[4] = getPacientes().get(i).getNom1paciente();
                 fila[5] = getPacientes().get(i).getNom2paciente();
                 modelo.addRow(fila);
             }
 //            }
         }
+    }
+
+    public void buscarpacienteNumHistoria(int app1) {
+        modelo = new DefaultTableModel();
+        FrmBusquedas.jTable1.setModel(modelo);
+        Object[] fila = new Object[6];
+        modelo.addColumn("Nro_Historia");
+        modelo.addColumn("Cedula");
+        modelo.addColumn("Apellido_Paterno");
+        modelo.addColumn("Apellido_Materno");
+        modelo.addColumn("Primer_nombre");
+        modelo.addColumn("Segundo_nombre");
+        for (Paciente e : pacienteJpaControlador.findPacienteEntities()) {
+            if (e.getIdpaciente() == app1) {
+                fila[0] = e.getIdpaciente();
+                fila[1] = e.getCedpaciente();
+                fila[2] = e.getApeppaciente();
+                fila[3] = e.getApempaciente();
+                fila[4] = e.getNom1paciente();
+                fila[5] = e.getNom2paciente();
+                modelo.addRow(fila);
+            }
+        }
+    }
+    public void buscarpacienteCI(String app1) {
+        modelo = new DefaultTableModel();
+        FrmBusquedas.jTable1.setModel(modelo);
+        Object[] fila = new Object[6];
+        modelo.addColumn("Nro_Historia");
+        modelo.addColumn("Cedula");
+        modelo.addColumn("Apellido_Paterno");
+        modelo.addColumn("Apellido_Materno");
+        modelo.addColumn("Primer_nombre");
+        modelo.addColumn("Segundo_nombre");
+        for (Paciente e : pacienteJpaControlador.findPacienteEntities()) {
+            String r = e.getCedpaciente();
+            if (r.equals(app1) ) {
+                fila[0] = e.getIdpaciente();
+                fila[1] = e.getCedpaciente();
+                fila[2] = e.getApeppaciente();
+                fila[3] = e.getApempaciente();
+                fila[4] = e.getNom1paciente();
+                fila[5] = e.getNom2paciente();
+                modelo.addRow(fila);
+            }
+        }
+    }
+    public int edad(String fecha_nac) {
+
+        Date fechaActual = new Date();
+        SimpleDateFormat formato = new SimpleDateFormat("dd/MM/yyyy");
+        String hoy = formato.format(fechaActual);
+        String[] dat1 = fecha_nac.split("/");
+        String[] dat2 = hoy.split("/");
+        int años = Integer.parseInt(dat2[2]) - Integer.parseInt(dat1[2]);
+        int mes = Integer.parseInt(dat2[1]) - Integer.parseInt(dat1[1]);
+        if (mes < 0) {
+            años = años - 1;
+        } else if (mes == 0) {
+            int dia = Integer.parseInt(dat2[0]) - Integer.parseInt(dat1[0]);
+            if (dia > 0) {
+                años = años - 1;
+            }
+        }
+        return años;
     }
 }

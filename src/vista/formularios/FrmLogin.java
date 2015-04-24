@@ -157,6 +157,9 @@ public class FrmLogin extends javax.swing.JFrame {
                 VistaPrincipal.mnNomUs.setText(CU.buscarRol(usuario, password).getNombreusuario().toString());
                 VistaPrincipal.mnRol.setText(CU.buscarRol(usuario, password).getTipousuario().toString());
                 VistaPrincipal.mnPass.setText(CU.buscarRol(usuario, password).getContrasena().toString());
+                VistaPrincipal.jMenu3.setVisible(false);
+                VistaPrincipal.jMenu4.setVisible(false);
+                VistaPrincipal.jMenu5.setVisible(false);
             }
 
         }

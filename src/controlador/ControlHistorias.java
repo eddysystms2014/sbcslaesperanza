@@ -12,6 +12,7 @@ import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import modelo.dao.HistoriaJpaController;
 import modelo.entidades.Historia;
+import vista.formularios.FrmBusquedas;
 import vista.formularios.FrmHistorias;
 
 /**
@@ -29,9 +30,11 @@ public class ControlHistorias {
         return historiaJpaControlador.findHistoriaEntities();
     }
 
-    public void tablaHistorial(int numHistorias) {
+   
 
-//        String cadenaInformativa = "";
+    public void cargarTabla() {
+        int txt=Integer.valueOf(FrmBusquedas.jTextField3.getText());
+                
         modelo = new DefaultTableModel();
         FrmHistorias.jTable1.setModel(modelo);
         Object[] fila = new Object[6];
@@ -42,39 +45,8 @@ public class ControlHistorias {
         modelo.addColumn("ATENCION");
         modelo.addColumn("CODIGO_ADMISIONISTA");
 
-        for (int i = 0; i < getHistorias().size(); ++i) {
-            Historia h = historiaJpaControlador.findHistoria(numHistorias);
-            if (h != null) {
-
-                fila[0] = getHistorias().get(i).getIdpaciente().getIdpaciente();
-                fila[1] = getHistorias().get(i).getFechahistoria();
-                fila[2] = getHistorias().get(i).getEdadhistoria();
-                fila[3] = getHistorias().get(i).getReferidohistoria();
-                fila[4] = getHistorias().get(i).getTipohistoria();
-                fila[5] = getHistorias().get(i).getCodadmisionista();
-
-//                JOptionPane.showMessageDialog(null, "hallado");
-            } else {
-                JOptionPane.showMessageDialog(null, "error");
-
-            }
-
-        }
-    }
-
-    public void cargarTabla(List<Historia> f,int codHist) {
-        modelo = new DefaultTableModel();
-        FrmHistorias.jTable1.setModel(modelo);
-        Object[] fila = new Object[6];
-        modelo.addColumn("NUM_ HISTORIA");
-        modelo.addColumn("FECHA");
-        modelo.addColumn("EDAD");
-        modelo.addColumn("REFERIDO DE");
-        modelo.addColumn("ATENCION");
-        modelo.addColumn("CODIGO_ADMISIONISTA");
-
-        for (Historia e : f) {
-            if (e.getIdpaciente().getIdpaciente()==codHist) {
+        for (Historia e : getHistorias()) {
+            if (e.getIdpaciente().getIdpaciente()==txt) {
                 fila[0] = e.getIdpaciente().getIdpaciente();
             fila[1] = e.getFechahistoria();
             fila[2] = e.getEdadhistoria();
