@@ -22,6 +22,9 @@ public class FrmHistorias extends javax.swing.JInternalFrame {
         Date fecha1 = new Date();
 
         jLabel1.setText(fecha1.toLocaleString());
+        
+//        int num= Integer.valueOf(jTextField4.getText());
+//        fh.cargarTabla(fh.getHistorias(),num);
     }
     ControlHistorias  fh=new ControlHistorias();
 
@@ -152,9 +155,9 @@ public class FrmHistorias extends javax.swing.JInternalFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
-        int num= Integer.valueOf(jTextField4.getText());
-//        fh.tablaHistorial(num);
-        fh.cargarTabla(fh.getHistorias(),num);
+//        int num= Integer.valueOf(jTextField4.getText());
+////        fh.tablaHistorial(num);
+//        fh.cargarTabla(fh.getHistorias(),num);
     }//GEN-LAST:event_jButton1ActionPerformed
 
 
