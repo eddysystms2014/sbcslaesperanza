@@ -179,10 +179,10 @@ public class ControlPaciente {
     public int edad(String fecha_nac) {
 
         Date fechaActual = new Date();
-        SimpleDateFormat formato = new SimpleDateFormat("dd/MM/yyyy");
+        SimpleDateFormat formato = new SimpleDateFormat("dd-MM-yyyy");
         String hoy = formato.format(fechaActual);
-        String[] dat1 = fecha_nac.split("/");
-        String[] dat2 = hoy.split("/");
+        String[] dat1 = fecha_nac.split("-");
+        String[] dat2 = hoy.split("-");
         int años = Integer.parseInt(dat2[2]) - Integer.parseInt(dat1[2]);
         int mes = Integer.parseInt(dat2[1]) - Integer.parseInt(dat1[1]);
         if (mes < 0) {

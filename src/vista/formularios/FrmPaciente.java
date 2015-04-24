@@ -6,6 +6,8 @@
 package vista.formularios;
 
 import controlador.ControlPaciente;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 /**
  *
@@ -13,14 +15,15 @@ import controlador.ControlPaciente;
  */
 public class FrmPaciente extends javax.swing.JInternalFrame {
 
-    ControlPaciente p=new ControlPaciente();
+    ControlPaciente p = new ControlPaciente();
+
     /**
      * Creates new form FrmPaciente
      */
     public FrmPaciente() {
         initComponents();
     }
-    ControlPaciente cp=new ControlPaciente();
+    ControlPaciente cp = new ControlPaciente();
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -430,6 +433,14 @@ public class FrmPaciente extends javax.swing.JInternalFrame {
 
         jLabel26.setText("GÉNERO");
 
+        jTextField21.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                jTextField21KeyReleased(evt);
+            }
+        });
+
+        jTextField24.setEditable(false);
+
         jLabel29.setText("ESTADO CIVIL");
 
         jLabel35.setText("INSTRUCCIÓN (Ultimo Año Aprobado)");
@@ -438,7 +449,7 @@ public class FrmPaciente extends javax.swing.JInternalFrame {
 
         jComboBox2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "M", "F" }));
 
-        jDateChooser1.setDateFormatString("dd/MM/yyyy");
+        jDateChooser1.setDateFormatString("dd-MM-yyyy");
         jDateChooser1.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jDateChooser1MouseClicked(evt);
@@ -788,35 +799,32 @@ public class FrmPaciente extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_jTextField42ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
-//        String dt=String.valueOf(jDateChooser1.getDate());
-//        int años=cp.edad(dt);
-        String dt=String.valueOf(jDateChooser1.getDate());
-        int años=cp.edad(dt);
-        jTextField24.setText(String.valueOf(años));
-        System.out.println(""+dt+"  "+años);
-        p.guardarpaciente(jTextField1.getText(), title, title, title, title, title, WIDTH, title, 
+
+       
+
+        p.guardarpaciente(jTextField1.getText(), title, title, title, title, title, WIDTH, title,
                 title, title, title, title, title, title, title, title, title, title, title, null,
                 title, title, title, WIDTH, title, title, title, null, title, title, title, title,
                 title, title, title, title, title);
-        
+
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jDateChooser1KeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jDateChooser1KeyReleased
-        // TODO add your handling code here:
-        String dt=String.valueOf(jDateChooser1.getDate());
-        int años=cp.edad(dt);
-        jTextField24.setText(String.valueOf(años));
-        
+
     }//GEN-LAST:event_jDateChooser1KeyReleased
 
     private void jDateChooser1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jDateChooser1MouseClicked
-        // TODO add your handling code here:
-        String dt=String.valueOf(jDateChooser1.getDate());
-        int años=cp.edad(dt);
-        jTextField24.setText(String.valueOf(años));
-        System.out.println(""+dt+"  "+años);
+
     }//GEN-LAST:event_jDateChooser1MouseClicked
+
+    private void jTextField21KeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField21KeyReleased
+        // TODO add your handling code here:
+        Date fechaActual = jDateChooser1.getDate();
+        SimpleDateFormat formato = new SimpleDateFormat("dd-MM-yyyy");
+        String hoy = formato.format(fechaActual);
+        int años = cp.edad(hoy);
+        jTextField24.setText(String.valueOf(años));
+    }//GEN-LAST:event_jTextField21KeyReleased
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
