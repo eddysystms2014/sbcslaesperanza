@@ -50,8 +50,6 @@ public class VistaPrincipal extends javax.swing.JFrame {
         jMenuItem6 = new javax.swing.JMenuItem();
         jMenu4 = new javax.swing.JMenu();
         jMenuItem7 = new javax.swing.JMenuItem();
-        jMenu10 = new javax.swing.JMenu();
-        jMenuItem2 = new javax.swing.JMenuItem();
         jMenu5 = new javax.swing.JMenu();
         jMenuItem8 = new javax.swing.JMenuItem();
         jMenuItem9 = new javax.swing.JMenuItem();
@@ -74,18 +72,24 @@ public class VistaPrincipal extends javax.swing.JFrame {
         );
         jDesktopPane1Layout.setVerticalGroup(
             jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 545, Short.MAX_VALUE)
+            .addGap(0, 534, Short.MAX_VALUE)
         );
 
+        jMenuBar1.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+
+        jMenu1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/folder.png"))); // NOI18N
         jMenu1.setText("Archivo");
         jMenu1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jMenuBar1.add(jMenu1);
 
+        jMenu8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/new archive.png"))); // NOI18N
         jMenu8.setText("Admision");
         jMenu8.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
 
+        jMenu9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/new doc.png"))); // NOI18N
         jMenu9.setText("Paciente");
 
+        jMenuItem1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/new doc.png"))); // NOI18N
         jMenuItem1.setText("Admision Paciente");
         jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -94,6 +98,7 @@ public class VistaPrincipal extends javax.swing.JFrame {
         });
         jMenu9.add(jMenuItem1);
 
+        jMenuItem11.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/search.png"))); // NOI18N
         jMenuItem11.setText("Busqueda");
         jMenuItem11.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -104,8 +109,10 @@ public class VistaPrincipal extends javax.swing.JFrame {
 
         jMenu8.add(jMenu9);
 
+        jMenu3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/doc.jpg"))); // NOI18N
         jMenu3.setText("Medicos");
 
+        jMenuItem5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/new doc.png"))); // NOI18N
         jMenuItem5.setText("Nuevo");
         jMenuItem5.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -114,9 +121,11 @@ public class VistaPrincipal extends javax.swing.JFrame {
         });
         jMenu3.add(jMenuItem5);
 
+        jMenuItem4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/notebook.png"))); // NOI18N
         jMenuItem4.setText("Modificar");
         jMenu3.add(jMenuItem4);
 
+        jMenuItem6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/up_alt.png"))); // NOI18N
         jMenuItem6.setText("Activar");
         jMenuItem6.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -127,8 +136,10 @@ public class VistaPrincipal extends javax.swing.JFrame {
 
         jMenu8.add(jMenu3);
 
+        jMenu4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/new archive.png"))); // NOI18N
         jMenu4.setText("Especialidad");
 
+        jMenuItem7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/advanced.png"))); // NOI18N
         jMenuItem7.setText("Gestion");
         jMenuItem7.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -139,20 +150,10 @@ public class VistaPrincipal extends javax.swing.JFrame {
 
         jMenu8.add(jMenu4);
 
-        jMenu10.setText("Historias");
-
-        jMenuItem2.setText("jMenuItem2");
-        jMenuItem2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem2ActionPerformed(evt);
-            }
-        });
-        jMenu10.add(jMenuItem2);
-
-        jMenu8.add(jMenu10);
-
+        jMenu5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/user.png"))); // NOI18N
         jMenu5.setText("Usuario");
 
+        jMenuItem8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/new doc.png"))); // NOI18N
         jMenuItem8.setText("Nuevo");
         jMenuItem8.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -161,6 +162,7 @@ public class VistaPrincipal extends javax.swing.JFrame {
         });
         jMenu5.add(jMenuItem8);
 
+        jMenuItem9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/notebook.png"))); // NOI18N
         jMenuItem9.setText("Modificar");
         jMenuItem9.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -173,9 +175,11 @@ public class VistaPrincipal extends javax.swing.JFrame {
 
         jMenuBar1.add(jMenu8);
 
+        jMenu6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/lock.png"))); // NOI18N
         jMenu6.setText("Control");
         jMenu6.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
 
+        jMenuItem10.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/key32.png"))); // NOI18N
         jMenuItem10.setText("Cofigurar Cuenta");
         jMenuItem10.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -189,16 +193,18 @@ public class VistaPrincipal extends javax.swing.JFrame {
         mnid.setText("jMenu6");
         jMenuBar1.add(mnid);
 
+        jMenu7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/user.png"))); // NOI18N
         jMenu7.setText("Usuario Actual: ");
         jMenuBar1.add(jMenu7);
 
         mnNomUs.setText("jMenu8");
         jMenuBar1.add(mnNomUs);
 
-        jMenu2.setText("Tipo :");
+        jMenu2.setText("Tipo De Usuario :");
         jMenuBar1.add(jMenu2);
 
         mnRol.setText("jMenu9");
+        mnRol.setToolTipText("Tipo De Usuario");
         jMenuBar1.add(mnRol);
 
         mnPass.setText("jMenu");
@@ -314,10 +320,6 @@ public class VistaPrincipal extends javax.swing.JFrame {
         jDesktopPane1.add(FT);
     }//GEN-LAST:event_jMenuItem11ActionPerformed
 
-    private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jMenuItem2ActionPerformed
-
     /**
      * @param args the command line arguments
      */
@@ -359,7 +361,6 @@ public class VistaPrincipal extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     public static javax.swing.JDesktopPane jDesktopPane1;
     private javax.swing.JMenu jMenu1;
-    private javax.swing.JMenu jMenu10;
     private javax.swing.JMenu jMenu2;
     public static javax.swing.JMenu jMenu3;
     public static javax.swing.JMenu jMenu4;
@@ -372,7 +373,6 @@ public class VistaPrincipal extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JMenuItem jMenuItem10;
     private javax.swing.JMenuItem jMenuItem11;
-    private javax.swing.JMenuItem jMenuItem2;
     private javax.swing.JMenuItem jMenuItem4;
     private javax.swing.JMenuItem jMenuItem5;
     private javax.swing.JMenuItem jMenuItem6;

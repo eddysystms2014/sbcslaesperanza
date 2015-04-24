@@ -6,6 +6,7 @@
 package vista.formularios;
 
 import controlador.ControlUsuario;
+import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 import modelo.entidades.Usuario;
 //import modelo.entidades.Usuario;
@@ -27,6 +28,7 @@ public class FrmLogin extends javax.swing.JFrame {
         initComponents();
         this.setLocationRelativeTo(null);
         CU = new ControlUsuario();
+//        setIconImage(new ImageIcon(getClass().getResource("notebook.png")).getImage());
     }
 
     /**
