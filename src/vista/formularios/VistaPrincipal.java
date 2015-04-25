@@ -245,15 +245,11 @@ public class VistaPrincipal extends javax.swing.JFrame {
 
     private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
 
-//        FrmPaciente FP = new FrmPaciente();
-        FrmPaciente FP =new FrmPaciente();
-        if (jDesktopPane1.getSelectedFrame()==FP) {
-            FP = new FrmPaciente();
+        FrmPaciente FP = new FrmPaciente();
+
             FP.show();
             jDesktopPane1.add(FP);
-            
 
-        }
 
     }//GEN-LAST:event_jMenuItem1ActionPerformed
 
