@@ -620,11 +620,11 @@ public class FrmPaciente extends javax.swing.JInternalFrame {
 
         jPanel7.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
-        jLabel43.setText(" EN CASO NECESARIO LLAMAR A");
+        jLabel43.setText(" EN CASO NECESARIO COMUNICARSE");
 
         jLabel44.setText("PARENTESCO-AFINIDAD");
 
-        jLabel45.setText("DIREECCIÓN");
+        jLabel45.setText("DIRECCIÓN");
 
         jLabel46.setText("Nº  TELÉFONO");
 

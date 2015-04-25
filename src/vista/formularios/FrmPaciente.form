@@ -976,7 +976,7 @@
           <SubComponents>
             <Component class="javax.swing.JLabel" name="jLabel43">
               <Properties>
-                <Property name="text" type="java.lang.String" value=" EN CASO NECESARIO LLAMAR A"/>
+                <Property name="text" type="java.lang.String" value=" EN CASO NECESARIO COMUNICARSE"/>
               </Properties>
             </Component>
             <Component class="javax.swing.JLabel" name="jLabel44">
@@ -986,7 +986,7 @@
             </Component>
             <Component class="javax.swing.JLabel" name="jLabel45">
               <Properties>
-                <Property name="text" type="java.lang.String" value="DIREECCI&#xd3;N"/>
+                <Property name="text" type="java.lang.String" value="DIRECCI&#xd3;N"/>
               </Properties>
             </Component>
             <Component class="javax.swing.JLabel" name="jLabel46">
