@@ -58,12 +58,12 @@ public class FrmPaciente extends javax.swing.JInternalFrame {
         txtunidadoperativa = new javax.swing.JTextField();
         jLabel9 = new javax.swing.JLabel();
         txtcoduo = new javax.swing.JTextField();
-        jTextField11 = new javax.swing.JTextField();
-        jTextField12 = new javax.swing.JTextField();
+        txtparroquiacodlo = new javax.swing.JTextField();
+        txtcantoncodlo = new javax.swing.JTextField();
         jLabel10 = new javax.swing.JLabel();
-        jTextField13 = new javax.swing.JTextField();
+        txtprovinciacodlo = new javax.swing.JTextField();
         jLabel11 = new javax.swing.JLabel();
-        jTextField14 = new javax.swing.JTextField();
+        txthistoriaclinica = new javax.swing.JTextField();
         jLabel27 = new javax.swing.JLabel();
         jLabel28 = new javax.swing.JLabel();
         jLabel57 = new javax.swing.JLabel();
@@ -224,17 +224,17 @@ public class FrmPaciente extends javax.swing.JInternalFrame {
         txtcoduo.setEditable(false);
         txtcoduo.setText("11");
 
-        jTextField11.setEditable(false);
-        jTextField11.setText("54");
+        txtparroquiacodlo.setEditable(false);
+        txtparroquiacodlo.setText("54");
 
-        jTextField12.setEditable(false);
-        jTextField12.setText("1");
-        jTextField12.setToolTipText("");
+        txtcantoncodlo.setEditable(false);
+        txtcantoncodlo.setText("1");
+        txtcantoncodlo.setToolTipText("");
 
         jLabel10.setText("COD. LOCALIZACIÓN");
 
-        jTextField13.setEditable(false);
-        jTextField13.setText("10");
+        txtprovinciacodlo.setEditable(false);
+        txtprovinciacodlo.setText("10");
 
         jLabel11.setText("NRO. HISTORIA CLÍNICA");
 
@@ -273,16 +273,16 @@ public class FrmPaciente extends javax.swing.JInternalFrame {
                                 .addGap(35, 35, 35)
                                 .addComponent(jLabel28))))
                     .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addComponent(jTextField11, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(txtparroquiacodlo, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jTextField12, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(txtcantoncodlo, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel57)
-                            .addComponent(jTextField13, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addComponent(txtprovinciacodlo, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addGap(55, 55, 55)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jTextField14, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txthistoriaclinica, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel11))
                 .addContainerGap())
         );
@@ -301,9 +301,9 @@ public class FrmPaciente extends javax.swing.JInternalFrame {
                                 .addComponent(jLabel57)))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jTextField11, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jTextField12, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jTextField13, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(txtparroquiacodlo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txtcantoncodlo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txtprovinciacodlo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(jPanel3Layout.createSequentialGroup()
                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel3Layout.createSequentialGroup()
@@ -320,7 +320,7 @@ public class FrmPaciente extends javax.swing.JInternalFrame {
                             .addComponent(txtinstitucion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(txtunidadoperativa, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(txtcoduo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jTextField14, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addComponent(txthistoriaclinica, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addGap(0, 10, Short.MAX_VALUE))
         );
 
@@ -894,10 +894,6 @@ public class FrmPaciente extends javax.swing.JInternalFrame {
     private javax.swing.JPanel jPanel7;
     private javax.swing.JPanel jPanel8;
     private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField11;
-    private javax.swing.JTextField jTextField12;
-    private javax.swing.JTextField jTextField13;
-    private javax.swing.JTextField jTextField14;
     private javax.swing.JTextField jTextField15;
     private javax.swing.JTextField jTextField16;
     private javax.swing.JTextField jTextField17;
@@ -924,8 +920,12 @@ public class FrmPaciente extends javax.swing.JInternalFrame {
     private javax.swing.JTextField jTextField5;
     private javax.swing.JTextField jTextField6;
     private javax.swing.JTextField jTextField7;
+    private javax.swing.JTextField txtcantoncodlo;
     private javax.swing.JTextField txtcoduo;
+    private javax.swing.JTextField txthistoriaclinica;
     private javax.swing.JTextField txtinstitucion;
+    private javax.swing.JTextField txtparroquiacodlo;
+    private javax.swing.JTextField txtprovinciacodlo;
     private javax.swing.JTextField txtunidadoperativa;
     // End of variables declaration//GEN-END:variables
 }
