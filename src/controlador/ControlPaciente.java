@@ -8,6 +8,8 @@ package controlador;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
@@ -24,6 +26,8 @@ import vista.formularios.frmEspecialidad;
  * @author EddyA
  */
 public class ControlPaciente {
+    
+    Paciente p = new Paciente();
 
     EntityManagerFactory emf = Persistence.createEntityManagerFactory("SBCSLaEsperanzaPU");
     private PacienteJpaController pacienteJpaControlador = new PacienteJpaController(emf);
@@ -34,14 +38,59 @@ public class ControlPaciente {
         return pacienteJpaControlador.findPacienteEntities();
     }
 
-    public void guardarpaciente(String inst, String uo, String coduo, String parr, String cant, String prov, int codpaciente,
+public void guardarpaciente(String inst, String uo, String coduo, String parr, String cant, String prov, int codpaciente,
             String ced, String ape1, String ape2, String nom1, String nom2, String dir, String barr, String parro, String canton,
             String provin, String zona, String telf, Date fechanac, String lugarnac, String nacio, String grupoc, int edad, String genero,
             String estadoc, String instrucc, Date fechaad, String ocup, String emp, String seg, String refe, String llamar, String paren,
             String dirparen, String nroparen, String codadmi) {
-        Paciente p = new Paciente();
-        int i = 0;
+    
+    p.setInstpaciente(inst);
+            p.setUnidadepaciente(uo);
+            p.setParropaciente(parr);
+            p.setCantpaciente(cant);
+            p.setProvinpaciente(prov);
+            p.setIdpaciente(codpaciente);
+            p.setCedpaciente(ced);
+            p.setApeppaciente(ape1);
+            p.setApempaciente(ape2);
+            p.setNom1paciente(nom1);
+            p.setNom2paciente(nom2);
+            p.setDirpaciente(dir);
+            p.setBarriopaciente(barr);
+            p.setParrpaciente(parro);
+            p.setCanpaciente(canton);
+            p.setProvpaciente(provin);
+            p.setZonapaciente(zona);
+            p.setTelfpaciente(telf);
+            p.setFenacpaciente(fechanac);
+            p.setLugarnacpaciente(lugarnac);
+            p.setNaciopaciente(nacio);
+            p.setGruppaciente(grupoc);
+            p.setEdadpaciente(edad);
+            p.setGenpaciente(genero);
+            p.setEcpaciente(estadoc);
+            p.setInstrpaciente(instrucc);
+            p.setFecadpaciente(fechaad);
+            p.setOcuppaciente(ocup);
+            p.setEmpaciente(emp);
+            p.setSegpaciente(seg);
+            p.setRefpaciente(refe);
+            p.setLlamarpaciente(llamar);
+            p.setParenpaciente(paren);
+            p.setDirecpaciente(dirparen);
+            p.setNrotelpaciente(nroparen);
+            p.setCodadmisionista(codadmi);
         try {
+            pacienteJpaControlador.create(p);
+            JOptionPane.showMessageDialog(null, "Paciente creado con éxito");
+        } catch (Exception ex) {
+            JOptionPane.showMessageDialog(null, "Algo está mal");
+        }
+            
+    
+//        
+//        int i = 0;
+//        try {
 //            for (Paciente pa : getPacientes()) {
 //                if (pa.getInstpaciente().equalsIgnoreCase(inst) && pa.getDomicilioPaciente().equals(domicilio) && pa.getTelefonoPaciente().equals(telefono)) {
 //                    i = 1;
@@ -63,20 +112,22 @@ public class ControlPaciente {
 //                p.setEstadoPaciente(true);
 //                daoPaciente.create(p);
 //                JOptionPane.showMessageDialog(f, "Paciente creado exitosamente", "Información", 1);
-
-        } catch (Exception e) {
-//            p.setNombrePaciente(nombre);
+            
+            
+//        } catch (Exception e) {
+////            p.setNombrePaciente(nombre);
 //            p.setDomicilioPaciente(domicilio);
 //            p.setTelefonoPaciente(telefono);
 //            p.setSintomas(sintomas);
 //            p.setEstadoPaciente(true);
 //            daoPaciente.create(p);
 //            JOptionPane.showMessageDialog(f, "Paciente creado exitosamente", "Información", 1);
-        }
+//            
+//        }
     }
 
     public void BuscarApePat() {
-        String cadenaInformativa = "";
+        //String cadenaInformativa = "";
         modelo = new DefaultTableModel();
         FrmBusquedas.jTable1.setModel(modelo);
         Object[] fila = new Object[6];
