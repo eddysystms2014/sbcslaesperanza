@@ -123,16 +123,6 @@ public class frmcontrol {
         return null;
     }
 
-    public void empiezaPor1() {
-        String cadenaInformativa = "";
-
-        for (int i = 0; i < getEspecialidad().size(); ++i) {
-            if (getEspecialidad().get(i).empiezaPor(frmEspecialidad.jTextField1.getText())) {
-                cadenaInformativa += getEspecialidad().get(i).toString1() + "\n\n";
-            }
-        }
-
-        frmEspecialidad.jTextArea1.setText(cadenaInformativa);
-    }
+    
 
 }

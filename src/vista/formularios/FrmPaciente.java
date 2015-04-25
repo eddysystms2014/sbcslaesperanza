@@ -6,6 +6,7 @@
 package vista.formularios;
 
 import controlador.ControlPaciente;
+import java.awt.Dimension;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
@@ -22,6 +23,10 @@ public class FrmPaciente extends javax.swing.JInternalFrame {
      */
     public FrmPaciente() {
         initComponents();
+        Dimension desktopSize = VistaPrincipal.jDesktopPane1.getSize();
+        Dimension jInternalFrameSize = this.getSize();
+        this.setLocation((desktopSize.width - jInternalFrameSize.width) / 2,4);
+    
     }
     ControlPaciente cp = new ControlPaciente();
 

@@ -153,6 +153,7 @@ public class ControlPaciente {
             }
         }
     }
+
     public void buscarpacienteCI(String app1) {
         modelo = new DefaultTableModel();
         FrmBusquedas.jTable1.setModel(modelo);
@@ -165,7 +166,7 @@ public class ControlPaciente {
         modelo.addColumn("Segundo_nombre");
         for (Paciente e : pacienteJpaControlador.findPacienteEntities()) {
             String r = e.getCedpaciente();
-            if (r.equals(app1) ) {
+            if (r.equals(app1)) {
                 fila[0] = e.getIdpaciente();
                 fila[1] = e.getCedpaciente();
                 fila[2] = e.getApeppaciente();
@@ -176,6 +177,7 @@ public class ControlPaciente {
             }
         }
     }
+
     public int edad(String fecha_nac) {
 
         Date fechaActual = new Date();
@@ -194,5 +196,27 @@ public class ControlPaciente {
             }
         }
         return años;
+    }
+
+    public String meses(String fecha_nac) {
+        String r;
+        Date fechaActual = new Date();
+        SimpleDateFormat formato = new SimpleDateFormat("dd-MM-yyyy");
+        String hoy = formato.format(fechaActual);
+        String[] dat1 = fecha_nac.split("-");
+        String[] dat2 = hoy.split("-");
+        int años = Integer.parseInt(dat2[2]) - Integer.parseInt(dat1[2]);
+        int mes = Integer.parseInt(dat2[1]) - Integer.parseInt(dat1[1]);
+        if (mes < 0) {
+            años = años - 1;
+        } else if (mes == 0) {
+            int dia = Integer.parseInt(dat2[0]) - Integer.parseInt(dat1[0]);
+            if (dia > 0) {
+                años = años - 1;
+            }
+        }
+        r = "" + mes;
+        
+        return r;
     }
 }

@@ -5,6 +5,8 @@
  */
 package vista.formularios;
 
+import java.awt.Dimension;
+
 /**
  *
  * @author JC-PC
@@ -16,6 +18,10 @@ public class FrmTurnos extends javax.swing.JInternalFrame {
      */
     public FrmTurnos() {
         initComponents();
+        Dimension desktopSize = VistaPrincipal.jDesktopPane1.getSize();
+        Dimension jInternalFrameSize = this.getSize();
+        this.setLocation((desktopSize.width - jInternalFrameSize.width) / 2,4);
+    
     }
 
     /**

@@ -6,6 +6,7 @@
 package vista.formularios;
 
 import controlador.ControlHistorias;
+import java.awt.Dimension;
 import java.util.Date;
 
 /**
@@ -19,6 +20,10 @@ public class FrmHistorias extends javax.swing.JInternalFrame {
      */
     public FrmHistorias() {
         initComponents();
+        Dimension desktopSize = VistaPrincipal.jDesktopPane1.getSize();
+        Dimension jInternalFrameSize = this.getSize();
+        this.setLocation((desktopSize.width - jInternalFrameSize.width) / 2,4);
+    
         Date fecha1 = new Date();
 
         jLabel1.setText(fecha1.toLocaleString());

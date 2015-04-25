@@ -7,6 +7,7 @@ package vista.formularios;
 
 import controlador.ControlUsuario;
 import java.awt.Color;
+import java.awt.Dimension;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
@@ -22,17 +23,21 @@ public class FrmUsuario extends javax.swing.JInternalFrame {
      * Creates new form FrmUsuario
      */
     ControlUsuario UC = new ControlUsuario();
-    
+
     public FrmUsuario() {
         initComponents();
         tabT();
         UC.cargarTablaEspecialidad(UC.getUsuario(), tblUsuarios);
+        Dimension desktopSize = VistaPrincipal.jDesktopPane1.getSize();
+        Dimension jInternalFrameSize = this.getSize();
+        this.setLocation((desktopSize.width - jInternalFrameSize.width) / 2, 4);
+
     }
-    
+
     public void tabT() {
         tblUsuarios.getColumnModel().getColumn(0).setPreferredWidth(50);
         tblUsuarios.getColumnModel().getColumn(1).enableResizedPosting();
-        
+
     }
     int tabID;
 
@@ -112,6 +117,7 @@ public class FrmUsuario extends javax.swing.JInternalFrame {
 
         jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder(""));
 
+        btnGuardar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/copy doc.png"))); // NOI18N
         btnGuardar.setText("Guardar");
         btnGuardar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -119,6 +125,7 @@ public class FrmUsuario extends javax.swing.JInternalFrame {
             }
         });
 
+        btnModificar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/copy doc.png"))); // NOI18N
         btnModificar.setText("Guardar Cambios");
         btnModificar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -126,6 +133,7 @@ public class FrmUsuario extends javax.swing.JInternalFrame {
             }
         });
 
+        btnEliminar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/remove.png"))); // NOI18N
         btnEliminar.setText("Eliminar usuario");
         btnEliminar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -144,14 +152,14 @@ public class FrmUsuario extends javax.swing.JInternalFrame {
                 .addComponent(btnModificar)
                 .addGap(31, 31, 31)
                 .addComponent(btnEliminar)
-                .addContainerGap(35, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(btnGuardar, javax.swing.GroupLayout.DEFAULT_SIZE, 33, Short.MAX_VALUE)
+                    .addComponent(btnGuardar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(btnModificar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(btnEliminar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
@@ -314,7 +322,7 @@ public class FrmUsuario extends javax.swing.JInternalFrame {
                 txtnombre.setForeground(Color.black);
                 jLabel5.setText("");
             }
-            
+
         } catch (Exception e) {
         }
     }//GEN-LAST:event_txtnombreKeyTyped
@@ -329,7 +337,7 @@ public class FrmUsuario extends javax.swing.JInternalFrame {
                 txtPassword.setForeground(Color.black);
                 jLabel6.setText("");
             }
-            
+
         } catch (Exception e) {
         }
     }//GEN-LAST:event_txtPasswordKeyTyped
@@ -366,20 +374,24 @@ public class FrmUsuario extends javax.swing.JInternalFrame {
                 JOptionPane.showMessageDialog(null, "Datos Incorrectos");
             }
         } catch (Exception e) {
-            
+
         }
-        
+
 
     }//GEN-LAST:event_btnModificarActionPerformed
 
     private void btnEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarActionPerformed
         try {
-            UC.eliminarUsuario(tabID);
-            UC.cargarTablaEspecialidad(UC.getUsuario(), tblUsuarios);
+            int i = JOptionPane.showConfirmDialog(this, "¿Desea Eliminar El Usuario?", "Confirmar", JOptionPane.YES_NO_OPTION);
+            if (i == 0) {
+                UC.eliminarUsuario(tabID);
+                UC.cargarTablaEspecialidad(UC.getUsuario(), tblUsuarios);
+            }
+
         } catch (IllegalOrphanException ex) {
             Logger.getLogger(FrmUsuario.class.getName()).log(Level.SEVERE, null, ex);
         }
-        
+
     }//GEN-LAST:event_btnEliminarActionPerformed
 
 
