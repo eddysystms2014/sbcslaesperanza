@@ -7,6 +7,7 @@ package vista.formularios;
 
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.UIManager;
 import vista.formularios.FrmPaciente;
@@ -26,6 +27,7 @@ public class VistaPrincipal extends javax.swing.JFrame {
         mnPass.setVisible(false);
         mnid.setVisible(false);
         this.setExtendedState(JFrame.MAXIMIZED_BOTH);
+//        setIconImage(new ImageIcon(getClass().getResource("../bot.png")).getImage());
     }
 
     /**
@@ -230,9 +232,17 @@ public class VistaPrincipal extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
-        FrmPaciente FP = new FrmPaciente();
-        FP.show();
-        jDesktopPane1.add(FP);
+
+//        FrmPaciente FP = new FrmPaciente();
+        FrmPaciente FP =new FrmPaciente();
+        if (jDesktopPane1.getSelectedFrame()==FP) {
+            FP = new FrmPaciente();
+            FP.show();
+            jDesktopPane1.add(FP);
+            
+
+        }
+
     }//GEN-LAST:event_jMenuItem1ActionPerformed
 
     private void jMenuItem5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem5ActionPerformed

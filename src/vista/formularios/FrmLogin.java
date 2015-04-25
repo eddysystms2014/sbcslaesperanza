@@ -28,7 +28,7 @@ public class FrmLogin extends javax.swing.JFrame {
         initComponents();
         this.setLocationRelativeTo(null);
         CU = new ControlUsuario();
-//        setIconImage(new ImageIcon(getClass().getResource("notebook.png")).getImage());
+//        setIconImage(new ImageIcon(getClass().getResource("../bot.png")).getImage());
     }
 
     /**
