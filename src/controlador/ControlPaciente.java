@@ -198,9 +198,9 @@ public class ControlPaciente {
         return años;
     }
 
-    public String meses(String fecha_nac) {
+    public int años(int id,String fecha_nac) {
         String r;
-        Date fechaActual = new Date();
+        Date fechaActual = buscarPaciente(id).getFenacpaciente();
         SimpleDateFormat formato = new SimpleDateFormat("dd-MM-yyyy");
         String hoy = formato.format(fechaActual);
         String[] dat1 = fecha_nac.split("-");
@@ -215,8 +215,16 @@ public class ControlPaciente {
                 años = años - 1;
             }
         }
-        r = "" + mes;
         
-        return r;
+        return años;
+    }
+     public Paciente buscarPaciente(int id) {
+
+        for (Paciente p : pacienteJpaControlador.findPacienteEntities()) {
+            if (p.getIdpaciente().equals(id)) {
+                return p;
+            }
+        }
+        return null;
     }
 }

@@ -146,6 +146,11 @@ public class VistaPrincipal extends javax.swing.JFrame {
 
         jMenuItem4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/notebook.png"))); // NOI18N
         jMenuItem4.setText("Modificar");
+        jMenuItem4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem4ActionPerformed(evt);
+            }
+        });
         jMenu3.add(jMenuItem4);
 
         jMenuItem5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/new doc.png"))); // NOI18N
@@ -360,6 +365,31 @@ public class VistaPrincipal extends javax.swing.JFrame {
         fl.show();
         
     }//GEN-LAST:event_jMenuItem3ActionPerformed
+
+    private void jMenuItem4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem4ActionPerformed
+        // TODO add your handling code here:
+         FrmMedicos FE;
+        try {
+            FE = new FrmMedicos();
+            FE.show();
+            jDesktopPane1.add(FE);
+            FrmMedicos.btnModificarMedico.setVisible(false);
+            FrmMedicos.jButton3.setVisible(false);
+            FrmMedicos.jButton4.setVisible(true);
+            FrmMedicos.jPanel2.setVisible(false);
+            FrmMedicos.jPanel3.setVisible(false);
+            FrmMedicos.jPanel4.setVisible(false);
+            FrmMedicos.jButton1.setVisible(false);
+            FrmMedicos.btnAbrirE.setVisible(false);
+//            FrmMedicos.txtNombreMedico.setEnabled(false);
+//            FrmMedicos.txtTlf.setEnabled(false);
+            FrmMedicos.txtid.setEnabled(false);
+//            FrmMedicos.cbtIdEspecialidad.setEnabled(false);
+        } catch (IllegalAccessException ex) {
+
+        }
+
+    }//GEN-LAST:event_jMenuItem4ActionPerformed
 
     /**
      * @param args the command line arguments

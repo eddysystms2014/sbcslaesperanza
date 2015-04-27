@@ -203,6 +203,15 @@ public class MedicoJpaController implements Serializable {
         }
     }
 
+    public Medico cedulaMed(String ci) {
+        EntityManager em = getEntityManager();
+        try {
+            return em.find(Medico.class, ci);
+        } finally {
+            em.close();
+        }
+    }
+
     public int getMedicoCount() {
         EntityManager em = getEntityManager();
         try {
@@ -215,5 +224,5 @@ public class MedicoJpaController implements Serializable {
             em.close();
         }
     }
-    
+
 }

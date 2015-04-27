@@ -19,6 +19,7 @@ import javax.swing.UnsupportedLookAndFeelException;
 import modelo.entidades.Especialidad;
 import modelo.entidades.Medico;
 import test.CargarImagen;
+import static vista.formularios.VistaPrincipal.jDesktopPane1;
 
 /**
  *
@@ -45,8 +46,7 @@ public class FrmMedicos extends javax.swing.JInternalFrame {
         cargarCmbEspecialidades();
         Dimension desktopSize = VistaPrincipal.jDesktopPane1.getSize();
         Dimension jInternalFrameSize = this.getSize();
-        this.setLocation((desktopSize.width - jInternalFrameSize.width) / 2,4);
-    
+        this.setLocation((desktopSize.width - jInternalFrameSize.width) / 2, 4);
 
     }
     String idEspe;
@@ -88,6 +88,7 @@ public class FrmMedicos extends javax.swing.JInternalFrame {
         JPImagen = new javax.swing.JPanel();
         jButton5 = new javax.swing.JButton();
 
+        setClosable(true);
         setIconifiable(true);
         setTitle("MÉDICOS");
 
@@ -130,6 +131,11 @@ public class FrmMedicos extends javax.swing.JInternalFrame {
         jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/copy doc.png"))); // NOI18N
         jButton2.setText("Guardar");
         jButton2.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 1, 1, 1, new java.awt.Color(255, 255, 255)));
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -176,6 +182,17 @@ public class FrmMedicos extends javax.swing.JInternalFrame {
         lbl5.setText("Especialidad");
 
         lbl4.setText("Telefono");
+
+        txtNombreMedico.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtNombreMedicoActionPerformed(evt);
+            }
+        });
+        txtNombreMedico.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txtNombreMedicoKeyReleased(evt);
+            }
+        });
 
         lbl2.setText("Nombres y Apellidos");
 
@@ -391,8 +408,30 @@ public class FrmMedicos extends javax.swing.JInternalFrame {
             } else {
                 estado = "NO";
             }
-            byte[] imagen = ImagenURL.getBytes();
+            byte[] imagen = null;
+            if (ImagenURL != "") {
+                String ar = "";
+                imagen = ar.getBytes();
+            } else {
+                imagen = ImagenURL.getBytes();
+            }
+
             CM.guardarMedico(esp, txtNombreMedico.getText(), txtid.getText(), txtTlf.getText(), imagen, estado);
+             FrmMedicos FE;
+             this.dispose();
+        try {
+            FE = new FrmMedicos();
+            FE.show();
+            jDesktopPane1.add(FE);
+            FrmMedicos.btnModificarMedico.setVisible(false);
+            FrmMedicos.jButton3.setVisible(false);
+            FrmMedicos.jButton4.setVisible(false);
+            FrmMedicos.jPanel5.setVisible(false);
+            FrmMedicos.jButton2.setVisible(false);
+
+        } catch (IllegalAccessException ex) {
+
+        }
 
         } else {
         }
@@ -424,12 +463,14 @@ public class FrmMedicos extends javax.swing.JInternalFrame {
         cbtEstadoMedico.setSelectedItem(r);
         URL url;
         try {
-            byte[] byteArray = CM.buscarMedico(cedula).getImagenmedico();
-            String img = new String(byteArray);
-            url = new URL(img);
-            m.setObtener(url);
-            m.Mostrar(JPImagen);
-            ImagenURL = m.ObtenerUrl();
+            if (CM.buscarMedico(cedula).getImagenmedico() != null) {
+                byte[] byteArray = CM.buscarMedico(cedula).getImagenmedico();
+                String img = new String(byteArray);
+                url = new URL(img);
+                m.setObtener(url);
+                m.Mostrar(JPImagen);
+                ImagenURL = m.ObtenerUrl();
+            }
 
         } catch (MalformedURLException ex) {
 
@@ -442,6 +483,7 @@ public class FrmMedicos extends javax.swing.JInternalFrame {
 
     private void btnModificarMedicoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnModificarMedicoActionPerformed
         // TODO add your handling code here:
+        
     }//GEN-LAST:event_btnModificarMedicoActionPerformed
 
     private void cbtIdEspecialidadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbtIdEspecialidadActionPerformed
@@ -453,6 +495,57 @@ public class FrmMedicos extends javax.swing.JInternalFrame {
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton3ActionPerformed
+
+    private void txtNombreMedicoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNombreMedicoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtNombreMedicoActionPerformed
+
+    private void txtNombreMedicoKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtNombreMedicoKeyReleased
+        String cadena = (txtNombreMedico.getText()).toUpperCase();
+        txtNombreMedico.setText(cadena);
+
+    }//GEN-LAST:event_txtNombreMedicoKeyReleased
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        // TODO add your handling code here:
+        int i = JOptionPane.showConfirmDialog(this, "¿Realmente desea Modificar el Medico?", "Confirmar", JOptionPane.YES_NO_OPTION);
+        if (i == 0) {
+            Especialidad esp = new Especialidad();
+            int resEsp = FC.buscarEspecialidad(Integer.valueOf(idEspe)).getIdespecialidad();
+            esp.setIdespecialidad(resEsp);
+            String estado;
+            if (cbtEstadoMedico.getSelectedItem().toString().equals("Activo")) {
+                estado = "SI";
+            } else {
+                estado = "NO";
+            }
+            byte[] imagen = ImagenURL.getBytes();
+            CM.Modificar(esp, txtNombreMedico.getText(), txtid.getText(), txtTlf.getText(), imagen, estado);
+            this.dispose();
+             FrmMedicos FE;
+        try {
+            FE = new FrmMedicos();
+            FE.show();
+            jDesktopPane1.add(FE);
+            FrmMedicos.btnModificarMedico.setVisible(false);
+            FrmMedicos.jButton3.setVisible(false);
+            FrmMedicos.jButton4.setVisible(true);
+            FrmMedicos.jPanel2.setVisible(false);
+            FrmMedicos.jPanel3.setVisible(false);
+            FrmMedicos.jPanel4.setVisible(false);
+            FrmMedicos.jButton1.setVisible(false);
+            FrmMedicos.btnAbrirE.setVisible(false);
+//            FrmMedicos.txtNombreMedico.setEnabled(false);
+//            FrmMedicos.txtTlf.setEnabled(false);
+            FrmMedicos.txtid.setEnabled(false);
+//            FrmMedicos.cbtIdEspecialidad.setEnabled(false);
+        } catch (IllegalAccessException ex) {
+
+        }
+
+        } else {
+        }
+    }//GEN-LAST:event_jButton2ActionPerformed
 
     private void cargarCmbEspecialidades() {
         for (Especialidad item : FC.getEspecialidad()) {

@@ -5,6 +5,8 @@
  */
 package controlador;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
@@ -12,6 +14,7 @@ import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import modelo.dao.HistoriaJpaController;
 import modelo.entidades.Historia;
+import modelo.entidades.Paciente;
 import vista.formularios.FrmBusquedas;
 import vista.formularios.FrmHistorias;
 
@@ -30,11 +33,9 @@ public class ControlHistorias {
         return historiaJpaControlador.findHistoriaEntities();
     }
 
-   
-
     public void cargarTabla() {
-        int txt=Integer.valueOf(FrmBusquedas.jTextField3.getText());
-                
+        int txt = Integer.valueOf(FrmBusquedas.jTextField3.getText());
+
         modelo = new DefaultTableModel();
         FrmHistorias.jTable1.setModel(modelo);
         Object[] fila = new Object[6];
@@ -46,17 +47,35 @@ public class ControlHistorias {
         modelo.addColumn("CODIGO_ADMISIONISTA");
 
         for (Historia e : getHistorias()) {
-            if (e.getIdpaciente().getIdpaciente()==txt) {
+            if (e.getIdpaciente().getIdpaciente() == txt) {
                 fila[0] = e.getIdpaciente().getIdpaciente();
-            fila[1] = e.getFechahistoria();
-            fila[2] = e.getEdadhistoria();
-            fila[3] = e.getReferidohistoria();
-            fila[4] = e.getTipohistoria();
-            fila[5] = e.getCodadmisionista();
+                fila[1] = e.getFechahistoria();
+                fila[2] = e.getEdadhistoria();
+                fila[3] = e.getReferidohistoria();
+                fila[4] = e.getTipohistoria();
+                fila[5] = e.getCodadmisionista();
 
-            modelo.addRow(fila);
+                modelo.addRow(fila);
             }
-            
+
         }
+    }
+
+    public void guardarHistoria(Paciente idPaciente, String fecha, int edad,
+            String referido, Character tipo, String codAdmisio, byte[] archivo, String estadoHist) {
+        Date fechaActual = new Date();
+        SimpleDateFormat formato2 = new SimpleDateFormat("dd-MM-yyyy");
+        String hoy2 = formato2.format(fechaActual);
+
+        Historia m = new Historia();
+        m.setIdpaciente(idPaciente);
+        m.setFechahistoria(fecha);
+        m.setEdadhistoria(edad);
+        m.setReferidohistoria(referido);
+        m.setTipohistoria(tipo);
+        m.setCodadmisionista(codAdmisio);
+        m.setAdjuntohistoria(archivo);
+        m.setEstadohistoria(estadoHist);
+        historiaJpaControlador.create(m);
     }
 }

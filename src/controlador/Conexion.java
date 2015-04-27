@@ -1,0 +1,46 @@
+/*
+ * To change this template, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package controlador;
+
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.SQLException;
+
+/**
+ *
+ * @author juan_s
+ */
+public class Conexion {
+    private Connection con;
+   private String user="root";
+   private String pass="root";
+   private String url="jdbc:mysql://localhost:3306/clinica";
+
+    public Conexion() {
+        abrir();
+    }
+
+    public Connection getCon() {
+        return con;
+    }
+    private void  abrir(){
+        try {
+            Class.forName("com.mysql.jdbc.Driver");
+            con=DriverManager.getConnection(url, user, pass);
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        }catch(SQLException ex){
+            ex.printStackTrace();
+        }
+    }
+    public void cerrar(){
+        try {
+            con.close();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+    
+}

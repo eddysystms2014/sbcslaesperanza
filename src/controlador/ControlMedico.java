@@ -12,6 +12,7 @@ import javax.swing.JOptionPane;
 import modelo.dao.MedicoJpaController;
 import modelo.entidades.Especialidad;
 import modelo.entidades.Medico;
+import vista.formularios.FrmHistorias;
 
 /**
  *
@@ -71,5 +72,64 @@ public class ControlMedico {
             }
         }
         return null;
+    }
+
+    public Medico buscarMedicoID(int id) {
+
+        for (Medico md : medicosJpacontrolador.findMedicoEntities()) {
+            if (md.getIdmedico().equals(id)) {
+                return md;
+            }
+        }
+        return null;
+    }
+
+    public Medico buscarMedicoNombre(String nombre) {
+
+        for (Medico md : medicosJpacontrolador.findMedicoEntities()) {
+            if (md.getNombremedico().equals(nombre)) {
+                return md;
+            }
+        }
+        return null;
+    }
+
+//    public void cargarCmbEspecialidad() {
+//        frmcontrol fr = new frmcontrol();
+//        for (Especialidad item : fr.getEspecialidad()) {
+//            FrmHistorias.jComboBox2.addItem(item.getNombreespecialidad());
+//        }
+//    }
+    public void cargarCmbMedico() {
+        for (Medico item : getMedicos()) {
+            if (item.getEstadomedico().equals("SI")) {
+                FrmHistorias.jComboBox1.addItem(item.getNombremedico());
+            }
+        }
+    }
+
+    public boolean Modificar(Especialidad idEspecialidad, String nombresMedico,
+            String domiciliomedico, String tlfMedico, byte[] imgMedico, String estadoMedico) {
+        try {
+            Medico m = medicosJpacontrolador.cedulaMed(tlfMedico);
+            if (m == null) {
+                return false;
+            }
+            if (nombresMedico != "" && domiciliomedico != "" && tlfMedico != "" && estadoMedico != "") {
+                m.setNombremedico(nombresMedico);
+                m.setDomiciliomedico(domiciliomedico);
+                m.setTelefonomedico(tlfMedico);
+                m.setImagenmedico(imgMedico);
+                m.setEstadomedico(estadoMedico);
+                medicosJpacontrolador.create(m);
+                JOptionPane.showMessageDialog(null, "Se Modifico exitosamente", "Información", 1);
+
+            } else {
+                JOptionPane.showMessageDialog(null, "Textos Obligatorios", "Información", 1);
+            }
+
+        } catch (Exception e) {
+        }
+        return true;
     }
 }
