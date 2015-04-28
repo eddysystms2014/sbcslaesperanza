@@ -817,6 +817,7 @@ public class FrmPaciente extends javax.swing.JInternalFrame {
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
 
         p.guardarpaciente(txtinstitucion.getText(), txtunidadoperativa.getText(), txtcoduo.getText(), txtparroquiacodlo.getText(), 
+
                 txtcantoncodlo.getText(), txtprovinciacodlo.getText(), Integer.valueOf(txthistoriaclinica.getText()), txtcedula.getText(), txtapellido1.getText(),
                 txtapellido2.getText(), txtnombre1.getText(), txtnombre2.getText(), txtdireccion.getText(), txtbarrio.getText(), 
                 txtparroquia.getText(), txtcanton.getText(), txtcanton.getText(), cbxzona.getSelectedItem().toString(), txtnrotelefono.getText(), jDateChooser1.getDate(),

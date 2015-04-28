@@ -154,34 +154,7 @@ public void guardarpaciente(String inst, String uo, String coduo, String parr, S
         }
     }
 
-    public void BuscarApeMat() {
-        String cadenaInformativa = "";
-        modelo = new DefaultTableModel();
-        FrmBusquedas.jTable1.setModel(modelo);
-        Object[] fila = new Object[6];
-        modelo.addColumn("Nro_Historia");
-        modelo.addColumn("Cedula");
-        modelo.addColumn("Apellido_Paterno");
-        modelo.addColumn("Apellido_Materno");
-        modelo.addColumn("Primer_nombre");
-        modelo.addColumn("Segundo_nombre");
-        for (int i = 0; i < getPacientes().size(); ++i) {
-
-//            for (Paciente e : getPacientes()) {
-            if (getPacientes().get(i).buscarApellidoMaterno(FrmBusquedas.jTextField2.getText())) {
-
-                fila[0] = getPacientes().get(i).getIdpaciente();
-                fila[1] = getPacientes().get(i).getCedpaciente();
-                fila[2] = getPacientes().get(i).getApeppaciente();
-                fila[3] = getPacientes().get(i).getApempaciente();
-                fila[4] = getPacientes().get(i).getNom1paciente();
-                fila[5] = getPacientes().get(i).getNom2paciente();
-                modelo.addRow(fila);
-            }
-//            }
-        }
-    }
-
+   
     public void buscarpacienteNumHistoria(int app1) {
         modelo = new DefaultTableModel();
         FrmBusquedas.jTable1.setModel(modelo);
@@ -249,11 +222,16 @@ public void guardarpaciente(String inst, String uo, String coduo, String parr, S
         return años;
     }
 
-    public int años(int id,String fecha_nac) {
+    public int años(int id) {
         String r;
-        Date fechaActual = buscarPaciente(id).getFenacpaciente();
+        Date fechaN = buscarPaciente(id).getFenacpaciente();
+        SimpleDateFormat formatoN = new SimpleDateFormat("dd-MM-yyyy");
+        String fecha_nac = formatoN.format(fechaN);
+        
+        Date fechaActual = new Date();
         SimpleDateFormat formato = new SimpleDateFormat("dd-MM-yyyy");
         String hoy = formato.format(fechaActual);
+        
         String[] dat1 = fecha_nac.split("-");
         String[] dat2 = hoy.split("-");
         int años = Integer.parseInt(dat2[2]) - Integer.parseInt(dat1[2]);

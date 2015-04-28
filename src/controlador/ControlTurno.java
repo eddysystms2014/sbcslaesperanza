@@ -29,7 +29,7 @@ public class ControlTurno {
         return turnoJpacontrolador.findTurnoEntities();
     }
 
-    public void guardarUsuario(Paciente idPaciente, Medico idMedico, Date horaAtencion, String estadoTurno) {
+    public void guardarTurno(Paciente idPaciente, Medico idMedico, Date horaAtencion, String estadoTurno) {
 
         try {
 
@@ -39,7 +39,7 @@ public class ControlTurno {
             t.setHorarioatencion(horaAtencion);
             t.setEstadoturno(estadoTurno);
             turnoJpacontrolador.create(t);
-            JOptionPane.showMessageDialog(null, "El medico fue creado exitosamente", "Información", 1);
+            
         } catch (Exception e) {
 
         }

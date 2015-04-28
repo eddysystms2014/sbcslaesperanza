@@ -30,7 +30,7 @@ public class ControlTurnos {
         return turnosJpacontrolador.findTurnoEntities();
     }
 
-    public void guardarTurnos(Paciente idPaciente, Medico idMedico) {
+    public void guardarTurnos(Paciente idPaciente, Medico idMedico,Date entrada) {
 
         Turno m = new Turno();
         Date fechaActual = new Date();
@@ -39,7 +39,7 @@ public class ControlTurnos {
         
         m.setIdpaciente(idPaciente);
         m.setIdmedico(idMedico);
-        m.setHorarioatencion(fechaActual);
+        m.setHorarioatencion(entrada);
         m.setEstadoturno(r);
         turnosJpacontrolador.create(m);
         JOptionPane.showMessageDialog(null, "realizado", "Información", 1);

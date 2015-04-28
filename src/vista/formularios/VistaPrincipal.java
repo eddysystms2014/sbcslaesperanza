@@ -113,7 +113,7 @@ public class VistaPrincipal extends javax.swing.JFrame {
         jMenu9.setText("Paciente");
 
         jMenuItem11.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/search.png"))); // NOI18N
-        jMenuItem11.setText("Buscar");
+        jMenuItem11.setText("Buscar Y Dar Turno");
         jMenuItem11.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jMenuItem11ActionPerformed(evt);
