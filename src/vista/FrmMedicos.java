@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package vista.formularios;
+package vista;
 
 import controlador.ControlMedico;
 import controlador.frmcontrol;
@@ -19,7 +19,7 @@ import javax.swing.UnsupportedLookAndFeelException;
 import modelo.entidades.Especialidad;
 import modelo.entidades.Medico;
 import test.CargarImagen;
-import static vista.formularios.VistaPrincipal.jDesktopPane1;
+import static vista.VistaPrincipal.jDesktopPane1;
 
 /**
  *

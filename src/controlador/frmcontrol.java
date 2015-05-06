@@ -18,7 +18,7 @@ import modelo.dao.exceptions.NonexistentEntityException;
 import modelo.entidades.Especialidad;
 import modelo.entidades.Medico;
 import modelo.entidades.Turno;
-import vista.formularios.frmEspecialidad;
+import vista.frmEspecialidad;
 
 /**
  *

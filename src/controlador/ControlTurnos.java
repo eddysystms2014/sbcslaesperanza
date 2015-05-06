@@ -30,21 +30,22 @@ public class ControlTurnos {
         return turnosJpacontrolador.findTurnoEntities();
     }
 
-    public void guardarTurnos(Paciente idPaciente, Medico idMedico,Date entrada) {
+    public void guardarTurnos(Paciente idPaciente, Medico idMedico, Date entrada) {
 
         Turno m = new Turno();
         Date fechaActual = new Date();
         int numT = numTurno(fechaActual, idMedico);
         String r = String.valueOf(numT);
-        
+
         m.setIdpaciente(idPaciente);
         m.setIdmedico(idMedico);
         m.setHorarioatencion(entrada);
         m.setEstadoturno(r);
         turnosJpacontrolador.create(m);
-        JOptionPane.showMessageDialog(null, "realizado", "Información", 1);
+        JOptionPane.showMessageDialog(null, "Realizado", "Información", 1);
     }
 
+// 
     public Turno buscarMedico(String cedula) {
 
         for (Turno md : turnosJpacontrolador.findTurnoEntities()) {
@@ -57,13 +58,13 @@ public class ControlTurnos {
 
     public int numTurno(Date fec, Medico idmedico) {
         Date fechaIng = fec;
-        SimpleDateFormat formato = new SimpleDateFormat("dd-MM-yyyy");
+        SimpleDateFormat formato = new SimpleDateFormat("yyyy-MM-dd");
         String hoy = formato.format(fechaIng);
         int r = 1;
         for (Turno md : turnosJpacontrolador.findTurnoEntities()) {
 
-            Date fechaActual = new Date();
-            SimpleDateFormat formato2 = new SimpleDateFormat("dd-MM-yyyy");
+            Date fechaActual = md.getHorarioatencion();
+            SimpleDateFormat formato2 = new SimpleDateFormat("yyyy-MM-dd");
             String hoy2 = formato2.format(fechaActual);
 
             if (hoy.equals(hoy2) && md.getIdmedico().getIdmedico().equals(idmedico.getIdmedico())) {

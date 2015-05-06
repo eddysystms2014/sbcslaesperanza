@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="null" language="groovy" pageWidth="297" pageHeight="326" columnWidth="257" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="1a9f9ba7-98f5-45f4-b83e-857210819ab9">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<style name="Title" fontName="Arial" fontSize="26" isBold="true" pdfFontName="Helvetica-Bold"/>
+	<style name="SubTitle" forecolor="#666666" fontName="Arial" fontSize="18"/>
+	<style name="Column header" forecolor="#666666" fontName="Arial" fontSize="12" isBold="true"/>
+	<style name="Detail" fontName="Arial" fontSize="12"/>
+	<parameter name="IDPACIENTE" class="java.lang.Integer">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<queryString>
+		<![CDATA[SELECT
+     paciente.`IDPACIENTE` AS paciente_IDPACIENTE,
+     paciente.`CEDPACIENTE` AS paciente_CEDPACIENTE,
+     paciente.`APEPPACIENTE` AS paciente_APEPPACIENTE,
+     paciente.`APEMPACIENTE` AS paciente_APEMPACIENTE,
+     paciente.`NOM1PACIENTE` AS paciente_NOM1PACIENTE,
+     paciente.`NOM2PACIENTE` AS paciente_NOM2PACIENTE,
+     paciente.`INSTPACIENTE` AS paciente_INSTPACIENTE,
+     paciente.`FECADPACIENTE` AS paciente_FECADPACIENTE
+FROM
+     `paciente` paciente
+WHERE  paciente.`IDPACIENTE`=$P{IDPACIENTE}]]>
+	</queryString>
+	<field name="paciente_IDPACIENTE" class="java.lang.Integer"/>
+	<field name="paciente_CEDPACIENTE" class="java.lang.String"/>
+	<field name="paciente_APEPPACIENTE" class="java.lang.String"/>
+	<field name="paciente_APEMPACIENTE" class="java.lang.String"/>
+	<field name="paciente_NOM1PACIENTE" class="java.lang.String"/>
+	<field name="paciente_NOM2PACIENTE" class="java.lang.String"/>
+	<field name="paciente_INSTPACIENTE" class="java.lang.String"/>
+	<field name="paciente_FECADPACIENTE" class="java.sql.Date"/>
+	<title>
+		<band height="70" splitType="Stretch">
+			<staticText>
+				<reportElement style="SubTitle" x="71" y="23" width="117" height="22" uuid="983ecd82-bfd4-44f7-b128-82e237bfcc25"/>
+				<text><![CDATA[SUBCENTRO]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="SubTitle" x="72" y="43" width="164" height="22" uuid="970a7409-ccd4-49a3-baf3-88b3604c2dee"/>
+				<text><![CDATA[LA ESPERANZA]]></text>
+			</staticText>
+			<image scaleImage="FillFrame">
+				<reportElement stretchType="RelativeToBandHeight" x="11" y="20" width="58" height="50" uuid="96c000af-4ce5-423b-a9dd-8774c8249b4a"/>
+				<imageExpression><![CDATA["C:\\Users\\JC-PC\\Documents\\respal\\sbcslaesperanza\\src\\imagenes\\Login.jpg"]]></imageExpression>
+			</image>
+		</band>
+	</title>
+	<pageHeader>
+		<band splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="36" splitType="Stretch">
+			<line>
+				<reportElement positionType="FixRelativeToBottom" x="0" y="35" width="257" height="1" uuid="6ed2491e-cf74-44dc-a1c1-26f49cfdf4fd"/>
+				<graphicElement>
+					<pen lineWidth="0.5" lineColor="#999999"/>
+				</graphicElement>
+			</line>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="157" splitType="Stretch">
+			<line>
+				<reportElement positionType="FixRelativeToBottom" x="0" y="147" width="257" height="1" uuid="fd3df153-1888-441e-be7e-a5bf490a85bd"/>
+				<graphicElement>
+					<pen lineWidth="0.5" lineColor="#999999"/>
+				</graphicElement>
+			</line>
+			<textField>
+				<reportElement style="Detail" x="123" y="16" width="69" height="15" uuid="8d4d3204-9ad0-4582-8aff-6bd492dea814"/>
+				<textFieldExpression><![CDATA[$F{paciente_IDPACIENTE}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="Detail" x="123" y="34" width="69" height="15" uuid="720b8024-878f-45f4-bf2e-80e174e149fe"/>
+				<textFieldExpression><![CDATA[$F{paciente_CEDPACIENTE}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="Detail" x="11" y="106" width="112" height="15" uuid="af96223c-d04e-4118-b977-cdc86bbe8a58"/>
+				<textFieldExpression><![CDATA[$F{paciente_APEPPACIENTE}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="Detail" x="129" y="106" width="107" height="15" uuid="fdd2a48a-5ca2-48d7-a331-a802112cb12d"/>
+				<textFieldExpression><![CDATA[$F{paciente_APEMPACIENTE}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="Detail" x="12" y="128" width="111" height="15" uuid="3b27d534-ae73-4b04-b325-8ff6535876ab"/>
+				<textFieldExpression><![CDATA[$F{paciente_NOM1PACIENTE}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="Detail" x="129" y="128" width="107" height="15" uuid="59fbc70f-8bf0-49bd-9428-72221c3edb08"/>
+				<textFieldExpression><![CDATA[$F{paciente_NOM2PACIENTE}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="Detail" x="123" y="56" width="112" height="15" uuid="bc7b43fe-54d0-4bc4-8c5b-6688d36f3be6"/>
+				<textFieldExpression><![CDATA[$F{paciente_FECADPACIENTE}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement style="Column header" x="3" y="14" width="85" height="15" uuid="b804ea0f-b773-4384-9214-fb4cb8423baf"/>
+				<text><![CDATA[Num. Historia:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="3" y="35" width="69" height="15" uuid="e2ca2d28-37ed-4449-8f40-18fef05920bf"/>
+				<text><![CDATA[CEDULA:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="3" y="85" width="69" height="15" uuid="893339d9-196e-4bb0-8ecd-381abb77dc70"/>
+				<text><![CDATA[APELLIDOS NOMBRES]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="3" y="56" width="112" height="15" uuid="f40c2e5d-a631-4c10-a538-a185da921f10"/>
+				<text><![CDATA[FECHA ADMISION]]></text>
+			</staticText>
+			<line>
+				<reportElement x="3" y="84" width="254" height="1" uuid="ed656a7d-07b7-4020-b21e-2cea704f54ce"/>
+			</line>
+		</band>
+	</detail>
+</jasperReport>

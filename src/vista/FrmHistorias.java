@@ -3,14 +3,14 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package vista.formularios;
+package vista;
 
+import SBCSLaEsperanza.ReportesControlador;
 import controlador.ControlHistorias;
 import controlador.ControlMedico;
 import controlador.ControlPaciente;
 import controlador.ControlTurno;
 import controlador.ControlTurnos;
-import controlador.ReportesControlador;
 import controlador.frmcontrol;
 import java.awt.Dimension;
 import java.io.File;
@@ -22,7 +22,7 @@ import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import modelo.entidades.Medico;
 import modelo.entidades.Paciente;
-import static vista.formularios.VistaPrincipal.jDesktopPane1;
+import static vista.VistaPrincipal.jDesktopPane1;
 
 /**
  *
@@ -80,6 +80,7 @@ public class FrmHistorias extends javax.swing.JInternalFrame {
         setClosable(true);
         setTitle("HISTORIAS");
 
+        jTable1.setBackground(new java.awt.Color(153, 255, 204));
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null, null, null},
@@ -236,9 +237,15 @@ public class FrmHistorias extends javax.swing.JInternalFrame {
             } catch (ParseException ex) {
                 Logger.getLogger(FrmHistorias.class.getName()).log(Level.SEVERE, null, ex);
             }
+           Character subsecuente ;
+            if (fh.buscarhiHistoria(Integer.valueOf(jTextField1.getText())) == 0) {
+                subsecuente = new Character('P');
+            } else {
+                subsecuente = new Character('S');
+            }
 
             int años = cp.años(Integer.valueOf(jTextField1.getText()));
-            Character tipo = 1;
+            Character tipo = subsecuente;
             String ar = "";
             byte[] archivo = ar.getBytes();
             fh.guardarHistoria(p, jLabel1.getText(), años, "", tipo, "", archivo, "S");
@@ -248,8 +255,8 @@ public class FrmHistorias extends javax.swing.JInternalFrame {
 
             FT.show();
             jDesktopPane1.add(FT);
-            File ruta = new File("reportes\\turno.jasper");
-            fcr.runReporte(jLabel1.getText(), ruta, "HORARIOATENCION");
+            String ruta = "turno.jasper";
+            fcr.runReporte("HORARIOATENCION", jLabel1.getText(), ruta);
             System.out.println("" + jLabel1.getText());
         }
 

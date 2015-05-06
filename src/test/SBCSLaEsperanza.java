@@ -10,8 +10,8 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.GregorianCalendar;
 import java.util.StringTokenizer;
-import static vista.formularios.FrmHistorias.jLabel1;
-import vista.formularios.FrmLogin;
+import static vista.FrmHistorias.jLabel1;
+import vista.FrmLogin;
 
 /**
  *
@@ -23,13 +23,9 @@ public class SBCSLaEsperanza {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-
-        Date fecha1 = new Date();
-        SimpleDateFormat formato1 = new SimpleDateFormat("dd-MM-yyyy");
-        System.out.println(fecha1.toLocaleString());
         FrmLogin fr = new FrmLogin();
         fr.show();
-
+        
     }
-
+    
 }

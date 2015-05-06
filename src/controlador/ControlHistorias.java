@@ -15,8 +15,8 @@ import javax.swing.table.DefaultTableModel;
 import modelo.dao.HistoriaJpaController;
 import modelo.entidades.Historia;
 import modelo.entidades.Paciente;
-import vista.formularios.FrmBusquedas;
-import vista.formularios.FrmHistorias;
+import vista.FrmBusquedas;
+import vista.FrmHistorias;
 
 /**
  *
@@ -78,4 +78,15 @@ public class ControlHistorias {
         m.setEstadohistoria(estadoHist);
         historiaJpaControlador.create(m);
     }
+
+    public int buscarhiHistoria(int cedula) {
+        int r = 0;
+        for (Historia md : historiaJpaControlador.findHistoriaEntities()) {
+            if (md.getIdpaciente().getIdpaciente().equals(cedula)) {
+                r++;
+            }
+        }
+        return r;
+    }
+
 }

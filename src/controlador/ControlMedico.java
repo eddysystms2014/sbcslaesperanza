@@ -12,7 +12,7 @@ import javax.swing.JOptionPane;
 import modelo.dao.MedicoJpaController;
 import modelo.entidades.Especialidad;
 import modelo.entidades.Medico;
-import vista.formularios.FrmHistorias;
+import vista.FrmHistorias;
 
 /**
  *

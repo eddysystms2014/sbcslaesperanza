@@ -1,0 +1,181 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="null" language="groovy" pageWidth="595" pageHeight="842" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="c7ece566-d2b1-4e52-b4d5-60af631f81f9">
+	<queryString language="SQL">
+		<![CDATA[SELECT
+     medicos.`IDMEDICO` AS medicos_IDMEDICO,
+     medicos.`NOMBREMEDICO` AS medicos_NOMBREMEDICO,
+     medicos.`DOMICILIOMEDICO` AS medicos_DOMICILIOMEDICO,
+     medicos.`TELEFONOMEDICO` AS medicos_TELEFONOMEDICO,
+     medicos.`ESTADOMEDICO` AS medicos_ESTADOMEDICO,
+     especialidades.`NOMBREESPECIALIDAD` AS especialidades_NOMBREESPECIALIDAD
+FROM
+     `especialidades` especialidades INNER JOIN `medicos` medicos ON especialidades.`IDESPECIALIDAD` = medicos.`IDESPECIALIDAD`]]>
+	</queryString>
+	<field name="medicos_IDMEDICO" class="java.lang.Integer"/>
+	<field name="medicos_NOMBREMEDICO" class="java.lang.String"/>
+	<field name="medicos_DOMICILIOMEDICO" class="java.lang.String"/>
+	<field name="medicos_TELEFONOMEDICO" class="java.lang.String"/>
+	<field name="medicos_ESTADOMEDICO" class="java.lang.String"/>
+	<field name="especialidades_NOMBREESPECIALIDAD" class="java.lang.String"/>
+	<group name="medicos_ESTADOMEDICO">
+		<groupExpression><![CDATA[$F{medicos_ESTADOMEDICO}]]></groupExpression>
+		<groupHeader>
+			<band height="33">
+				<staticText>
+					<reportElement mode="Opaque" x="0" y="0" width="100" height="32" forecolor="#666666" backcolor="#E6E6E6" uuid="3d074f51-b280-40e5-8da3-685f5335be6b"/>
+					<textElement>
+						<font size="12"/>
+					</textElement>
+					<text><![CDATA[medicos_ESTADOMEDICO]]></text>
+				</staticText>
+				<textField>
+					<reportElement mode="Opaque" x="100" y="0" width="455" height="32" forecolor="#006699" backcolor="#E6E6E6" uuid="ae4b257b-323f-413d-8c5f-431008fb2239"/>
+					<textElement>
+						<font size="24" isBold="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{medicos_ESTADOMEDICO}]]></textFieldExpression>
+				</textField>
+				<line>
+					<reportElement x="-20" y="32" width="595" height="1" forecolor="#666666" uuid="2c25127d-003e-4e98-97e8-4a7ef1a2a98b"/>
+				</line>
+			</band>
+		</groupHeader>
+		<groupFooter>
+			<band/>
+		</groupFooter>
+	</group>
+	<background>
+		<band/>
+	</background>
+	<title>
+		<band height="72">
+			<frame>
+				<reportElement mode="Opaque" x="-20" y="-20" width="595" height="92" backcolor="#006699" uuid="0708a1a2-38fd-46ee-95b1-4d365d2023f6"/>
+				<staticText>
+					<reportElement x="20" y="20" width="234" height="43" forecolor="#FFFFFF" uuid="b3b9a14c-1874-41d3-9cf3-f7bd859a3ff9"/>
+					<textElement>
+						<font size="34" isBold="true"/>
+					</textElement>
+					<text><![CDATA[TITLE]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="395" y="43" width="180" height="20" forecolor="#FFFFFF" uuid="509bc9bd-ddfd-40ef-8327-4e2b29c0b59a"/>
+					<textElement textAlignment="Right">
+						<font size="14" isBold="false"/>
+					</textElement>
+					<text><![CDATA[Add a description here]]></text>
+				</staticText>
+			</frame>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="13"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="21">
+			<line>
+				<reportElement x="-20" y="20" width="595" height="1" forecolor="#666666" uuid="927260ac-57bb-40dc-a0bc-7cbd292a4ae1"/>
+			</line>
+			<staticText>
+				<reportElement mode="Opaque" x="0" y="0" width="111" height="20" forecolor="#006699" backcolor="#E6E6E6" uuid="afc84496-ee21-4435-8bad-c2de750fa4aa"/>
+				<textElement textAlignment="Center">
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[medicos_IDMEDICO]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="111" y="0" width="111" height="20" forecolor="#006699" backcolor="#E6E6E6" uuid="4c85b858-311d-4eb3-8d92-50726b20e32a"/>
+				<textElement textAlignment="Center">
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[medicos_NOMBREMEDICO]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="222" y="0" width="111" height="20" forecolor="#006699" backcolor="#E6E6E6" uuid="d6abe357-93c4-439f-8f37-dcb3a88633dc"/>
+				<textElement textAlignment="Center">
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[medicos_DOMICILIOMEDICO]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="333" y="0" width="111" height="20" forecolor="#006699" backcolor="#E6E6E6" uuid="7b1e22e7-cacf-4951-a3b1-670c2c864cb1"/>
+				<textElement textAlignment="Center">
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[medicos_TELEFONOMEDICO]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="444" y="0" width="111" height="20" forecolor="#006699" backcolor="#E6E6E6" uuid="42592de2-c181-4e67-8143-9550844ea140"/>
+				<textElement textAlignment="Center">
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[especialidades_NOMBREESPECIALIDAD]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="20">
+			<line>
+				<reportElement positionType="FixRelativeToBottom" x="0" y="19" width="555" height="1" uuid="b675b7fb-6db8-43cb-84e6-525cf603b325"/>
+			</line>
+			<textField isStretchWithOverflow="true">
+				<reportElement x="0" y="0" width="111" height="20" uuid="3a6e6d15-cdf0-4630-bf14-33efdc50ddd2"/>
+				<textElement>
+					<font size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{medicos_IDMEDICO}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true">
+				<reportElement x="111" y="0" width="111" height="20" uuid="a26dc611-0ebf-47ab-896c-26237130a40c"/>
+				<textElement>
+					<font size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{medicos_NOMBREMEDICO}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true">
+				<reportElement x="222" y="0" width="111" height="20" uuid="8b535c8a-0faa-4b51-b4c1-12cf332f5ac0"/>
+				<textElement>
+					<font size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{medicos_DOMICILIOMEDICO}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true">
+				<reportElement x="333" y="0" width="111" height="20" uuid="32692978-3de1-44e5-9fcb-d74da7866da3"/>
+				<textElement>
+					<font size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{medicos_TELEFONOMEDICO}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true">
+				<reportElement x="444" y="0" width="111" height="20" uuid="836e1a19-a0c0-4ecd-ac15-64710ca62eba"/>
+				<textElement>
+					<font size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{especialidades_NOMBREESPECIALIDAD}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band/>
+	</columnFooter>
+	<pageFooter>
+		<band height="17">
+			<textField>
+				<reportElement mode="Opaque" x="0" y="4" width="515" height="13" backcolor="#E6E6E6" uuid="364e0495-50da-4d0e-9a7e-e261501062ce"/>
+				<textElement textAlignment="Right"/>
+				<textFieldExpression><![CDATA["Page "+$V{PAGE_NUMBER}+" of"]]></textFieldExpression>
+			</textField>
+			<textField evaluationTime="Report">
+				<reportElement mode="Opaque" x="515" y="4" width="40" height="13" backcolor="#E6E6E6" uuid="d80df7b5-5e88-4ea5-9272-aa5f6fe850f2"/>
+				<textFieldExpression><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+			<textField pattern="EEEEE dd MMMMM yyyy">
+				<reportElement x="0" y="4" width="100" height="13" uuid="725a0eda-ada1-4dff-a342-889872eba4c8"/>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageFooter>
+	<summary>
+		<band/>
+	</summary>
+</jasperReport>
