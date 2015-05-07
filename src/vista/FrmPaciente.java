@@ -146,7 +146,6 @@ public class FrmPaciente extends javax.swing.JInternalFrame {
 
         setClosable(true);
         setIconifiable(true);
-        setMaximizable(true);
         setResizable(true);
         setTitle("ADMISIÓN PACIENTE");
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());

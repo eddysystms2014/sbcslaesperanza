@@ -69,6 +69,7 @@ public class FrmUsuario extends javax.swing.JInternalFrame {
         tblUsuarios = new javax.swing.JTable();
 
         setClosable(true);
+        setIconifiable(true);
 
         jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(""));
 

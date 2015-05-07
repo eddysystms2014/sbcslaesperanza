@@ -111,7 +111,7 @@ public class ControlUsuario {
                 m.setTipousuario(tipoUsuario);
                 m.setEstadousuario(estadoUsuario);
                 usuarioJpacontrolador.create(m);
-                JOptionPane.showMessageDialog(null, "El medico fue creado exitosamente", "Información", 1);
+                JOptionPane.showMessageDialog(null, "Usuario creado exitosamente", "Información", 1);
             }
         } catch (Exception e) {
 
