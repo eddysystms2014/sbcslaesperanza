@@ -7,6 +7,7 @@ package vista;
 
 import SBCSLaEsperanza.ReportesControlador;
 import controlador.ControlPaciente;
+import controlador.ValidarCedula;
 import java.awt.Dimension;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -20,7 +21,7 @@ import static vista.FrmBusquedas.txtBusquedaNombres;
 public class FrmPaciente extends javax.swing.JInternalFrame {
 
     ControlPaciente p = new ControlPaciente();
-
+    ValidarCedula v= new ValidarCedula();
     /**
      * Creates new form FrmPaciente
      */
@@ -886,7 +887,6 @@ public class FrmPaciente extends javax.swing.JInternalFrame {
         jPanel9.setBorder(javax.swing.BorderFactory.createTitledBorder("Imprimir Ficha"));
 
         buttonGroup1.add(rdbno);
-        rdbno.setSelected(true);
         rdbno.setText("NO");
         rdbno.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -895,6 +895,7 @@ public class FrmPaciente extends javax.swing.JInternalFrame {
         });
 
         buttonGroup1.add(rdbsi);
+        rdbsi.setSelected(true);
         rdbsi.setText("SI");
         rdbsi.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -1008,7 +1009,7 @@ public class FrmPaciente extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_txtcodadmisionistaActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        int i = JOptionPane.showConfirmDialog(this, "¿Modificar Paciente?", "Confirmar", JOptionPane.YES_NO_OPTION);
+        int i = JOptionPane.showConfirmDialog(this, "¿Desear ingresar paciente?", "Confirmar", JOptionPane.YES_NO_OPTION);
         if (i == 0) {
             //Control de zonas
             String zona="";
@@ -1052,13 +1053,20 @@ public class FrmPaciente extends javax.swing.JInternalFrame {
             {
                 estadocivil="UNIÓN LIBRE";
             }
-            if(txthistoriaclinica.getText().equals(null))
+            if(txthistoriaclinica.getText().equals(""))
             {
                 JOptionPane.showMessageDialog(rootPane, "Hay un campo obligatorio no ingresado");
             }
             else
             {
-                p.guardarpaciente(txtinstitucion.getText(), txtunidadoperativa.getText(), txtcoduo.getText(), txtparroquiacodlo.getText(),
+                if(v.validadorDeCedula(txtcedula.getText())==false)
+                    {
+                        JOptionPane.showMessageDialog(rootPane, "Cedula Incorrecta");
+                        txtcedula.setText(null);
+                    }
+                else
+                {
+                    p.guardarpaciente(txtinstitucion.getText(), txtunidadoperativa.getText(), txtcoduo.getText(), txtparroquiacodlo.getText(),
                     txtcantoncodlo.getText(), txtprovinciacodlo.getText(), Integer.valueOf(txthistoriaclinica.getText()), txtcedula.getText(), txtapellido1.getText(),
                     txtapellido2.getText(), txtnombre1.getText(), txtnombre2.getText(), txtdireccion.getText(), txtbarrio.getText(),
                     txtparroquia.getText(), txtcanton.getText(), txtcanton.getText(), zona, txtnrotelefono.getText(), jDateChooser1.getDate(),
@@ -1072,6 +1080,8 @@ public class FrmPaciente extends javax.swing.JInternalFrame {
 
             limp();
             }
+            }
+                
         }
 
 
@@ -1087,6 +1097,8 @@ public class FrmPaciente extends javax.swing.JInternalFrame {
 
     private void txtlugarnacimientoKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtlugarnacimientoKeyReleased
         // TODO add your handling code here:
+        String cadena = (txtlugarnacimiento.getText()).toUpperCase();
+        txtlugarnacimiento.setText(cadena);
 
     }//GEN-LAST:event_txtlugarnacimientoKeyReleased
 

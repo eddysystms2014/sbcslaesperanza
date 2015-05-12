@@ -46,6 +46,7 @@ public class ControlPaciente {
 
         p.setInstpaciente(inst);
         p.setUnidadepaciente(uo);
+        p.setCoduopaciente(coduo);
         p.setParropaciente(parr);
         p.setCantpaciente(cant);
         p.setProvinpaciente(prov);
@@ -86,41 +87,6 @@ public class ControlPaciente {
         } catch (Exception ex) {
             JOptionPane.showMessageDialog(null, "Algo está mal");
         }
-
-//        
-//        int i = 0;
-//        try {
-//            for (Paciente pa : getPacientes()) {
-//                if (pa.getInstpaciente().equalsIgnoreCase(inst) && pa.getDomicilioPaciente().equals(domicilio) && pa.getTelefonoPaciente().equals(telefono)) {
-//                    i = 1;
-//                    p = pa;
-//                    break;
-//                }
-//            }
-//            if (i == 1) {
-//                if (p.getEstadoPaciente() == false) {
-//                    JOptionPane.showMessageDialog(f, "El paciente esta bloqueado", "Información", 0);
-//                } else {
-//                    JOptionPane.showMessageDialog(f, "Ya existe el paciente ", "Información", 0);
-//                }
-//            } else {
-//                p.setNombrePaciente(nombre);
-//                p.setDomicilioPaciente(domicilio);
-//                p.setTelefonoPaciente(telefono);
-//                p.setSintomas(sintomas);
-//                p.setEstadoPaciente(true);
-//                daoPaciente.create(p);
-//                JOptionPane.showMessageDialog(f, "Paciente creado exitosamente", "Información", 1);
-//        } catch (Exception e) {
-////            p.setNombrePaciente(nombre);
-//            p.setDomicilioPaciente(domicilio);
-//            p.setTelefonoPaciente(telefono);
-//            p.setSintomas(sintomas);
-//            p.setEstadoPaciente(true);
-//            daoPaciente.create(p);
-//            JOptionPane.showMessageDialog(f, "Paciente creado exitosamente", "Información", 1);
-//            
-//        }
     }
 
     public boolean editarpaciente(String inst, String uo, String coduo, String parr, String cant, String prov, int codpaciente,
@@ -135,6 +101,7 @@ public class ControlPaciente {
         }
         p.setInstpaciente(inst);
         p.setUnidadepaciente(uo);
+        p.setCoduopaciente(coduo);
         p.setParropaciente(parr);
         p.setCantpaciente(cant);
         p.setProvinpaciente(prov);
