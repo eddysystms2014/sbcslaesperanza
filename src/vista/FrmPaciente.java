@@ -149,7 +149,6 @@ public class FrmPaciente extends javax.swing.JInternalFrame {
         setBackground(new java.awt.Color(255, 255, 255));
         setClosable(true);
         setIconifiable(true);
-        setMaximizable(true);
         setResizable(true);
         setTitle("ADMISIÓN PACIENTE");
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -192,6 +191,12 @@ public class FrmPaciente extends javax.swing.JInternalFrame {
         });
 
         jLabel6.setText("Nº CEDULA DE CIUDADANÍA");
+
+        txtcedula.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txtcedulaKeyReleased(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -277,7 +282,13 @@ public class FrmPaciente extends javax.swing.JInternalFrame {
         txtprovinciacodlo.setEditable(false);
         txtprovinciacodlo.setText("10");
 
-        jLabel11.setText("NRO. HISTORIA CLÍNICA");
+        jLabel11.setText("NRO. HISTORIA CLÍNICA *");
+
+        txthistoriaclinica.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txthistoriaclinicaKeyReleased(evt);
+            }
+        });
 
         jLabel27.setText("Parroquia");
 
@@ -285,7 +296,7 @@ public class FrmPaciente extends javax.swing.JInternalFrame {
 
         jLabel57.setText("Provincia");
 
-        jButton2.setText("Guardar");
+        jButton2.setText("GUARDAR");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton2ActionPerformed(evt);
@@ -328,9 +339,9 @@ public class FrmPaciente extends javax.swing.JInternalFrame {
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel11)
                     .addComponent(txthistoriaclinica, javax.swing.GroupLayout.PREFERRED_SIZE, 179, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jButton2)
-                .addGap(25, 25, 25))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -375,7 +386,19 @@ public class FrmPaciente extends javax.swing.JInternalFrame {
 
         jLabel12.setText("DIRECCIÓN DE RESIDENCIA HABITUAL (Calle y Nº - Manzana y Casa)");
 
+        txtdireccion.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txtdireccionKeyReleased(evt);
+            }
+        });
+
         jLabel13.setText("BARRIO");
+
+        txtbarrio.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txtbarrioKeyReleased(evt);
+            }
+        });
 
         jLabel14.setText("PARROQUIA");
 
@@ -400,6 +423,12 @@ public class FrmPaciente extends javax.swing.JInternalFrame {
 
         txtprovincia.setEditable(false);
         txtprovincia.setText("IMBABURA");
+
+        txtnrotelefono.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txtnrotelefonoKeyReleased(evt);
+            }
+        });
 
         cbxzona.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "U", "R" }));
 
@@ -436,7 +465,7 @@ public class FrmPaciente extends javax.swing.JInternalFrame {
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel4Layout.createSequentialGroup()
                         .addComponent(jLabel18)
-                        .addGap(0, 2, Short.MAX_VALUE))
+                        .addGap(0, 4, Short.MAX_VALUE))
                     .addComponent(txtnrotelefono))
                 .addContainerGap())
         );
@@ -498,11 +527,29 @@ public class FrmPaciente extends javax.swing.JInternalFrame {
             }
         });
 
+        txtnacionalidad.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txtnacionalidadKeyReleased(evt);
+            }
+        });
+
+        txtgrupocultural.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txtgrupoculturalKeyReleased(evt);
+            }
+        });
+
         txtedad.setEditable(false);
 
         jLabel29.setText("ESTADO CIVIL");
 
         jLabel35.setText("INSTRUCCIÓN (Ultimo Año Aprobado)");
+
+        txtinstruccion.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txtinstruccionKeyReleased(evt);
+            }
+        });
 
         cbxestadocivil.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "SOL", "CAS", "DIV", "VIU", "U-L" }));
 
@@ -603,7 +650,31 @@ public class FrmPaciente extends javax.swing.JInternalFrame {
 
         jLabel41.setText("TIPO DE SEGURO DE SALUD");
 
+        txtocupacion.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txtocupacionKeyReleased(evt);
+            }
+        });
+
+        txtempresa.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txtempresaKeyReleased(evt);
+            }
+        });
+
+        txtsegurosalud.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txtsegurosaludKeyReleased(evt);
+            }
+        });
+
         jLabel42.setText("REFERIDO DE:");
+
+        txtreferido.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txtreferidoKeyReleased(evt);
+            }
+        });
 
         jDateChooser2.setDateFormatString("dd-MM-yyyy");
         jDateChooser2.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -677,6 +748,30 @@ public class FrmPaciente extends javax.swing.JInternalFrame {
 
         jLabel46.setText("Nº  TELÉFONO");
 
+        txtencasonecesario.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txtencasonecesarioKeyReleased(evt);
+            }
+        });
+
+        txtparentesco.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txtparentescoKeyReleased(evt);
+            }
+        });
+
+        txtafinidad.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txtafinidadKeyReleased(evt);
+            }
+        });
+
+        txtnrotelefonoreferido.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txtnrotelefonoreferidoKeyReleased(evt);
+            }
+        });
+
         jPanel8.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
         jLabel58.setText("COD. ADMISIONISTA");
@@ -685,6 +780,11 @@ public class FrmPaciente extends javax.swing.JInternalFrame {
         txtcodadmisionista.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtcodadmisionistaActionPerformed(evt);
+            }
+        });
+        txtcodadmisionista.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txtcodadmisionistaKeyReleased(evt);
             }
         });
 
@@ -910,12 +1010,60 @@ public class FrmPaciente extends javax.swing.JInternalFrame {
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         int i = JOptionPane.showConfirmDialog(this, "¿Modificar Paciente?", "Confirmar", JOptionPane.YES_NO_OPTION);
         if (i == 0) {
-            p.guardarpaciente(txtinstitucion.getText(), txtunidadoperativa.getText(), txtcoduo.getText(), txtparroquiacodlo.getText(),
+            //Control de zonas
+            String zona="";
+            if(cbxzona.getSelectedItem().toString().equals("U"))
+            {
+                zona="URBANO";
+            }
+            else
+            {
+                zona="RURAL";
+            }
+            //Control de generos
+            String genero="";
+            if(cbxgenero.getSelectedItem().toString().equals("M"))
+            {
+                genero="MASCULINO";
+            }
+            else
+            {
+                genero="FEMENINO";
+            }
+            //Contro de estado civil
+            String estadocivil="";
+            if(cbxestadocivil.getSelectedItem().toString().equals("SOL"))
+            {
+                estadocivil="SOLTERO";
+            }
+            if(cbxestadocivil.getSelectedItem().toString().equals("CAS"))
+            {
+                estadocivil="CASADO";
+            }
+            if(cbxestadocivil.getSelectedItem().toString().equals("DIV"))
+            {
+                estadocivil="DIVORCIADO";
+            }
+            if(cbxestadocivil.getSelectedItem().toString().equals("VIU"))
+            {
+                estadocivil="VIUDO";
+            }
+            if(cbxestadocivil.getSelectedItem().toString().equals("U-L"))
+            {
+                estadocivil="UNIÓN LIBRE";
+            }
+            if(txthistoriaclinica.getText().equals(null))
+            {
+                JOptionPane.showMessageDialog(rootPane, "Hay un campo obligatorio no ingresado");
+            }
+            else
+            {
+                p.guardarpaciente(txtinstitucion.getText(), txtunidadoperativa.getText(), txtcoduo.getText(), txtparroquiacodlo.getText(),
                     txtcantoncodlo.getText(), txtprovinciacodlo.getText(), Integer.valueOf(txthistoriaclinica.getText()), txtcedula.getText(), txtapellido1.getText(),
                     txtapellido2.getText(), txtnombre1.getText(), txtnombre2.getText(), txtdireccion.getText(), txtbarrio.getText(),
-                    txtparroquia.getText(), txtcanton.getText(), txtcanton.getText(), cbxzona.getSelectedItem().toString(), txtnrotelefono.getText(), jDateChooser1.getDate(),
-                    txtlugarnacimiento.getText(), txtnacionalidad.getText(), txtgrupocultural.getText(), Integer.valueOf(txtedad.getText()), cbxgenero.getSelectedItem().toString(),
-                    cbxestadocivil.getSelectedItem().toString(), txtinstruccion.getText(), jDateChooser2.getDate(), txtocupacion.getText(), txtempresa.getText(), txtsegurosalud.getText(),
+                    txtparroquia.getText(), txtcanton.getText(), txtcanton.getText(), zona, txtnrotelefono.getText(), jDateChooser1.getDate(),
+                    txtlugarnacimiento.getText(), txtnacionalidad.getText(), txtgrupocultural.getText(), Integer.valueOf(txtedad.getText()), genero,
+                    estadocivil, txtinstruccion.getText(), jDateChooser2.getDate(), txtocupacion.getText(), txtempresa.getText(), txtsegurosalud.getText(),
                     txtreferido.getText(), txtencasonecesario.getText(), txtparentesco.getText(), txtafinidad.getText(), txtnrotelefonoreferido.getText(), txtcodadmisionista.getText());
             if (rdbsi.isSelected() == true) {
                 String ruta = "registro.jasper";
@@ -923,7 +1071,7 @@ public class FrmPaciente extends javax.swing.JInternalFrame {
             }
 
             limp();
-
+            }
         }
 
 
@@ -1023,6 +1171,108 @@ public class FrmPaciente extends javax.swing.JInternalFrame {
         String cadena = (txtnombre2.getText()).toUpperCase();
         txtnombre2.setText(cadena);
     }//GEN-LAST:event_txtnombre2KeyReleased
+
+    private void txthistoriaclinicaKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txthistoriaclinicaKeyReleased
+        // TODO add your handling code here:
+        String cadena = (txthistoriaclinica.getText()).toUpperCase();
+        txthistoriaclinica.setText(cadena); 
+    }//GEN-LAST:event_txthistoriaclinicaKeyReleased
+
+    private void txtcedulaKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtcedulaKeyReleased
+        // TODO add your handling code here:
+        String cadena = (txtcedula.getText()).toUpperCase();
+        txtcedula.setText(cadena); 
+    }//GEN-LAST:event_txtcedulaKeyReleased
+
+    private void txtdireccionKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtdireccionKeyReleased
+        // TODO add your handling code here:
+        String cadena = (txtdireccion.getText()).toUpperCase();
+        txtdireccion.setText(cadena); 
+    }//GEN-LAST:event_txtdireccionKeyReleased
+
+    private void txtbarrioKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtbarrioKeyReleased
+        // TODO add your handling code here:
+        String cadena = (txtbarrio.getText()).toUpperCase();
+        txtbarrio.setText(cadena); 
+    }//GEN-LAST:event_txtbarrioKeyReleased
+
+    private void txtnrotelefonoKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtnrotelefonoKeyReleased
+        // TODO add your handling code here:
+        String cadena = (txtnrotelefono.getText()).toUpperCase();
+        txtnrotelefono.setText(cadena); 
+    }//GEN-LAST:event_txtnrotelefonoKeyReleased
+
+    private void txtnacionalidadKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtnacionalidadKeyReleased
+        // TODO add your handling code here:
+        String cadena = (txtnacionalidad.getText()).toUpperCase();
+        txtnacionalidad.setText(cadena); 
+    }//GEN-LAST:event_txtnacionalidadKeyReleased
+
+    private void txtgrupoculturalKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtgrupoculturalKeyReleased
+        // TODO add your handling code here:
+        String cadena = (txtgrupocultural.getText()).toUpperCase();
+        txtgrupocultural.setText(cadena); 
+    }//GEN-LAST:event_txtgrupoculturalKeyReleased
+
+    private void txtinstruccionKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtinstruccionKeyReleased
+        // TODO add your handling code here:
+        String cadena = (txtinstruccion.getText()).toUpperCase();
+        txtinstruccion.setText(cadena); 
+    }//GEN-LAST:event_txtinstruccionKeyReleased
+
+    private void txtocupacionKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtocupacionKeyReleased
+        // TODO add your handling code here:
+        String cadena = (txtocupacion.getText()).toUpperCase();
+        txtocupacion.setText(cadena); 
+    }//GEN-LAST:event_txtocupacionKeyReleased
+
+    private void txtempresaKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtempresaKeyReleased
+        // TODO add your handling code here:
+        String cadena = (txtempresa.getText()).toUpperCase();
+        txtempresa.setText(cadena); 
+    }//GEN-LAST:event_txtempresaKeyReleased
+
+    private void txtsegurosaludKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtsegurosaludKeyReleased
+        // TODO add your handling code here:
+        String cadena = (txtsegurosalud.getText()).toUpperCase();
+        txtsegurosalud.setText(cadena); 
+    }//GEN-LAST:event_txtsegurosaludKeyReleased
+
+    private void txtreferidoKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtreferidoKeyReleased
+        // TODO add your handling code here:
+        String cadena = (txtreferido.getText()).toUpperCase();
+        txtreferido.setText(cadena); 
+    }//GEN-LAST:event_txtreferidoKeyReleased
+
+    private void txtencasonecesarioKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtencasonecesarioKeyReleased
+        // TODO add your handling code here:
+        String cadena = (txtencasonecesario.getText()).toUpperCase();
+        txtencasonecesario.setText(cadena); 
+    }//GEN-LAST:event_txtencasonecesarioKeyReleased
+
+    private void txtparentescoKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtparentescoKeyReleased
+        // TODO add your handling code here:
+        String cadena = (txtparentesco.getText()).toUpperCase();
+        txtparentesco.setText(cadena); 
+    }//GEN-LAST:event_txtparentescoKeyReleased
+
+    private void txtafinidadKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtafinidadKeyReleased
+        // TODO add your handling code here:
+        String cadena = (txtafinidad.getText()).toUpperCase();
+        txtafinidad.setText(cadena); 
+    }//GEN-LAST:event_txtafinidadKeyReleased
+
+    private void txtnrotelefonoreferidoKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtnrotelefonoreferidoKeyReleased
+        // TODO add your handling code here:
+        String cadena = (txtnrotelefonoreferido.getText()).toUpperCase();
+        txtnrotelefonoreferido.setText(cadena); 
+    }//GEN-LAST:event_txtnrotelefonoreferidoKeyReleased
+
+    private void txtcodadmisionistaKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtcodadmisionistaKeyReleased
+        // TODO add your handling code here:
+        String cadena = (txtcodadmisionista.getText()).toUpperCase();
+        txtcodadmisionista.setText(cadena); 
+    }//GEN-LAST:event_txtcodadmisionistaKeyReleased
     public void limp() {
         txthistoriaclinica.setText(null);
         txtapellido1.setText(null);

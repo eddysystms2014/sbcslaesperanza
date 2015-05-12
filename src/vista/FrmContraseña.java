@@ -46,6 +46,10 @@ public class FrmContraseña extends javax.swing.JInternalFrame {
         btnCancelar = new javax.swing.JButton();
         txtClave = new javax.swing.JPasswordField();
 
+        setClosable(true);
+        setIconifiable(true);
+        setTitle("Cambio de Contraseña");
+
         jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(""));
 
         jLabel2.setText("Clave:");

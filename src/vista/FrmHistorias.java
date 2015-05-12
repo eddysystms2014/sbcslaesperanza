@@ -79,6 +79,7 @@ public class FrmHistorias extends javax.swing.JInternalFrame {
 
         setBackground(new java.awt.Color(255, 255, 255));
         setClosable(true);
+        setIconifiable(true);
         setTitle("HISTORIAS");
 
         jTable1.setBackground(new java.awt.Color(204, 204, 255));
@@ -111,14 +112,14 @@ public class FrmHistorias extends javax.swing.JInternalFrame {
         });
 
         jTextField3.setEditable(false);
-        jTextField3.setBorder(javax.swing.BorderFactory.createTitledBorder("Cedula De Identidad"));
+        jTextField3.setBorder(javax.swing.BorderFactory.createTitledBorder("Cédula De Identidad"));
 
         jTextField7.setEditable(false);
         jTextField7.setBorder(javax.swing.BorderFactory.createTitledBorder("Apellidos, Nombres"));
 
         jLabel1.setText("Hora");
 
-        jComboBox1.setBorder(javax.swing.BorderFactory.createTitledBorder("Medico"));
+        jComboBox1.setBorder(javax.swing.BorderFactory.createTitledBorder("Médico"));
         jComboBox1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jComboBox1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
