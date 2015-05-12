@@ -73,5 +73,16 @@ public class ControlTurnos {
         }
         return r;
     }
+//    public int fecha(Date fec) {
+//        Date fechaIng = fec;
+//        SimpleDateFormat formato = new SimpleDateFormat("yyyy-MM-dd");
+//        String hoy = formato.format(fechaIng);
+//        for (Turno md : turnosJpacontrolador.findTurnoEntities()) {
+//            Date fechaActual = md.getHorarioatencion();
+//            SimpleDateFormat formato2 = new SimpleDateFormat("yyyy-MM-dd");
+//            String hoy2 = formato2.format(fechaActual);
+//        }
+//        return r;
+//    }
 
 }

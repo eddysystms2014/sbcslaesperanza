@@ -67,6 +67,7 @@ public class VistaPrincipal extends javax.swing.JFrame {
         jMenuItem12 = new javax.swing.JMenuItem();
         jMenuItem13 = new javax.swing.JMenuItem();
         jMenuItem14 = new javax.swing.JMenuItem();
+        jMenuItem16 = new javax.swing.JMenuItem();
         mnid = new javax.swing.JMenu();
         jMenu7 = new javax.swing.JMenu();
         mnNomUs = new javax.swing.JMenu();
@@ -96,6 +97,7 @@ public class VistaPrincipal extends javax.swing.JFrame {
 
         jMenuItem3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/back_alt.png"))); // NOI18N
         jMenuItem3.setText("Cambiar de Usuario");
+        jMenuItem3.setBorder(javax.swing.BorderFactory.createTitledBorder(""));
         jMenuItem3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jMenuItem3ActionPerformed(evt);
@@ -270,6 +272,14 @@ public class VistaPrincipal extends javax.swing.JFrame {
 
         jMenu6.add(jMenu10);
 
+        jMenuItem16.setText("Reporte Atenciones");
+        jMenuItem16.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem16ActionPerformed(evt);
+            }
+        });
+        jMenu6.add(jMenuItem16);
+
         jMenuBar1.add(jMenu6);
 
         mnid.setText("jMenu6");
@@ -431,7 +441,7 @@ public class VistaPrincipal extends javax.swing.JFrame {
             FrmMedicos.jPanel3.setVisible(false);
             FrmMedicos.jPanel4.setVisible(false);
             FrmMedicos.jButton1.setVisible(false);
-            FrmMedicos.btnAbrirE.setVisible(false);
+            FrmMedicos.btnAbrirE.setVisible(true);
 //            FrmMedicos.txtNombreMedico.setEnabled(false);
 //            FrmMedicos.txtTlf.setEnabled(false);
             FrmMedicos.txtid.setEnabled(false);
@@ -445,6 +455,7 @@ public class VistaPrincipal extends javax.swing.JFrame {
     private void jMenuItem12ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem12ActionPerformed
         String ruta = "medicos.jasper";
         repC.reporteTabular(ruta);
+       
     }//GEN-LAST:event_jMenuItem12ActionPerformed
 
     private void jMenuItem13ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem13ActionPerformed
@@ -468,6 +479,13 @@ public class VistaPrincipal extends javax.swing.JFrame {
         FrmBusquedas.jButton5.setVisible(true);
         FrmBusquedas.jButton1.setVisible(false);
     }//GEN-LAST:event_jMenuItem15ActionPerformed
+
+    private void jMenuItem16ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem16ActionPerformed
+        // TODO add your handling code here:
+        frmReportes fb = new frmReportes();
+        fb.show();
+        VistaPrincipal.jDesktopPane1.add(fb);
+    }//GEN-LAST:event_jMenuItem16ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -527,6 +545,7 @@ public class VistaPrincipal extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMenuItem13;
     private javax.swing.JMenuItem jMenuItem14;
     private javax.swing.JMenuItem jMenuItem15;
+    private javax.swing.JMenuItem jMenuItem16;
     private javax.swing.JMenuItem jMenuItem2;
     private javax.swing.JMenuItem jMenuItem3;
     private javax.swing.JMenuItem jMenuItem4;

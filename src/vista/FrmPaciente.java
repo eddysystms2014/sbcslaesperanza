@@ -30,6 +30,8 @@ public class FrmPaciente extends javax.swing.JInternalFrame {
         Dimension jInternalFrameSize = this.getSize();
         this.setLocation((desktopSize.width - jInternalFrameSize.width) / 2, 4);
         jButton2.setVisible(false);
+        String codadmisionista=VistaPrincipal.mnNomUs.getText();
+        txtcodadmisionista.setText(codadmisionista);
 
     }
     ControlPaciente cp = new ControlPaciente();
@@ -144,6 +146,7 @@ public class FrmPaciente extends javax.swing.JInternalFrame {
         rdbno = new javax.swing.JRadioButton();
         rdbsi = new javax.swing.JRadioButton();
 
+        setBackground(new java.awt.Color(255, 255, 255));
         setClosable(true);
         setIconifiable(true);
         setMaximizable(true);
@@ -151,6 +154,7 @@ public class FrmPaciente extends javax.swing.JInternalFrame {
         setTitle("ADMISIÓN PACIENTE");
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
         jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Registro Paciente", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Times New Roman", 0, 10))); // NOI18N
 
         jPanel2.setBorder(javax.swing.BorderFactory.createEtchedBorder());
@@ -677,6 +681,7 @@ public class FrmPaciente extends javax.swing.JInternalFrame {
 
         jLabel58.setText("COD. ADMISIONISTA");
 
+        txtcodadmisionista.setEditable(false);
         txtcodadmisionista.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtcodadmisionistaActionPerformed(evt);
@@ -913,7 +918,7 @@ public class FrmPaciente extends javax.swing.JInternalFrame {
                     cbxestadocivil.getSelectedItem().toString(), txtinstruccion.getText(), jDateChooser2.getDate(), txtocupacion.getText(), txtempresa.getText(), txtsegurosalud.getText(),
                     txtreferido.getText(), txtencasonecesario.getText(), txtparentesco.getText(), txtafinidad.getText(), txtnrotelefonoreferido.getText(), txtcodadmisionista.getText());
             if (rdbsi.isSelected() == true) {
-                String ruta = "ficha.jasper";
+                String ruta = "registro.jasper";
                 rp.reportesGeneral("IDPACIENTE", Integer.valueOf(txthistoriaclinica.getText()), ruta);
             }
 
@@ -977,7 +982,7 @@ public class FrmPaciente extends javax.swing.JInternalFrame {
                     cbxestadocivil.getSelectedItem().toString(), txtinstruccion.getText(), jDateChooser2.getDate(), txtocupacion.getText(), txtempresa.getText(), txtsegurosalud.getText(),
                     txtreferido.getText(), txtencasonecesario.getText(), txtparentesco.getText(), txtafinidad.getText(), txtnrotelefonoreferido.getText(), txtcodadmisionista.getText());
             if (rdbsi.isSelected() == true) {
-                String ruta = "ficha.jasper";
+                String ruta = "registro.jasper";
                 rp.reportesGeneral("IDPACIENTE", Integer.valueOf(txthistoriaclinica.getText()), ruta);
             }
             limp();

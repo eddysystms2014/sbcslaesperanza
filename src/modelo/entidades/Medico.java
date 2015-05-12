@@ -5,7 +5,9 @@
  */
 package modelo.entidades;
 
+import java.io.FileInputStream;
 import java.io.Serializable;
+import java.sql.PreparedStatement;
 import java.util.List;
 import javax.persistence.Basic;
 import javax.persistence.Column;
@@ -157,5 +159,6 @@ public class Medico implements Serializable {
     public String toString() {
         return "modelo.entidades.Medico[ idmedico=" + idmedico + " ]";
     }
+
     
 }
