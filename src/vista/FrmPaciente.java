@@ -1004,6 +1004,7 @@ public class FrmPaciente extends javax.swing.JInternalFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         int i = JOptionPane.showConfirmDialog(this, "¿Modificar Paciente?", "Confirmar", JOptionPane.YES_NO_OPTION);
+        String r=txtcoduo.getText();
         if (i == 0) {
             //Control de zonas
             String zona="";
@@ -1053,7 +1054,7 @@ public class FrmPaciente extends javax.swing.JInternalFrame {
             }
             else
             {
-                p.guardarpaciente(txtinstitucion.getText(), txtunidadoperativa.getText(), txtcoduo.getText(), txtparroquiacodlo.getText(),
+                p.guardarpaciente(txtinstitucion.getText(), txtunidadoperativa.getText(), r, txtparroquiacodlo.getText(),
                     txtcantoncodlo.getText(), txtprovinciacodlo.getText(), Integer.valueOf(txthistoriaclinica.getText()), txtcedula.getText(), txtapellido1.getText(),
                     txtapellido2.getText(), txtnombre1.getText(), txtnombre2.getText(), txtdireccion.getText(), txtbarrio.getText(),
                     txtparroquia.getText(), txtcanton.getText(), txtcanton.getText(), zona, txtnrotelefono.getText(), jDateChooser1.getDate(),
@@ -1082,6 +1083,8 @@ public class FrmPaciente extends javax.swing.JInternalFrame {
 
     private void txtlugarnacimientoKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtlugarnacimientoKeyReleased
         // TODO add your handling code here:
+        String cadena = (txtlugarnacimiento.getText()).toUpperCase();
+        txtlugarnacimiento.setText(cadena);
 
     }//GEN-LAST:event_txtlugarnacimientoKeyReleased
 
