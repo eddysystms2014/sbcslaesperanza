@@ -77,11 +77,12 @@ public class FrmHistorias extends javax.swing.JInternalFrame {
         jLabel2 = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
 
+        setBackground(new java.awt.Color(255, 255, 255));
         setClosable(true);
         setIconifiable(true);
         setTitle("HISTORIAS");
 
-        jTable1.setBackground(new java.awt.Color(153, 255, 204));
+        jTable1.setBackground(new java.awt.Color(204, 204, 255));
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null, null, null},
@@ -95,11 +96,13 @@ public class FrmHistorias extends javax.swing.JInternalFrame {
         ));
         jScrollPane1.setViewportView(jTable1);
 
+        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
         jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder("Dar Turno"));
 
         jTextField1.setEditable(false);
         jTextField1.setBorder(javax.swing.BorderFactory.createTitledBorder("Num. Historia"));
 
+        jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/rep.png"))); // NOI18N
         jButton2.setText("GENERAR TURNO");
         jButton2.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jButton2.addActionListener(new java.awt.event.ActionListener() {
@@ -249,7 +252,8 @@ public class FrmHistorias extends javax.swing.JInternalFrame {
             Character tipo = subsecuente;
             String ar = "";
             byte[] archivo = ar.getBytes();
-            fh.guardarHistoria(p, jLabel1.getText(), años, "", tipo, "", archivo, "S");
+            String codadmisionista=VistaPrincipal.mnNomUs.getText();
+            fh.guardarHistoria(p, jLabel1.getText(), años, "", tipo,codadmisionista , archivo, "S");
 
             this.dispose();
             FrmBusquedas FT = new FrmBusquedas();

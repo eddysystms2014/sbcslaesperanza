@@ -5,7 +5,14 @@
  */
 package controlador;
 
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.sql.Blob;
+import java.sql.PreparedStatement;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 import javax.swing.JOptionPane;
@@ -22,6 +29,9 @@ public class ControlMedico {
 
     EntityManagerFactory emf = Persistence.createEntityManagerFactory("SBCSLaEsperanzaPU");
     private MedicoJpaController medicosJpacontrolador = new MedicoJpaController(emf);
+    FileInputStream entrada;
+    FileOutputStream salida;
+    File archivo;
 
     public List<Medico> getMedicos() {
         return medicosJpacontrolador.findMedicoEntities();
@@ -50,6 +60,7 @@ public class ControlMedico {
                 }
             } else {
                 Medico m = new Medico();
+
                 m.setIdespecialidad(idEspecialidad);
                 m.setNombremedico(nombresMedico);
                 m.setDomiciliomedico(domiciliomedico);
@@ -69,6 +80,9 @@ public class ControlMedico {
         for (Medico md : medicosJpacontrolador.findMedicoEntities()) {
             if (md.getDomiciliomedico().equals(cedula)) {
                 return md;
+            }
+            if (md == null) {
+                JOptionPane.showMessageDialog(null, "No se encontro", "Información", 1);
             }
         }
         return null;
@@ -111,17 +125,17 @@ public class ControlMedico {
     public boolean Modificar(Especialidad idEspecialidad, String nombresMedico,
             String domiciliomedico, String tlfMedico, byte[] imgMedico, String estadoMedico) {
         try {
-            Medico m = medicosJpacontrolador.cedulaMed(tlfMedico);
+            Medico m = medicosJpacontrolador.cedulaMed(domiciliomedico);
             if (m == null) {
                 return false;
             }
             if (nombresMedico != "" && domiciliomedico != "" && tlfMedico != "" && estadoMedico != "") {
+                m.setIdespecialidad(idEspecialidad);
                 m.setNombremedico(nombresMedico);
-                m.setDomiciliomedico(domiciliomedico);
                 m.setTelefonomedico(tlfMedico);
                 m.setImagenmedico(imgMedico);
                 m.setEstadomedico(estadoMedico);
-                medicosJpacontrolador.create(m);
+                medicosJpacontrolador.edit(m);
                 JOptionPane.showMessageDialog(null, "Se Modifico exitosamente", "Información", 1);
 
             } else {
@@ -132,4 +146,26 @@ public class ControlMedico {
         }
         return true;
     }
+
+    public byte[] AbrirAImagen(File archivo) {
+        byte[] bytesImg = new byte[1024 * 100];
+        try {
+            entrada = new FileInputStream(archivo);
+            entrada.read(bytesImg);
+        } catch (Exception e) {
+        }
+        return bytesImg;
+    }
+
+    public String GuardarAImagen(File archivo, byte[] bytesImg) {
+        String respuesta = null;
+        try {
+            salida = new FileOutputStream(archivo);
+            salida.write(bytesImg);
+            respuesta = "La imagen se guardo con exito.";
+        } catch (Exception e) {
+        }
+        return respuesta;
+    }
+
 }

@@ -283,6 +283,7 @@ public class ControlPaciente {
 
     public Paciente buscarPacienteCI(String id) {
 
+        
         for (Paciente p : pacienteJpaControlador.findPacienteEntities()) {
             if (p.getCedpaciente().equals(id)) {
                 return p;
@@ -330,7 +331,6 @@ public class ControlPaciente {
         modelo.addColumn("Primer_nombre");
         modelo.addColumn("Segundo_nombre");
 
-//        for (Paciente e : pacienteJpaControlador.findPacienteEntities()){
         for (Paciente e : getPacientes()) {
             if (e.prueba(e.elimiEspacio(FrmBusquedas.txtBusquedaNombres.getText()))) {
 
