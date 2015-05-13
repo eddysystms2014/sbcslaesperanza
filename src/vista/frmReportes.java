@@ -9,6 +9,7 @@ import SBCSLaEsperanza.ReportesControlador;
 import java.awt.Dimension;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import javax.swing.JOptionPane;
 import static vista.FrmPaciente.jDateChooser1;
 import static vista.FrmPaciente.txtedad;
 import static vista.FrmPaciente.txthistoriaclinica;
@@ -24,7 +25,7 @@ public class frmReportes extends javax.swing.JInternalFrame {
      */
     public frmReportes() {
         initComponents();
-         Dimension desktopSize = VistaPrincipal.jDesktopPane1.getSize();
+        Dimension desktopSize = VistaPrincipal.jDesktopPane1.getSize();
         Dimension jInternalFrameSize = this.getSize();
         this.setLocation((desktopSize.width - jInternalFrameSize.width) / 2, 4);
     }
@@ -313,11 +314,15 @@ public class frmReportes extends javax.swing.JInternalFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
-        String dia = String.valueOf(jDateChooser1.getDate().getDay() + 3);
-        String mes = String.valueOf(jDateChooser1.getDate().getMonth() + 1);
-        String año = String.valueOf(jDateChooser1.getDate().getYear() + 1900);
+        if (jDateChooser1.getDate() == null) {
+JOptionPane.showMessageDialog(null, "Seleccione una Fecha", "Información", 1);
+        } else {
+            String dia = String.valueOf(jDateChooser1.getDate().getDay() + 3);
+            String mes = String.valueOf(jDateChooser1.getDate().getMonth() + 1);
+            String año = String.valueOf(jDateChooser1.getDate().getYear() + 1900);
 
-        rp.reporteatencionesDiario(año, "HORARIOATENCION", mes, "mes", dia, "dia", "reportemes.jasper");
+            rp.reporteatencionesDiario(año, "HORARIOATENCION", mes, "mes", dia, "dia", "reportemes.jasper");
+        }
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
@@ -336,11 +341,11 @@ public class frmReportes extends javax.swing.JInternalFrame {
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
         // TODO add your handling code here:
-        Date fechaActual = jCalendar1.getDate();       
-        String dia = String.valueOf(fechaActual.getDay()+10);
-        String mes = String.valueOf(fechaActual.getMonth()+1);
-        String año = String.valueOf(fechaActual.getYear()+1900);
-        System.out.println(""+año+ "año "+ mes+ " mes"+ dia+ "dia"+ "reportemes.jasper");
+        Date fechaActual = jCalendar1.getDate();
+        String dia = String.valueOf(fechaActual.getDay() + 10);
+        String mes = String.valueOf(fechaActual.getMonth() + 1);
+        String año = String.valueOf(fechaActual.getYear() + 1900);
+        System.out.println("" + año + "año " + mes + " mes" + dia + "dia" + "reportemes.jasper");
         rp.reporteatencionesDiario(año, "HORARIOATENCION", mes, "mes", dia, "dia", "reportemes.jasper");
     }//GEN-LAST:event_jButton4ActionPerformed
 
