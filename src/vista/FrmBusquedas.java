@@ -79,7 +79,6 @@ public class FrmBusquedas extends javax.swing.JInternalFrame {
         setTitle("Cestion De Turnos");
 
         jTable1.setBackground(new java.awt.Color(204, 204, 255));
-        jTable1.setBorder(javax.swing.BorderFactory.createTitledBorder("Lista "));
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 

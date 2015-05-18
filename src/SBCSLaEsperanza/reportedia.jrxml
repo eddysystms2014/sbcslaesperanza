@@ -51,7 +51,7 @@ where extract(year from turnos.`HORARIOATENCION`)=$P{HORARIOATENCION} and extrac
 	<group name="paciente_UNIDADEPACIENTE">
 		<groupExpression><![CDATA[$F{paciente_UNIDADEPACIENTE}]]></groupExpression>
 		<groupHeader>
-			<band height="40">
+			<band height="100">
 				<rectangle>
 					<reportElement mode="Opaque" x="0" y="13" width="36" height="24" forecolor="#CCCCCC" backcolor="#CCCCCC" uuid="9c21dde0-3fe1-439f-a060-9f11cca719fa"/>
 				</rectangle>
@@ -61,6 +61,35 @@ where extract(year from turnos.`HORARIOATENCION`)=$P{HORARIOATENCION} and extrac
 						<font size="14"/>
 					</textElement>
 					<text><![CDATA[LISTA ]]></text>
+				</staticText>
+				<staticText>
+					<reportElement style="Column header" x="455" y="41" width="89" height="37" forecolor="#000000" uuid="a3f4f551-c108-4da3-b2d3-625507ea17be"/>
+					<textElement textAlignment="Center"/>
+					<text><![CDATA[FECHA ATENCION]]></text>
+				</staticText>
+				<staticText>
+					<reportElement style="Column header" x="381" y="55" width="60" height="15" forecolor="#000000" uuid="609a7ca3-ff08-441b-a5cf-ad5b352f7c41"/>
+					<text><![CDATA[MEDICO]]></text>
+				</staticText>
+				<staticText>
+					<reportElement style="Column header" x="0" y="57" width="96" height="15" forecolor="#000000" uuid="0d38aa90-8c6f-4ab6-b67a-ceb326873f78"/>
+					<text><![CDATA[NRO. HISTORIA]]></text>
+				</staticText>
+				<staticText>
+					<reportElement style="Column header" x="148" y="55" width="76" height="23" forecolor="#000000" uuid="45307763-dfb8-4bb0-a2b8-3b4393283b63"/>
+					<textElement textAlignment="Center"/>
+					<text><![CDATA[ APELLIDOS]]></text>
+				</staticText>
+				<staticText>
+					<reportElement style="Column header" x="271" y="52" width="63" height="15" forecolor="#000000" uuid="2f1da2b6-3781-4543-bbfd-02d48907e92d"/>
+					<text><![CDATA[NOMBRES]]></text>
+				</staticText>
+				<staticText>
+					<reportElement style="Column header" x="96" y="56" width="43" height="44" forecolor="#000000" uuid="c6b11fbc-278c-481a-93c1-2399acb7cf85"/>
+					<textElement>
+						<font size="10"/>
+					</textElement>
+					<text><![CDATA[TIPO ]]></text>
 				</staticText>
 			</band>
 		</groupHeader>
@@ -93,125 +122,41 @@ where extract(year from turnos.`HORARIOATENCION`)=$P{HORARIOATENCION} and extrac
 		<band splitType="Stretch"/>
 	</pageHeader>
 	<detail>
-		<band height="132" splitType="Stretch">
-			<line>
-				<reportElement positionType="FixRelativeToBottom" x="0" y="6" width="555" height="1" uuid="831fc481-214e-46ec-869c-e94e80a0d356"/>
-				<graphicElement>
-					<pen lineWidth="0.5" lineColor="#999999"/>
-				</graphicElement>
-			</line>
+		<band height="44" splitType="Stretch">
 			<textField>
-				<reportElement style="Detail" x="442" y="10" width="104" height="15" uuid="619a0f88-2143-4f08-a0a3-548de5225fc3"/>
-				<textFieldExpression><![CDATA[$F{especialidades_NOMBREESPECIALIDAD}]]></textFieldExpression>
-			</textField>
-			<textField>
-				<reportElement style="Detail" x="70" y="10" width="248" height="15" uuid="9dc90736-3077-401f-a9f0-0f5da0db704f"/>
+				<reportElement style="Detail" x="351" y="4" width="104" height="15" uuid="9dc90736-3077-401f-a9f0-0f5da0db704f"/>
 				<textFieldExpression><![CDATA[$F{medicos_NOMBREMEDICO}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement style="Detail" x="136" y="55" width="84" height="15" uuid="a0c3b885-284c-47c0-adf3-9a56546cc9e3"/>
+				<reportElement style="Detail" x="10" y="5" width="84" height="15" uuid="a0c3b885-284c-47c0-adf3-9a56546cc9e3"/>
 				<textFieldExpression><![CDATA[$F{paciente_IDPACIENTE}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement style="Detail" x="135" y="75" width="125" height="15" uuid="61aceaba-28a1-4287-8fe4-175440641201"/>
-				<textFieldExpression><![CDATA[$F{paciente_CEDPACIENTE}]]></textFieldExpression>
-			</textField>
-			<textField>
-				<reportElement style="Detail" x="302" y="68" width="110" height="15" uuid="ce0061d7-d434-4e83-95be-bff86522b01f"/>
+				<reportElement style="Detail" x="146" y="5" width="84" height="15" uuid="ce0061d7-d434-4e83-95be-bff86522b01f"/>
 				<textFieldExpression><![CDATA[$F{paciente_APEPPACIENTE}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement style="Detail" x="303" y="90" width="109" height="15" uuid="8b02632b-20a0-476f-9750-2cd2ee5920b7"/>
-				<textFieldExpression><![CDATA[$F{paciente_APEMPACIENTE}]]></textFieldExpression>
+				<reportElement style="Detail" x="96" y="5" width="44" height="15" uuid="8b02632b-20a0-476f-9750-2cd2ee5920b7"/>
+				<textFieldExpression><![CDATA[$F{turnos_ESTADOTURNO}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement style="Detail" x="432" y="68" width="113" height="15" uuid="b89a1d19-7c3c-4358-9bef-d58a08658a7d"/>
+				<reportElement style="Detail" x="259" y="2" width="81" height="15" uuid="b89a1d19-7c3c-4358-9bef-d58a08658a7d"/>
 				<textFieldExpression><![CDATA[$F{paciente_NOM1PACIENTE}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement style="Detail" x="432" y="90" width="113" height="15" uuid="d566cdb5-61a5-42fc-aca9-c56527d3c556"/>
+				<reportElement style="Detail" x="262" y="24" width="81" height="15" uuid="d566cdb5-61a5-42fc-aca9-c56527d3c556"/>
 				<textFieldExpression><![CDATA[$F{paciente_NOM2PACIENTE}]]></textFieldExpression>
 			</textField>
+			<line>
+				<reportElement positionType="FixRelativeToBottom" x="0" y="-44" width="555" height="1" uuid="38c5d9f7-cd56-4d34-8f6e-80e32259b2fe"/>
+				<graphicElement>
+					<pen lineWidth="0.5" lineColor="#999999"/>
+				</graphicElement>
+			</line>
 			<textField>
-				<reportElement style="Detail" x="135" y="93" width="120" height="15" uuid="50b8a919-20b4-4b89-a954-19c46f6be186"/>
+				<reportElement style="Detail" x="468" y="5" width="76" height="15" uuid="50b8a919-20b4-4b89-a954-19c46f6be186"/>
 				<textFieldExpression><![CDATA[$F{turnos_HORARIOATENCION}]]></textFieldExpression>
 			</textField>
-			<staticText>
-				<reportElement style="Column header" x="330" y="10" width="91" height="15" forecolor="#000000" uuid="6ce6b27a-bde5-4c41-af8a-e3037e0de06d"/>
-				<text><![CDATA[ESPECIALIDAD]]></text>
-			</staticText>
-			<staticText>
-				<reportElement style="Column header" x="10" y="10" width="60" height="15" forecolor="#000000" uuid="609a7ca3-ff08-441b-a5cf-ad5b352f7c41"/>
-				<text><![CDATA[MEDICO]]></text>
-			</staticText>
-			<staticText>
-				<reportElement style="Column header" x="9" y="54" width="96" height="15" forecolor="#000000" uuid="0d38aa90-8c6f-4ab6-b67a-ceb326873f78"/>
-				<text><![CDATA[NRO. HISTORIA]]></text>
-			</staticText>
-			<staticText>
-				<reportElement style="Column header" x="8" y="74" width="107" height="15" forecolor="#000000" uuid="06c252fa-8486-44da-9880-82a7d99cf6f2"/>
-				<text><![CDATA[CI. CUIDADANIA]]></text>
-			</staticText>
-			<staticText>
-				<reportElement style="Column header" x="299" y="47" width="76" height="23" forecolor="#000000" uuid="45307763-dfb8-4bb0-a2b8-3b4393283b63"/>
-				<textElement textAlignment="Center"/>
-				<text><![CDATA[ APELLIDOS]]></text>
-			</staticText>
-			<staticText>
-				<reportElement style="Column header" x="433" y="49" width="63" height="15" forecolor="#000000" uuid="2f1da2b6-3781-4543-bbfd-02d48907e92d"/>
-				<text><![CDATA[NOMBRES]]></text>
-			</staticText>
-			<staticText>
-				<reportElement style="Column header" x="8" y="93" width="120" height="15" forecolor="#000000" uuid="a3f4f551-c108-4da3-b2d3-625507ea17be"/>
-				<text><![CDATA[FECHA ATENCION]]></text>
-			</staticText>
-			<line>
-				<reportElement positionType="FixRelativeToBottom" x="1" y="110" width="555" height="1" uuid="fb368df0-704a-4a78-b4eb-753910dedf38"/>
-				<graphicElement>
-					<pen lineWidth="0.5" lineColor="#999999"/>
-				</graphicElement>
-			</line>
-			<line>
-				<reportElement positionType="FixRelativeToBottom" x="1" y="7" width="1" height="102" uuid="d4ec0bd5-a59e-4a35-8e25-abf3d2e31246"/>
-				<graphicElement>
-					<pen lineWidth="0.5" lineColor="#999999"/>
-				</graphicElement>
-			</line>
-			<line>
-				<reportElement positionType="FixRelativeToBottom" x="555" y="6" width="1" height="102" uuid="b7661136-297d-4bc0-9545-01395057bb68"/>
-				<graphicElement>
-					<pen lineWidth="0.5" lineColor="#999999"/>
-				</graphicElement>
-			</line>
-			<line>
-				<reportElement positionType="FixRelativeToBottom" x="0" y="28" width="555" height="1" uuid="38c5d9f7-cd56-4d34-8f6e-80e32259b2fe"/>
-				<graphicElement>
-					<pen lineWidth="0.5" lineColor="#999999"/>
-				</graphicElement>
-			</line>
-			<line>
-				<reportElement positionType="FixRelativeToBottom" x="294" y="47" width="1" height="63" uuid="633e46ef-6bfb-49f4-904f-41d3d94d5079"/>
-				<graphicElement>
-					<pen lineWidth="0.5" lineColor="#999999"/>
-				</graphicElement>
-			</line>
-			<staticText>
-				<reportElement style="Column header" x="220" y="30" width="76" height="22" forecolor="#000000" uuid="f12f43bd-1727-44b5-99ad-48f775f894e2"/>
-				<textElement textAlignment="Center"/>
-				<text><![CDATA[PACIENTE ]]></text>
-			</staticText>
-			<line>
-				<reportElement positionType="FixRelativeToBottom" x="294" y="65" width="262" height="1" uuid="781a4fde-d23d-4859-942e-71e77a9d7a25"/>
-				<graphicElement>
-					<pen lineWidth="0.5" lineColor="#999999"/>
-				</graphicElement>
-			</line>
-			<line>
-				<reportElement positionType="FixRelativeToBottom" x="0" y="44" width="555" height="1" uuid="237ee8c7-3176-4fc3-8cdb-660abbecde31"/>
-				<graphicElement>
-					<pen lineWidth="0.5" lineColor="#999999"/>
-				</graphicElement>
-			</line>
 		</band>
 	</detail>
 	<pageFooter>

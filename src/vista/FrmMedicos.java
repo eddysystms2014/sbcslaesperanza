@@ -7,22 +7,30 @@ package vista;
 
 import controlador.Conexion;
 import controlador.ControlMedico;
+import controlador.ValidarCedula;
 import controlador.frmcontrol;
 import java.awt.Dimension;
 import java.awt.Image;
 import java.awt.Toolkit;
+import java.awt.image.BufferedImage;
+import java.io.ByteArrayInputStream;
 import java.io.File;
+import java.io.IOException;
 import java.io.UnsupportedEncodingException;
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.sql.Blob;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.imageio.ImageIO;
+import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
 import javax.swing.UIManager;
 import javax.swing.UnsupportedLookAndFeelException;
 import modelo.entidades.Especialidad;
+import modelo.entidades.Imagen;
 import modelo.entidades.Medico;
 import test.CargarImagen;
 import static vista.VistaPrincipal.jDesktopPane1;
@@ -60,7 +68,7 @@ public class FrmMedicos extends javax.swing.JInternalFrame {
     CargarImagen m = new CargarImagen() {
     };
     String ruta, nombre;
-
+    BufferedImage img;
     JFileChooser seleccionado = new JFileChooser();
     File archivo;
     byte[] bytesImg;
@@ -74,6 +82,7 @@ public class FrmMedicos extends javax.swing.JInternalFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        buttonGroup1 = new javax.swing.ButtonGroup();
         jPanel1 = new javax.swing.JPanel();
         jPanel2 = new javax.swing.JPanel();
         jButton3 = new javax.swing.JButton();
@@ -99,6 +108,9 @@ public class FrmMedicos extends javax.swing.JInternalFrame {
         jButton5 = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
         btnAbrirE = new javax.swing.JButton();
+        jPanel6 = new javax.swing.JPanel();
+        jRadioButton1 = new javax.swing.JRadioButton();
+        jRadioButton2 = new javax.swing.JRadioButton();
 
         setClosable(true);
         setIconifiable(true);
@@ -330,7 +342,7 @@ public class FrmMedicos extends javax.swing.JInternalFrame {
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(40, Short.MAX_VALUE))
+                .addContainerGap(44, Short.MAX_VALUE))
         );
 
         jPanel4.setBackground(new java.awt.Color(255, 255, 255));
@@ -356,6 +368,46 @@ public class FrmMedicos extends javax.swing.JInternalFrame {
             }
         });
 
+        jPanel6.setBorder(javax.swing.BorderFactory.createTitledBorder("Editar Foto"));
+
+        buttonGroup1.add(jRadioButton1);
+        jRadioButton1.setText("SI");
+        jRadioButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jRadioButton1ActionPerformed(evt);
+            }
+        });
+
+        buttonGroup1.add(jRadioButton2);
+        jRadioButton2.setSelected(true);
+        jRadioButton2.setText("NO");
+        jRadioButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jRadioButton2ActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
+        jPanel6.setLayout(jPanel6Layout);
+        jPanel6Layout.setHorizontalGroup(
+            jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel6Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jRadioButton2)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jRadioButton1)
+                .addContainerGap(14, Short.MAX_VALUE))
+        );
+        jPanel6Layout.setVerticalGroup(
+            jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel6Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jRadioButton1)
+                    .addComponent(jRadioButton2))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
         jPanel4Layout.setHorizontalGroup(
@@ -363,13 +415,15 @@ public class FrmMedicos extends javax.swing.JInternalFrame {
             .addGroup(jPanel4Layout.createSequentialGroup()
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel4Layout.createSequentialGroup()
-                        .addGap(45, 45, 45)
-                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jButton5, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(jPanel4Layout.createSequentialGroup()
                         .addGap(63, 63, 63)
-                        .addComponent(btnAbrirE)))
+                        .addComponent(btnAbrirE))
+                    .addGroup(jPanel4Layout.createSequentialGroup()
+                        .addGap(45, 45, 45)
+                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(jButton5, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                 .addContainerGap(27, Short.MAX_VALUE))
         );
         jPanel4Layout.setVerticalGroup(
@@ -379,6 +433,8 @@ public class FrmMedicos extends javax.swing.JInternalFrame {
                 .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 166, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(34, 34, 34)
                 .addComponent(btnAbrirE)
+                .addGap(18, 18, 18)
+                .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jButton5, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
@@ -406,6 +462,7 @@ public class FrmMedicos extends javax.swing.JInternalFrame {
 
         int i = JOptionPane.showConfirmDialog(this, "¿Realmente desea crear el medico?", "Confirmar", JOptionPane.YES_NO_OPTION);
         if (i == 0) {
+            ValidarCedula vd=new ValidarCedula();
             Especialidad esp = new Especialidad();
             int resEsp = FC.buscarEspecialidad(Integer.valueOf(idEspe)).getIdespecialidad();
             esp.setIdespecialidad(resEsp);
@@ -415,50 +472,66 @@ public class FrmMedicos extends javax.swing.JInternalFrame {
             } else {
                 estado = "NO";
             }
+            if (archivo != null && txtNombreMedico.getText() != "" && txtid.getText() != "") {
+                if (vd.validadorDeCedula(txtid.getText())==true) {
+                     bytesImg = CM.AbrirAImagen(archivo);
+                CM.guardarMedico(esp, txtNombreMedico.getText(), txtid.getText(), txtTlf.getText(), bytesImg, estado);
+                FrmMedicos FE;
+                this.dispose();
+                try {
+                    FE = new FrmMedicos();
+                    FE.show();
+                    jDesktopPane1.add(FE);
+                    FrmMedicos.btnModificarMedico.setVisible(false);
+                    FrmMedicos.jButton3.setVisible(false);
+                    FrmMedicos.jButton4.setVisible(false);
+                    FrmMedicos.jPanel5.setVisible(false);
+                    FrmMedicos.jButton2.setVisible(false);
+                    FrmMedicos.jPanel6.setVisible(false);
 
-            bytesImg = CM.AbrirAImagen(archivo);
-            CM.guardarMedico(esp, txtNombreMedico.getText(), txtid.getText(), txtTlf.getText(), bytesImg, estado);
-            FrmMedicos FE;
-            this.dispose();
-            try {
-                FE = new FrmMedicos();
-                FE.show();
-                jDesktopPane1.add(FE);
-                FrmMedicos.btnModificarMedico.setVisible(false);
-                FrmMedicos.jButton3.setVisible(false);
-                FrmMedicos.jButton4.setVisible(false);
-                FrmMedicos.jPanel5.setVisible(false);
-                FrmMedicos.jButton2.setVisible(false);
+                } catch (IllegalAccessException ex) {
 
-            } catch (IllegalAccessException ex) {
-
+                }
+                }else {
+                JOptionPane.showMessageDialog(null, "Cedula invalida", "Información", 1);
             }
-
+               
+            } else {
+                JOptionPane.showMessageDialog(null, "Textos Obligatorios y Foto", "Información", 1);
+            }
         } else {
         }
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
-        Medico md = new Medico();
-        String cedula = jTextField1.getText();
-        String r;
-        if (CM.buscarMedico(cedula).getEstadomedico().equals("SI")) {
-            r = "Activo";
-        } else {
-            r = "Inactivo";
+        try {
+            Medico md = new Medico();
+            String cedula = jTextField1.getText();
+            String r;
+            if (CM.buscarMedico(cedula).getEstadomedico().equals("SI")) {
+                r = "Activo";
+            } else {
+                r = "Inactivo";
+            }
+            jPanel2.setVisible(true);
+            jPanel3.setVisible(true);
+            jPanel4.setVisible(true);
+            txtNombreMedico.setText(CM.buscarMedico(cedula).getNombremedico());
+            txtid.setText(CM.buscarMedico(cedula).getDomiciliomedico());
+            txtTlf.setText(CM.buscarMedico(cedula).getTelefonomedico());
+            cbtIdEspecialidad.setSelectedItem(FC.buscarEspecialidad(CM.buscarMedico(cedula).getIdespecialidad().getIdespecialidad()).getNombreespecialidad());
+            cbtEstadoMedico.setSelectedItem(r);
+
+//            byte[] bytesIm = CM.buscarMedico(cedula).getImagenmedico();
+//            jLabel2.setIcon(new ImageIcon(bytesIm));
+//            
+            byte[] data = CM.buscarMedico(cedula).getImagenmedico();
+            img = ImageIO.read(new ByteArrayInputStream(data));
+            jLabel2.setIcon(new ImageIcon(img));
+
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Ingrese Ci Existente");
         }
-        jPanel2.setVisible(true);
-        jPanel3.setVisible(true);
-        jPanel4.setVisible(true);
-        txtNombreMedico.setText(CM.buscarMedico(cedula).getNombremedico());
-        txtid.setText(CM.buscarMedico(cedula).getDomiciliomedico());
-        txtTlf.setText(CM.buscarMedico(cedula).getTelefonomedico());
-        cbtIdEspecialidad.setSelectedItem(FC.buscarEspecialidad(CM.buscarMedico(cedula).getIdespecialidad().getIdespecialidad()).getNombreespecialidad());
-        cbtEstadoMedico.setSelectedItem(r);
-
-        byte[] bytesIm = CM.buscarMedico(cedula).getImagenmedico();
-        jLabel2.setIcon(new ImageIcon(bytesIm));
-
     }//GEN-LAST:event_jButton4ActionPerformed
 
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
@@ -494,43 +567,78 @@ public class FrmMedicos extends javax.swing.JInternalFrame {
         // TODO add your handling code here:
         int i = JOptionPane.showConfirmDialog(this, "¿Realmente desea Modificar el Medico?", "Confirmar", JOptionPane.YES_NO_OPTION);
         if (i == 0) {
-            Especialidad esp = new Especialidad();
-            int resEsp = FC.buscarEspecialidad(Integer.valueOf(idEspe)).getIdespecialidad();
-            esp.setIdespecialidad(resEsp);
-            String estado;
-            
-            if (cbtEstadoMedico.getSelectedItem().toString().equals("Activo")) {
-                estado = "SI";
-            } else {
-                estado = "NO";
-            }
-//            if (archivo != null) {
-//                CM.buscarMedico(jTextField1.getText()).getImagenmedico();
-//            } else {
-                bytesImg = CM.AbrirAImagen(archivo);
-//            }
+            if (jRadioButton2.isSelected() == (true)) {
+                Especialidad esp = new Especialidad();
+                int resEsp = FC.buscarEspecialidad(Integer.valueOf(idEspe)).getIdespecialidad();
+                esp.setIdespecialidad(resEsp);
+                String estado;
 
-            CM.Modificar(esp, txtNombreMedico.getText(), txtid.getText(), txtTlf.getText(), bytesImg, estado);
-            this.dispose();
-            FrmMedicos FE;
-            try {
-                FE = new FrmMedicos();
-                FE.show();
-                jDesktopPane1.add(FE);
-                FrmMedicos.btnModificarMedico.setVisible(false);
-                FrmMedicos.jButton3.setVisible(false);
-                FrmMedicos.jButton4.setVisible(true);
-                FrmMedicos.jPanel2.setVisible(false);
-                FrmMedicos.jPanel3.setVisible(false);
-                FrmMedicos.jPanel4.setVisible(false);
-                FrmMedicos.jButton1.setVisible(false);
-                FrmMedicos.btnAbrirE.setVisible(false);
+                if (cbtEstadoMedico.getSelectedItem().toString().equals("Activo")) {
+                    estado = "SI";
+                } else {
+                    estado = "NO";
+                }
+                bytesImg = CM.AbrirAImagen(archivo);
+                CM.ModificarSinFoto(esp, txtNombreMedico.getText(), txtid.getText(), txtTlf.getText(), estado);
+                this.dispose();
+                FrmMedicos FE;
+                try {
+                    FE = new FrmMedicos();
+                    FE.show();
+                    jDesktopPane1.add(FE);
+                    FrmMedicos.btnModificarMedico.setVisible(false);
+                    FrmMedicos.jButton3.setVisible(false);
+                    FrmMedicos.jButton4.setVisible(true);
+                    FrmMedicos.jPanel2.setVisible(false);
+                    FrmMedicos.jPanel3.setVisible(false);
+                    FrmMedicos.jPanel4.setVisible(false);
+                    FrmMedicos.jButton1.setVisible(false);
+                    FrmMedicos.btnAbrirE.setVisible(false);
 //            FrmMedicos.txtNombreMedico.setEnabled(false);
 //            FrmMedicos.txtTlf.setEnabled(false);
-                FrmMedicos.txtid.setEnabled(false);
+                    FrmMedicos.txtid.setEnabled(false);
 //            FrmMedicos.cbtIdEspecialidad.setEnabled(false);
-            } catch (IllegalAccessException ex) {
+                } catch (IllegalAccessException ex) {
 
+                }
+
+            } else if (jRadioButton1.isSelected() == (true)&&archivo!=null) {
+                Especialidad esp = new Especialidad();
+                int resEsp = FC.buscarEspecialidad(Integer.valueOf(idEspe)).getIdespecialidad();
+                esp.setIdespecialidad(resEsp);
+                String estado;
+
+                if (cbtEstadoMedico.getSelectedItem().toString().equals("Activo")) {
+                    estado = "SI";
+                } else {
+                    estado = "NO";
+                }
+                bytesImg = CM.AbrirAImagen(archivo);
+                CM.Modificar(esp, txtNombreMedico.getText(), txtid.getText(), txtTlf.getText(), bytesImg, estado);
+                this.dispose();
+                FrmMedicos FE;
+                try {
+                    FE = new FrmMedicos();
+                    FE.show();
+                    jDesktopPane1.add(FE);
+                    FrmMedicos.btnModificarMedico.setVisible(false);
+                    FrmMedicos.jButton3.setVisible(false);
+                    FrmMedicos.jButton4.setVisible(true);
+                    FrmMedicos.jPanel2.setVisible(false);
+                    FrmMedicos.jPanel3.setVisible(false);
+                    FrmMedicos.jPanel4.setVisible(false);
+                    FrmMedicos.jButton1.setVisible(false);
+                    FrmMedicos.btnAbrirE.setVisible(false);
+//            FrmMedicos.txtNombreMedico.setEnabled(false);
+//            FrmMedicos.txtTlf.setEnabled(false);
+                    FrmMedicos.txtid.setEnabled(false);
+//            FrmMedicos.cbtIdEspecialidad.setEnabled(false);
+                } catch (IllegalAccessException ex) {
+
+                }
+
+            }else{
+                JOptionPane.showMessageDialog(null, "Seleccione una foto o no modifique la foto");
             }
 
         } else {
@@ -559,11 +667,21 @@ public class FrmMedicos extends javax.swing.JInternalFrame {
 
     private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
         // TODO add your handling code here:
-        frmEspecialidad f=new frmEspecialidad();
+        frmEspecialidad f = new frmEspecialidad();
         f.show();
         VistaPrincipal.jDesktopPane1.add(f);
         dispose();
     }//GEN-LAST:event_jButton6ActionPerformed
+
+    private void jRadioButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton2ActionPerformed
+        // TODO add your handling code here:
+        btnAbrirE.setVisible(false);
+    }//GEN-LAST:event_jRadioButton2ActionPerformed
+
+    private void jRadioButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton1ActionPerformed
+        // TODO add your handling code here:
+        btnAbrirE.setVisible(true);
+    }//GEN-LAST:event_jRadioButton1ActionPerformed
 
     private void cargarCmbEspecialidades() {
         for (Especialidad item : FC.getEspecialidad()) {
@@ -573,6 +691,7 @@ public class FrmMedicos extends javax.swing.JInternalFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     public static javax.swing.JButton btnAbrirE;
     public static javax.swing.JButton btnModificarMedico;
+    private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.JComboBox cbtEstadoMedico;
     public static javax.swing.JComboBox cbtIdEspecialidad;
     public static javax.swing.JButton jButton1;
@@ -588,6 +707,9 @@ public class FrmMedicos extends javax.swing.JInternalFrame {
     public static javax.swing.JPanel jPanel3;
     public static javax.swing.JPanel jPanel4;
     public static javax.swing.JPanel jPanel5;
+    public static javax.swing.JPanel jPanel6;
+    private javax.swing.JRadioButton jRadioButton1;
+    private javax.swing.JRadioButton jRadioButton2;
     private javax.swing.JTextField jTextField1;
     private javax.swing.JLabel lbl1;
     private javax.swing.JLabel lbl2;

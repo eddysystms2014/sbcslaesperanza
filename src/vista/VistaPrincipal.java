@@ -272,6 +272,7 @@ public class VistaPrincipal extends javax.swing.JFrame {
 
         jMenu6.add(jMenu10);
 
+        jMenuItem16.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/rep.png"))); // NOI18N
         jMenuItem16.setText("Reporte Atenciones");
         jMenuItem16.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -331,6 +332,7 @@ public class VistaPrincipal extends javax.swing.JFrame {
 
     private void jMenuItem5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem5ActionPerformed
         // TODO add your handling code here:
+        
         FrmMedicos FE;
         try {
             FE = new FrmMedicos();
@@ -341,6 +343,7 @@ public class VistaPrincipal extends javax.swing.JFrame {
             FrmMedicos.jButton4.setVisible(false);
             FrmMedicos.jPanel5.setVisible(false);
             FrmMedicos.jButton2.setVisible(false);
+            FrmMedicos.jPanel6.setVisible(false);
 
         } catch (IllegalAccessException ex) {
 
@@ -368,6 +371,7 @@ public class VistaPrincipal extends javax.swing.JFrame {
             FrmMedicos.txtTlf.setEnabled(false);
             FrmMedicos.txtid.setEnabled(false);
             FrmMedicos.cbtIdEspecialidad.setEnabled(false);
+            FrmMedicos.jPanel6.setVisible(false);
         } catch (IllegalAccessException ex) {
 
         }
@@ -440,8 +444,9 @@ public class VistaPrincipal extends javax.swing.JFrame {
             FrmMedicos.jPanel2.setVisible(false);
             FrmMedicos.jPanel3.setVisible(false);
             FrmMedicos.jPanel4.setVisible(false);
+            FrmMedicos.btnAbrirE.setVisible(false);
             FrmMedicos.jButton1.setVisible(false);
-            FrmMedicos.btnAbrirE.setVisible(true);
+//            FrmMedicos.btnAbrirE.setVisible(true);
 //            FrmMedicos.txtNombreMedico.setEnabled(false);
 //            FrmMedicos.txtTlf.setEnabled(false);
             FrmMedicos.txtid.setEnabled(false);
@@ -533,7 +538,7 @@ public class VistaPrincipal extends javax.swing.JFrame {
     public static javax.swing.JMenu jMenu3;
     public static javax.swing.JMenu jMenu4;
     public static javax.swing.JMenu jMenu5;
-    private javax.swing.JMenu jMenu6;
+    public static javax.swing.JMenu jMenu6;
     private javax.swing.JMenu jMenu7;
     private javax.swing.JMenu jMenu8;
     public static javax.swing.JMenu jMenu9;
@@ -545,7 +550,7 @@ public class VistaPrincipal extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMenuItem13;
     private javax.swing.JMenuItem jMenuItem14;
     private javax.swing.JMenuItem jMenuItem15;
-    private javax.swing.JMenuItem jMenuItem16;
+    public static javax.swing.JMenuItem jMenuItem16;
     private javax.swing.JMenuItem jMenuItem2;
     private javax.swing.JMenuItem jMenuItem3;
     private javax.swing.JMenuItem jMenuItem4;

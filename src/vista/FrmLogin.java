@@ -234,6 +234,7 @@ public class FrmLogin extends javax.swing.JFrame {
                 VistaPrincipal.jMenu4.setVisible(false);
                 VistaPrincipal.jMenu5.setVisible(false);
                 VistaPrincipal.jMenu10.setVisible(false);
+                VistaPrincipal.jMenu6.setVisible(false);
             }
 
         }

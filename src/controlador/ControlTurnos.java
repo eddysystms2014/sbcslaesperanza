@@ -44,6 +44,20 @@ public class ControlTurnos {
         turnosJpacontrolador.create(m);
         JOptionPane.showMessageDialog(null, "Realizado", "Información", 1);
     }
+     public void guardarEmergencia(Paciente idPaciente, Medico idMedico, Date entrada) {
+
+        Turno m = new Turno();
+        Date fechaActual = new Date();
+        int numT = numTurno(fechaActual, idMedico);
+        String r = String.valueOf(numT);
+
+        m.setIdpaciente(idPaciente);
+        m.setIdmedico(idMedico);
+        m.setHorarioatencion(entrada);
+        m.setEstadoturno("Em");
+        turnosJpacontrolador.create(m);
+        JOptionPane.showMessageDialog(null, "Realizado", "Información", 1);
+    }
 
 // 
     public Turno buscarMedico(String cedula) {
@@ -67,7 +81,7 @@ public class ControlTurnos {
             SimpleDateFormat formato2 = new SimpleDateFormat("yyyy-MM-dd");
             String hoy2 = formato2.format(fechaActual);
 
-            if (hoy.equals(hoy2) && md.getIdmedico().getIdmedico().equals(idmedico.getIdmedico())) {
+            if (hoy.equals(hoy2) && md.getIdmedico().getIdmedico().equals(idmedico.getIdmedico())&&md.getEstadoturno()!="Em") {
                 r = r + 1;
             }
         }

@@ -5,6 +5,7 @@
  */
 package controlador;
 
+import SBCSLaEsperanza.ReportesControlador;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
@@ -19,6 +20,7 @@ import modelo.dao.PacienteJpaController;
 import modelo.entidades.Especialidad;
 import modelo.entidades.Paciente;
 import vista.FrmBusquedas;
+import static vista.FrmPaciente.txthistoriaclinica;
 import vista.frmEspecialidad;
 
 /**
@@ -250,7 +252,6 @@ public class ControlPaciente {
 
     public Paciente buscarPacienteCI(String id) {
 
-        
         for (Paciente p : pacienteJpaControlador.findPacienteEntities()) {
             if (p.getCedpaciente().equals(id)) {
                 return p;
@@ -310,6 +311,25 @@ public class ControlPaciente {
                 modelo.addRow(fila);
             }
 //            }
+        }
+    }
+
+    public int num() {
+        int r;
+        r = pacienteJpaControlador.getPacienteCount() + 1;
+        return r;
+    }
+
+    public void imprimirTodo() {
+        ReportesControlador rc = new ReportesControlador();
+        int i = JOptionPane.showConfirmDialog(null, "¿Realmente desea Imprimir "+num()+" Registros de pacientes", "Confirmar", JOptionPane.YES_NO_OPTION);
+        if (i == 0) {
+            String ruta = "registro.jasper";
+            for (Paciente p : pacienteJpaControlador.findPacienteEntities()) {
+               
+                    rc.imprimirTodo("IDPACIENTE", p.getIdpaciente(), ruta);
+                
+            }
         }
     }
 }

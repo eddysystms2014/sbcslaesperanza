@@ -21,7 +21,8 @@ import static vista.FrmBusquedas.txtBusquedaNombres;
 public class FrmPaciente extends javax.swing.JInternalFrame {
 
     ControlPaciente p = new ControlPaciente();
-    ValidarCedula v= new ValidarCedula();
+    ValidarCedula v = new ValidarCedula();
+
     /**
      * Creates new form FrmPaciente
      */
@@ -31,8 +32,9 @@ public class FrmPaciente extends javax.swing.JInternalFrame {
         Dimension jInternalFrameSize = this.getSize();
         this.setLocation((desktopSize.width - jInternalFrameSize.width) / 2, 4);
         jButton2.setVisible(false);
-        String codadmisionista=VistaPrincipal.mnNomUs.getText();
+        String codadmisionista = VistaPrincipal.mnNomUs.getText();
         txtcodadmisionista.setText(codadmisionista);
+        txthistoriaclinica.setText(String.valueOf(p.num()));
 
     }
     ControlPaciente cp = new ControlPaciente();
@@ -165,6 +167,9 @@ public class FrmPaciente extends javax.swing.JInternalFrame {
             public void keyReleased(java.awt.event.KeyEvent evt) {
                 txtapellido1KeyReleased(evt);
             }
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtapellido1KeyTyped(evt);
+            }
         });
 
         jLabel3.setText("APELLIDO MATERNO");
@@ -172,6 +177,9 @@ public class FrmPaciente extends javax.swing.JInternalFrame {
         txtapellido2.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
                 txtapellido2KeyReleased(evt);
+            }
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtapellido2KeyTyped(evt);
             }
         });
 
@@ -181,6 +189,9 @@ public class FrmPaciente extends javax.swing.JInternalFrame {
             public void keyReleased(java.awt.event.KeyEvent evt) {
                 txtnombre1KeyReleased(evt);
             }
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtnombre1KeyTyped(evt);
+            }
         });
 
         jLabel5.setText("SEGUNDO NOMBRE");
@@ -189,6 +200,9 @@ public class FrmPaciente extends javax.swing.JInternalFrame {
             public void keyReleased(java.awt.event.KeyEvent evt) {
                 txtnombre2KeyReleased(evt);
             }
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtnombre2KeyTyped(evt);
+            }
         });
 
         jLabel6.setText("Nº CEDULA DE CIUDADANÍA");
@@ -196,6 +210,9 @@ public class FrmPaciente extends javax.swing.JInternalFrame {
         txtcedula.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
                 txtcedulaKeyReleased(evt);
+            }
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtcedulaKeyTyped(evt);
             }
         });
 
@@ -1012,76 +1029,59 @@ public class FrmPaciente extends javax.swing.JInternalFrame {
         int i = JOptionPane.showConfirmDialog(this, "¿Desear ingresar paciente?", "Confirmar", JOptionPane.YES_NO_OPTION);
         if (i == 0) {
             //Control de zonas
-            String zona="";
-            if(cbxzona.getSelectedItem().toString().equals("U"))
-            {
-                zona="URBANO";
-            }
-            else
-            {
-                zona="RURAL";
+            String zona = "";
+            if (cbxzona.getSelectedItem().toString().equals("U")) {
+                zona = "URBANO";
+            } else {
+                zona = "RURAL";
             }
             //Control de generos
-            String genero="";
-            if(cbxgenero.getSelectedItem().toString().equals("M"))
-            {
-                genero="MASCULINO";
-            }
-            else
-            {
-                genero="FEMENINO";
+            String genero = "";
+            if (cbxgenero.getSelectedItem().toString().equals("M")) {
+                genero = "MASCULINO";
+            } else {
+                genero = "FEMENINO";
             }
             //Contro de estado civil
-            String estadocivil="";
-            if(cbxestadocivil.getSelectedItem().toString().equals("SOL"))
-            {
-                estadocivil="SOLTERO";
+            String estadocivil = "";
+            if (cbxestadocivil.getSelectedItem().toString().equals("SOL")) {
+                estadocivil = "SOLTERO";
             }
-            if(cbxestadocivil.getSelectedItem().toString().equals("CAS"))
-            {
-                estadocivil="CASADO";
+            if (cbxestadocivil.getSelectedItem().toString().equals("CAS")) {
+                estadocivil = "CASADO";
             }
-            if(cbxestadocivil.getSelectedItem().toString().equals("DIV"))
-            {
-                estadocivil="DIVORCIADO";
+            if (cbxestadocivil.getSelectedItem().toString().equals("DIV")) {
+                estadocivil = "DIVORCIADO";
             }
-            if(cbxestadocivil.getSelectedItem().toString().equals("VIU"))
-            {
-                estadocivil="VIUDO";
+            if (cbxestadocivil.getSelectedItem().toString().equals("VIU")) {
+                estadocivil = "VIUDO";
             }
-            if(cbxestadocivil.getSelectedItem().toString().equals("U-L"))
-            {
-                estadocivil="UNIÓN LIBRE";
+            if (cbxestadocivil.getSelectedItem().toString().equals("U-L")) {
+                estadocivil = "UNIÓN LIBRE";
             }
-            if(txthistoriaclinica.getText().equals(""))
-            {
+            if (txthistoriaclinica.getText().equals("")) {
                 JOptionPane.showMessageDialog(rootPane, "Hay un campo obligatorio no ingresado");
-            }
-            else
-            {
-                if(v.validadorDeCedula(txtcedula.getText())==false)
-                    {
-                        JOptionPane.showMessageDialog(rootPane, "Cedula Incorrecta");
-                        txtcedula.setText(null);
-                    }
-                else
-                {
+            } else {
+                if (v.validadorDeCedula(txtcedula.getText()) == false) {
+                    JOptionPane.showMessageDialog(rootPane, "Cedula Incorrecta");
+                    txtcedula.setText(null);
+                } else {
                     p.guardarpaciente(txtinstitucion.getText(), txtunidadoperativa.getText(), txtcoduo.getText(), txtparroquiacodlo.getText(),
-                    txtcantoncodlo.getText(), txtprovinciacodlo.getText(), Integer.valueOf(txthistoriaclinica.getText()), txtcedula.getText(), txtapellido1.getText(),
-                    txtapellido2.getText(), txtnombre1.getText(), txtnombre2.getText(), txtdireccion.getText(), txtbarrio.getText(),
-                    txtparroquia.getText(), txtcanton.getText(), txtcanton.getText(), zona, txtnrotelefono.getText(), jDateChooser1.getDate(),
-                    txtlugarnacimiento.getText(), txtnacionalidad.getText(), txtgrupocultural.getText(), Integer.valueOf(txtedad.getText()), genero,
-                    estadocivil, txtinstruccion.getText(), jDateChooser2.getDate(), txtocupacion.getText(), txtempresa.getText(), txtsegurosalud.getText(),
-                    txtreferido.getText(), txtencasonecesario.getText(), txtparentesco.getText(), txtafinidad.getText(), txtnrotelefonoreferido.getText(), txtcodadmisionista.getText());
-            if (rdbsi.isSelected() == true) {
-                String ruta = "registro.jasper";
-                rp.reportesGeneral("IDPACIENTE", Integer.valueOf(txthistoriaclinica.getText()), ruta);
+                            txtcantoncodlo.getText(), txtprovinciacodlo.getText(), Integer.valueOf(txthistoriaclinica.getText()), txtcedula.getText(), txtapellido1.getText(),
+                            txtapellido2.getText(), txtnombre1.getText(), txtnombre2.getText(), txtdireccion.getText(), txtbarrio.getText(),
+                            txtparroquia.getText(), txtcanton.getText(), txtcanton.getText(), zona, txtnrotelefono.getText(), jDateChooser1.getDate(),
+                            txtlugarnacimiento.getText(), txtnacionalidad.getText(), txtgrupocultural.getText(), Integer.valueOf(txtedad.getText()), genero,
+                            estadocivil, txtinstruccion.getText(), jDateChooser2.getDate(), txtocupacion.getText(), txtempresa.getText(), txtsegurosalud.getText(),
+                            txtreferido.getText(), txtencasonecesario.getText(), txtparentesco.getText(), txtafinidad.getText(), txtnrotelefonoreferido.getText(), txtcodadmisionista.getText());
+                    if (rdbsi.isSelected() == true) {
+                        String ruta = "registro.jasper";
+                        rp.reportesGeneral("IDPACIENTE", Integer.valueOf(txthistoriaclinica.getText()), ruta);
+                    }
+
+                    limp();
+                }
             }
 
-            limp();
-            }
-            }
-                
         }
 
 
@@ -1187,104 +1187,147 @@ public class FrmPaciente extends javax.swing.JInternalFrame {
     private void txthistoriaclinicaKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txthistoriaclinicaKeyReleased
         // TODO add your handling code here:
         String cadena = (txthistoriaclinica.getText()).toUpperCase();
-        txthistoriaclinica.setText(cadena); 
+        txthistoriaclinica.setText(cadena);
     }//GEN-LAST:event_txthistoriaclinicaKeyReleased
 
     private void txtcedulaKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtcedulaKeyReleased
         // TODO add your handling code here:
-        String cadena = (txtcedula.getText()).toUpperCase();
-        txtcedula.setText(cadena); 
+//        String cadena = (txtcedula.getText()).toUpperCase();
+//        txtcedula.setText(cadena); 
     }//GEN-LAST:event_txtcedulaKeyReleased
 
     private void txtdireccionKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtdireccionKeyReleased
         // TODO add your handling code here:
         String cadena = (txtdireccion.getText()).toUpperCase();
-        txtdireccion.setText(cadena); 
+        txtdireccion.setText(cadena);
     }//GEN-LAST:event_txtdireccionKeyReleased
 
     private void txtbarrioKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtbarrioKeyReleased
         // TODO add your handling code here:
         String cadena = (txtbarrio.getText()).toUpperCase();
-        txtbarrio.setText(cadena); 
+        txtbarrio.setText(cadena);
     }//GEN-LAST:event_txtbarrioKeyReleased
 
     private void txtnrotelefonoKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtnrotelefonoKeyReleased
         // TODO add your handling code here:
         String cadena = (txtnrotelefono.getText()).toUpperCase();
-        txtnrotelefono.setText(cadena); 
+        txtnrotelefono.setText(cadena);
     }//GEN-LAST:event_txtnrotelefonoKeyReleased
 
     private void txtnacionalidadKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtnacionalidadKeyReleased
         // TODO add your handling code here:
         String cadena = (txtnacionalidad.getText()).toUpperCase();
-        txtnacionalidad.setText(cadena); 
+        txtnacionalidad.setText(cadena);
     }//GEN-LAST:event_txtnacionalidadKeyReleased
 
     private void txtgrupoculturalKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtgrupoculturalKeyReleased
         // TODO add your handling code here:
         String cadena = (txtgrupocultural.getText()).toUpperCase();
-        txtgrupocultural.setText(cadena); 
+        txtgrupocultural.setText(cadena);
     }//GEN-LAST:event_txtgrupoculturalKeyReleased
 
     private void txtinstruccionKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtinstruccionKeyReleased
         // TODO add your handling code here:
         String cadena = (txtinstruccion.getText()).toUpperCase();
-        txtinstruccion.setText(cadena); 
+        txtinstruccion.setText(cadena);
     }//GEN-LAST:event_txtinstruccionKeyReleased
 
     private void txtocupacionKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtocupacionKeyReleased
         // TODO add your handling code here:
         String cadena = (txtocupacion.getText()).toUpperCase();
-        txtocupacion.setText(cadena); 
+        txtocupacion.setText(cadena);
     }//GEN-LAST:event_txtocupacionKeyReleased
 
     private void txtempresaKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtempresaKeyReleased
         // TODO add your handling code here:
         String cadena = (txtempresa.getText()).toUpperCase();
-        txtempresa.setText(cadena); 
+        txtempresa.setText(cadena);
     }//GEN-LAST:event_txtempresaKeyReleased
 
     private void txtsegurosaludKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtsegurosaludKeyReleased
         // TODO add your handling code here:
         String cadena = (txtsegurosalud.getText()).toUpperCase();
-        txtsegurosalud.setText(cadena); 
+        txtsegurosalud.setText(cadena);
     }//GEN-LAST:event_txtsegurosaludKeyReleased
 
     private void txtreferidoKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtreferidoKeyReleased
         // TODO add your handling code here:
         String cadena = (txtreferido.getText()).toUpperCase();
-        txtreferido.setText(cadena); 
+        txtreferido.setText(cadena);
     }//GEN-LAST:event_txtreferidoKeyReleased
 
     private void txtencasonecesarioKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtencasonecesarioKeyReleased
         // TODO add your handling code here:
         String cadena = (txtencasonecesario.getText()).toUpperCase();
-        txtencasonecesario.setText(cadena); 
+        txtencasonecesario.setText(cadena);
     }//GEN-LAST:event_txtencasonecesarioKeyReleased
 
     private void txtparentescoKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtparentescoKeyReleased
         // TODO add your handling code here:
         String cadena = (txtparentesco.getText()).toUpperCase();
-        txtparentesco.setText(cadena); 
+        txtparentesco.setText(cadena);
     }//GEN-LAST:event_txtparentescoKeyReleased
 
     private void txtafinidadKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtafinidadKeyReleased
         // TODO add your handling code here:
         String cadena = (txtafinidad.getText()).toUpperCase();
-        txtafinidad.setText(cadena); 
+        txtafinidad.setText(cadena);
     }//GEN-LAST:event_txtafinidadKeyReleased
 
     private void txtnrotelefonoreferidoKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtnrotelefonoreferidoKeyReleased
         // TODO add your handling code here:
         String cadena = (txtnrotelefonoreferido.getText()).toUpperCase();
-        txtnrotelefonoreferido.setText(cadena); 
+        txtnrotelefonoreferido.setText(cadena);
     }//GEN-LAST:event_txtnrotelefonoreferidoKeyReleased
 
     private void txtcodadmisionistaKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtcodadmisionistaKeyReleased
         // TODO add your handling code here:
         String cadena = (txtcodadmisionista.getText()).toUpperCase();
-        txtcodadmisionista.setText(cadena); 
+        txtcodadmisionista.setText(cadena);
     }//GEN-LAST:event_txtcodadmisionistaKeyReleased
+
+    private void txtcedulaKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtcedulaKeyTyped
+        // TODO add your handling code here:
+        char caracter = evt.getKeyChar();
+        if ((caracter < '0') || (caracter > '9')) {
+            evt.consume();
+        }
+
+
+    }//GEN-LAST:event_txtcedulaKeyTyped
+
+    private void txtapellido1KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtapellido1KeyTyped
+        // TODO add your handling code here:
+        char caracter = evt.getKeyChar();
+        if (((caracter < 'A') || (caracter > 'Z')) && ((caracter < 'a') || (caracter > 'z')) ) {
+            evt.consume();
+        }
+
+    }//GEN-LAST:event_txtapellido1KeyTyped
+
+    private void txtapellido2KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtapellido2KeyTyped
+        // TODO add your handling code here:
+        char caracter = evt.getKeyChar();
+        if (((caracter < 'A') || (caracter > 'Z')) && ((caracter < 'a') || (caracter > 'z')) ) {
+            evt.consume();
+        }
+    }//GEN-LAST:event_txtapellido2KeyTyped
+
+    private void txtnombre1KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtnombre1KeyTyped
+        // TODO add your handling code here:
+        char caracter = evt.getKeyChar();
+        if (((caracter < 'A') || (caracter > 'Z')) && ((caracter < 'a') || (caracter > 'z')) ) {
+            evt.consume();
+        }
+    }//GEN-LAST:event_txtnombre1KeyTyped
+
+    private void txtnombre2KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtnombre2KeyTyped
+        // TODO add your handling code here:
+        char caracter = evt.getKeyChar();
+        if (((caracter < 'A') || (caracter > 'Z')) && ((caracter < 'a') || (caracter > 'z')) ) {
+            evt.consume();
+        }
+    }//GEN-LAST:event_txtnombre2KeyTyped
     public void limp() {
         txthistoriaclinica.setText(null);
         txtapellido1.setText(null);

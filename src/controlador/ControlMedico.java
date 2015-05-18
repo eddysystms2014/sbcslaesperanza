@@ -59,6 +59,7 @@ public class ControlMedico {
                     mee = null;
                 }
             } else {
+               
                 Medico m = new Medico();
 
                 m.setIdespecialidad(idEspecialidad);
@@ -69,6 +70,7 @@ public class ControlMedico {
                 m.setEstadomedico(estadoMedico);
                 medicosJpacontrolador.create(m);
                 JOptionPane.showMessageDialog(null, "El medico fue creado exitosamente", "Información", 1);
+                
             }
         } catch (Exception e) {
 
@@ -125,11 +127,12 @@ public class ControlMedico {
     public boolean Modificar(Especialidad idEspecialidad, String nombresMedico,
             String domiciliomedico, String tlfMedico, byte[] imgMedico, String estadoMedico) {
         try {
-            Medico m = medicosJpacontrolador.cedulaMed(domiciliomedico);
+            Medico m = medicosJpacontrolador.findMedico(buscarMedico(domiciliomedico).getIdmedico());
+            
             if (m == null) {
                 return false;
             }
-            if (nombresMedico != "" && domiciliomedico != "" && tlfMedico != "" && estadoMedico != "") {
+            if (nombresMedico != "" && domiciliomedico != "" && tlfMedico != "" && estadoMedico != ""&& imgMedico!=null) {
                 m.setIdespecialidad(idEspecialidad);
                 m.setNombremedico(nombresMedico);
                 m.setTelefonomedico(tlfMedico);
@@ -143,6 +146,32 @@ public class ControlMedico {
             }
 
         } catch (Exception e) {
+            System.out.println(""+e.getMessage());
+        }
+        return true;
+    }
+ public boolean ModificarSinFoto(Especialidad idEspecialidad, String nombresMedico,
+            String domiciliomedico, String tlfMedico, String estadoMedico) {
+        try {
+            Medico m = medicosJpacontrolador.findMedico(buscarMedico(domiciliomedico).getIdmedico());
+            
+            if (m == null) {
+                return false;
+            }
+            if (nombresMedico != "" && domiciliomedico != "" && tlfMedico != "" && estadoMedico != "") {
+                m.setIdespecialidad(idEspecialidad);
+                m.setNombremedico(nombresMedico);
+                m.setTelefonomedico(tlfMedico);
+                m.setEstadomedico(estadoMedico);
+                medicosJpacontrolador.edit(m);
+                JOptionPane.showMessageDialog(null, "Se Modifico exitosamente", "Información", 1);
+
+            } else {
+                JOptionPane.showMessageDialog(null, "Textos Obligatorios", "Información", 1);
+            }
+
+        } catch (Exception e) {
+            System.out.println(""+e.getMessage());
         }
         return true;
     }
