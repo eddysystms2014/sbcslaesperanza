@@ -1288,45 +1288,45 @@ public class FrmPaciente extends javax.swing.JInternalFrame {
 
     private void txtcedulaKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtcedulaKeyTyped
         // TODO add your handling code here:
-        char caracter = evt.getKeyChar();
-        if ((caracter < '0') || (caracter > '9')) {
-            evt.consume();
-        }
+//        char caracter = evt.getKeyChar();
+//        if ((caracter < '0') || (caracter > '9')) {
+//            evt.consume();
+//        }
 
 
     }//GEN-LAST:event_txtcedulaKeyTyped
 
     private void txtapellido1KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtapellido1KeyTyped
         // TODO add your handling code here:
-        char caracter = evt.getKeyChar();
-        if (((caracter < 'A') || (caracter > 'Z')) && ((caracter < 'a') || (caracter > 'z')) ) {
-            evt.consume();
-        }
+//        char caracter = evt.getKeyChar();
+//        if (((caracter < 'A') || (caracter > 'Z')) && ((caracter < 'a') || (caracter > 'z')) ) {
+//            evt.consume();
+//        }
 
     }//GEN-LAST:event_txtapellido1KeyTyped
 
     private void txtapellido2KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtapellido2KeyTyped
         // TODO add your handling code here:
-        char caracter = evt.getKeyChar();
-        if (((caracter < 'A') || (caracter > 'Z')) && ((caracter < 'a') || (caracter > 'z')) ) {
-            evt.consume();
-        }
+//        char caracter = evt.getKeyChar();
+//        if (((caracter < 'A') || (caracter > 'Z')) && ((caracter < 'a') || (caracter > 'z')) ) {
+//            evt.consume();
+//        }
     }//GEN-LAST:event_txtapellido2KeyTyped
 
     private void txtnombre1KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtnombre1KeyTyped
         // TODO add your handling code here:
-        char caracter = evt.getKeyChar();
-        if (((caracter < 'A') || (caracter > 'Z')) && ((caracter < 'a') || (caracter > 'z')) ) {
-            evt.consume();
-        }
+//        char caracter = evt.getKeyChar();
+//        if (((caracter < 'A') || (caracter > 'Z')) && ((caracter < 'a') || (caracter > 'z')) ) {
+//            evt.consume();
+//        }
     }//GEN-LAST:event_txtnombre1KeyTyped
 
     private void txtnombre2KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtnombre2KeyTyped
         // TODO add your handling code here:
-        char caracter = evt.getKeyChar();
-        if (((caracter < 'A') || (caracter > 'Z')) && ((caracter < 'a') || (caracter > 'z')) ) {
-            evt.consume();
-        }
+//        char caracter = evt.getKeyChar();
+//        if (((caracter < 'A') || (caracter > 'Z')) && ((caracter < 'a') || (caracter > 'z')) ) {
+//            evt.consume();
+//        }
     }//GEN-LAST:event_txtnombre2KeyTyped
     public void limp() {
         txthistoriaclinica.setText(null);
