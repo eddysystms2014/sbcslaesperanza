@@ -198,4 +198,12 @@ public class ControlUsuario {
         }
 
     }
+
+    public int contusuario() {
+        int r = 0;
+        for (Usuario usu : usuarioJpacontrolador.findUsuarioEntities()) {
+            r++;
+        }
+        return r;
+    }
 }

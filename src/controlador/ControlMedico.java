@@ -20,6 +20,7 @@ import modelo.dao.MedicoJpaController;
 import modelo.entidades.Especialidad;
 import modelo.entidades.Medico;
 import vista.FrmHistorias;
+import vista.frmReportes;
 
 /**
  *
@@ -120,6 +121,13 @@ public class ControlMedico {
         for (Medico item : getMedicos()) {
             if (item.getEstadomedico().equals("SI")) {
                 FrmHistorias.jComboBox1.addItem(item.getNombremedico());
+            }
+        }
+    }
+     public void cargarCmbMedico1() {
+        for (Medico item : getMedicos()) {
+            if (item.getEstadomedico().equals("SI")) {
+                frmReportes.jComboBox2.addItem(item.getNombremedico());
             }
         }
     }

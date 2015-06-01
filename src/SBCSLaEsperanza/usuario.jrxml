@@ -1,5 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="null" language="groovy" pageWidth="595" pageHeight="842" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="092e60a3-3e9d-4718-9ce3-7546e5e5d0b0">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
 	<queryString language="SQL">
 		<![CDATA[SELECT
      usuarios.`IDUSUARIO` AS usuarios_IDUSUARIO,
@@ -27,14 +30,14 @@ FROM
 					<textElement>
 						<font size="34" isBold="true"/>
 					</textElement>
-					<text><![CDATA[TITLE]]></text>
+					<text><![CDATA[USUARIOS]]></text>
 				</staticText>
 				<staticText>
 					<reportElement x="395" y="43" width="180" height="20" forecolor="#FFFFFF" uuid="8f52fbe9-e079-4b57-8f17-a3714306e8b1"/>
 					<textElement textAlignment="Right">
 						<font size="14" isBold="false"/>
 					</textElement>
-					<text><![CDATA[Add a description here]]></text>
+					<text><![CDATA[]]></text>
 				</staticText>
 			</frame>
 		</band>
@@ -50,37 +53,37 @@ FROM
 			<staticText>
 				<reportElement mode="Opaque" x="0" y="0" width="111" height="20" forecolor="#006699" backcolor="#E6E6E6" uuid="dfd5023f-da2a-4e8b-a511-85148672b30c"/>
 				<textElement textAlignment="Center">
-					<font size="14" isBold="true"/>
+					<font size="10" isBold="true"/>
 				</textElement>
-				<text><![CDATA[usuarios_IDUSUARIO]]></text>
+				<text><![CDATA[Num. Usuario]]></text>
 			</staticText>
 			<staticText>
 				<reportElement mode="Opaque" x="111" y="0" width="111" height="20" forecolor="#006699" backcolor="#E6E6E6" uuid="5f0652bf-33df-411b-b12a-27d5d66d3fdf"/>
 				<textElement textAlignment="Center">
-					<font size="14" isBold="true"/>
+					<font size="10" isBold="true"/>
 				</textElement>
-				<text><![CDATA[usuarios_NOMBREUSUARIO]]></text>
+				<text><![CDATA[NOMBRE USUARIO]]></text>
 			</staticText>
 			<staticText>
 				<reportElement mode="Opaque" x="222" y="0" width="111" height="20" forecolor="#006699" backcolor="#E6E6E6" uuid="75eb5914-9663-40a2-85be-0eba89471763"/>
 				<textElement textAlignment="Center">
-					<font size="14" isBold="true"/>
+					<font size="10" isBold="true"/>
 				</textElement>
-				<text><![CDATA[usuarios_CONTRASENA]]></text>
+				<text><![CDATA[CONTRASEÑA]]></text>
 			</staticText>
 			<staticText>
 				<reportElement mode="Opaque" x="333" y="0" width="111" height="20" forecolor="#006699" backcolor="#E6E6E6" uuid="808e5861-f54a-40bf-b68a-8c9d57a333ff"/>
 				<textElement textAlignment="Center">
-					<font size="14" isBold="true"/>
+					<font size="10" isBold="true"/>
 				</textElement>
-				<text><![CDATA[usuarios_TIPOUSUARIO]]></text>
+				<text><![CDATA[TIPO USUARIO]]></text>
 			</staticText>
 			<staticText>
 				<reportElement mode="Opaque" x="444" y="0" width="111" height="20" forecolor="#006699" backcolor="#E6E6E6" uuid="19cbe352-4e8a-469d-baec-ee4ee9ccb3f3"/>
 				<textElement textAlignment="Center">
-					<font size="14" isBold="true"/>
+					<font size="10" isBold="true"/>
 				</textElement>
-				<text><![CDATA[usuarios_ESTADOUSUARIO]]></text>
+				<text><![CDATA[ESTADO USUARIO]]></text>
 			</staticText>
 		</band>
 	</columnHeader>
@@ -92,35 +95,35 @@ FROM
 			<textField isStretchWithOverflow="true">
 				<reportElement x="0" y="0" width="111" height="20" uuid="e7379e64-ffc0-4add-949d-32198497ca64"/>
 				<textElement>
-					<font size="14"/>
+					<font size="12"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{usuarios_IDUSUARIO}]]></textFieldExpression>
 			</textField>
 			<textField isStretchWithOverflow="true">
 				<reportElement x="111" y="0" width="111" height="20" uuid="67eb2a01-2432-4410-8d6a-79212ee637b3"/>
 				<textElement>
-					<font size="14"/>
+					<font size="12"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{usuarios_NOMBREUSUARIO}]]></textFieldExpression>
 			</textField>
 			<textField isStretchWithOverflow="true">
 				<reportElement x="222" y="0" width="111" height="20" uuid="0bbd1695-8faa-4d1a-b540-846756caeee1"/>
 				<textElement>
-					<font size="14"/>
+					<font size="12"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{usuarios_CONTRASENA}]]></textFieldExpression>
 			</textField>
 			<textField isStretchWithOverflow="true">
 				<reportElement x="333" y="0" width="111" height="20" uuid="7c2b875a-e4db-4623-ae1a-6dbd640fbaac"/>
 				<textElement>
-					<font size="14"/>
+					<font size="12"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{usuarios_TIPOUSUARIO}]]></textFieldExpression>
 			</textField>
 			<textField isStretchWithOverflow="true">
 				<reportElement x="444" y="0" width="111" height="20" uuid="599ae1b2-d770-4bc8-b3e5-b6d65355aa59"/>
 				<textElement>
-					<font size="14"/>
+					<font size="12"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{usuarios_ESTADOUSUARIO}]]></textFieldExpression>
 			</textField>

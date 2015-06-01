@@ -12,6 +12,7 @@ import controlador.frmcontrol;
 import java.awt.Dimension;
 import java.awt.Image;
 import java.awt.Toolkit;
+import java.awt.event.KeyEvent;
 import java.awt.image.BufferedImage;
 import java.io.ByteArrayInputStream;
 import java.io.File;
@@ -206,7 +207,19 @@ public class FrmMedicos extends javax.swing.JInternalFrame {
 
         lbl5.setText("Especialidad");
 
+        txtTlf.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtTlfKeyTyped(evt);
+            }
+        });
+
         lbl4.setText("Teléfono");
+
+        txtid.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtidKeyTyped(evt);
+            }
+        });
 
         txtNombreMedico.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -216,6 +229,9 @@ public class FrmMedicos extends javax.swing.JInternalFrame {
         txtNombreMedico.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
                 txtNombreMedicoKeyReleased(evt);
+            }
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtNombreMedicoKeyTyped(evt);
             }
         });
 
@@ -530,7 +546,7 @@ public class FrmMedicos extends javax.swing.JInternalFrame {
             jLabel2.setIcon(new ImageIcon(img));
 
         } catch (Exception e) {
-            JOptionPane.showMessageDialog(null, "Ingrese Ci Existente");
+            JOptionPane.showMessageDialog(null, "FALTAN DATOS");
         }
     }//GEN-LAST:event_jButton4ActionPerformed
 
@@ -682,6 +698,27 @@ public class FrmMedicos extends javax.swing.JInternalFrame {
         // TODO add your handling code here:
         btnAbrirE.setVisible(true);
     }//GEN-LAST:event_jRadioButton1ActionPerformed
+
+    private void txtidKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtidKeyTyped
+        // TODO add your handling code here:
+         char caracter = evt.getKeyChar();
+        if ((caracter < '0') || (caracter > '9')) {
+            evt.consume();
+        }
+    }//GEN-LAST:event_txtidKeyTyped
+
+    private void txtNombreMedicoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtNombreMedicoKeyTyped
+        // TODO add your handling code here:}
+       
+    }//GEN-LAST:event_txtNombreMedicoKeyTyped
+
+    private void txtTlfKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtTlfKeyTyped
+        // TODO add your handling code here:
+         char caracter = evt.getKeyChar();
+        if ((caracter < '0') || (caracter > '9')) {
+            evt.consume();
+        }
+    }//GEN-LAST:event_txtTlfKeyTyped
 
     private void cargarCmbEspecialidades() {
         for (Especialidad item : FC.getEspecialidad()) {

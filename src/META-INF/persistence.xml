@@ -4,6 +4,8 @@
     <provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>
     <class>modelo.entidades.Especialidad</class>
     <class>modelo.entidades.Historia</class>
+    <class>modelo.entidades.Institucion</class>
+    <class>modelo.entidades.Localizacion</class>
     <class>modelo.entidades.Medico</class>
     <class>modelo.entidades.Paciente</class>
     <class>modelo.entidades.Turno</class>

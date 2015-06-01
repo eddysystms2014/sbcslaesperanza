@@ -5,12 +5,14 @@
  */
 package vista;
 
+import SBCSLaEsperanza.DesktopConFondo;
 import SBCSLaEsperanza.ReportesControlador;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.UIManager;
+import modelo.entidades.reloj;
 import vista.FrmPaciente;
 
 /**
@@ -28,7 +30,10 @@ public class VistaPrincipal extends javax.swing.JFrame {
         mnPass.setVisible(false);
         mnid.setVisible(false);
         this.setExtendedState(JFrame.MAXIMIZED_BOTH);
-//        setIconImage(new ImageIcon(getClass().getResource("../bot.png")).getImage());
+        setIconImage(new ImageIcon(this.getClass().getResource("icono.JPG")).getImage());
+        ((DesktopConFondo) jDesktopPane1).setImagen("fondo.jpg");
+        reloj relo=new reloj();
+ 
     }
 
     ReportesControlador repC = new ReportesControlador();
@@ -42,7 +47,7 @@ public class VistaPrincipal extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jDesktopPane1 = new javax.swing.JDesktopPane();
+        jDesktopPane1 = new DesktopConFondo();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         jMenuItem3 = new javax.swing.JMenuItem();
@@ -65,6 +70,7 @@ public class VistaPrincipal extends javax.swing.JFrame {
         jMenuItem10 = new javax.swing.JMenuItem();
         jMenu10 = new javax.swing.JMenu();
         jMenuItem12 = new javax.swing.JMenuItem();
+        jMenuItem17 = new javax.swing.JMenuItem();
         jMenuItem13 = new javax.swing.JMenuItem();
         jMenuItem14 = new javax.swing.JMenuItem();
         jMenuItem16 = new javax.swing.JMenuItem();
@@ -74,9 +80,9 @@ public class VistaPrincipal extends javax.swing.JFrame {
         jMenu2 = new javax.swing.JMenu();
         mnRol = new javax.swing.JMenu();
         mnPass = new javax.swing.JMenu();
+        reloj = new javax.swing.JMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setTitle("SUBCENTRO DE SALUD LA ESPERANZA");
 
         javax.swing.GroupLayout jDesktopPane1Layout = new javax.swing.GroupLayout(jDesktopPane1);
         jDesktopPane1.setLayout(jDesktopPane1Layout);
@@ -91,6 +97,7 @@ public class VistaPrincipal extends javax.swing.JFrame {
 
         jMenuBar1.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
 
+        jMenu1.setBackground(new java.awt.Color(255, 255, 255));
         jMenu1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/folder.png"))); // NOI18N
         jMenu1.setText("Archivo");
         jMenu1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -252,6 +259,15 @@ public class VistaPrincipal extends javax.swing.JFrame {
         });
         jMenu10.add(jMenuItem12);
 
+        jMenuItem17.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/users.png"))); // NOI18N
+        jMenuItem17.setText("Medicos Inactivos");
+        jMenuItem17.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem17ActionPerformed(evt);
+            }
+        });
+        jMenu10.add(jMenuItem17);
+
         jMenuItem13.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/users.png"))); // NOI18N
         jMenuItem13.setText("Lista Pacientes Registrados");
         jMenuItem13.addActionListener(new java.awt.event.ActionListener() {
@@ -303,6 +319,10 @@ public class VistaPrincipal extends javax.swing.JFrame {
         mnPass.setText("jMenu");
         jMenuBar1.add(mnPass);
 
+        reloj.setForeground(new java.awt.Color(0, 0, 153));
+        reloj.setText("reloj");
+        jMenuBar1.add(reloj);
+
         setJMenuBar(jMenuBar1);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -332,7 +352,7 @@ public class VistaPrincipal extends javax.swing.JFrame {
 
     private void jMenuItem5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem5ActionPerformed
         // TODO add your handling code here:
-        
+
         FrmMedicos FE;
         try {
             FE = new FrmMedicos();
@@ -460,12 +480,12 @@ public class VistaPrincipal extends javax.swing.JFrame {
     private void jMenuItem12ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem12ActionPerformed
         String ruta = "medicos.jasper";
         repC.reporteTabular(ruta);
-       
+
     }//GEN-LAST:event_jMenuItem12ActionPerformed
 
     private void jMenuItem13ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem13ActionPerformed
         // TODO add your handling code here:
-        String ruta = "pacientes.jasper";
+        String ruta = "report1.jasper";
         repC.reporteTabular(ruta);
     }//GEN-LAST:event_jMenuItem13ActionPerformed
 
@@ -473,7 +493,7 @@ public class VistaPrincipal extends javax.swing.JFrame {
         // TODO add your handling code here:
         String ruta = "usuario.jasper";
         repC.reporteTabular(ruta);
-        
+
     }//GEN-LAST:event_jMenuItem14ActionPerformed
 
     private void jMenuItem15ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem15ActionPerformed
@@ -491,6 +511,12 @@ public class VistaPrincipal extends javax.swing.JFrame {
         fb.show();
         VistaPrincipal.jDesktopPane1.add(fb);
     }//GEN-LAST:event_jMenuItem16ActionPerformed
+
+    private void jMenuItem17ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem17ActionPerformed
+        // TODO add your handling code here:
+        String ruta = "medicos1.jasper";
+        repC.reporteTabular(ruta);
+    }//GEN-LAST:event_jMenuItem17ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -551,6 +577,7 @@ public class VistaPrincipal extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMenuItem14;
     private javax.swing.JMenuItem jMenuItem15;
     public static javax.swing.JMenuItem jMenuItem16;
+    private javax.swing.JMenuItem jMenuItem17;
     private javax.swing.JMenuItem jMenuItem2;
     private javax.swing.JMenuItem jMenuItem3;
     private javax.swing.JMenuItem jMenuItem4;
@@ -563,5 +590,6 @@ public class VistaPrincipal extends javax.swing.JFrame {
     public static javax.swing.JMenu mnPass;
     public static javax.swing.JMenu mnRol;
     public static javax.swing.JMenu mnid;
+    public static javax.swing.JMenu reloj;
     // End of variables declaration//GEN-END:variables
 }

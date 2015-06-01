@@ -7,6 +7,8 @@ package controlador;
 
 import SBCSLaEsperanza.ReportesControlador;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 import java.util.logging.Level;
@@ -20,6 +22,8 @@ import modelo.dao.PacienteJpaController;
 import modelo.entidades.Especialidad;
 import modelo.entidades.Paciente;
 import vista.FrmBusquedas;
+import static vista.FrmBusquedas.jTable1;
+import vista.FrmPaciente;
 import static vista.FrmPaciente.txthistoriaclinica;
 import vista.frmEspecialidad;
 
@@ -107,7 +111,6 @@ public class ControlPaciente {
         p.setParropaciente(parr);
         p.setCantpaciente(cant);
         p.setProvinpaciente(prov);
-        p.setIdpaciente(codpaciente);
         p.setCedpaciente(ced);
         p.setApeppaciente(ape1);
         p.setApempaciente(ape2);
@@ -194,53 +197,52 @@ public class ControlPaciente {
         }
     }
 
-    public int edad(String fecha_nac) {
+    public int edad(String fecha) {
+        Date fechaNac = null;
+        try {
 
-        Date fechaActual = new Date();
-        SimpleDateFormat formato = new SimpleDateFormat("dd-MM-yyyy");
-        String hoy = formato.format(fechaActual);
-        String[] dat1 = fecha_nac.split("-");
-        String[] dat2 = hoy.split("-");
-        int años = Integer.parseInt(dat2[2]) - Integer.parseInt(dat1[2]);
-        int mes = Integer.parseInt(dat2[1]) - Integer.parseInt(dat1[1]);
-        if (mes < 0) {
-            años = años - 1;
-        } else if (mes == 0) {
-            int dia = Integer.parseInt(dat2[0]) - Integer.parseInt(dat1[0]);
-            if (dia > 0) {
-                años = años - 1;
-            }
+            fechaNac = new SimpleDateFormat("dd-MM-yyyy").parse(fecha);
+        } catch (Exception ex) {
+            System.out.println("Error:" + ex);
         }
-        return años;
+        Calendar fechaNacimiento = Calendar.getInstance();
+        Calendar fechaActual = Calendar.getInstance();
+        fechaNacimiento.setTime(fechaNac);
+        int año = fechaActual.get(Calendar.YEAR) - fechaNacimiento.get(Calendar.YEAR);
+        int mes = fechaActual.get(Calendar.MONTH) - fechaNacimiento.get(Calendar.MONTH);
+        int dia = fechaActual.get(Calendar.DATE) - fechaNacimiento.get(Calendar.DATE);
+        if (mes < 0 || (mes == 0 && dia < 0)) {
+            año--;
+        }
+        return año;
     }
 
     public int años(int id) {
         String r;
-        Date fechaN = buscarPaciente(id).getFenacpaciente();
+        Date fechaN = paciente(id).getFenacpaciente();
         SimpleDateFormat formatoN = new SimpleDateFormat("dd-MM-yyyy");
         String fecha_nac = formatoN.format(fechaN);
 
-        Date fechaActual = new Date();
-        SimpleDateFormat formato = new SimpleDateFormat("dd-MM-yyyy");
-        String hoy = formato.format(fechaActual);
+        Date fechaNac = null;
+        try {
 
-        String[] dat1 = fecha_nac.split("-");
-        String[] dat2 = hoy.split("-");
-        int años = Integer.parseInt(dat2[2]) - Integer.parseInt(dat1[2]);
-        int mes = Integer.parseInt(dat2[1]) - Integer.parseInt(dat1[1]);
-        if (mes < 0) {
-            años = años - 1;
-        } else if (mes == 0) {
-            int dia = Integer.parseInt(dat2[0]) - Integer.parseInt(dat1[0]);
-            if (dia > 0) {
-                años = años - 1;
-            }
+            fechaNac = new SimpleDateFormat("dd-MM-yyyy").parse(fecha_nac);
+        } catch (Exception ex) {
+            System.out.println("Error:" + ex);
         }
-
-        return años;
+        Calendar fechaNacimiento = Calendar.getInstance();
+        Calendar fechaActual = Calendar.getInstance();
+        fechaNacimiento.setTime(fechaNac);
+        int año = fechaActual.get(Calendar.YEAR) - fechaNacimiento.get(Calendar.YEAR);
+        int mes = fechaActual.get(Calendar.MONTH) - fechaNacimiento.get(Calendar.MONTH);
+        int dia = fechaActual.get(Calendar.DATE) - fechaNacimiento.get(Calendar.DATE);
+        if (mes < 0 || (mes == 0 && dia < 0)) {
+            año--;
+        }
+        return año;
     }
 
-    public Paciente buscarPaciente(int id) {
+    public Paciente paciente(int id) {
 
         for (Paciente p : pacienteJpaControlador.findPacienteEntities()) {
             if (p.getIdpaciente().equals(id)) {
@@ -294,10 +296,10 @@ public class ControlPaciente {
         Object[] fila = new Object[6];
         modelo.addColumn("Nro_Historia");
         modelo.addColumn("Cedula");
-        modelo.addColumn("Apellido_Paterno");
-        modelo.addColumn("Apellido_Materno");
-        modelo.addColumn("Primer_nombre");
-        modelo.addColumn("Segundo_nombre");
+        modelo.addColumn("Apellido Paterno");
+        modelo.addColumn("Apellido Materno");
+        modelo.addColumn("Primer Nombre");
+        modelo.addColumn("Segundo Nombre");
 
         for (Paciente e : getPacientes()) {
             if (e.prueba(e.elimiEspacio(FrmBusquedas.txtBusquedaNombres.getText()))) {
@@ -322,14 +324,52 @@ public class ControlPaciente {
 
     public void imprimirTodo() {
         ReportesControlador rc = new ReportesControlador();
-        int i = JOptionPane.showConfirmDialog(null, "¿Realmente desea Imprimir "+num()+" Registros de pacientes", "Confirmar", JOptionPane.YES_NO_OPTION);
+        int i = JOptionPane.showConfirmDialog(null, "¿Realmente desea Imprimir " + num() + " Registros de pacientes", "Confirmar", JOptionPane.YES_NO_OPTION);
         if (i == 0) {
             String ruta = "registro.jasper";
             for (Paciente p : pacienteJpaControlador.findPacienteEntities()) {
-               
-                    rc.imprimirTodo("IDPACIENTE", p.getIdpaciente(), ruta);
-                
+
+                rc.imprimirTodo("IDPACIENTE", p.getIdpaciente(), ruta);
+
             }
         }
     }
+
+    public void historias() {
+        int r = 0;
+        String s = "";
+        ArrayList<Integer> Listado = new ArrayList<Integer>();
+        ArrayList<Integer> Listado2 = new ArrayList<Integer>();
+        for (Paciente e : getPacientes()) {
+            Listado.add(e.getIdpaciente());
+        }
+        for (int i = 0; i < Listado.size(); i++) {
+//            System.out.println("" + Listado.get(i));
+            if (Listado.get(i) > r) {
+                r = Listado.get(i);
+            }
+        }
+        FrmPaciente.txthistoriaclinica.setText(String.valueOf(r + 1));
+        for (int j = 0; j < r; j++) {
+            Listado2.add(j);
+        }
+        for (int i = 0; i < Listado.size(); i++) {
+            for (int j = 0; j < Listado2.size(); j++) {
+                if (Listado.get(i).equals(Listado2.get(j))) {
+                    Listado2.remove(j);
+                }
+            }
+        }
+
+//        for (int i = 0; i < Listado2.size(); i++) {
+//            System.out.println(" " + Listado2.get(i));
+//        }
+//        System.out.println("" + Listado.size());
+//        System.out.println("" + Listado2.size());
+    }
+
+//public static void main(String[] args) {
+//        ControlPaciente c = new ControlPaciente();
+//        c.historias();
+//    }
 }

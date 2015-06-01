@@ -136,7 +136,7 @@ public class ReportesControlador {
 
     }
 
-    public void reporteatenciones(String HORARIOATENCION,String VHORARIOATENCION, String mes,String Vmes, String archivo) {
+    public void reporteatenciones(String HORARIOATENCION, String VHORARIOATENCION, String mes, String Vmes, String archivo) {
         try {
             //System.getProperty("user.dir")+ dir;
 
@@ -171,8 +171,8 @@ public class ReportesControlador {
         }
 
     }
-    
-    public void reporteatencionesDiario(String HORARIOATENCION,String VHORARIOATENCION, String mes,String Vmes,String dia,String Vdia, String archivo) {
+
+    public void reporteatencionesDiario(String HORARIOATENCION, String VHORARIOATENCION, String mes, String Vmes, String dia, String Vdia, String archivo) {
         try {
             //System.getProperty("user.dir")+ dir;
 
@@ -209,7 +209,7 @@ public class ReportesControlador {
 
     }
 
-    public void reporteatencionesAnual(String HORARIOATENCION,String VHORARIOATENCION, String archivo) {
+    public void reporteatencionesAnual(String HORARIOATENCION, String VHORARIOATENCION, String archivo) {
         try {           //System.getProperty("user.dir")+ dir;
 
 //            File ruta = dir;
@@ -242,7 +242,8 @@ public class ReportesControlador {
         }
 
     }
-     public void imprimirTodo(String bddVar, int HORARIOATENCION, String archivo) {
+
+    public void imprimirTodo(String bddVar, int HORARIOATENCION, String archivo) {
         try {
             //System.getProperty("user.dir")+ dir;
 
@@ -275,8 +276,46 @@ public class ReportesControlador {
 
     }
 
-    public static void main(String[] args) {
-        ReportesControlador b = new ReportesControlador();
-        b.reporteatencionesDiario("2015","HORARIOATENCION", "05","mes","07","dia","reportemes.jasper");
+    public void reportediariomedico(String año, String Vaño, String mes, String Vmes, String dia, String Vdia, String medico, String Vmedico, String archivo) {
+        try {
+            //System.getProperty("user.dir")+ dir;
+
+//            File ruta = dir;
+//            System.out.println("ruta : " + ruta);
+//            if (ruta == null) {
+//                System.out.println("No se encontro el archivo.");
+//                System.exit(2);
+//            }
+            JasperReport reporte = null;
+            try {
+//                reporte = (JasperReport) JRLoader.loadObject(dir);
+                URL in = this.getClass().getResource(archivo);
+                reporte = (JasperReport) JRLoader.loadObject(in);
+            } catch (JRException jr) {
+                System.out.println("Error al cargar reporte." + jr.getMessage());
+                System.exit(3);
+            }
+            Map parametro = new HashMap();
+//            parametro.put(bddVar, HORARIOATENCION);
+            parametro.put(Vaño, año);
+            parametro.put(Vmes, mes);
+            parametro.put(Vdia, dia);
+            parametro.put(Vmedico, medico);
+//            JasperPrint jasperPrint = JasperFillManager.fillReport(archivo, parametro, con.getCon());
+            JasperPrint jasperPrint = JasperFillManager.fillReport(reporte, parametro, con.getCon());
+            JasperViewer jv = new JasperViewer(jasperPrint, false);
+            jv.setTitle("REPORTE");
+            jv.setVisible(true);
+//            JasperPrintManager.printReport(jasperPrint, false);
+
+        } catch (Exception e) {
+            System.out.println("Mensaje de Error " + e.getMessage());
+        }
+
     }
+
+//    public static void main(String[] args) {
+//        ReportesControlador b = new ReportesControlador();
+//        b.reporteatencionesDiario("2015", "HORARIOATENCION", "05", "mes", "07", "dia", "reportemes.jasper");
+//    }
 }

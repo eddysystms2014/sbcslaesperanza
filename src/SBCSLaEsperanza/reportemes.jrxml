@@ -57,11 +57,11 @@ extract(day from turnos.`HORARIOATENCION`)=$P{dia}]]>
 		<groupHeader>
 			<band height="85">
 				<staticText>
-					<reportElement style="Column header" x="358" y="51" width="63" height="15" forecolor="#000000" uuid="a42fca68-77bc-4af6-8148-44de5729ce25"/>
+					<reportElement style="Column header" x="350" y="52" width="63" height="15" forecolor="#000000" uuid="a42fca68-77bc-4af6-8148-44de5729ce25"/>
 					<text><![CDATA[NOMBRES]]></text>
 				</staticText>
 				<staticText>
-					<reportElement style="Column header" x="13" y="47" width="96" height="15" forecolor="#000000" uuid="daa5a389-b79b-40c1-a6f3-0b8e7bf1fedb"/>
+					<reportElement style="Column header" x="8" y="51" width="96" height="15" forecolor="#000000" uuid="daa5a389-b79b-40c1-a6f3-0b8e7bf1fedb"/>
 					<text><![CDATA[NRO. HISTORIA]]></text>
 				</staticText>
 				<line>
@@ -90,7 +90,7 @@ extract(day from turnos.`HORARIOATENCION`)=$P{dia}]]>
 					<text><![CDATA[MEDICO]]></text>
 				</staticText>
 				<staticText>
-					<reportElement style="Column header" x="232" y="47" width="76" height="23" forecolor="#000000" uuid="0d22ec27-e8be-421f-b2e7-46a349e7be85"/>
+					<reportElement style="Column header" x="205" y="50" width="76" height="23" forecolor="#000000" uuid="0d22ec27-e8be-421f-b2e7-46a349e7be85"/>
 					<textElement textAlignment="Center"/>
 					<text><![CDATA[ APELLIDOS]]></text>
 				</staticText>
@@ -119,6 +119,13 @@ extract(day from turnos.`HORARIOATENCION`)=$P{dia}]]>
 						<font size="14"/>
 					</textElement>
 					<text><![CDATA[LISTA ]]></text>
+				</staticText>
+				<staticText>
+					<reportElement style="Column header" x="107" y="33" width="99" height="36" forecolor="#000000" uuid="b53c7aff-deae-4b30-a64f-4b115b942ce2"/>
+					<textElement>
+						<font size="10"/>
+					</textElement>
+					<text><![CDATA[TIPO ATENCION    NORMAL(NRO)  EMERGENCIA (EM)]]></text>
 				</staticText>
 			</band>
 		</groupHeader>
@@ -154,31 +161,38 @@ extract(day from turnos.`HORARIOATENCION`)=$P{dia}]]>
 		<band height="17" splitType="Stretch"/>
 	</columnHeader>
 	<detail>
-		<band height="60" splitType="Stretch">
+		<band height="46" splitType="Stretch">
 			<textField>
-				<reportElement style="Detail" x="115" y="17" width="38" height="15" uuid="278f2cd6-5f62-4bc7-ab89-8c846edd6b9a"/>
+				<reportElement style="Detail" x="115" y="6" width="38" height="15" uuid="278f2cd6-5f62-4bc7-ab89-8c846edd6b9a"/>
 				<textFieldExpression><![CDATA[$F{turnos_ESTADOTURNO}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement style="Detail" x="347" y="17" width="81" height="15" uuid="12598de3-075e-4c1c-9cf0-14051493d32d"/>
+				<reportElement style="Detail" x="347" y="6" width="81" height="15" uuid="12598de3-075e-4c1c-9cf0-14051493d32d"/>
 				<textFieldExpression><![CDATA[$F{paciente_NOM1PACIENTE}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement style="Detail" x="350" y="39" width="81" height="15" uuid="9b04d149-5581-4b1f-8528-2439848d7821"/>
+				<reportElement style="Detail" x="348" y="28" width="81" height="15" uuid="9b04d149-5581-4b1f-8528-2439848d7821"/>
 				<textFieldExpression><![CDATA[$F{paciente_NOM2PACIENTE}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement style="Detail" x="234" y="20" width="84" height="15" uuid="bd673f08-8ab1-4877-9d3e-b18721b535b0"/>
+				<reportElement style="Detail" x="209" y="9" width="84" height="15" uuid="bd673f08-8ab1-4877-9d3e-b18721b535b0"/>
 				<textFieldExpression><![CDATA[$F{paciente_APEPPACIENTE}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement style="Detail" x="5" y="17" width="84" height="15" uuid="3aa40b5a-b31d-4a67-90d6-637abf92cae4"/>
+				<reportElement style="Detail" x="5" y="6" width="84" height="15" uuid="3aa40b5a-b31d-4a67-90d6-637abf92cae4"/>
 				<textFieldExpression><![CDATA[$F{paciente_IDPACIENTE}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement style="Detail" x="439" y="17" width="104" height="15" uuid="a4c24f9e-823c-44d3-842b-0c920a7a8d23"/>
+				<reportElement style="Detail" x="439" y="6" width="104" height="15" uuid="a4c24f9e-823c-44d3-842b-0c920a7a8d23"/>
 				<textFieldExpression><![CDATA[$F{medicos_NOMBREMEDICO}]]></textFieldExpression>
 			</textField>
+			<textField>
+				<reportElement style="Detail" x="210" y="26" width="84" height="15" uuid="e1e4b821-5ed7-4820-a580-9eb368ac4cb5"/>
+				<textFieldExpression><![CDATA[$F{paciente_APEMPACIENTE}]]></textFieldExpression>
+			</textField>
+			<line>
+				<reportElement x="1" y="44" width="554" height="1" uuid="c435898b-7eaa-4510-a6cc-a913b4716b01"/>
+			</line>
 		</band>
 	</detail>
 	<pageFooter>
