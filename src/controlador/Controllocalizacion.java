@@ -34,40 +34,65 @@ public class Controllocalizacion {
     }
 
     public void cargarCmbPais() {
-        ArrayList<Localizacion> datos = new ArrayList<>();
-        Set<Localizacion> linkedHashSet = new LinkedHashSet<Localizacion>();
+        ArrayList<String> datos = new ArrayList<String>();
         for (Localizacion item : getLocalizacion()) {
-            datos.add(item);
+            datos.add(item.getPais());
         }
-        linkedHashSet.addAll(datos);
+        HashSet hs = new HashSet();
+        hs.addAll(datos);
         datos.clear();
-        datos.addAll(linkedHashSet);
-        for (Localizacion dato : datos) {
-            frmParametrosInsti.cbmpais.addItem(dato.getPais());
+        datos.addAll(hs);
+        for (int i = 0; i < datos.size(); i++) {
+            frmParametrosInsti.cbmpais.addItem(datos.get(i));
         }
     }
 
     public void cargarCmbProvincia(String pais) {
+        ArrayList<String> datos = new ArrayList<String>();
         for (Localizacion item : getLocalizacion()) {
             if (item.getPais().equals(pais)) {
-                frmParametrosInsti.cmdprovincia.addItem(item.getProvincia());
+                datos.add(item.getProvincia());
             }
+        }
+        HashSet hs = new HashSet();
+        hs.addAll(datos);
+        datos.clear();
+        datos.addAll(hs);
+        for (int i = 0; i < datos.size(); i++) {
+            frmParametrosInsti.cmdprovincia.addItem(datos.get(i));
         }
     }
 
     public void cargarCmbCanton(String provincia) {
+
+        ArrayList<String> datos = new ArrayList<String>();
         for (Localizacion item : getLocalizacion()) {
             if (item.getProvincia().equals(provincia)) {
-                frmParametrosInsti.cbmcanton.addItem(item.getCanton());
+                datos.add(item.getCanton());
             }
+        }
+        HashSet hs = new HashSet();
+        hs.addAll(datos);
+        datos.clear();
+        datos.addAll(hs);
+        for (int i = 0; i < datos.size(); i++) {
+            frmParametrosInsti.cbmcanton.addItem(datos.get(i));
         }
     }
 
     public void cargarCmbParroquia(String canton) {
+        ArrayList<String> datos = new ArrayList<String>();
         for (Localizacion item : getLocalizacion()) {
             if (item.getCanton().equals(canton)) {
-                frmParametrosInsti.cbmparroquia.addItem(item.getParroquia());
+                datos.add(item.getParroquia());
             }
+        }
+        HashSet hs = new HashSet();
+        hs.addAll(datos);
+        datos.clear();
+        datos.addAll(hs);
+        for (int i = 0; i < datos.size(); i++) {
+            frmParametrosInsti.cbmparroquia.addItem(datos.get(i));
         }
     }
 
@@ -92,24 +117,48 @@ public class Controllocalizacion {
     }
 
     public void Provincia() {
+        ArrayList<String> datos = new ArrayList<String>();
         for (Localizacion item : getLocalizacion()) {
-            FrmPaciente.txtprovincia.addItem(item.getProvincia());
+                datos.add(item.getProvincia());
+        }
+        HashSet hs = new HashSet();
+        hs.addAll(datos);
+        datos.clear();
+        datos.addAll(hs);
+        for (int i = 0; i < datos.size(); i++) {
+            FrmPaciente.txtprovincia.addItem(datos.get(i));
         }
     }
 
     public void Canton(String provincia) {
+        ArrayList<String> datos = new ArrayList<String>();
         for (Localizacion item : getLocalizacion()) {
             if (item.getProvincia().equals(provincia)) {
-                FrmPaciente.txtcanton.addItem(item.getCanton());
+                datos.add(item.getCanton());
             }
+        }
+        HashSet hs = new HashSet();
+        hs.addAll(datos);
+        datos.clear();
+        datos.addAll(hs);
+        for (int i = 0; i < datos.size(); i++) {
+            FrmPaciente.txtcanton.addItem(datos.get(i));
         }
     }
 
     public void Parroquia(String canton) {
+        ArrayList<String> datos = new ArrayList<String>();
         for (Localizacion item : getLocalizacion()) {
             if (item.getCanton().equals(canton)) {
-                FrmPaciente.txtparroquia.addItem(item.getParroquia());
+                datos.add(item.getParroquia());
             }
+        }
+        HashSet hs = new HashSet();
+        hs.addAll(datos);
+        datos.clear();
+        datos.addAll(hs);
+        for (int i = 0; i < datos.size(); i++) {
+            FrmPaciente.txtparroquia.addItem(datos.get(i));
         }
     }
 }
