@@ -8,7 +8,7 @@ package vista;
 import controlador.Controllocalizacion;
 import controlador.controlinstitucion;
 import javax.swing.JOptionPane;
-import modelo.entidades.Localizacion;
+import modelo.entidades.Divisionpolitica;
 
 /**
  *
@@ -27,6 +27,7 @@ public class frmParametrosInsti extends javax.swing.JFrame {
         cl.cargarCmbPais();
         this.setLocationRelativeTo(null);
     }
+    String codigo;
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -58,6 +59,12 @@ public class frmParametrosInsti extends javax.swing.JFrame {
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
         jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(""));
+
+        txtunidadsistema.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txtunidadsistemaKeyReleased(evt);
+            }
+        });
 
         cmdprovincia.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -205,11 +212,21 @@ public class frmParametrosInsti extends javax.swing.JFrame {
 
     private void cbmparroquiaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbmparroquiaActionPerformed
         // TODO add your handling code here:
+        try {
+            for (int i = 0; i < cl.cargarCmbParroquiacod(cbmcanton.getSelectedItem().toString()).size(); i++) {
+                String[] r = cl.cargarCmbParroquiacod(cbmcanton.getSelectedItem().toString()).get(i).split("-");
+                if (cbmparroquia.getSelectedItem().toString().equals(r[0])) {
+                    codigo = r[1];
+                }
 
+            }
+
+        } catch (Exception e) {
+        }
     }//GEN-LAST:event_cbmparroquiaActionPerformed
 
     private void cmdprovinciaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmdprovinciaActionPerformed
-        // TODO add your handling code here:
+      
         try {
             cbmcanton.removeAllItems();
             cbmcanton.addItem("     ");
@@ -220,19 +237,18 @@ public class frmParametrosInsti extends javax.swing.JFrame {
     }//GEN-LAST:event_cmdprovinciaActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
+
         try {
             if (!cbmpais.getSelectedItem().equals("") && !cmdprovincia.getSelectedItem().equals("")
                     && !cbmcanton.getSelectedItem().equals("") && !cbmparroquia.getSelectedItem().equals("") && !txtcodunidad.getText().equals("") && !txtunidadsistema.getText().equals("")) {
                 int i = JOptionPane.showConfirmDialog(this, "¿grabar informacion?", "Confirmar", JOptionPane.YES_NO_OPTION);
                 if (i == 0) {
-                    Localizacion esp = new Localizacion();
-                    int id = cl.buscarlocalizacion(cbmpais.getSelectedItem().toString(), cmdprovincia.getSelectedItem().toString(),
-                            cbmcanton.getSelectedItem().toString(), cbmparroquia.getSelectedItem().toString()).getId();
-                    esp.setId(id);
+                    Divisionpolitica esp = new Divisionpolitica();
+                    int id = Integer.valueOf(codigo);
+                    esp.setCodloc(id);
                     ci.guardarInstitucion(esp, "1", "MSP", txtunidadsistema.getText(), txtcodunidad.getText());
                     this.dispose();
-                    FrmLogin flogin=new FrmLogin();
+                    FrmLogin flogin = new FrmLogin();
                     flogin.show();
                 }
 
@@ -244,6 +260,12 @@ public class frmParametrosInsti extends javax.swing.JFrame {
         }
 
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void txtunidadsistemaKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtunidadsistemaKeyReleased
+        // TODO add your handling code here:
+        String cadena = (txtunidadsistema.getText()).toUpperCase();
+            txtunidadsistema.setText(cadena);
+    }//GEN-LAST:event_txtunidadsistemaKeyReleased
 
     /**
      * @param args the command line arguments

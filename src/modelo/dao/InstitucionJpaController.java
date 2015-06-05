@@ -14,8 +14,8 @@ import javax.persistence.EntityNotFoundException;
 import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Root;
 import modelo.dao.exceptions.NonexistentEntityException;
+import modelo.entidades.Divisionpolitica;
 import modelo.entidades.Institucion;
-import modelo.entidades.Localizacion;
 
 /**
  *
@@ -37,9 +37,9 @@ public class InstitucionJpaController implements Serializable {
         try {
             em = getEntityManager();
             em.getTransaction().begin();
-            Localizacion idlocalizacion = institucion.getIdlocalizacion();
+            Divisionpolitica idlocalizacion = institucion.getIdlocalizacion();
             if (idlocalizacion != null) {
-                idlocalizacion = em.getReference(idlocalizacion.getClass(), idlocalizacion.getId());
+                idlocalizacion = em.getReference(idlocalizacion.getClass(), idlocalizacion.getCodloc());
                 institucion.setIdlocalizacion(idlocalizacion);
             }
             em.persist(institucion);
@@ -61,10 +61,10 @@ public class InstitucionJpaController implements Serializable {
             em = getEntityManager();
             em.getTransaction().begin();
             Institucion persistentInstitucion = em.find(Institucion.class, institucion.getIdinstitucion());
-            Localizacion idlocalizacionOld = persistentInstitucion.getIdlocalizacion();
-            Localizacion idlocalizacionNew = institucion.getIdlocalizacion();
+            Divisionpolitica idlocalizacionOld = persistentInstitucion.getIdlocalizacion();
+            Divisionpolitica idlocalizacionNew = institucion.getIdlocalizacion();
             if (idlocalizacionNew != null) {
-                idlocalizacionNew = em.getReference(idlocalizacionNew.getClass(), idlocalizacionNew.getId());
+                idlocalizacionNew = em.getReference(idlocalizacionNew.getClass(), idlocalizacionNew.getCodloc());
                 institucion.setIdlocalizacion(idlocalizacionNew);
             }
             institucion = em.merge(institucion);
@@ -105,7 +105,7 @@ public class InstitucionJpaController implements Serializable {
             } catch (EntityNotFoundException enfe) {
                 throw new NonexistentEntityException("The institucion with id " + id + " no longer exists.", enfe);
             }
-            Localizacion idlocalizacion = institucion.getIdlocalizacion();
+            Divisionpolitica idlocalizacion = institucion.getIdlocalizacion();
             if (idlocalizacion != null) {
                 idlocalizacion.getInstitucionList().remove(institucion);
                 idlocalizacion = em.merge(idlocalizacion);

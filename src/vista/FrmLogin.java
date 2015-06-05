@@ -101,6 +101,11 @@ public class FrmLogin extends javax.swing.JFrame {
         });
 
         txtUsuario.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createTitledBorder(""), "USUARIO"));
+        txtUsuario.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txtUsuarioKeyReleased(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
@@ -220,7 +225,6 @@ public class FrmLogin extends javax.swing.JFrame {
                 VistaPrincipal.mnRol.setText(CU.buscarRol(usuario, password).getTipousuario().toString());
                 VistaPrincipal.mnPass.setText(CU.buscarRol(usuario, password).getContrasena().toString());
                 VistaPrincipal.jMenu3.setVisible(false);
-                VistaPrincipal.jMenu4.setVisible(false);
                 VistaPrincipal.jMenu5.setVisible(false);
                 VistaPrincipal.jMenu10.setVisible(false);
                 VistaPrincipal.jMenu6.setVisible(false);
@@ -239,6 +243,12 @@ public class FrmLogin extends javax.swing.JFrame {
         // TODO add your handling code here:
 
     }//GEN-LAST:event_txtPasswordKeyPressed
+
+    private void txtUsuarioKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtUsuarioKeyReleased
+        // TODO add your handling code here:
+        String cadena = (txtUsuario.getText()).toUpperCase();
+            txtUsuario.setText(cadena);
+    }//GEN-LAST:event_txtUsuarioKeyReleased
 
     /**
      * @param args the command line arguments

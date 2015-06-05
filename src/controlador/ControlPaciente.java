@@ -6,6 +6,7 @@
 package controlador;
 
 import SBCSLaEsperanza.ReportesControlador;
+import java.beans.PropertyVetoException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -16,15 +17,19 @@ import java.util.logging.Logger;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
+import javax.swing.JInternalFrame;
 import javax.swing.JOptionPane;
+import javax.swing.SwingUtilities;
 import javax.swing.table.DefaultTableModel;
 import modelo.dao.PacienteJpaController;
+import modelo.dao.exceptions.NonexistentEntityException;
 import modelo.entidades.Especialidad;
 import modelo.entidades.Paciente;
 import vista.FrmBusquedas;
 import static vista.FrmBusquedas.jTable1;
 import vista.FrmPaciente;
 import static vista.FrmPaciente.txthistoriaclinica;
+import vista.VistaPrincipal;
 import vista.frmEspecialidad;
 
 /**
@@ -148,6 +153,15 @@ public class ControlPaciente {
             JOptionPane.showMessageDialog(null, "Algo está mal");
         }
         return true;
+    }
+
+    public void eliminarRegistro(int id) {
+        try {
+            pacienteJpaControlador.destroy(id);
+            JOptionPane.showMessageDialog(null, "Registro Eliminado");
+        } catch (NonexistentEntityException ex) {
+            JOptionPane.showMessageDialog(null, "No se puede Eliminar ...");
+        }
     }
 
     public void buscarpacienteNumHistoria(int app1) {
@@ -372,4 +386,46 @@ public class ControlPaciente {
 //        ControlPaciente c = new ControlPaciente();
 //        c.historias();
 //    }
+    public void Buscarcedula() {
+        //String cadenaInformativa = "";
+        modelo = new DefaultTableModel();
+        FrmBusquedas.jTable1.setModel(modelo);
+        Object[] fila = new Object[6];
+        modelo.addColumn("Nro_Historia");
+        modelo.addColumn("Cedula");
+        modelo.addColumn("Apellido Paterno");
+        modelo.addColumn("Apellido Materno");
+        modelo.addColumn("Primer Nombre");
+        modelo.addColumn("Segundo Nombre");
+
+        for (Paciente e : getPacientes()) {
+            if (e.Cedula(e.elimiEspacio(FrmBusquedas.txtBusquedaCedula.getText()))) {
+
+                fila[0] = e.getIdpaciente();
+                fila[1] = e.getCedpaciente();
+                fila[2] = e.getApeppaciente();
+                fila[3] = e.getApempaciente();
+                fila[4] = e.getNom1paciente();
+                fila[5] = e.getNom2paciente();
+                modelo.addRow(fila);
+            }
+//            }
+        }
+    }
+
+    public List<Paciente> getbuscarPacientes(String nombres) {
+        try {
+            List<Paciente> datos = new ArrayList<Paciente>();
+            for (Paciente e : getPacientes()) {
+                if (e.prueba(e.elimiEspacio(nombres))) {
+                    datos.add(e);
+                }
+            }
+            return datos;
+        } catch (Exception e) {
+        }
+        return null;
+
+    }
+
 }

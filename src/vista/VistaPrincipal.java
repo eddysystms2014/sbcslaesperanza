@@ -7,6 +7,8 @@ package vista;
 
 import SBCSLaEsperanza.DesktopConFondo;
 import SBCSLaEsperanza.ReportesControlador;
+import controlador.ControlFormularios;
+import controlador.ControlPaciente;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.ImageIcon;
@@ -32,9 +34,10 @@ public class VistaPrincipal extends javax.swing.JFrame {
         this.setExtendedState(JFrame.MAXIMIZED_BOTH);
         setIconImage(new ImageIcon(this.getClass().getResource("icono.JPG")).getImage());
         ((DesktopConFondo) jDesktopPane1).setImagen("fondo.jpg");
-        reloj relo=new reloj();
- 
+        reloj relo = new reloj();
+
     }
+//    ControlFormularios cf = new ControlFormularios();
 
     ReportesControlador repC = new ReportesControlador();
 
@@ -54,15 +57,10 @@ public class VistaPrincipal extends javax.swing.JFrame {
         jMenuItem2 = new javax.swing.JMenuItem();
         jMenu8 = new javax.swing.JMenu();
         jMenu9 = new javax.swing.JMenu();
-        jMenuItem11 = new javax.swing.JMenuItem();
-        jMenuItem15 = new javax.swing.JMenuItem();
         jMenuItem1 = new javax.swing.JMenuItem();
+        jMenuItem11 = new javax.swing.JMenuItem();
         jMenu3 = new javax.swing.JMenu();
-        jMenuItem6 = new javax.swing.JMenuItem();
-        jMenuItem4 = new javax.swing.JMenuItem();
         jMenuItem5 = new javax.swing.JMenuItem();
-        jMenu4 = new javax.swing.JMenu();
-        jMenuItem7 = new javax.swing.JMenuItem();
         jMenu5 = new javax.swing.JMenu();
         jMenuItem9 = new javax.swing.JMenuItem();
         jMenuItem8 = new javax.swing.JMenuItem();
@@ -130,26 +128,6 @@ public class VistaPrincipal extends javax.swing.JFrame {
         jMenu9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/new doc.png"))); // NOI18N
         jMenu9.setText("Paciente");
 
-        jMenuItem11.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_A, java.awt.event.InputEvent.CTRL_MASK));
-        jMenuItem11.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/search.png"))); // NOI18N
-        jMenuItem11.setText("Turnos");
-        jMenuItem11.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem11ActionPerformed(evt);
-            }
-        });
-        jMenu9.add(jMenuItem11);
-
-        jMenuItem15.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_M, java.awt.event.InputEvent.CTRL_MASK));
-        jMenuItem15.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/edit_1.png"))); // NOI18N
-        jMenuItem15.setText("Actualizar");
-        jMenuItem15.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem15ActionPerformed(evt);
-            }
-        });
-        jMenu9.add(jMenuItem15);
-
         jMenuItem1.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_T, java.awt.event.InputEvent.CTRL_MASK));
         jMenuItem1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/new doc.png"))); // NOI18N
         jMenuItem1.setText("Registrar");
@@ -160,31 +138,23 @@ public class VistaPrincipal extends javax.swing.JFrame {
         });
         jMenu9.add(jMenuItem1);
 
+        jMenuItem11.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_A, java.awt.event.InputEvent.CTRL_MASK));
+        jMenuItem11.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/search.png"))); // NOI18N
+        jMenuItem11.setText("Turnos");
+        jMenuItem11.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem11ActionPerformed(evt);
+            }
+        });
+        jMenu9.add(jMenuItem11);
+
         jMenu8.add(jMenu9);
 
         jMenu3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/doc.jpg"))); // NOI18N
         jMenu3.setText("Médicos");
 
-        jMenuItem6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/up_alt.png"))); // NOI18N
-        jMenuItem6.setText("Activar");
-        jMenuItem6.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem6ActionPerformed(evt);
-            }
-        });
-        jMenu3.add(jMenuItem6);
-
-        jMenuItem4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/notebook.png"))); // NOI18N
-        jMenuItem4.setText("Modificar");
-        jMenuItem4.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem4ActionPerformed(evt);
-            }
-        });
-        jMenu3.add(jMenuItem4);
-
         jMenuItem5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/new doc.png"))); // NOI18N
-        jMenuItem5.setText("Registrar");
+        jMenuItem5.setText("Gestion");
         jMenuItem5.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jMenuItem5ActionPerformed(evt);
@@ -193,20 +163,6 @@ public class VistaPrincipal extends javax.swing.JFrame {
         jMenu3.add(jMenuItem5);
 
         jMenu8.add(jMenu3);
-
-        jMenu4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/new archive.png"))); // NOI18N
-        jMenu4.setText("Especialidad");
-
-        jMenuItem7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/advanced.png"))); // NOI18N
-        jMenuItem7.setText("Gestión");
-        jMenuItem7.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem7ActionPerformed(evt);
-            }
-        });
-        jMenu4.add(jMenuItem7);
-
-        jMenu8.add(jMenu4);
 
         jMenu5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/user.png"))); // NOI18N
         jMenu5.setText("Usuarios");
@@ -286,8 +242,6 @@ public class VistaPrincipal extends javax.swing.JFrame {
         });
         jMenu10.add(jMenuItem14);
 
-        jMenu6.add(jMenu10);
-
         jMenuItem16.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/rep.png"))); // NOI18N
         jMenuItem16.setText("Reporte Atenciones");
         jMenuItem16.addActionListener(new java.awt.event.ActionListener() {
@@ -295,7 +249,9 @@ public class VistaPrincipal extends javax.swing.JFrame {
                 jMenuItem16ActionPerformed(evt);
             }
         });
-        jMenu6.add(jMenuItem16);
+        jMenu10.add(jMenuItem16);
+
+        jMenu6.add(jMenu10);
 
         jMenuBar1.add(jMenu6);
 
@@ -343,84 +299,27 @@ public class VistaPrincipal extends javax.swing.JFrame {
 
     private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
 
+        ControlFormularios cf = new ControlFormularios();
         FrmPaciente FP = new FrmPaciente();
-        FP.show();
-        jDesktopPane1.add(FP);
+        cf.ControlaInstancia(FP);
 
 
     }//GEN-LAST:event_jMenuItem1ActionPerformed
-
-    private void jMenuItem5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem5ActionPerformed
-        // TODO add your handling code here:
-
-        FrmMedicos FE;
-        try {
-            FE = new FrmMedicos();
-            FE.show();
-            jDesktopPane1.add(FE);
-            FrmMedicos.btnModificarMedico.setVisible(false);
-            FrmMedicos.jButton3.setVisible(false);
-            FrmMedicos.jButton4.setVisible(false);
-            FrmMedicos.jPanel5.setVisible(false);
-            FrmMedicos.jButton2.setVisible(false);
-            FrmMedicos.jPanel6.setVisible(false);
-
-        } catch (IllegalAccessException ex) {
-
-        }
-
-
-    }//GEN-LAST:event_jMenuItem5ActionPerformed
-
-    private void jMenuItem6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem6ActionPerformed
-        // TODO add your handling code here:
-        FrmMedicos FE;
-        try {
-            FE = new FrmMedicos();
-            FE.show();
-            jDesktopPane1.add(FE);
-            FrmMedicos.btnModificarMedico.setVisible(false);
-            FrmMedicos.jButton3.setVisible(false);
-            FrmMedicos.jButton4.setVisible(true);
-            FrmMedicos.jPanel2.setVisible(false);
-            FrmMedicos.jPanel3.setVisible(false);
-            FrmMedicos.jPanel4.setVisible(false);
-            FrmMedicos.jButton1.setVisible(false);
-            FrmMedicos.btnAbrirE.setVisible(false);
-            FrmMedicos.txtNombreMedico.setEnabled(false);
-            FrmMedicos.txtTlf.setEnabled(false);
-            FrmMedicos.txtid.setEnabled(false);
-            FrmMedicos.cbtIdEspecialidad.setEnabled(false);
-            FrmMedicos.jPanel6.setVisible(false);
-        } catch (IllegalAccessException ex) {
-
-        }
-
-
-    }//GEN-LAST:event_jMenuItem6ActionPerformed
-
-    private void jMenuItem7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem7ActionPerformed
-        // TODO add your handling code here:
-        frmEspecialidad FE = new frmEspecialidad();
-        FE.show();
-        jDesktopPane1.add(FE);
-    }//GEN-LAST:event_jMenuItem7ActionPerformed
 
     private void jMenuItem8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem8ActionPerformed
         // TODO add your handling code here:
 
         FrmUsuario FU = new FrmUsuario();
-        FU.show();
-        FU.setSize(460, 450);
-        jDesktopPane1.add(FU);
+        ControlFormularios cf = new ControlFormularios();
+        cf.ControlaInstancia(FU);;
         FrmUsuario.btnModificar.setVisible(false);
         FrmUsuario.btnEliminar.setVisible(false);
     }//GEN-LAST:event_jMenuItem8ActionPerformed
 
     private void jMenuItem9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem9ActionPerformed
         FrmUsuario FU = new FrmUsuario();
-        FU.show();
-        jDesktopPane1.add(FU);
+        ControlFormularios cf = new ControlFormularios();
+        cf.ControlaInstancia(FU);
         FrmUsuario.btnGuardar.setVisible(false);
     }//GEN-LAST:event_jMenuItem9ActionPerformed
 
@@ -434,8 +333,8 @@ public class VistaPrincipal extends javax.swing.JFrame {
     private void jMenuItem11ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem11ActionPerformed
         // TODO add your handling code here:
         FrmBusquedas FT = new FrmBusquedas();
-        FT.show();
-        jDesktopPane1.add(FT);
+        ControlFormularios cf = new ControlFormularios();
+        cf.ControlaInstancia(FT);
     }//GEN-LAST:event_jMenuItem11ActionPerformed
 
     private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
@@ -450,32 +349,6 @@ public class VistaPrincipal extends javax.swing.JFrame {
         fl.show();
 
     }//GEN-LAST:event_jMenuItem3ActionPerformed
-
-    private void jMenuItem4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem4ActionPerformed
-        // TODO add your handling code here:
-        FrmMedicos FE;
-        try {
-            FE = new FrmMedicos();
-            FE.show();
-            jDesktopPane1.add(FE);
-            FrmMedicos.btnModificarMedico.setVisible(false);
-            FrmMedicos.jButton3.setVisible(false);
-            FrmMedicos.jButton4.setVisible(true);
-            FrmMedicos.jPanel2.setVisible(false);
-            FrmMedicos.jPanel3.setVisible(false);
-            FrmMedicos.jPanel4.setVisible(false);
-            FrmMedicos.btnAbrirE.setVisible(false);
-            FrmMedicos.jButton1.setVisible(false);
-//            FrmMedicos.btnAbrirE.setVisible(true);
-//            FrmMedicos.txtNombreMedico.setEnabled(false);
-//            FrmMedicos.txtTlf.setEnabled(false);
-            FrmMedicos.txtid.setEnabled(false);
-//            FrmMedicos.cbtIdEspecialidad.setEnabled(false);
-        } catch (IllegalAccessException ex) {
-
-        }
-
-    }//GEN-LAST:event_jMenuItem4ActionPerformed
 
     private void jMenuItem12ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem12ActionPerformed
         String ruta = "medicos.jasper";
@@ -496,15 +369,6 @@ public class VistaPrincipal extends javax.swing.JFrame {
 
     }//GEN-LAST:event_jMenuItem14ActionPerformed
 
-    private void jMenuItem15ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem15ActionPerformed
-        // TODO add your handling code here:
-        FrmBusquedas fb = new FrmBusquedas();
-        fb.show();
-        VistaPrincipal.jDesktopPane1.add(fb);
-        FrmBusquedas.jButton5.setVisible(true);
-        FrmBusquedas.jButton1.setVisible(false);
-    }//GEN-LAST:event_jMenuItem15ActionPerformed
-
     private void jMenuItem16ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem16ActionPerformed
         // TODO add your handling code here:
         frmReportes fb = new frmReportes();
@@ -517,6 +381,26 @@ public class VistaPrincipal extends javax.swing.JFrame {
         String ruta = "medicos1.jasper";
         repC.reporteTabular(ruta);
     }//GEN-LAST:event_jMenuItem17ActionPerformed
+
+    private void jMenuItem5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem5ActionPerformed
+        // TODO add your handling code here:
+
+        FrmMedicos FE;
+        try {
+            FE = new FrmMedicos();
+            ControlFormularios cf = new ControlFormularios();
+            cf.ControlaInstancia(FE);
+            //            FrmMedicos.btnModificarMedico.setVisible(false);
+            //            FrmMedicos.jButton4.setVisible(false);
+            //            FrmMedicos.jPanel5.setVisible(false);
+            //            FrmMedicos.jButton2.setVisible(false);
+            //            FrmMedicos.jPanel6.setVisible(false);
+
+        } catch (IllegalAccessException ex) {
+
+        }
+
+    }//GEN-LAST:event_jMenuItem5ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -562,7 +446,6 @@ public class VistaPrincipal extends javax.swing.JFrame {
     public static javax.swing.JMenu jMenu10;
     private javax.swing.JMenu jMenu2;
     public static javax.swing.JMenu jMenu3;
-    public static javax.swing.JMenu jMenu4;
     public static javax.swing.JMenu jMenu5;
     public static javax.swing.JMenu jMenu6;
     private javax.swing.JMenu jMenu7;
@@ -575,15 +458,11 @@ public class VistaPrincipal extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMenuItem12;
     private javax.swing.JMenuItem jMenuItem13;
     private javax.swing.JMenuItem jMenuItem14;
-    private javax.swing.JMenuItem jMenuItem15;
     public static javax.swing.JMenuItem jMenuItem16;
     private javax.swing.JMenuItem jMenuItem17;
     private javax.swing.JMenuItem jMenuItem2;
     private javax.swing.JMenuItem jMenuItem3;
-    private javax.swing.JMenuItem jMenuItem4;
     private javax.swing.JMenuItem jMenuItem5;
-    private javax.swing.JMenuItem jMenuItem6;
-    private javax.swing.JMenuItem jMenuItem7;
     private javax.swing.JMenuItem jMenuItem8;
     private javax.swing.JMenuItem jMenuItem9;
     public static javax.swing.JMenu mnNomUs;

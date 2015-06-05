@@ -11,6 +11,10 @@ import java.util.List;
  * @author Wsr1389
  */
 public class MoverRegistros<T> {
+
+    public MoverRegistros() {
+    }
+    
     private List<T> lista;
     private int mov = 0;
     

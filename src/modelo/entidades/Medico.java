@@ -40,6 +40,7 @@ import javax.xml.bind.annotation.XmlTransient;
     @NamedQuery(name = "Medico.findByTelefonomedico", query = "SELECT m FROM Medico m WHERE m.telefonomedico = :telefonomedico"),
     @NamedQuery(name = "Medico.findByEstadomedico", query = "SELECT m FROM Medico m WHERE m.estadomedico = :estadomedico")})
 public class Medico implements Serializable {
+
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -160,5 +161,42 @@ public class Medico implements Serializable {
         return "modelo.entidades.Medico[ idmedico=" + idmedico + " ]";
     }
 
-    
+    public String elimiEspacio(String m) {
+        String a[] = m.split(" ");
+        String s = "";
+        for (int i = 0; i < a.length; i++) {
+            if (a[i] != " ") {
+                s += a[i];
+            }
+        }
+        return s;
+    }
+
+    public boolean prueba(String inicio) {
+
+        if (inicio.isEmpty() || inicio.length() > (nombremedico.length())) {
+            return false;
+        }
+        for (int i = 0; i < inicio.length(); ++i) {
+            String r = elimiEspacio(nombremedico);
+            if (inicio.charAt(i) != (r.charAt(i))) {
+                return false;
+            }
+        }
+        return true;
+    }
+
+    public boolean cedula(String inicio) {
+
+        if (inicio.isEmpty() || inicio.length() > (domiciliomedico.length())) {
+            return false;
+        }
+        for (int i = 0; i < inicio.length(); ++i) {
+            String r = elimiEspacio(domiciliomedico);
+            if (inicio.charAt(i) != (r.charAt(i))) {
+                return false;
+            }
+        }
+        return true;
+    }
 }

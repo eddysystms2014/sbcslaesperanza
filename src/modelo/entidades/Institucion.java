@@ -40,35 +40,23 @@ public class Institucion implements Serializable {
     @Basic(optional = false)
     @Column(name = "IDINSTITUCION")
     private Integer idinstitucion;
-    @Basic(optional = false)
     @Column(name = "DEFAULT1")
     private String default1;
-    @Basic(optional = false)
     @Column(name = "INSTITUCIONSISTEMA")
     private String institucionsistema;
-    @Basic(optional = false)
     @Column(name = "UNIDADSISTEMA")
     private String unidadsistema;
-    @Basic(optional = false)
     @Column(name = "CODUO")
     private String coduo;
-    @JoinColumn(name = "IDLOCALIZACION", referencedColumnName = "ID")
-    @ManyToOne(optional = false)
-    private Localizacion idlocalizacion;
+    @JoinColumn(name = "IDLOCALIZACION", referencedColumnName = "CODLOC")
+    @ManyToOne
+    private Divisionpolitica idlocalizacion;
 
     public Institucion() {
     }
 
     public Institucion(Integer idinstitucion) {
         this.idinstitucion = idinstitucion;
-    }
-
-    public Institucion(Integer idinstitucion, String default1, String institucionsistema, String unidadsistema, String coduo) {
-        this.idinstitucion = idinstitucion;
-        this.default1 = default1;
-        this.institucionsistema = institucionsistema;
-        this.unidadsistema = unidadsistema;
-        this.coduo = coduo;
     }
 
     public Integer getIdinstitucion() {
@@ -111,11 +99,11 @@ public class Institucion implements Serializable {
         this.coduo = coduo;
     }
 
-    public Localizacion getIdlocalizacion() {
+    public Divisionpolitica getIdlocalizacion() {
         return idlocalizacion;
     }
 
-    public void setIdlocalizacion(Localizacion idlocalizacion) {
+    public void setIdlocalizacion(Divisionpolitica idlocalizacion) {
         this.idlocalizacion = idlocalizacion;
     }
 

@@ -62,6 +62,11 @@ public class FrmMedicos extends javax.swing.JInternalFrame {
         Dimension desktopSize = VistaPrincipal.jDesktopPane1.getSize();
         Dimension jInternalFrameSize = this.getSize();
         this.setLocation((desktopSize.width - jInternalFrameSize.width) / 2, 4);
+        Inabilitar();
+        jButton10.setEnabled(false);
+        jButton8.setEnabled(false);
+        jButton12.setEnabled(false);
+        jPanel6.setVisible(false);
 
     }
     String idEspe;
@@ -85,11 +90,6 @@ public class FrmMedicos extends javax.swing.JInternalFrame {
 
         buttonGroup1 = new javax.swing.ButtonGroup();
         jPanel1 = new javax.swing.JPanel();
-        jPanel2 = new javax.swing.JPanel();
-        jButton3 = new javax.swing.JButton();
-        btnModificarMedico = new javax.swing.JButton();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
         jPanel3 = new javax.swing.JPanel();
         cbtEstadoMedico = new javax.swing.JComboBox();
         jLabel1 = new javax.swing.JLabel();
@@ -102,96 +102,34 @@ public class FrmMedicos extends javax.swing.JInternalFrame {
         lbl2 = new javax.swing.JLabel();
         lbl1 = new javax.swing.JLabel();
         jButton6 = new javax.swing.JButton();
-        jPanel5 = new javax.swing.JPanel();
-        jButton4 = new javax.swing.JButton();
-        jTextField1 = new javax.swing.JTextField();
         jPanel4 = new javax.swing.JPanel();
-        jButton5 = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
         btnAbrirE = new javax.swing.JButton();
         jPanel6 = new javax.swing.JPanel();
         jRadioButton1 = new javax.swing.JRadioButton();
         jRadioButton2 = new javax.swing.JRadioButton();
+        jButton7 = new javax.swing.JButton();
+        jButton8 = new javax.swing.JButton();
+        jButton11 = new javax.swing.JButton();
+        jButton10 = new javax.swing.JButton();
+        jButton12 = new javax.swing.JButton();
+        jButton9 = new javax.swing.JButton();
+        jButton5 = new javax.swing.JButton();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jTable1 = new javax.swing.JTable();
+        jComboBox1 = new javax.swing.JComboBox();
+        jLabel3 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
+        jTextField2 = new javax.swing.JTextField();
+        jLabel5 = new javax.swing.JLabel();
+        jTextField3 = new javax.swing.JTextField();
+        jLabel6 = new javax.swing.JLabel();
 
         setClosable(true);
         setIconifiable(true);
         setTitle("MÉDICOS");
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
-
-        jPanel2.setBackground(new java.awt.Color(204, 204, 204));
-        jPanel2.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 1, 1, 1, new java.awt.Color(204, 204, 204)));
-
-        jButton3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/remove.png"))); // NOI18N
-        jButton3.setText("ELIMINAR");
-        jButton3.setBorder(javax.swing.BorderFactory.createEtchedBorder(javax.swing.border.EtchedBorder.RAISED, null, java.awt.Color.white));
-        jButton3.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jButton3.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton3ActionPerformed(evt);
-            }
-        });
-
-        btnModificarMedico.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/edit_1.png"))); // NOI18N
-        btnModificarMedico.setText("EDITAR");
-        btnModificarMedico.setBorder(javax.swing.BorderFactory.createEtchedBorder(javax.swing.border.EtchedBorder.RAISED, null, java.awt.Color.white));
-        btnModificarMedico.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        btnModificarMedico.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnModificarMedicoActionPerformed(evt);
-            }
-        });
-
-        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/copy doc.png"))); // NOI18N
-        jButton1.setText("GUARDAR");
-        jButton1.setToolTipText("GUARDAR");
-        jButton1.setBorder(javax.swing.BorderFactory.createEtchedBorder(javax.swing.border.EtchedBorder.RAISED, null, new java.awt.Color(255, 255, 255)));
-        jButton1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
-            }
-        });
-
-        jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/copy doc.png"))); // NOI18N
-        jButton2.setText("Guardar");
-        jButton2.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 1, 1, 1, new java.awt.Color(255, 255, 255)));
-        jButton2.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
-            }
-        });
-
-        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
-        jPanel2.setLayout(jPanel2Layout);
-        jPanel2Layout.setHorizontalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                .addGap(29, 29, 29)
-                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(btnModificarMedico, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(34, Short.MAX_VALUE))
-        );
-        jPanel2Layout.setVerticalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(btnModificarMedico, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(0, 0, Short.MAX_VALUE))
-                    .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap())
-        );
 
         jPanel3.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 1, 1, 1, new java.awt.Color(204, 204, 204)));
 
@@ -265,7 +203,7 @@ public class FrmMedicos extends javax.swing.JInternalFrame {
                         .addComponent(cbtEstadoMedico, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 39, Short.MAX_VALUE)
                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(txtNombreMedico, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 312, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(txtid, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 312, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -298,84 +236,18 @@ public class FrmMedicos extends javax.swing.JInternalFrame {
                     .addComponent(cbtIdEspecialidad, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(lbl5, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButton6))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 39, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 21, Short.MAX_VALUE)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
                     .addComponent(cbtEstadoMedico, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(34, 34, 34))
         );
 
-        jPanel5.setBorder(javax.swing.BorderFactory.createTitledBorder("Buscar Ingrese CI"));
-
-        jButton4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/search.png"))); // NOI18N
-        jButton4.setText("BUSCAR");
-        jButton4.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton4ActionPerformed(evt);
-            }
-        });
-
-        javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
-        jPanel5.setLayout(jPanel5Layout);
-        jPanel5Layout.setHorizontalGroup(
-            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel5Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jButton4)
-                .addGap(18, 18, 18)
-                .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 177, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-        jPanel5Layout.setVerticalGroup(
-            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel5Layout.createSequentialGroup()
-                .addGap(20, 20, 20)
-                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(28, Short.MAX_VALUE))
-        );
-
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(34, Short.MAX_VALUE)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                        .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(31, 31, 31))
-        );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(44, Short.MAX_VALUE))
-        );
-
         jPanel4.setBackground(new java.awt.Color(255, 255, 255));
         jPanel4.setBorder(javax.swing.BorderFactory.createEtchedBorder(javax.swing.border.EtchedBorder.RAISED, null, java.awt.Color.white));
 
-        jButton5.setFont(new java.awt.Font("Tahoma", 3, 11)); // NOI18N
-        jButton5.setForeground(new java.awt.Color(204, 0, 0));
-        jButton5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/del.png"))); // NOI18N
-        jButton5.setText("SALIR");
-        jButton5.setBorder(javax.swing.BorderFactory.createEtchedBorder(javax.swing.border.EtchedBorder.RAISED, null, java.awt.Color.white));
-        jButton5.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton5ActionPerformed(evt);
-            }
-        });
-
         jLabel2.setBackground(new java.awt.Color(204, 204, 255));
+        jLabel2.setBorder(javax.swing.BorderFactory.createTitledBorder("Fotografia"));
 
         btnAbrirE.setText("EXAMINAR");
         btnAbrirE.addActionListener(new java.awt.event.ActionListener() {
@@ -437,24 +309,185 @@ public class FrmMedicos extends javax.swing.JInternalFrame {
                         .addGap(45, 45, 45)
                         .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(jButton5, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                            .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addContainerGap(27, Short.MAX_VALUE))
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
-                .addContainerGap()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 166, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(34, 34, 34)
                 .addComponent(btnAbrirE)
                 .addGap(18, 18, 18)
-                .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+        );
+
+        jButton7.setBackground(new java.awt.Color(230, 228, 228));
+        jButton7.setForeground(new java.awt.Color(204, 204, 204));
+        jButton7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/script_add.png"))); // NOI18N
+        jButton7.setToolTipText("NUEVO REGISTRO");
+        jButton7.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton7ActionPerformed(evt);
+            }
+        });
+
+        jButton8.setBackground(new java.awt.Color(230, 228, 228));
+        jButton8.setForeground(new java.awt.Color(204, 204, 204));
+        jButton8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/save_as.png"))); // NOI18N
+        jButton8.setToolTipText("GRABAR REGISRTRO");
+        jButton8.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton8ActionPerformed(evt);
+            }
+        });
+
+        jButton11.setBackground(new java.awt.Color(224, 222, 222));
+        jButton11.setForeground(new java.awt.Color(204, 204, 204));
+        jButton11.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/pencil.png"))); // NOI18N
+        jButton11.setToolTipText("EDITAR REGISTRO");
+        jButton11.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton11ActionPerformed(evt);
+            }
+        });
+
+        jButton10.setBackground(new java.awt.Color(230, 228, 228));
+        jButton10.setForeground(new java.awt.Color(204, 204, 204));
+        jButton10.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/script_edit.png"))); // NOI18N
+        jButton10.setToolTipText("GRABAR EDICION");
+        jButton10.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton10ActionPerformed(evt);
+            }
+        });
+
+        jButton12.setForeground(new java.awt.Color(204, 204, 204));
+        jButton12.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/stop 2.png"))); // NOI18N
+        jButton12.setToolTipText("CANCELAR");
+        jButton12.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton12ActionPerformed(evt);
+            }
+        });
+
+        jButton9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/font_red_delete.png"))); // NOI18N
+        jButton9.setText("jButton9");
+        jButton9.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton9ActionPerformed(evt);
+            }
+        });
+
+        jButton5.setFont(new java.awt.Font("Tahoma", 3, 11)); // NOI18N
+        jButton5.setForeground(new java.awt.Color(204, 0, 0));
+        jButton5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/del.png"))); // NOI18N
+        jButton5.setText("SALIR");
+        jButton5.setBorder(javax.swing.BorderFactory.createEtchedBorder(javax.swing.border.EtchedBorder.RAISED, null, java.awt.Color.white));
+        jButton5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton5ActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(jButton7, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jButton8, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jButton11, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jButton10, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jButton9, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(9, 9, 9)
+                        .addComponent(jButton12, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(19, 19, 19)
+                .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jButton5, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(27, 27, 27))
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(12, 12, 12)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jButton7, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jButton8, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jButton11, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(jButton10, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jButton12, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jButton9, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(228, Short.MAX_VALUE))
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jButton5, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
+
+        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+
+            }
+        ));
+        jTable1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jTable1MouseClicked(evt);
+            }
+        });
+        jTable1.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                jTable1KeyReleased(evt);
+            }
+        });
+        jScrollPane1.setViewportView(jTable1);
+
+        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "seleccione..", "Activos", "Inactivos" }));
+        jComboBox1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jComboBox1ActionPerformed(evt);
+            }
+        });
+
+        jLabel3.setText("Busqueda");
+
+        jLabel4.setText("Medicos Activos o Inactivos");
+
+        jTextField2.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                jTextField2KeyReleased(evt);
+            }
+        });
+
+        jLabel5.setText("Cedula");
+
+        jTextField3.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                jTextField3KeyReleased(evt);
+            }
+        });
+
+        jLabel6.setText("Nombres");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -462,112 +495,70 @@ public class FrmMedicos extends javax.swing.JInternalFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(18, 18, 18)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jLabel5)
+                                .addGap(27, 27, 27)
+                                .addComponent(jTextField2)
+                                .addGap(323, 323, 323))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(jLabel6)
+                                        .addGap(18, 18, 18)
+                                        .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, 290, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 543, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(0, 0, Short.MAX_VALUE))))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(33, 33, 33)
+                                .addComponent(jLabel3))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(21, 21, 21)
+                                .addComponent(jLabel4)
+                                .addGap(18, 18, 18)
+                                .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addContainerGap())))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(jPanel4, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGap(23, 23, 23)
+                .addComponent(jLabel3)
+                .addGap(12, 12, 12)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel4))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel5))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel6))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 26, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 395, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-
-        int i = JOptionPane.showConfirmDialog(this, "¿Realmente desea crear el medico?", "Confirmar", JOptionPane.YES_NO_OPTION);
-        if (i == 0) {
-            ValidarCedula vd=new ValidarCedula();
-            Especialidad esp = new Especialidad();
-            int resEsp = FC.buscarEspecialidad(Integer.valueOf(idEspe)).getIdespecialidad();
-            esp.setIdespecialidad(resEsp);
-            String estado;
-            if (cbtEstadoMedico.getSelectedItem().toString().equals("Activo")) {
-                estado = "SI";
-            } else {
-                estado = "NO";
-            }
-            if (archivo != null && txtNombreMedico.getText() != "" && txtid.getText() != "") {
-                if (vd.validadorDeCedula(txtid.getText())==true) {
-                     bytesImg = CM.AbrirAImagen(archivo);
-                CM.guardarMedico(esp, txtNombreMedico.getText(), txtid.getText(), txtTlf.getText(), bytesImg, estado);
-                FrmMedicos FE;
-                this.dispose();
-                try {
-                    FE = new FrmMedicos();
-                    FE.show();
-                    jDesktopPane1.add(FE);
-                    FrmMedicos.btnModificarMedico.setVisible(false);
-                    FrmMedicos.jButton3.setVisible(false);
-                    FrmMedicos.jButton4.setVisible(false);
-                    FrmMedicos.jPanel5.setVisible(false);
-                    FrmMedicos.jButton2.setVisible(false);
-                    FrmMedicos.jPanel6.setVisible(false);
-
-                } catch (IllegalAccessException ex) {
-
-                }
-                }else {
-                JOptionPane.showMessageDialog(null, "Cedula invalida", "Información", 1);
-            }
-               
-            } else {
-                JOptionPane.showMessageDialog(null, "Textos Obligatorios y Foto", "Información", 1);
-            }
-        } else {
-        }
-    }//GEN-LAST:event_jButton1ActionPerformed
-
-    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
-        try {
-            Medico md = new Medico();
-            String cedula = jTextField1.getText();
-            String r;
-            if (CM.buscarMedico(cedula).getEstadomedico().equals("SI")) {
-                r = "Activo";
-            } else {
-                r = "Inactivo";
-            }
-            jPanel2.setVisible(true);
-            jPanel3.setVisible(true);
-            jPanel4.setVisible(true);
-            txtNombreMedico.setText(CM.buscarMedico(cedula).getNombremedico());
-            txtid.setText(CM.buscarMedico(cedula).getDomiciliomedico());
-            txtTlf.setText(CM.buscarMedico(cedula).getTelefonomedico());
-            cbtIdEspecialidad.setSelectedItem(FC.buscarEspecialidad(CM.buscarMedico(cedula).getIdespecialidad().getIdespecialidad()).getNombreespecialidad());
-            cbtEstadoMedico.setSelectedItem(r);
-
-//            byte[] bytesIm = CM.buscarMedico(cedula).getImagenmedico();
-//            jLabel2.setIcon(new ImageIcon(bytesIm));
-//            
-            byte[] data = CM.buscarMedico(cedula).getImagenmedico();
-            img = ImageIO.read(new ByteArrayInputStream(data));
-            jLabel2.setIcon(new ImageIcon(img));
-
-        } catch (Exception e) {
-            JOptionPane.showMessageDialog(null, "FALTAN DATOS");
-        }
-    }//GEN-LAST:event_jButton4ActionPerformed
-
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
         this.dispose();
     }//GEN-LAST:event_jButton5ActionPerformed
-
-    private void btnModificarMedicoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnModificarMedicoActionPerformed
-        // TODO add your handling code here:
-
-    }//GEN-LAST:event_btnModificarMedicoActionPerformed
 
     private void cbtIdEspecialidadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbtIdEspecialidadActionPerformed
         String id = (String) cbtIdEspecialidad.getSelectedItem();
         Especialidad crs = FC.buscarEspecialidadPorNombre(id);
         idEspe = String.valueOf(crs.getIdespecialidad());
     }//GEN-LAST:event_cbtIdEspecialidadActionPerformed
-
-    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton3ActionPerformed
 
     private void txtNombreMedicoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNombreMedicoActionPerformed
         // TODO add your handling code here:
@@ -578,88 +569,6 @@ public class FrmMedicos extends javax.swing.JInternalFrame {
         txtNombreMedico.setText(cadena);
 
     }//GEN-LAST:event_txtNombreMedicoKeyReleased
-
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        // TODO add your handling code here:
-        int i = JOptionPane.showConfirmDialog(this, "¿Realmente desea Modificar el Medico?", "Confirmar", JOptionPane.YES_NO_OPTION);
-        if (i == 0) {
-            if (jRadioButton2.isSelected() == (true)) {
-                Especialidad esp = new Especialidad();
-                int resEsp = FC.buscarEspecialidad(Integer.valueOf(idEspe)).getIdespecialidad();
-                esp.setIdespecialidad(resEsp);
-                String estado;
-
-                if (cbtEstadoMedico.getSelectedItem().toString().equals("Activo")) {
-                    estado = "SI";
-                } else {
-                    estado = "NO";
-                }
-                bytesImg = CM.AbrirAImagen(archivo);
-                CM.ModificarSinFoto(esp, txtNombreMedico.getText(), txtid.getText(), txtTlf.getText(), estado);
-                this.dispose();
-                FrmMedicos FE;
-                try {
-                    FE = new FrmMedicos();
-                    FE.show();
-                    jDesktopPane1.add(FE);
-                    FrmMedicos.btnModificarMedico.setVisible(false);
-                    FrmMedicos.jButton3.setVisible(false);
-                    FrmMedicos.jButton4.setVisible(true);
-                    FrmMedicos.jPanel2.setVisible(false);
-                    FrmMedicos.jPanel3.setVisible(false);
-                    FrmMedicos.jPanel4.setVisible(false);
-                    FrmMedicos.jButton1.setVisible(false);
-                    FrmMedicos.btnAbrirE.setVisible(false);
-//            FrmMedicos.txtNombreMedico.setEnabled(false);
-//            FrmMedicos.txtTlf.setEnabled(false);
-                    FrmMedicos.txtid.setEnabled(false);
-//            FrmMedicos.cbtIdEspecialidad.setEnabled(false);
-                } catch (IllegalAccessException ex) {
-
-                }
-
-            } else if (jRadioButton1.isSelected() == (true)&&archivo!=null) {
-                Especialidad esp = new Especialidad();
-                int resEsp = FC.buscarEspecialidad(Integer.valueOf(idEspe)).getIdespecialidad();
-                esp.setIdespecialidad(resEsp);
-                String estado;
-
-                if (cbtEstadoMedico.getSelectedItem().toString().equals("Activo")) {
-                    estado = "SI";
-                } else {
-                    estado = "NO";
-                }
-                bytesImg = CM.AbrirAImagen(archivo);
-                CM.Modificar(esp, txtNombreMedico.getText(), txtid.getText(), txtTlf.getText(), bytesImg, estado);
-                this.dispose();
-                FrmMedicos FE;
-                try {
-                    FE = new FrmMedicos();
-                    FE.show();
-                    jDesktopPane1.add(FE);
-                    FrmMedicos.btnModificarMedico.setVisible(false);
-                    FrmMedicos.jButton3.setVisible(false);
-                    FrmMedicos.jButton4.setVisible(true);
-                    FrmMedicos.jPanel2.setVisible(false);
-                    FrmMedicos.jPanel3.setVisible(false);
-                    FrmMedicos.jPanel4.setVisible(false);
-                    FrmMedicos.jButton1.setVisible(false);
-                    FrmMedicos.btnAbrirE.setVisible(false);
-//            FrmMedicos.txtNombreMedico.setEnabled(false);
-//            FrmMedicos.txtTlf.setEnabled(false);
-                    FrmMedicos.txtid.setEnabled(false);
-//            FrmMedicos.cbtIdEspecialidad.setEnabled(false);
-                } catch (IllegalAccessException ex) {
-
-                }
-
-            }else{
-                JOptionPane.showMessageDialog(null, "Seleccione una foto o no modifique la foto");
-            }
-
-        } else {
-        }
-    }//GEN-LAST:event_jButton2ActionPerformed
 
     private void btnAbrirEActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAbrirEActionPerformed
         // TODO add your handling code here:
@@ -701,7 +610,7 @@ public class FrmMedicos extends javax.swing.JInternalFrame {
 
     private void txtidKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtidKeyTyped
         // TODO add your handling code here:
-         char caracter = evt.getKeyChar();
+        char caracter = evt.getKeyChar();
         if ((caracter < '0') || (caracter > '9')) {
             evt.consume();
         }
@@ -709,45 +618,276 @@ public class FrmMedicos extends javax.swing.JInternalFrame {
 
     private void txtNombreMedicoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtNombreMedicoKeyTyped
         // TODO add your handling code here:}
-       
+
     }//GEN-LAST:event_txtNombreMedicoKeyTyped
 
     private void txtTlfKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtTlfKeyTyped
         // TODO add your handling code here:
-         char caracter = evt.getKeyChar();
+        char caracter = evt.getKeyChar();
         if ((caracter < '0') || (caracter > '9')) {
             evt.consume();
         }
     }//GEN-LAST:event_txtTlfKeyTyped
+
+    private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed
+        // TODO add your handling code here:
+        CM.cargarTabla(jComboBox1.getSelectedItem().toString());
+    }//GEN-LAST:event_jComboBox1ActionPerformed
+
+    private void jTextField3KeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField3KeyReleased
+        // TODO add your handling code here:
+
+        try {
+            jTextField2.setText("");
+            CM.BuscarnombreMedico();
+        } catch (Exception e) {
+        }
+    }//GEN-LAST:event_jTextField3KeyReleased
+
+    private void jTextField2KeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField2KeyReleased
+        // TODO add your handling code here:
+        try {
+            jTextField3.setText("");
+            CM.buscarmedicoCedula();
+
+        } catch (Exception e) {
+        }
+    }//GEN-LAST:event_jTextField2KeyReleased
+
+    private void jTable1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable1MouseClicked
+        try {
+            // TODO add your handling code here:
+            int n = jTable1.getSelectedRow();
+            txtNombreMedico.setText(jTable1.getValueAt(n, 2).toString());
+            txtid.setText(jTable1.getValueAt(n, 3).toString());
+            txtTlf.setText(jTable1.getValueAt(n, 4).toString());
+            cbtIdEspecialidad.setSelectedItem(jTable1.getValueAt(n, 1).toString());
+            cbtEstadoMedico.setSelectedItem(jTable1.getValueAt(n, 5).toString());
+            byte[] data = CM.buscarMedico(jTable1.getValueAt(n, 3).toString()).getImagenmedico();
+            img = ImageIO.read(new ByteArrayInputStream(data));
+            jLabel2.setIcon(new ImageIcon(img));
+        } catch (IOException ex) {
+
+        }
+
+    }//GEN-LAST:event_jTable1MouseClicked
+
+    private void jTable1KeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTable1KeyReleased
+        // TODO add your handling code here:
+        int n = jTable1.getSelectedRow();
+        txtNombreMedico.setText(jTable1.getValueAt(n, 2).toString());
+        txtid.setText(jTable1.getValueAt(n, 3).toString());
+        txtTlf.setText(jTable1.getValueAt(n, 4).toString());
+        cbtIdEspecialidad.setSelectedItem(jTable1.getValueAt(n, 1).toString());
+        cbtEstadoMedico.setSelectedItem(jTable1.getValueAt(n, 5).toString());
+
+    }//GEN-LAST:event_jTable1KeyReleased
+
+    private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
+        txtNombreMedico.setText("");
+        txtid.setText("");
+        txtTlf.setText("");
+        jTable1.setEnabled(false);
+
+        jButton7.setEnabled(false);
+        jButton8.setEnabled(true);
+        jButton11.setEnabled(false);
+        jButton10.setEnabled(false);
+        jButton12.setEnabled(true);
+        habilitar();
+    }//GEN-LAST:event_jButton7ActionPerformed
+
+    private void jButton8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton8ActionPerformed
+
+        int i = JOptionPane.showConfirmDialog(this, "¿Realmente desea crear el medico?", "Confirmar", JOptionPane.YES_NO_OPTION);
+        if (i == 0) {
+            ValidarCedula vd = new ValidarCedula();
+            Especialidad esp = new Especialidad();
+            int resEsp = FC.buscarEspecialidad(Integer.valueOf(idEspe)).getIdespecialidad();
+            esp.setIdespecialidad(resEsp);
+            String estado;
+            if (cbtEstadoMedico.getSelectedItem().toString().equals("Activo")) {
+                estado = "SI";
+            } else {
+                estado = "NO";
+            }
+            if (archivo != null && txtNombreMedico.getText() != "" && txtid.getText() != "") {
+                if (vd.validadorDeCedula(txtid.getText()) == true) {
+                    bytesImg = CM.AbrirAImagen(archivo);
+                    CM.guardarMedico(esp, txtNombreMedico.getText(), txtid.getText(), txtTlf.getText(), bytesImg, estado);
+
+                    Inabilitar();
+                    jButton7.setEnabled(true);
+                    jButton8.setEnabled(false);
+                    jButton11.setEnabled(true);
+                    jButton10.setEnabled(false);
+                    jButton12.setEnabled(false);
+
+                } else {
+                    JOptionPane.showMessageDialog(null, "Cedula invalida", "Información", 1);
+                }
+
+            } else {
+                JOptionPane.showMessageDialog(null, "Textos Obligatorios y Foto", "Información", 1);
+            }
+        } else {
+        }
+    }//GEN-LAST:event_jButton8ActionPerformed
+
+    private void jButton11ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton11ActionPerformed
+        // TODO add your handling code here:
+        txtNombreMedico.setEditable(true);
+        txtid.setEditable(true);
+        txtTlf.setEditable(true);
+        jTable1.setEnabled(false);
+        jButton7.setEnabled(false);
+        jButton8.setEnabled(false);
+        jButton11.setEnabled(false);
+        jButton10.setEnabled(true);
+        jButton12.setEnabled(true);
+        jPanel6.setVisible(true);
+        habilitar();
+    }//GEN-LAST:event_jButton11ActionPerformed
+
+    private void jButton10ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton10ActionPerformed
+        int i = JOptionPane.showConfirmDialog(this, "¿Realmente desea Modificar el Medico?", "Confirmar", JOptionPane.YES_NO_OPTION);
+        if (i == 0) {
+            if (jRadioButton2.isSelected() == (true)) {
+                Especialidad esp = new Especialidad();
+                int resEsp = FC.buscarEspecialidad(Integer.valueOf(idEspe)).getIdespecialidad();
+                esp.setIdespecialidad(resEsp);
+                String estado;
+
+                if (cbtEstadoMedico.getSelectedItem().toString().equals("Activo")) {
+                    estado = "SI";
+                } else {
+                    estado = "NO";
+                }
+                bytesImg = CM.AbrirAImagen(archivo);
+                CM.ModificarSinFoto(esp, txtNombreMedico.getText(), txtid.getText(), txtTlf.getText(), estado);
+
+                Inabilitar();
+                jButton7.setEnabled(true);
+                jButton8.setEnabled(false);
+                jButton11.setEnabled(true);
+                jButton10.setEnabled(false);
+                jButton12.setEnabled(false);
+
+            } else if (jRadioButton1.isSelected() == (true) && archivo != null) {
+                Especialidad esp = new Especialidad();
+                int resEsp = FC.buscarEspecialidad(Integer.valueOf(idEspe)).getIdespecialidad();
+                esp.setIdespecialidad(resEsp);
+                String estado;
+
+                if (cbtEstadoMedico.getSelectedItem().toString().equals("Activo")) {
+                    estado = "SI";
+                } else {
+                    estado = "NO";
+                }
+                bytesImg = CM.AbrirAImagen(archivo);
+                CM.Modificar(esp, txtNombreMedico.getText(), txtid.getText(), txtTlf.getText(), bytesImg, estado);
+                Inabilitar();
+                jButton7.setEnabled(true);
+                jButton8.setEnabled(false);
+                jButton11.setEnabled(true);
+                jButton10.setEnabled(false);
+                jButton12.setEnabled(false);
+
+            } else {
+                JOptionPane.showMessageDialog(null, "Seleccione una foto o no modifique la foto");
+            }
+
+        } else {
+        }
+    }//GEN-LAST:event_jButton10ActionPerformed
+
+    private void jButton12ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton12ActionPerformed
+        // TODO add your handling code here:
+        txtNombreMedico.setText("");
+        txtid.setText("");
+        txtTlf.setText("");
+        jTable1.setEnabled(true);
+        jButton7.setEnabled(true);
+        jButton8.setEnabled(false);
+        jButton11.setEnabled(true);
+        jButton10.setEnabled(false);
+        jButton12.setEnabled(false);
+        jPanel6.setVisible(false);
+        jLabel2.setIcon(null);
+        Inabilitar();
+    }//GEN-LAST:event_jButton12ActionPerformed
+
+    private void jButton9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton9ActionPerformed
+        // TODO add your handling code here:
+        try {
+            int i = JOptionPane.showConfirmDialog(this, "¿Eliminar el medico?", "Confirmar", JOptionPane.YES_NO_OPTION);
+            if (i == 0) {
+                CM.eliminar(txtid.getText());
+                txtNombreMedico.setText("");
+                txtid.setText("");
+                txtTlf.setText("");
+            }
+
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "No se puede Eliminar...");
+        }
+    }//GEN-LAST:event_jButton9ActionPerformed
 
     private void cargarCmbEspecialidades() {
         for (Especialidad item : FC.getEspecialidad()) {
             cbtIdEspecialidad.addItem(item.getNombreespecialidad());
         }
     }
+
+    public void habilitar() {
+        txtNombreMedico.setEditable(true);
+        txtid.setEditable(true);
+        txtTlf.setEditable(true);
+        cbtIdEspecialidad.setEditable(true);
+        cbtEstadoMedico.setEditable(true);
+        btnAbrirE.setEnabled(true);
+        jButton9.setEnabled(false);
+    }
+
+    public void Inabilitar() {
+        txtNombreMedico.setEditable(false);
+        txtid.setEditable(false);
+        txtTlf.setEditable(false);
+        cbtIdEspecialidad.setEditable(false);
+        cbtEstadoMedico.setEditable(false);
+        btnAbrirE.setEnabled(false);
+        jButton9.setEnabled(true);
+    }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     public static javax.swing.JButton btnAbrirE;
-    public static javax.swing.JButton btnModificarMedico;
     private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.JComboBox cbtEstadoMedico;
     public static javax.swing.JComboBox cbtIdEspecialidad;
-    public static javax.swing.JButton jButton1;
-    public static javax.swing.JButton jButton2;
-    public static javax.swing.JButton jButton3;
-    public static javax.swing.JButton jButton4;
+    private javax.swing.JButton jButton10;
+    private javax.swing.JButton jButton11;
+    private javax.swing.JButton jButton12;
     private javax.swing.JButton jButton5;
     private javax.swing.JButton jButton6;
+    private javax.swing.JButton jButton7;
+    private javax.swing.JButton jButton8;
+    private javax.swing.JButton jButton9;
+    private javax.swing.JComboBox jComboBox1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
     private javax.swing.JPanel jPanel1;
-    public static javax.swing.JPanel jPanel2;
     public static javax.swing.JPanel jPanel3;
     public static javax.swing.JPanel jPanel4;
-    public static javax.swing.JPanel jPanel5;
     public static javax.swing.JPanel jPanel6;
     private javax.swing.JRadioButton jRadioButton1;
     private javax.swing.JRadioButton jRadioButton2;
-    private javax.swing.JTextField jTextField1;
+    private javax.swing.JScrollPane jScrollPane1;
+    public static javax.swing.JTable jTable1;
+    public static javax.swing.JTextField jTextField2;
+    public static javax.swing.JTextField jTextField3;
     private javax.swing.JLabel lbl1;
     private javax.swing.JLabel lbl2;
     private javax.swing.JLabel lbl4;

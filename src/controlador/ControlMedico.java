@@ -16,10 +16,16 @@ import java.util.logging.Logger;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
 import modelo.dao.MedicoJpaController;
+import modelo.dao.exceptions.NonexistentEntityException;
 import modelo.entidades.Especialidad;
 import modelo.entidades.Medico;
+import modelo.entidades.Paciente;
+import vista.FrmBusquedas;
 import vista.FrmHistorias;
+import vista.FrmMedicos;
+import vista.frmDistribucion;
 import vista.frmReportes;
 
 /**
@@ -60,7 +66,7 @@ public class ControlMedico {
                     mee = null;
                 }
             } else {
-               
+
                 Medico m = new Medico();
 
                 m.setIdespecialidad(idEspecialidad);
@@ -71,13 +77,20 @@ public class ControlMedico {
                 m.setEstadomedico(estadoMedico);
                 medicosJpacontrolador.create(m);
                 JOptionPane.showMessageDialog(null, "El medico fue creado exitosamente", "Información", 1);
-                
+
             }
         } catch (Exception e) {
 
         }
     }
 
+    public void eliminar(String cedula){
+        try {
+            medicosJpacontrolador.destroy(buscarMedico(cedula).getIdmedico());
+        } catch (NonexistentEntityException ex) {
+            
+        }
+    }
     public Medico buscarMedico(String cedula) {
 
         for (Medico md : medicosJpacontrolador.findMedicoEntities()) {
@@ -124,7 +137,8 @@ public class ControlMedico {
             }
         }
     }
-     public void cargarCmbMedico1() {
+
+    public void cargarCmbMedico1() {
         for (Medico item : getMedicos()) {
             if (item.getEstadomedico().equals("SI")) {
                 frmReportes.jComboBox2.addItem(item.getNombremedico());
@@ -136,11 +150,11 @@ public class ControlMedico {
             String domiciliomedico, String tlfMedico, byte[] imgMedico, String estadoMedico) {
         try {
             Medico m = medicosJpacontrolador.findMedico(buscarMedico(domiciliomedico).getIdmedico());
-            
+
             if (m == null) {
                 return false;
             }
-            if (nombresMedico != "" && domiciliomedico != "" && tlfMedico != "" && estadoMedico != ""&& imgMedico!=null) {
+            if (nombresMedico != "" && domiciliomedico != "" && tlfMedico != "" && estadoMedico != "" && imgMedico != null) {
                 m.setIdespecialidad(idEspecialidad);
                 m.setNombremedico(nombresMedico);
                 m.setTelefonomedico(tlfMedico);
@@ -154,15 +168,16 @@ public class ControlMedico {
             }
 
         } catch (Exception e) {
-            System.out.println(""+e.getMessage());
+            System.out.println("" + e.getMessage());
         }
         return true;
     }
- public boolean ModificarSinFoto(Especialidad idEspecialidad, String nombresMedico,
+
+    public boolean ModificarSinFoto(Especialidad idEspecialidad, String nombresMedico,
             String domiciliomedico, String tlfMedico, String estadoMedico) {
         try {
             Medico m = medicosJpacontrolador.findMedico(buscarMedico(domiciliomedico).getIdmedico());
-            
+
             if (m == null) {
                 return false;
             }
@@ -179,7 +194,7 @@ public class ControlMedico {
             }
 
         } catch (Exception e) {
-            System.out.println(""+e.getMessage());
+            System.out.println("" + e.getMessage());
         }
         return true;
     }
@@ -205,4 +220,136 @@ public class ControlMedico {
         return respuesta;
     }
 
+    public void cargarTabla(String estado) {
+        if (estado.equals("Activos")) {
+            estado = "SI";
+        } else if (estado.equals("Inactivos")) {
+            estado = "NO";
+        }
+        frmcontrol fc = new frmcontrol();
+        DefaultTableModel modelo;
+
+        modelo = new DefaultTableModel();
+        FrmMedicos.jTable1.setModel(modelo);
+        Object[] fila = new Object[6];
+        modelo.addColumn("NRO.");
+        modelo.addColumn("ESPECIALIDAD");
+        modelo.addColumn("NOMBRE MEDICO");
+        modelo.addColumn("DECULA");
+        modelo.addColumn("TELEFONO");
+        modelo.addColumn("ESTADO");
+
+        if (estado.equals("SI")) {
+            for (Medico e : getMedicos()) {
+                if (e.getEstadomedico().equals("SI")) {
+                    String r;
+                    if (e.getEstadomedico().equals("SI")) {
+                        r = "Activo";
+                    } else {
+                        r = "Inactivo";
+                    }
+                    fila[0] = e.getIdmedico();
+                    fila[1] = fc.buscarEspecialidad(e.getIdespecialidad().getIdespecialidad()).getNombreespecialidad();
+                    fila[2] = e.getNombremedico();
+                    fila[3] = e.getDomiciliomedico();
+                    fila[4] = e.getTelefonomedico();
+                    fila[5] = r;
+                    modelo.addRow(fila);
+                }
+            }
+
+        } else if (estado.equals("NO")) {
+            for (Medico e : getMedicos()) {
+                if (e.getEstadomedico().equals("NO")) {
+                    String r;
+                    if (e.getEstadomedico().equals("SI")) {
+                        r = "Activo";
+                    } else {
+                        r = "Inactivo";
+                    }
+                    fila[0] = e.getIdmedico();
+                    fila[1] = e.getIdespecialidad().getNombreespecialidad();
+                    fila[2] = e.getNombremedico();
+                    fila[3] = e.getDomiciliomedico();
+                    fila[4] = e.getTelefonomedico();
+                    fila[5] = r;
+                    modelo.addRow(fila);
+                }
+            }
+
+        }
+
+    }
+
+    public void BuscarnombreMedico() {
+        DefaultTableModel modelo;
+        frmcontrol fc = new frmcontrol();
+        modelo = new DefaultTableModel();
+        FrmMedicos.jTable1.setModel(modelo);
+        Object[] fila = new Object[6];
+        modelo.addColumn("NRO.");
+        modelo.addColumn("ESPECIALIDAD");
+        modelo.addColumn("NOMBRE MEDICO");
+        modelo.addColumn("DECULA");
+        modelo.addColumn("TELEFONO");
+        modelo.addColumn("ESTADO");
+
+        for (Medico e : getMedicos()) {
+            if (e.prueba(e.elimiEspacio(FrmMedicos.jTextField3.getText()))) {
+                {
+                    String r;
+                    if (e.getEstadomedico().equals("SI")) {
+                        r = "Activo";
+                    } else {
+                        r = "Inactivo";
+                    }
+                    fila[0] = e.getIdmedico();
+                    fila[1] = fc.buscarEspecialidad(e.getIdespecialidad().getIdespecialidad()).getNombreespecialidad();
+                    fila[2] = e.getNombremedico();
+                    fila[3] = e.getDomiciliomedico();
+                    fila[4] = e.getTelefonomedico();
+                    fila[5] = r;
+                    modelo.addRow(fila);
+                }
+            }
+
+        }
+
+    }
+
+    public void buscarmedicoCedula() {
+        DefaultTableModel modelo;
+        frmcontrol fc = new frmcontrol();
+        modelo = new DefaultTableModel();
+        FrmMedicos.jTable1.setModel(modelo);
+        Object[] fila = new Object[6];
+        modelo.addColumn("NRO.");
+        modelo.addColumn("ESPECIALIDAD");
+        modelo.addColumn("NOMBRE MEDICO");
+        modelo.addColumn("CECULA");
+        modelo.addColumn("TELEFONO");
+        modelo.addColumn("ESTADO");
+
+        for (Medico e : getMedicos()) {
+            if (e.cedula(e.elimiEspacio(FrmMedicos.jTextField2.getText()))) {
+                {
+                    String r;
+                    if (e.getEstadomedico().equals("SI")) {
+                        r = "Activo";
+                    } else {
+                        r = "Inactivo";
+                    }
+                    fila[0] = e.getIdmedico();
+                    fila[1] = fc.buscarEspecialidad(e.getIdespecialidad().getIdespecialidad()).getNombreespecialidad();
+                    fila[2] = e.getNombremedico();
+                    fila[3] = e.getDomiciliomedico();
+                    fila[4] = e.getTelefonomedico();
+                    fila[5] = r;
+                    modelo.addRow(fila);
+                }
+            }
+
+        }
+
+    }
 }

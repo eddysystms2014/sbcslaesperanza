@@ -10,6 +10,7 @@
     <class>modelo.entidades.Paciente</class>
     <class>modelo.entidades.Turno</class>
     <class>modelo.entidades.Usuario</class>
+    <class>modelo.entidades.Divisionpolitica</class>
     <properties>
       <property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/clinica?zeroDateTimeBehavior=convertToNull"/>
       <property name="javax.persistence.jdbc.user" value="root"/>

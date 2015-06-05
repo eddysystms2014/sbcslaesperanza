@@ -12,6 +12,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import modelo.dao.exceptions.IllegalOrphanException;
+import static vista.FrmPaciente.txtapellido1;
 
 /**
  *
@@ -304,7 +305,8 @@ public class FrmUsuario extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_txtnombreActionPerformed
 
     private void txtnombreKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtnombreKeyReleased
-
+        String cadena = (txtnombre.getText()).toUpperCase();
+        txtnombre.setText(cadena);
     }//GEN-LAST:event_txtnombreKeyReleased
 
     private void txtnombreMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtnombreMouseExited

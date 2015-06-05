@@ -9,6 +9,7 @@ import controlador.ControlUsuario;
 import controlador.controlinstitucion;
 import java.awt.Color;
 import javax.swing.JOptionPane;
+import static vista.FrmPaciente.txtapellido1;
 
 /**
  *
@@ -278,7 +279,8 @@ public class frmconfigInicial extends javax.swing.JFrame {
     }//GEN-LAST:event_txtnombreKeyTyped
 
     private void txtnombreKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtnombreKeyReleased
-
+        String cadena = (txtnombre.getText()).toUpperCase();
+        txtnombre.setText(cadena);
     }//GEN-LAST:event_txtnombreKeyReleased
 
     private void txtnombreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtnombreActionPerformed

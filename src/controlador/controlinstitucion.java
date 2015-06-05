@@ -10,9 +10,10 @@ import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 import javax.swing.JOptionPane;
 import modelo.dao.InstitucionJpaController;
+import modelo.entidades.Divisionpolitica;
+import modelo.entidades.Divisionpolitica_;
 import modelo.entidades.Especialidad;
 import modelo.entidades.Institucion;
-import modelo.entidades.Localizacion;
 import modelo.entidades.Medico;
 import static vista.FrmMedicos.cbtIdEspecialidad;
 import vista.FrmPaciente;
@@ -31,7 +32,7 @@ public class controlinstitucion {
         return institucionJpacontrolador.findInstitucionEntities();
     }
 
-    public void guardarInstitucion(Localizacion id, String config, String instSistema, String unidadsistema, String coduo) {
+    public void guardarInstitucion(Divisionpolitica id, String config, String instSistema, String unidadsistema, String coduo) {
         try {
 
             Institucion e = new Institucion();
@@ -47,7 +48,7 @@ public class controlinstitucion {
         }
     }
 
-    public boolean ModificarEspecialidad(int id, Localizacion idloc, String config, String instSistema, String unidadsistema, String coduo) {
+    public boolean ModificarEspecialidad(int id, Divisionpolitica idloc, String config, String instSistema, String unidadsistema, String coduo) {
         try {
             Institucion dat = institucionJpacontrolador.findInstitucion(id);
             if (dat == null) {
@@ -81,12 +82,18 @@ public class controlinstitucion {
         Controllocalizacion cl = new Controllocalizacion();
         for (Institucion i : getInstitucion()) {
             if (i.getDefault1().equals("1")) {
+                Integer r = i.getIdlocalizacion().getCodloc();
+                String prov = String.valueOf(r).substring(3, 5);
+                String cant = String.valueOf(r).substring(5, 7);
+                String parro = String.valueOf(r).substring(7, 9);
+                
                 FrmPaciente.txtinstitucion.setText(i.getInstitucionsistema());
                 FrmPaciente.txtunidadoperativa.setText(i.getUnidadsistema());
                 FrmPaciente.txtcoduo.setText(i.getCoduo());
-                FrmPaciente.txtparroquiacodlo.setText(String.valueOf(cl.buscar(i.getIdlocalizacion().getId()).getIdparroquia()));
-                FrmPaciente.txtcantoncodlo.setText(String.valueOf(cl.buscar(i.getIdlocalizacion().getId()).getIdcanton()));
-                FrmPaciente.txtprovinciacodlo.setText(String.valueOf(cl.buscar(i.getIdlocalizacion().getId()).getIdprovincia()));
+
+                FrmPaciente.txtparroquiacodlo.setText(String.valueOf(parro));
+                FrmPaciente.txtcantoncodlo.setText(String.valueOf(cant));
+                FrmPaciente.txtprovinciacodlo.setText(String.valueOf(prov));
                 break;
             }
         }

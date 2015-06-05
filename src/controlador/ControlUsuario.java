@@ -51,11 +51,11 @@ public class ControlUsuario {
             JOptionPane.showMessageDialog(null, "Usuario o Contraseña Incorrecta!.",
                     "Error de Auntetificación", JOptionPane.ERROR_MESSAGE);
             return null;
-        }
+        }else
         if (BuscarUsu.getContrasena().equals(password) && BuscarUsu.getNombreusuario().equals(usuario)
                 && BuscarUsu.getEstadousuario().equals("SI")) {
             return BuscarUsu;
-        }
+        }else
         if (BuscarUsu.getContrasena().equals(password) && BuscarUsu.getNombreusuario().equals(usuario)
                 && BuscarUsu.getEstadousuario().equals("NO")) {
             JOptionPane.showMessageDialog(null, "Usuario Inactivo",

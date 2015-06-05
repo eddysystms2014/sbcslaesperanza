@@ -130,6 +130,9 @@
       </Layout>
       <SubComponents>
         <Component class="javax.swing.JTextField" name="txtunidadsistema">
+          <Events>
+            <EventHandler event="keyReleased" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="txtunidadsistemaKeyReleased"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JComboBox" name="cmdprovincia">
           <Properties>

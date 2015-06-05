@@ -18,6 +18,7 @@ import java.util.Date;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
+import jdk.nashorn.internal.parser.TokenType;
 import modelo.entidades.Paciente;
 import static vista.FrmBusquedas.jTextField3;
 import static vista.FrmBusquedas.txtBusquedaNombres;
@@ -41,22 +42,22 @@ public class FrmPaciente extends javax.swing.JInternalFrame {
         Dimension desktopSize = VistaPrincipal.jDesktopPane1.getSize();
         Dimension jInternalFrameSize = this.getSize();
         this.setLocation((desktopSize.width - jInternalFrameSize.width) / 2, 4);
-        jButton2.setVisible(false);
-        String codadmisionista = VistaPrincipal.mnNomUs.getText();
-        txtcodadmisionista.setText(codadmisionista);
-        txthistoriaclinica.setText(String.valueOf(p.num()));
-        cp.historias();
+
         jButton4.setEnabled(false);
         jButton12.setEnabled(false);
         jButton10.setEnabled(false);
         cl.Provincia();
         Inabilitar();
+        txthistoriaclinica.setEditable(false);
+        jButton14.setEnabled(false);
 
     }
-
+    String codadmisionista = VistaPrincipal.mnNomUs.getText();
+    int modobusqueda = 0;
     ControlPaciente cp = new ControlPaciente();
     ReportesControlador rp = new ReportesControlador();
     MoverRegistros moverRegistros = new MoverRegistros(cp.getPacientes());
+    MoverRegistros moverbus = new MoverRegistros();
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -97,7 +98,6 @@ public class FrmPaciente extends javax.swing.JInternalFrame {
         jLabel27 = new javax.swing.JLabel();
         jLabel28 = new javax.swing.JLabel();
         jLabel57 = new javax.swing.JLabel();
-        jButton2 = new javax.swing.JButton();
         jPanel4 = new javax.swing.JPanel();
         jLabel12 = new javax.swing.JLabel();
         txtdireccion = new javax.swing.JTextField();
@@ -122,7 +122,6 @@ public class FrmPaciente extends javax.swing.JInternalFrame {
         jLabel26 = new javax.swing.JLabel();
         txtlugarnacimiento = new javax.swing.JTextField();
         txtnacionalidad = new javax.swing.JTextField();
-        txtgrupocultural = new javax.swing.JTextField();
         txtedad = new javax.swing.JTextField();
         jLabel29 = new javax.swing.JLabel();
         jLabel35 = new javax.swing.JLabel();
@@ -130,6 +129,7 @@ public class FrmPaciente extends javax.swing.JInternalFrame {
         cbxgenero = new javax.swing.JComboBox();
         jDateChooser1 = new com.toedter.calendar.JDateChooser();
         txtinstruccion = new javax.swing.JComboBox();
+        txtgrupocultural = new javax.swing.JComboBox();
         jPanel6 = new javax.swing.JPanel();
         jLabel38 = new javax.swing.JLabel();
         jLabel39 = new javax.swing.JLabel();
@@ -147,12 +147,12 @@ public class FrmPaciente extends javax.swing.JInternalFrame {
         jLabel45 = new javax.swing.JLabel();
         jLabel46 = new javax.swing.JLabel();
         txtencasonecesario = new javax.swing.JTextField();
-        txtparentesco = new javax.swing.JTextField();
         txtafinidad = new javax.swing.JTextField();
         txtnrotelefonoreferido = new javax.swing.JTextField();
         jPanel8 = new javax.swing.JPanel();
         jLabel58 = new javax.swing.JLabel();
         txtcodadmisionista = new javax.swing.JTextField();
+        txtparentesco = new javax.swing.JComboBox();
         jLabel47 = new javax.swing.JLabel();
         jLabel48 = new javax.swing.JLabel();
         jLabel49 = new javax.swing.JLabel();
@@ -163,10 +163,6 @@ public class FrmPaciente extends javax.swing.JInternalFrame {
         jLabel54 = new javax.swing.JLabel();
         jLabel55 = new javax.swing.JLabel();
         jLabel56 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
-        jPanel9 = new javax.swing.JPanel();
-        rdbno = new javax.swing.JRadioButton();
-        rdbsi = new javax.swing.JRadioButton();
         jButton3 = new javax.swing.JButton();
         jButton4 = new javax.swing.JButton();
         jButton5 = new javax.swing.JButton();
@@ -177,6 +173,14 @@ public class FrmPaciente extends javax.swing.JInternalFrame {
         jButton10 = new javax.swing.JButton();
         jButton11 = new javax.swing.JButton();
         jButton12 = new javax.swing.JButton();
+        jButton1 = new javax.swing.JButton();
+        jButton13 = new javax.swing.JButton();
+        jTextField1 = new javax.swing.JTextField();
+        jButton14 = new javax.swing.JButton();
+        jTextField2 = new javax.swing.JTextField();
+        jButton2 = new javax.swing.JButton();
+        jTextField3 = new javax.swing.JTextField();
+        jButton15 = new javax.swing.JButton();
 
         setBackground(new java.awt.Color(255, 255, 255));
         setClosable(true);
@@ -236,6 +240,11 @@ public class FrmPaciente extends javax.swing.JInternalFrame {
 
         jLabel6.setText("Nº CEDULA DE CIUDADANÍA");
 
+        txtcedula.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtcedulaActionPerformed(evt);
+            }
+        });
         txtcedula.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
                 txtcedulaKeyReleased(evt);
@@ -256,43 +265,46 @@ public class FrmPaciente extends javax.swing.JInternalFrame {
                     .addComponent(txtcedula, javax.swing.GroupLayout.PREFERRED_SIZE, 205, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(txtapellido1, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel2))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jLabel2)
+                    .addComponent(txtapellido1, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(50, 50, 50)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel3)
-                    .addComponent(txtapellido2, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(12, 12, 12)
+                    .addComponent(txtapellido2, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel3))
+                .addGap(55, 55, 55)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(txtnombre1, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel4))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGap(18, 18, 18)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(txtnombre2, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel5))
-                .addContainerGap())
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(jLabel6)
-                        .addComponent(jLabel2))
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel3)
-                            .addComponent(jLabel4)
-                            .addComponent(jLabel5))
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel4, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                .addComponent(jLabel6)
+                                .addComponent(jLabel2)
+                                .addComponent(jLabel3)
+                                .addComponent(jLabel5)))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(txtapellido1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(txtapellido2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(txtnombre1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txtnombre2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txtnombre2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGap(20, 20, 20)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(txtapellido1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(txtcedula))))
-                .addContainerGap(19, Short.MAX_VALUE))
+                .addGap(19, 19, 19))
         );
 
         jPanel3.setBorder(javax.swing.BorderFactory.createEtchedBorder());
@@ -342,13 +354,6 @@ public class FrmPaciente extends javax.swing.JInternalFrame {
 
         jLabel57.setText("Provincia");
 
-        jButton2.setText("GUARDAR");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
-            }
-        });
-
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
         jPanel3Layout.setHorizontalGroup(
@@ -390,9 +395,7 @@ public class FrmPaciente extends javax.swing.JInternalFrame {
                     .addGroup(jPanel3Layout.createSequentialGroup()
                         .addGap(10, 10, 10)
                         .addComponent(txthistoriaclinica, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(38, 38, 38)
-                .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(67, 67, 67))
+                .addGap(201, 201, 201))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -429,10 +432,6 @@ public class FrmPaciente extends javax.swing.JInternalFrame {
                             .addComponent(txtcoduo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(txthistoriaclinica, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addGap(0, 12, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
         );
 
         jPanel4.setBorder(javax.swing.BorderFactory.createEtchedBorder());
@@ -442,6 +441,9 @@ public class FrmPaciente extends javax.swing.JInternalFrame {
         txtdireccion.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
                 txtdireccionKeyReleased(evt);
+            }
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtdireccionKeyTyped(evt);
             }
         });
 
@@ -464,6 +466,9 @@ public class FrmPaciente extends javax.swing.JInternalFrame {
         txtnrotelefono.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
                 txtnrotelefonoKeyReleased(evt);
+            }
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtnrotelefonoKeyTyped(evt);
             }
         });
 
@@ -522,11 +527,9 @@ public class FrmPaciente extends javax.swing.JInternalFrame {
                     .addComponent(cbxzona, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel4Layout.createSequentialGroup()
-                        .addComponent(jLabel18)
-                        .addGap(0, 62, Short.MAX_VALUE))
-                    .addComponent(txtnrotelefono))
-                .addContainerGap())
+                    .addComponent(jLabel18)
+                    .addComponent(txtnrotelefono, javax.swing.GroupLayout.PREFERRED_SIZE, 161, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -594,12 +597,6 @@ public class FrmPaciente extends javax.swing.JInternalFrame {
             }
         });
 
-        txtgrupocultural.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyReleased(java.awt.event.KeyEvent evt) {
-                txtgrupoculturalKeyReleased(evt);
-            }
-        });
-
         txtedad.setEditable(false);
 
         jLabel29.setText("ESTADO CIVIL");
@@ -629,6 +626,13 @@ public class FrmPaciente extends javax.swing.JInternalFrame {
 
         txtinstruccion.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "NINGUNA", "PRE ESCOLAR", "PRIMARIA", "SECUNDARIA", "SUPERIOR" }));
 
+        txtgrupocultural.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "INDIGENA", "MESTIZO", "AFRO DESCENDIENTE", "BLANCO", " " }));
+        txtgrupocultural.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtgrupoculturalActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
         jPanel5.setLayout(jPanel5Layout);
         jPanel5Layout.setHorizontalGroup(
@@ -646,11 +650,14 @@ public class FrmPaciente extends javax.swing.JInternalFrame {
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(txtnacionalidad, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel21))
-                .addGap(24, 24, 24)
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(txtgrupocultural, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel22))
-                .addGap(32, 32, 32)
+                    .addGroup(jPanel5Layout.createSequentialGroup()
+                        .addGap(18, 18, 18)
+                        .addComponent(txtgrupocultural, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel5Layout.createSequentialGroup()
+                        .addGap(24, 24, 24)
+                        .addComponent(jLabel22)))
+                .addGap(36, 36, 36)
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel23)
                     .addComponent(txtedad, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -668,7 +675,7 @@ public class FrmPaciente extends javax.swing.JInternalFrame {
                     .addGroup(jPanel5Layout.createSequentialGroup()
                         .addGap(10, 10, 10)
                         .addComponent(txtinstruccion, javax.swing.GroupLayout.PREFERRED_SIZE, 154, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(28, Short.MAX_VALUE))
         );
         jPanel5Layout.setVerticalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -680,7 +687,6 @@ public class FrmPaciente extends javax.swing.JInternalFrame {
                             .addComponent(jLabel19)
                             .addComponent(jLabel20)
                             .addComponent(jLabel21)
-                            .addComponent(jLabel23)
                             .addComponent(jLabel26)
                             .addComponent(jLabel29)
                             .addComponent(jLabel35)
@@ -693,13 +699,15 @@ public class FrmPaciente extends javax.swing.JInternalFrame {
                                 .addComponent(txtinstruccion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addComponent(jDateChooser1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(jPanel5Layout.createSequentialGroup()
-                        .addGap(32, 32, 32)
+                        .addGap(12, 12, 12)
+                        .addComponent(jLabel23, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(txtgrupocultural, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(txtnacionalidad, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(txtlugarnacimiento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txtedad, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addComponent(txtedad, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txtgrupocultural, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addContainerGap())
         );
 
         jPanel6.setBorder(javax.swing.BorderFactory.createEtchedBorder());
@@ -736,6 +744,9 @@ public class FrmPaciente extends javax.swing.JInternalFrame {
             public void keyReleased(java.awt.event.KeyEvent evt) {
                 txtreferidoKeyReleased(evt);
             }
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtreferidoKeyTyped(evt);
+            }
         });
 
         jDateChooser2.setDateFormatString("dd-MM-yyyy");
@@ -769,15 +780,13 @@ public class FrmPaciente extends javax.swing.JInternalFrame {
                     .addComponent(txtempresa, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(txtsegurosalud, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel41))
-                .addGap(18, 18, 18)
+                    .addComponent(jLabel41)
+                    .addComponent(txtsegurosalud, javax.swing.GroupLayout.PREFERRED_SIZE, 156, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(62, 62, 62)
                 .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel6Layout.createSequentialGroup()
-                        .addComponent(jLabel42)
-                        .addGap(0, 0, Short.MAX_VALUE))
-                    .addComponent(txtreferido))
-                .addContainerGap())
+                    .addComponent(jLabel42)
+                    .addComponent(txtreferido, javax.swing.GroupLayout.PREFERRED_SIZE, 315, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel6Layout.setVerticalGroup(
             jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -814,11 +823,8 @@ public class FrmPaciente extends javax.swing.JInternalFrame {
             public void keyReleased(java.awt.event.KeyEvent evt) {
                 txtencasonecesarioKeyReleased(evt);
             }
-        });
-
-        txtparentesco.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyReleased(java.awt.event.KeyEvent evt) {
-                txtparentescoKeyReleased(evt);
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtencasonecesarioKeyTyped(evt);
             }
         });
 
@@ -831,6 +837,9 @@ public class FrmPaciente extends javax.swing.JInternalFrame {
         txtnrotelefonoreferido.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
                 txtnrotelefonoreferidoKeyReleased(evt);
+            }
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtnrotelefonoreferidoKeyTyped(evt);
             }
         });
 
@@ -869,6 +878,8 @@ public class FrmPaciente extends javax.swing.JInternalFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
+        txtparentesco.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "ESPOSO", "ESPOSA", "PADRE", "MADRE", "HIJO", "HIJA", "HERMANO", "HERMANA", "ABUELO", "ABUELA", "TIO", "TIA", "PRIMO", "PRIMA", "CONVIVIENTE", "SUEGRO", "SUEGRA", "" }));
+
         javax.swing.GroupLayout jPanel7Layout = new javax.swing.GroupLayout(jPanel7);
         jPanel7.setLayout(jPanel7Layout);
         jPanel7Layout.setHorizontalGroup(
@@ -879,28 +890,30 @@ public class FrmPaciente extends javax.swing.JInternalFrame {
                     .addComponent(jLabel43, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(txtencasonecesario))
                 .addGap(18, 18, 18)
+                .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jLabel44, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(txtparentesco, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(39, 39, 39)
                 .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel44)
-                    .addComponent(txtparentesco, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
+                    .addComponent(jLabel45)
+                    .addComponent(txtafinidad, javax.swing.GroupLayout.PREFERRED_SIZE, 291, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel7Layout.createSequentialGroup()
-                        .addComponent(jLabel45)
-                        .addGap(0, 0, Short.MAX_VALUE))
-                    .addComponent(txtafinidad))
-                .addGap(18, 18, 18)
-                .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(txtnrotelefonoreferido, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel46))
-                .addGap(18, 18, 18)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 13, Short.MAX_VALUE)
+                        .addComponent(jLabel46)
+                        .addGap(95, 95, 95))
+                    .addGroup(jPanel7Layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(txtnrotelefonoreferido, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addComponent(jPanel8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+                .addGap(74, 74, 74))
         );
         jPanel7Layout.setVerticalGroup(
             jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel7Layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jPanel8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(jPanel7Layout.createSequentialGroup()
                         .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel43)
@@ -910,11 +923,10 @@ public class FrmPaciente extends javax.swing.JInternalFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(txtencasonecesario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txtparentesco, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(txtafinidad, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txtnrotelefonoreferido, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addComponent(jPanel8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addComponent(txtnrotelefonoreferido, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txtparentesco, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addContainerGap(12, Short.MAX_VALUE))
         );
 
         jLabel47.setText("COD=CÓDIGO");
@@ -936,52 +948,6 @@ public class FrmPaciente extends javax.swing.JInternalFrame {
         jLabel55.setText("VIU=VIUDO");
 
         jLabel56.setText("U-L=UNIÓN LIBRE");
-
-        jButton1.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
-        jButton1.setText("INGRESAR");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
-            }
-        });
-
-        jPanel9.setBorder(javax.swing.BorderFactory.createTitledBorder("Imprimir Ficha"));
-
-        buttonGroup1.add(rdbno);
-        rdbno.setText("NO");
-        rdbno.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                rdbnoActionPerformed(evt);
-            }
-        });
-
-        buttonGroup1.add(rdbsi);
-        rdbsi.setText("SI");
-        rdbsi.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                rdbsiActionPerformed(evt);
-            }
-        });
-
-        javax.swing.GroupLayout jPanel9Layout = new javax.swing.GroupLayout(jPanel9);
-        jPanel9.setLayout(jPanel9Layout);
-        jPanel9Layout.setHorizontalGroup(
-            jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel9Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(rdbno)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(rdbsi)
-                .addContainerGap())
-        );
-        jPanel9Layout.setVerticalGroup(
-            jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel9Layout.createSequentialGroup()
-                .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(rdbno)
-                    .addComponent(rdbsi))
-                .addGap(23, 23, 23))
-        );
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -1009,10 +975,7 @@ public class FrmPaciente extends javax.swing.JInternalFrame {
                         .addComponent(jLabel55)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(jLabel56)
-                        .addGap(18, 18, 18)
-                        .addComponent(jPanel9, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(0, 0, Short.MAX_VALUE))
                     .addComponent(jPanel7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jPanel6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jPanel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -1036,24 +999,21 @@ public class FrmPaciente extends javax.swing.JInternalFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(jLabel47)
-                        .addComponent(jLabel48)
-                        .addComponent(jLabel49)
-                        .addComponent(jLabel50)
-                        .addComponent(jLabel51)
-                        .addComponent(jLabel52)
-                        .addComponent(jLabel53)
-                        .addComponent(jLabel54)
-                        .addComponent(jLabel55)
-                        .addComponent(jLabel56)
-                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jPanel9, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(238, 238, 238))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel47)
+                    .addComponent(jLabel48)
+                    .addComponent(jLabel49)
+                    .addComponent(jLabel50)
+                    .addComponent(jLabel51)
+                    .addComponent(jLabel52)
+                    .addComponent(jLabel53)
+                    .addComponent(jLabel54)
+                    .addComponent(jLabel55)
+                    .addComponent(jLabel56))
+                .addGap(259, 259, 259))
         );
 
-        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 50, -1, 570));
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 60, -1, 530));
 
         jButton3.setBackground(new java.awt.Color(230, 228, 228));
         jButton3.setForeground(new java.awt.Color(204, 204, 204));
@@ -1160,7 +1120,76 @@ public class FrmPaciente extends javax.swing.JInternalFrame {
                 jButton12ActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton12, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 0, 60, 40));
+        getContentPane().add(jButton12, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 0, 60, 40));
+
+        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/font_red_delete.png"))); // NOI18N
+        jButton1.setToolTipText("ELIMINAR REGISTRO");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 0, 60, 40));
+
+        jButton13.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/magnifier.png"))); // NOI18N
+        jButton13.setToolTipText("INICIAR MODO BUSQUEDA");
+        jButton13.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton13ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jButton13, new org.netbeans.lib.awtextra.AbsoluteConstraints(840, 0, 60, 40));
+
+        jTextField1.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                jTextField1KeyReleased(evt);
+            }
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jTextField1KeyTyped(evt);
+            }
+        });
+        getContentPane().add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 20, 160, -1));
+
+        jButton14.setBackground(new java.awt.Color(153, 153, 255));
+        jButton14.setText("FIN MODO BUSQUEDA");
+        jButton14.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton14ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jButton14, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 0, 160, 20));
+
+        jTextField2.setBorder(javax.swing.BorderFactory.createTitledBorder("COD. HISTORIA"));
+        jTextField2.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jTextField2KeyTyped(evt);
+            }
+        });
+        getContentPane().add(jTextField2, new org.netbeans.lib.awtextra.AbsoluteConstraints(910, 0, 110, -1));
+
+        jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/magnifier.png"))); // NOI18N
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(1020, 0, 51, 40));
+
+        jTextField3.setBorder(javax.swing.BorderFactory.createTitledBorder("CEDULA"));
+        jTextField3.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jTextField3KeyTyped(evt);
+            }
+        });
+        getContentPane().add(jTextField3, new org.netbeans.lib.awtextra.AbsoluteConstraints(1080, 0, 120, -1));
+
+        jButton15.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/magnifier.png"))); // NOI18N
+        jButton15.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton15ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jButton15, new org.netbeans.lib.awtextra.AbsoluteConstraints(1200, 0, 60, 40));
 
         getAccessibleContext().setAccessibleName("admision");
 
@@ -1170,71 +1199,6 @@ public class FrmPaciente extends javax.swing.JInternalFrame {
     private void txtcodadmisionistaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtcodadmisionistaActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtcodadmisionistaActionPerformed
-
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        int i = JOptionPane.showConfirmDialog(this, "¿Desear ingresar paciente?", "Confirmar", JOptionPane.YES_NO_OPTION);
-        if (i == 0) {
-            //Control de zonas
-            String zona = "";
-            if (cbxzona.getSelectedItem().toString().equals("U")) {
-                zona = "URBANO";
-            } else {
-                zona = "RURAL";
-            }
-            //Control de generos
-            String genero = "";
-            if (cbxgenero.getSelectedItem().toString().equals("M")) {
-                genero = "MASCULINO";
-            } else {
-                genero = "FEMENINO";
-            }
-            //Contro de estado civil
-            String estadocivil = "";
-            if (cbxestadocivil.getSelectedItem().toString().equals("SOL")) {
-                estadocivil = "SOLTERO";
-            }
-            if (cbxestadocivil.getSelectedItem().toString().equals("CAS")) {
-                estadocivil = "CASADO";
-            }
-            if (cbxestadocivil.getSelectedItem().toString().equals("DIV")) {
-                estadocivil = "DIVORCIADO";
-            }
-            if (cbxestadocivil.getSelectedItem().toString().equals("VIU")) {
-                estadocivil = "VIUDO";
-            }
-            if (cbxestadocivil.getSelectedItem().toString().equals("U-L")) {
-                estadocivil = "UNIÓN LIBRE";
-            }
-            if (txthistoriaclinica.getText().equals("")) {
-                JOptionPane.showMessageDialog(rootPane, "Hay un campo obligatorio no ingresado");
-            } else {
-                if (v.validadorDeCedula(txtcedula.getText()) == false) {
-                    JOptionPane.showMessageDialog(rootPane, "Cedula Incorrecta");
-                    txtcedula.setText(null);
-                } else if (p.buscarPacienteCI(txtcedula.getText()).getCedpaciente().toString() != null) {
-                    JOptionPane.showMessageDialog(rootPane, "Cedula Existente..");
-                    txtcedula.setText(null);
-                } else {
-                    p.guardarpaciente(txtinstitucion.getText(), txtunidadoperativa.getText(), txtcoduo.getText(), txtparroquiacodlo.getText(),
-                            txtcantoncodlo.getText(), txtprovinciacodlo.getText(), Integer.valueOf(txthistoriaclinica.getText()), txtcedula.getText(), txtapellido1.getText(),
-                            txtapellido2.getText(), txtnombre1.getText(), txtnombre2.getText(), txtdireccion.getText(), txtbarrio.getText(),
-                            txtparroquia.getSelectedItem().toString(), txtcanton.getSelectedItem().toString(), txtcanton.getSelectedItem().toString(), zona, txtnrotelefono.getText(), jDateChooser1.getDate(),
-                            txtlugarnacimiento.getText(), txtnacionalidad.getText(), txtgrupocultural.getText(), Integer.valueOf(txtedad.getText()), genero,
-                            estadocivil, txtinstruccion.getSelectedItem().toString(), jDateChooser2.getDate(), txtocupacion.getText(), txtempresa.getText(), txtsegurosalud.getText(),
-                            txtreferido.getText(), txtencasonecesario.getText(), txtparentesco.getText(), txtafinidad.getText(), txtnrotelefonoreferido.getText(), txtcodadmisionista.getText());
-                    if (rdbsi.isSelected() == true) {
-                        String ruta = "registro.jasper";
-                        rp.reportesGeneral("IDPACIENTE", Integer.valueOf(txthistoriaclinica.getText()), ruta);
-                    }
-
-                    limp();
-                }
-            }
-
-        }
-
-
-    }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jDateChooser1KeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jDateChooser1KeyReleased
 
@@ -1263,51 +1227,68 @@ public class FrmPaciente extends javax.swing.JInternalFrame {
 
     private void txtlugarnacimientoFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtlugarnacimientoFocusGained
         // TODO add your handling code here:
-        Date fechaActual = jDateChooser1.getDate();
-        SimpleDateFormat formato = new SimpleDateFormat("dd-MM-yyyy");
-        String hoy = formato.format(fechaActual);
-        int años = cp.edad(hoy);
-        txtedad.setText(String.valueOf(años));
+        try {
+            Date fechaActual = jDateChooser1.getDate();
+            SimpleDateFormat formato = new SimpleDateFormat("dd-MM-yyyy");
+            String hoy = formato.format(fechaActual);
+            int años = cp.edad(hoy);
+            txtedad.setText(String.valueOf(años));
+        } catch (Exception e) {
+        }
+
     }//GEN-LAST:event_txtlugarnacimientoFocusGained
 
     private void txtparroquiacodloActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtparroquiacodloActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtparroquiacodloActionPerformed
 
-    private void rdbsiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rdbsiActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_rdbsiActionPerformed
-
-    private void rdbnoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rdbnoActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_rdbnoActionPerformed
-
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        int i = JOptionPane.showConfirmDialog(this, "¿Modificar Paciente?", "Confirmar", JOptionPane.YES_NO_OPTION);
-        if (i == 0) {
-            p.editarpaciente(txtinstitucion.getText(), txtunidadoperativa.getText(), txtcoduo.getText(), txtparroquiacodlo.getText(),
-                    txtcantoncodlo.getText(), txtprovinciacodlo.getText(), Integer.valueOf(txthistoriaclinica.getText()), txtcedula.getText(), txtapellido1.getText(),
-                    txtapellido2.getText(), txtnombre1.getText(), txtnombre2.getText(), txtdireccion.getText(), txtbarrio.getText(),
-                    txtparroquia.getSelectedItem().toString(), txtcanton.getSelectedItem().toString(), txtcanton.getSelectedItem().toString(), cbxzona.getSelectedItem().toString(), txtnrotelefono.getText(), jDateChooser1.getDate(),
-                    txtlugarnacimiento.getText(), txtnacionalidad.getText(), txtgrupocultural.getText(), Integer.valueOf(txtedad.getText()), cbxgenero.getSelectedItem().toString(),
-                    cbxestadocivil.getSelectedItem().toString(), txtinstruccion.getSelectedItem().toString(), jDateChooser2.getDate(), txtocupacion.getText(), txtempresa.getText(), txtsegurosalud.getText(),
-                    txtreferido.getText(), txtencasonecesario.getText(), txtparentesco.getText(), txtafinidad.getText(), txtnrotelefonoreferido.getText(), txtcodadmisionista.getText());
-            if (rdbsi.isSelected() == true) {
-                String ruta = "registro.jasper";
-                rp.reportesGeneral("IDPACIENTE", Integer.valueOf(txthistoriaclinica.getText()), ruta);
+        if (!jTextField2.getText().equals("")) {
+            int cedula = Integer.valueOf(jTextField2.getText());
+            if (p.paciente(cedula) == null) {
+                JOptionPane.showMessageDialog(null, "No se Encontro", "Información", 1);
+
+            } else {
+                txtinstitucion.setText(p.paciente(cedula).getInstpaciente());
+                txtunidadoperativa.setText(p.paciente(cedula).getUnidadepaciente());
+                txtcoduo.setText(p.paciente(cedula).getCoduopaciente());
+                txtparroquiacodlo.setText(p.paciente(cedula).getParropaciente());
+                txtcantoncodlo.setText(p.paciente(cedula).getCantpaciente());
+                txtprovinciacodlo.setText(p.paciente(cedula).getProvinpaciente());
+                txthistoriaclinica.setText(p.paciente(cedula).getIdpaciente().toString());
+                FrmPaciente.txthistoriaclinica.setText(p.paciente(cedula).getIdpaciente().toString());
+                FrmPaciente.txtcedula.setText(p.paciente(cedula).getCedpaciente());
+                FrmPaciente.txtapellido1.setText(p.paciente(cedula).getApeppaciente());
+                FrmPaciente.txtapellido2.setText(p.paciente(cedula).getApempaciente());
+                FrmPaciente.txtnombre1.setText(p.paciente(cedula).getNom1paciente());
+                FrmPaciente.txtnombre2.setText(p.paciente(cedula).getNom2paciente());
+                FrmPaciente.txtdireccion.setText(p.paciente(cedula).getDirecpaciente());
+                FrmPaciente.txtbarrio.setText(p.paciente(cedula).getBarriopaciente());
+                FrmPaciente.cbxzona.setSelectedItem(p.paciente(cedula).getZonapaciente());
+                FrmPaciente.txtnrotelefono.setText(p.paciente(cedula).getNrotelpaciente());
+                FrmPaciente.jDateChooser1.setDate(p.paciente(cedula).getFenacpaciente());
+                FrmPaciente.txtlugarnacimiento.setText(p.paciente(cedula).getLugarnacpaciente());
+                FrmPaciente.txtnacionalidad.setText(p.paciente(cedula).getNaciopaciente());
+                FrmPaciente.txtgrupocultural.setSelectedItem(p.paciente(cedula).getGruppaciente());
+                FrmPaciente.txtedad.setText(p.paciente(cedula).getEdadpaciente().toString());
+                FrmPaciente.cbxgenero.setSelectedItem(p.paciente(cedula).getGenpaciente());
+                FrmPaciente.cbxestadocivil.setSelectedItem(p.paciente(cedula).getEcpaciente());
+                FrmPaciente.txtinstruccion.setSelectedItem(p.paciente(cedula).getInstrpaciente());
+                FrmPaciente.jDateChooser2.setDate(p.paciente(cedula).getFecadpaciente());
+                FrmPaciente.txtocupacion.setText(p.paciente(cedula).getOcuppaciente());
+                FrmPaciente.txtempresa.setText(p.paciente(cedula).getEmpaciente());
+                FrmPaciente.txtsegurosalud.setText(p.paciente(cedula).getSegpaciente());
+                FrmPaciente.txtreferido.setText(p.paciente(cedula).getRefpaciente());
+                FrmPaciente.txtencasonecesario.setText(p.paciente(cedula).getLlamarpaciente());
+                FrmPaciente.txtparentesco.setSelectedItem(p.paciente(cedula).getParenpaciente());
+                FrmPaciente.txtafinidad.setText(p.paciente(cedula).getDirecpaciente());
+                FrmPaciente.txtnrotelefonoreferido.setText(p.paciente(cedula).getNrotelpaciente());
+                FrmPaciente.txtcodadmisionista.setText(p.paciente(cedula).getCodadmisionista());
+                JOptionPane.showMessageDialog(null, "Encontrado", "Información", 1);
             }
-            limp();
-            FrmBusquedas fb = new FrmBusquedas();
-            fb.show();
-            VistaPrincipal.jDesktopPane1.add(fb);
-            FrmBusquedas.jButton5.setVisible(true);
-            FrmBusquedas.jButton1.setVisible(false);
-            this.dispose();
-
         } else {
-
+            JOptionPane.showMessageDialog(null, "Num. Historia a buscar", "Información", 1);
         }
-
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void txtapellido1KeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtapellido1KeyReleased
@@ -1371,12 +1352,6 @@ public class FrmPaciente extends javax.swing.JInternalFrame {
         txtnacionalidad.setText(cadena);
     }//GEN-LAST:event_txtnacionalidadKeyReleased
 
-    private void txtgrupoculturalKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtgrupoculturalKeyReleased
-        // TODO add your handling code here:
-        String cadena = (txtgrupocultural.getText()).toUpperCase();
-        txtgrupocultural.setText(cadena);
-    }//GEN-LAST:event_txtgrupoculturalKeyReleased
-
     private void txtocupacionKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtocupacionKeyReleased
         // TODO add your handling code here:
         String cadena = (txtocupacion.getText()).toUpperCase();
@@ -1407,12 +1382,6 @@ public class FrmPaciente extends javax.swing.JInternalFrame {
         txtencasonecesario.setText(cadena);
     }//GEN-LAST:event_txtencasonecesarioKeyReleased
 
-    private void txtparentescoKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtparentescoKeyReleased
-        // TODO add your handling code here:
-        String cadena = (txtparentesco.getText()).toUpperCase();
-        txtparentesco.setText(cadena);
-    }//GEN-LAST:event_txtparentescoKeyReleased
-
     private void txtafinidadKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtafinidadKeyReleased
         // TODO add your handling code here:
         String cadena = (txtafinidad.getText()).toUpperCase();
@@ -1442,60 +1411,116 @@ public class FrmPaciente extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_txtcedulaKeyTyped
 
     private void txtapellido1KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtapellido1KeyTyped
-        // TODO add your handling code here:
         char caracter = evt.getKeyChar();
-        if (((caracter < 'A') || (caracter > 'Z')) && ((caracter < 'a') || (caracter > 'z'))) {
+        if (((caracter < 'A') || (caracter > 'Z')) && ((caracter == 'Ñ') || (caracter > 'ñ'))
+                && ((caracter == 'á') || (caracter > 'Á'))
+                && ((caracter == 'é') || (caracter > 'É'))
+                && ((caracter == 'í') || (caracter > 'Í'))
+                && ((caracter == 'ó') || (caracter > 'Ó'))
+                && ((caracter == 'ú') || (caracter > 'Ú'))) {
             evt.consume();
         }
-
     }//GEN-LAST:event_txtapellido1KeyTyped
 
     private void txtapellido2KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtapellido2KeyTyped
         // TODO add your handling code here:
         char caracter = evt.getKeyChar();
-        if (((caracter < 'A') || (caracter > 'Z')) && ((caracter < 'a') || (caracter > 'z'))) {
+        if (((caracter < 'A') || (caracter > 'Z')) && ((caracter == 'Ñ') || (caracter > 'ñ'))
+                && ((caracter == 'á') || (caracter > 'Á'))
+                && ((caracter == 'é') || (caracter > 'É'))
+                && ((caracter == 'í') || (caracter > 'Í'))
+                && ((caracter == 'ó') || (caracter > 'Ó'))
+                && ((caracter == 'ú') || (caracter > 'Ú'))) {
             evt.consume();
         }
     }//GEN-LAST:event_txtapellido2KeyTyped
 
     private void txtnombre1KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtnombre1KeyTyped
-        // TODO add your handling code here:
         char caracter = evt.getKeyChar();
-        if (((caracter < 'A') || (caracter > 'Z')) && ((caracter < 'a') || (caracter > 'z'))) {
+        if (((caracter < 'A') || (caracter > 'Z')) && ((caracter == 'Ñ') || (caracter > 'ñ'))
+                && ((caracter == 'á') || (caracter > 'Á'))
+                && ((caracter == 'é') || (caracter > 'É'))
+                && ((caracter == 'í') || (caracter > 'Í'))
+                && ((caracter == 'ó') || (caracter > 'Ó'))
+                && ((caracter == 'ú') || (caracter > 'Ú'))) {
             evt.consume();
         }
     }//GEN-LAST:event_txtnombre1KeyTyped
 
     private void txtnombre2KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtnombre2KeyTyped
-        // TODO add your handling code here:
         char caracter = evt.getKeyChar();
-        if (((caracter < 'A') || (caracter > 'Z')) && ((caracter < 'a') || (caracter > 'z'))) {
+        if (((caracter < 'A') || (caracter > 'Z')) && ((caracter == 'Ñ') || (caracter > 'ñ'))
+                && ((caracter == 'á') || (caracter > 'Á'))
+                && ((caracter == 'é') || (caracter > 'É'))
+                && ((caracter == 'í') || (caracter > 'Í'))
+                && ((caracter == 'ó') || (caracter > 'Ó'))
+                && ((caracter == 'ú') || (caracter > 'Ú'))) {
             evt.consume();
         }
     }//GEN-LAST:event_txtnombre2KeyTyped
 
     private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
         // TODO add your handling code here:
-        Paciente paciente = (Paciente) moverRegistros.getNext();
-        setDatosMover(paciente);
+//        Paciente paciente = (Paciente) moverRegistros.getNext();
+//        setDatosMover(paciente);
+        if (modobusqueda == 0) {
+            Paciente paciente = (Paciente) moverRegistros.getNext();
+            setDatosMover(paciente);
+        } else if (modobusqueda == 1) {
+            if (!jTextField1.getText().equals("")) {
+                Paciente paciente = (Paciente) moverbus.getNext();
+                setDatosMover(paciente);
+            }
+
+        }
+
     }//GEN-LAST:event_jButton7ActionPerformed
 
     private void jButton8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton8ActionPerformed
         // TODO add your handling code here:
-        Paciente paciente = (Paciente) moverRegistros.getFin();
-        setDatosMover(paciente);
+//        Paciente paciente = (Paciente) moverRegistros.getFin();
+//        setDatosMover(paciente);
+        if (modobusqueda == 0) {
+            Paciente paciente = (Paciente) moverRegistros.getFin();
+            setDatosMover(paciente);
+        } else if (modobusqueda == 1) {
+            if (!jTextField1.getText().equals("")) {
+                Paciente paciente = (Paciente) moverbus.getFin();
+                setDatosMover(paciente);
+            }
+
+        }
     }//GEN-LAST:event_jButton8ActionPerformed
 
     private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
         // TODO add your handling code here:
-        Paciente paciente = (Paciente) moverRegistros.getBack();
-        setDatosMover(paciente);
+//        Paciente paciente = (Paciente) moverRegistros.getBack();
+//        setDatosMover(paciente);
+        if (modobusqueda == 0) {
+            Paciente paciente = (Paciente) moverRegistros.getBack();
+            setDatosMover(paciente);
+        } else if (modobusqueda == 1) {
+            if (!jTextField1.getText().equals("")) {
+                Paciente paciente = (Paciente) moverbus.getBack();
+                setDatosMover(paciente);
+            }
+
+        }
     }//GEN-LAST:event_jButton6ActionPerformed
 
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
         // TODO add your handling code here:
-        Paciente paciente = (Paciente) moverRegistros.getInicio();
-        setDatosMover(paciente);
+//        Paciente paciente = (Paciente) moverRegistros.getInicio();
+//        setDatosMover(paciente);
+        if (modobusqueda == 0) {
+            Paciente paciente = (Paciente) moverRegistros.getInicio();
+            setDatosMover(paciente);
+        } else if (modobusqueda == 1) {
+            if (!jTextField1.getText().equals("")) {
+                Paciente paciente = (Paciente) moverbus.getInicio();
+                setDatosMover(paciente);
+            }
+        }
     }//GEN-LAST:event_jButton5ActionPerformed
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
@@ -1531,32 +1556,34 @@ public class FrmPaciente extends javax.swing.JInternalFrame {
             }
             if (txthistoriaclinica.getText().equals("")) {
                 JOptionPane.showMessageDialog(rootPane, "Hay un campo obligatorio no ingresado");
+
             } else {
-                if (v.validadorDeCedula(txtcedula.getText()) == false) {
-                    JOptionPane.showMessageDialog(rootPane, "Cedula Incorrecta");
-                    txtcedula.setText(null);
-                } else {
-                    p.guardarpaciente(txtinstitucion.getText(), txtunidadoperativa.getText(), txtcoduo.getText(), txtparroquiacodlo.getText(),
-                            txtcantoncodlo.getText(), txtprovinciacodlo.getText(), Integer.valueOf(txthistoriaclinica.getText()), txtcedula.getText(), txtapellido1.getText(),
-                            txtapellido2.getText(), txtnombre1.getText(), txtnombre2.getText(), txtdireccion.getText(), txtbarrio.getText(),
-                            txtparroquia.getSelectedItem().toString(), txtcanton.getSelectedItem().toString(), txtprovincia.getSelectedItem().toString(), zona, txtnrotelefono.getText(), jDateChooser1.getDate(),
-                            txtlugarnacimiento.getText(), txtnacionalidad.getText(), txtgrupocultural.getText(), Integer.valueOf(txtedad.getText()), genero,
-                            estadocivil, txtinstruccion.getSelectedItem().toString(), jDateChooser2.getDate(), txtocupacion.getText(), txtempresa.getText(), txtsegurosalud.getText(),
-                            txtreferido.getText(), txtencasonecesario.getText(), txtparentesco.getText(),
-                            txtafinidad.getText(), txtnrotelefonoreferido.getText(), txtcodadmisionista.getText());
-                    moverRegistros = new MoverRegistros(cp.getPacientes());
-                    Inabilitar();
-                    jButton4.setEnabled(false);
-                    jButton10.setEnabled(false);
-                    jButton5.setEnabled(true);
-                    jButton6.setEnabled(true);
-                    jButton7.setEnabled(true);
-                    jButton8.setEnabled(true);
-                    jButton3.setEnabled(true);
-                    jButton12.setEnabled(false);
-                    jButton11.setEnabled(true);
-                }
+//                if (v.validadorDeCedula(txtcedula.getText()) == false) {
+//                    JOptionPane.showMessageDialog(rootPane, "Cedula Incorrecta");
+//                    txtcedula.setText(null);
+//                } 
+//                else {
+                p.guardarpaciente(txtinstitucion.getText(), txtunidadoperativa.getText(), txtcoduo.getText(), txtparroquiacodlo.getText(),
+                        txtcantoncodlo.getText(), txtprovinciacodlo.getText(), Integer.valueOf(txthistoriaclinica.getText()), txtcedula.getText(), txtapellido1.getText(),
+                        txtapellido2.getText(), txtnombre1.getText(), txtnombre2.getText(), txtdireccion.getText(), txtbarrio.getText(),
+                        txtparroquia.getSelectedItem().toString(), txtcanton.getSelectedItem().toString(), txtprovincia.getSelectedItem().toString(), zona, txtnrotelefono.getText(), jDateChooser1.getDate(),
+                        txtlugarnacimiento.getText(), txtnacionalidad.getText(), txtgrupocultural.getSelectedItem().toString(), Integer.valueOf(txtedad.getText()), genero,
+                        estadocivil, txtinstruccion.getSelectedItem().toString(), jDateChooser2.getDate(), txtocupacion.getText(), txtempresa.getText(), txtsegurosalud.getText(),
+                        txtreferido.getText(), txtencasonecesario.getText(), txtparentesco.getSelectedItem().toString(),
+                        txtafinidad.getText(), txtnrotelefonoreferido.getText(), txtcodadmisionista.getText());
+                moverRegistros = new MoverRegistros(cp.getPacientes());
+                Inabilitar();
+                jButton4.setEnabled(false);
+                jButton10.setEnabled(false);
+                jButton5.setEnabled(true);
+                jButton6.setEnabled(true);
+                jButton7.setEnabled(true);
+                jButton8.setEnabled(true);
+                jButton3.setEnabled(true);
+                jButton12.setEnabled(false);
+                jButton11.setEnabled(true);
             }
+//            }
 
         }
     }//GEN-LAST:event_jButton4ActionPerformed
@@ -1574,6 +1601,10 @@ public class FrmPaciente extends javax.swing.JInternalFrame {
         limp();
         Habilitar();
         cp.historias();
+        cp.historias();
+        txtcodadmisionista.setText(codadmisionista);
+        txthistoriaclinica.setEditable(false);
+        jButton2.setEnabled(false);
         jButton12.setEnabled(true);
         jButton4.setEnabled(true);
         jButton10.setEnabled(false);
@@ -1601,9 +1632,9 @@ public class FrmPaciente extends javax.swing.JInternalFrame {
                     txtcantoncodlo.getText(), txtprovinciacodlo.getText(), Integer.valueOf(txthistoriaclinica.getText()), txtcedula.getText(), txtapellido1.getText(),
                     txtapellido2.getText(), txtnombre1.getText(), txtnombre2.getText(), txtdireccion.getText(), txtbarrio.getText(),
                     txtparroquia.getSelectedItem().toString(), txtcanton.getSelectedItem().toString(), txtprovincia.getSelectedItem().toString(), cbxzona.getSelectedItem().toString(), txtnrotelefono.getText(), jDateChooser1.getDate(),
-                    txtlugarnacimiento.getText(), txtnacionalidad.getText(), txtgrupocultural.getText(), Integer.valueOf(txtedad.getText()), cbxgenero.getSelectedItem().toString(),
+                    txtlugarnacimiento.getText(), txtnacionalidad.getText(), txtgrupocultural.getSelectedItem().toString(), Integer.valueOf(txtedad.getText()), cbxgenero.getSelectedItem().toString(),
                     cbxestadocivil.getSelectedItem().toString(), txtinstruccion.getSelectedItem().toString(), jDateChooser2.getDate(), txtocupacion.getText(), txtempresa.getText(), txtsegurosalud.getText(),
-                    txtreferido.getText(), txtencasonecesario.getText(), txtparentesco.getText(), txtafinidad.getText(), txtnrotelefonoreferido.getText(), codadmisionista);
+                    txtreferido.getText(), txtencasonecesario.getText(), txtparentesco.getSelectedItem().toString(), txtafinidad.getText(), txtnrotelefonoreferido.getText(), codadmisionista);
             jButton4.setEnabled(false);
             jButton10.setEnabled(false);
             jButton5.setEnabled(true);
@@ -1627,7 +1658,11 @@ public class FrmPaciente extends javax.swing.JInternalFrame {
     private void jButton12ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton12ActionPerformed
         // TODO add your handling code here:
         Inabilitar();
+        txthistoriaclinica.setText("");
+
         jButton4.setEnabled(false);
+        txthistoriaclinica.setEditable(true);
+        jButton2.setEnabled(true);
         jButton10.setEnabled(false);
         jButton5.setEnabled(true);
         jButton6.setEnabled(true);
@@ -1641,6 +1676,9 @@ public class FrmPaciente extends javax.swing.JInternalFrame {
     private void jButton11ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton11ActionPerformed
         // TODO add your handling code here:
         Habilitar();
+        txtcodadmisionista.setText(codadmisionista);
+        txthistoriaclinica.setEditable(true);
+        jButton2.setEnabled(false);
         jButton12.setEnabled(true);
         jButton4.setEnabled(false);
         jButton10.setEnabled(true);
@@ -1678,45 +1716,221 @@ public class FrmPaciente extends javax.swing.JInternalFrame {
     private void txtparroquiaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtparroquiaActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtparroquiaActionPerformed
+
+    private void txtgrupoculturalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtgrupoculturalActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtgrupoculturalActionPerformed
+
+    private void txtnrotelefonoreferidoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtnrotelefonoreferidoKeyTyped
+        // TODO add your handling code here:
+        char caracter = evt.getKeyChar();
+        if ((caracter < '0') || (caracter > '9')) {
+            evt.consume();
+        }
+
+    }//GEN-LAST:event_txtnrotelefonoreferidoKeyTyped
+
+    private void txtnrotelefonoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtnrotelefonoKeyTyped
+        // TODO add your handling code here:
+        char caracter = evt.getKeyChar();
+        if ((caracter < '0') || (caracter > '9')) {
+            evt.consume();
+        }
+
+    }//GEN-LAST:event_txtnrotelefonoKeyTyped
+
+    private void txtreferidoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtreferidoKeyTyped
+        char caracter = evt.getKeyChar();
+        if ((caracter < '0') || (caracter > '9')) {
+            evt.consume();
+        }
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtreferidoKeyTyped
+
+    private void txtdireccionKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtdireccionKeyTyped
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtdireccionKeyTyped
+
+    private void txtencasonecesarioKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtencasonecesarioKeyTyped
+        char caracter = evt.getKeyChar();
+        if (((caracter < 'A') || (caracter > 'Z')) && ((caracter == 'Ñ') || (caracter > 'ñ'))
+                && ((caracter == 'á') || (caracter > 'Á'))
+                && ((caracter == 'é') || (caracter > 'É'))
+                && ((caracter == 'í') || (caracter > 'Í'))
+                && ((caracter == 'ó') || (caracter > 'Ó'))
+                && ((caracter == 'ú') || (caracter > 'Ú'))) {
+            evt.consume();
+        }
+    }//GEN-LAST:event_txtencasonecesarioKeyTyped
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        int i = JOptionPane.showConfirmDialog(this, "¿Desear  Eliminar..?", "Confirmar", JOptionPane.YES_NO_OPTION);
+        if (i == 0) {
+            p.eliminarRegistro(Integer.valueOf(txthistoriaclinica.getText()));
+            moverRegistros = new MoverRegistros(cp.getPacientes());
+            limp();
+        }
+
+
+    }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void txtcedulaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtcedulaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtcedulaActionPerformed
+
+    private void jButton13ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton13ActionPerformed
+        // TODO add your handling code here:
+        jButton13.setEnabled(false);
+        jButton14.setEnabled(true);
+        try {
+//            moverbus = new MoverRegistros(cp.getbuscarPacientes(jTextField1.getText()));
+            modobusqueda = 1;
+//            p.getbuscarPacientes(jTextField1.getText());
+
+        } catch (Exception e) {
+        }
+
+    }//GEN-LAST:event_jButton13ActionPerformed
+
+    private void jButton14ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton14ActionPerformed
+        // TODO add your handling code here:
+        modobusqueda = 0;
+        jButton13.setEnabled(true);
+        jButton14.setEnabled(false);
+    }//GEN-LAST:event_jButton14ActionPerformed
+
+    private void jTextField1KeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField1KeyReleased
+        // TODO add your handling code here:
+        try {
+            String cadena = (jTextField1.getText()).toUpperCase();
+            jTextField1.setText(cadena);
+            moverbus = new MoverRegistros(cp.getbuscarPacientes(jTextField1.getText()));
+        } catch (Exception e) {
+        }
+
+    }//GEN-LAST:event_jTextField1KeyReleased
+
+    private void jButton15ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton15ActionPerformed
+        // TODO add your handling code here:
+        if (!jTextField3.getText().equals("")) {
+            String cedula = jTextField3.getText();
+            if (p.buscarPacienteCI(cedula) == null) {
+                JOptionPane.showMessageDialog(null, "No se Encontro", "Información", 1);
+
+            } else {
+                txtinstitucion.setText(p.buscarPacienteCI(cedula).getInstpaciente());
+                txtunidadoperativa.setText(p.buscarPacienteCI(cedula).getUnidadepaciente());
+                txtcoduo.setText(p.buscarPacienteCI(cedula).getCoduopaciente());
+                txtparroquiacodlo.setText(p.buscarPacienteCI(cedula).getParropaciente());
+                txtcantoncodlo.setText(p.buscarPacienteCI(cedula).getCantpaciente());
+                txtprovinciacodlo.setText(p.buscarPacienteCI(cedula).getProvinpaciente());
+                txthistoriaclinica.setText(p.buscarPacienteCI(cedula).getIdpaciente().toString());
+                FrmPaciente.txthistoriaclinica.setText(p.buscarPacienteCI(cedula).getIdpaciente().toString());
+                FrmPaciente.txtcedula.setText(p.buscarPacienteCI(cedula).getCedpaciente());
+                FrmPaciente.txtapellido1.setText(p.buscarPacienteCI(cedula).getApeppaciente());
+                FrmPaciente.txtapellido2.setText(p.buscarPacienteCI(cedula).getApempaciente());
+                FrmPaciente.txtnombre1.setText(p.buscarPacienteCI(cedula).getNom1paciente());
+                FrmPaciente.txtnombre2.setText(p.buscarPacienteCI(cedula).getNom2paciente());
+                FrmPaciente.txtdireccion.setText(p.buscarPacienteCI(cedula).getDirecpaciente());
+                FrmPaciente.txtbarrio.setText(p.buscarPacienteCI(cedula).getBarriopaciente());
+                FrmPaciente.cbxzona.setSelectedItem(p.buscarPacienteCI(cedula).getZonapaciente());
+                FrmPaciente.txtnrotelefono.setText(p.buscarPacienteCI(cedula).getNrotelpaciente());
+                FrmPaciente.jDateChooser1.setDate(p.buscarPacienteCI(cedula).getFenacpaciente());
+                FrmPaciente.txtlugarnacimiento.setText(p.buscarPacienteCI(cedula).getLugarnacpaciente());
+                FrmPaciente.txtnacionalidad.setText(p.buscarPacienteCI(cedula).getNaciopaciente());
+                FrmPaciente.txtgrupocultural.setSelectedItem(p.buscarPacienteCI(cedula).getGruppaciente());
+                FrmPaciente.txtedad.setText(p.buscarPacienteCI(cedula).getEdadpaciente().toString());
+                FrmPaciente.cbxgenero.setSelectedItem(p.buscarPacienteCI(cedula).getGenpaciente());
+                FrmPaciente.cbxestadocivil.setSelectedItem(p.buscarPacienteCI(cedula).getEcpaciente());
+                FrmPaciente.txtinstruccion.setSelectedItem(p.buscarPacienteCI(cedula).getInstrpaciente());
+                FrmPaciente.jDateChooser2.setDate(p.buscarPacienteCI(cedula).getFecadpaciente());
+                FrmPaciente.txtocupacion.setText(p.buscarPacienteCI(cedula).getOcuppaciente());
+                FrmPaciente.txtempresa.setText(p.buscarPacienteCI(cedula).getEmpaciente());
+                FrmPaciente.txtsegurosalud.setText(p.buscarPacienteCI(cedula).getSegpaciente());
+                FrmPaciente.txtreferido.setText(p.buscarPacienteCI(cedula).getRefpaciente());
+                FrmPaciente.txtencasonecesario.setText(p.buscarPacienteCI(cedula).getLlamarpaciente());
+                FrmPaciente.txtparentesco.setSelectedItem(p.buscarPacienteCI(cedula).getParenpaciente());
+                FrmPaciente.txtafinidad.setText(p.buscarPacienteCI(cedula).getDirecpaciente());
+                FrmPaciente.txtnrotelefonoreferido.setText(p.buscarPacienteCI(cedula).getNrotelpaciente());
+                FrmPaciente.txtcodadmisionista.setText(p.buscarPacienteCI(cedula).getCodadmisionista());
+                JOptionPane.showMessageDialog(null, "Encontrado", "Información", 1);
+            }
+        } else {
+            JOptionPane.showMessageDialog(null, "Num. Cedula a buscar", "Información", 1);
+        }
+    }//GEN-LAST:event_jButton15ActionPerformed
+
+    private void jTextField2KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField2KeyTyped
+        // TODO add your handling code here:
+        char caracter = evt.getKeyChar();
+        if ((caracter < '0') || (caracter > '9')) {
+            evt.consume();
+        }
+    }//GEN-LAST:event_jTextField2KeyTyped
+
+    private void jTextField3KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField3KeyTyped
+        // TODO add your handling code here:
+        char caracter = evt.getKeyChar();
+        if ((caracter < '0') || (caracter > '9')) {
+            evt.consume();
+        }
+    }//GEN-LAST:event_jTextField3KeyTyped
+
+    private void jTextField1KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField1KeyTyped
+        // TODO add your handling code here:
+        char caracter = evt.getKeyChar();
+        if (((caracter < 'A') || (caracter > 'Z')) && ((caracter == 'Ñ') || (caracter > 'ñ'))
+                && ((caracter == 'á') || (caracter > 'Á'))
+                && ((caracter == 'é') || (caracter > 'É'))
+                && ((caracter == 'í') || (caracter > 'Í'))
+                && ((caracter == 'ó') || (caracter > 'Ó'))
+                && ((caracter == 'ú') || (caracter > 'Ú'))) {
+            evt.consume();
+        }
+    }//GEN-LAST:event_jTextField1KeyTyped
     private void setDatosMover(Paciente paciente) {
-        FrmPaciente.txtinstitucion.setText(paciente.getInstpaciente());
-        FrmPaciente.txtunidadoperativa.setText(paciente.getUnidadepaciente());
-        FrmPaciente.txtcoduo.setText(paciente.getCoduopaciente());
-        FrmPaciente.txtparroquiacodlo.setText(paciente.getParropaciente());
-        FrmPaciente.txtcantoncodlo.setText(paciente.getCantpaciente());
-        FrmPaciente.txtprovinciacodlo.setText(paciente.getProvinpaciente());
-        FrmPaciente.txthistoriaclinica.setEditable(false);
-        FrmPaciente.txthistoriaclinica.setText(paciente.getIdpaciente().toString());
-        FrmPaciente.txtcedula.setText(paciente.getCedpaciente());
-        FrmPaciente.txtapellido1.setText(paciente.getApeppaciente());
-        FrmPaciente.txtapellido2.setText(paciente.getApempaciente());
-        FrmPaciente.txtnombre1.setText(paciente.getNom1paciente());
-        FrmPaciente.txtnombre2.setText(paciente.getNom2paciente());
-        FrmPaciente.txtdireccion.setText(paciente.getDirpaciente().toString());
-        FrmPaciente.txtbarrio.setText(paciente.getBarriopaciente());
-        FrmPaciente.cbxzona.setSelectedItem(paciente.getZonapaciente());
-        FrmPaciente.txtnrotelefono.setText(paciente.getTelfpaciente());
-        FrmPaciente.jDateChooser1.setDate(paciente.getFenacpaciente());
-        FrmPaciente.txtlugarnacimiento.setText(paciente.getLugarnacpaciente());
-        FrmPaciente.txtnacionalidad.setText(paciente.getNaciopaciente());
-        FrmPaciente.txtgrupocultural.setText(paciente.getGruppaciente());
-        FrmPaciente.txtedad.setText(paciente.getEdadpaciente().toString());
-        FrmPaciente.cbxgenero.setSelectedItem(paciente.getGenpaciente());
-        FrmPaciente.cbxestadocivil.setSelectedItem(paciente.getEcpaciente());
-        FrmPaciente.txtinstruccion.setSelectedItem(paciente.getInstrpaciente());
-        FrmPaciente.jDateChooser2.setDate(paciente.getFecadpaciente());
-        FrmPaciente.txtocupacion.setText(paciente.getOcuppaciente());
-        FrmPaciente.txtempresa.setText(paciente.getEmpaciente());
-        FrmPaciente.txtsegurosalud.setText(paciente.getSegpaciente());
-        FrmPaciente.txtreferido.setText(paciente.getRefpaciente());
-        FrmPaciente.txtencasonecesario.setText(paciente.getLlamarpaciente());
-        FrmPaciente.txtparentesco.setText(paciente.getParenpaciente());
-        FrmPaciente.txtafinidad.setText(paciente.getDirecpaciente());
-        FrmPaciente.txtnrotelefonoreferido.setText(paciente.getNrotelpaciente());
-        FrmPaciente.txtcodadmisionista.setText(paciente.getCodadmisionista());
-        FrmPaciente.txtprovincia.setSelectedItem(paciente.getProvpaciente());
-        FrmPaciente.txtcanton.setSelectedItem(paciente.getCanpaciente());
-        FrmPaciente.txtparroquia.setSelectedItem(paciente.getParrpaciente());
+        try {
+            FrmPaciente.txtinstitucion.setText(paciente.getInstpaciente());
+            FrmPaciente.txtunidadoperativa.setText(paciente.getUnidadepaciente());
+            FrmPaciente.txtcoduo.setText(paciente.getCoduopaciente());
+            FrmPaciente.txtparroquiacodlo.setText(paciente.getParropaciente());
+            FrmPaciente.txtcantoncodlo.setText(paciente.getCantpaciente());
+            FrmPaciente.txtprovinciacodlo.setText(paciente.getProvinpaciente());
+            FrmPaciente.txthistoriaclinica.setEditable(false);
+            FrmPaciente.txthistoriaclinica.setText(paciente.getIdpaciente().toString());
+            FrmPaciente.txtcedula.setText(paciente.getCedpaciente());
+            FrmPaciente.txtapellido1.setText(paciente.getApeppaciente());
+            FrmPaciente.txtapellido2.setText(paciente.getApempaciente());
+            FrmPaciente.txtnombre1.setText(paciente.getNom1paciente());
+            FrmPaciente.txtnombre2.setText(paciente.getNom2paciente());
+            FrmPaciente.txtdireccion.setText(paciente.getDirpaciente().toString());
+            FrmPaciente.txtbarrio.setText(paciente.getBarriopaciente());
+            FrmPaciente.cbxzona.setSelectedItem(paciente.getZonapaciente());
+            FrmPaciente.txtnrotelefono.setText(paciente.getTelfpaciente());
+            FrmPaciente.jDateChooser1.setDate(paciente.getFenacpaciente());
+            FrmPaciente.txtlugarnacimiento.setText(paciente.getLugarnacpaciente());
+            FrmPaciente.txtnacionalidad.setText(paciente.getNaciopaciente());
+            txtgrupocultural.setSelectedItem(paciente.getGruppaciente().toString());
+            FrmPaciente.txtedad.setText(paciente.getEdadpaciente().toString());
+            FrmPaciente.cbxgenero.setSelectedItem(paciente.getGenpaciente());
+            FrmPaciente.cbxestadocivil.setSelectedItem(paciente.getEcpaciente());
+            FrmPaciente.txtinstruccion.setSelectedItem(paciente.getInstrpaciente());
+            FrmPaciente.jDateChooser2.setDate(paciente.getFecadpaciente());
+            FrmPaciente.txtocupacion.setText(paciente.getOcuppaciente());
+            FrmPaciente.txtempresa.setText(paciente.getEmpaciente());
+            FrmPaciente.txtsegurosalud.setText(paciente.getSegpaciente());
+            FrmPaciente.txtreferido.setText(paciente.getRefpaciente());
+            FrmPaciente.txtencasonecesario.setText(paciente.getLlamarpaciente());
+            FrmPaciente.txtparentesco.setSelectedItem(paciente.getParenpaciente());
+            FrmPaciente.txtafinidad.setText(paciente.getDirecpaciente());
+            FrmPaciente.txtnrotelefonoreferido.setText(paciente.getNrotelpaciente());
+            FrmPaciente.txtcodadmisionista.setText(paciente.getCodadmisionista());
+            FrmPaciente.txtprovincia.setSelectedItem(paciente.getProvpaciente());
+            FrmPaciente.txtcanton.setSelectedItem(paciente.getCanpaciente());
+            FrmPaciente.txtparroquia.setSelectedItem(paciente.getParrpaciente());
+
+        } catch (Exception e) {
+        }
 
     }
 
@@ -1727,7 +1941,6 @@ public class FrmPaciente extends javax.swing.JInternalFrame {
         FrmPaciente.txtparroquiacodlo.setEditable(false);
         FrmPaciente.txtcantoncodlo.setEditable(false);
         FrmPaciente.txtprovinciacodlo.setEditable(false);
-        FrmPaciente.txthistoriaclinica.setEditable(false);
         FrmPaciente.txthistoriaclinica.setEditable(false);
         FrmPaciente.txtcedula.setEditable(false);
         FrmPaciente.txtapellido1.setEditable(false);
@@ -1741,7 +1954,7 @@ public class FrmPaciente extends javax.swing.JInternalFrame {
         FrmPaciente.jDateChooser1.setEnabled(false);
         FrmPaciente.txtlugarnacimiento.setEditable(false);
         FrmPaciente.txtnacionalidad.setEditable(false);
-        FrmPaciente.txtgrupocultural.setEditable(false);
+        txtgrupocultural.setEditable(false);
         FrmPaciente.txtedad.setEditable(false);
         FrmPaciente.cbxgenero.setEditable(false);
         FrmPaciente.cbxestadocivil.setEditable(false);
@@ -1759,6 +1972,7 @@ public class FrmPaciente extends javax.swing.JInternalFrame {
         FrmPaciente.txtprovincia.setEditable(false);
         FrmPaciente.txtcanton.setEditable(false);
         FrmPaciente.txtparroquia.setEditable(false);
+        txthistoriaclinica.setEditable(false);
 
     }
 
@@ -1782,7 +1996,7 @@ public class FrmPaciente extends javax.swing.JInternalFrame {
         FrmPaciente.jDateChooser1.setEnabled(true);
         FrmPaciente.txtlugarnacimiento.setEditable(true);
         FrmPaciente.txtnacionalidad.setEditable(true);
-        FrmPaciente.txtgrupocultural.setEditable(true);
+        txtgrupocultural.setEditable(true);
         FrmPaciente.txtedad.setEditable(true);
         FrmPaciente.cbxgenero.setEditable(true);
         FrmPaciente.cbxestadocivil.setEditable(true);
@@ -1817,7 +2031,7 @@ public class FrmPaciente extends javax.swing.JInternalFrame {
         jDateChooser1.setDateFormatString(null);
         txtlugarnacimiento.setText(null);
         txtnacionalidad.setText(null);
-        txtgrupocultural.setText(null);
+        txtgrupocultural.setSelectedItem("");
         txtedad.setText(null);
         cbxgenero.setSelectedIndex(0);
         cbxestadocivil.setSelectedIndex(0);
@@ -1828,7 +2042,6 @@ public class FrmPaciente extends javax.swing.JInternalFrame {
         txtsegurosalud.setText(null);
         txtreferido.setText(null);
         txtencasonecesario.setText(null);
-        txtparentesco.setText(null);
         txtafinidad.setText(null);
         txtnrotelefonoreferido.setText(null);
         txtcodadmisionista.setText(null);
@@ -1841,10 +2054,13 @@ public class FrmPaciente extends javax.swing.JInternalFrame {
     public static javax.swing.JComboBox cbxestadocivil;
     public static javax.swing.JComboBox cbxgenero;
     public static javax.swing.JComboBox cbxzona;
-    public static javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton10;
     private javax.swing.JButton jButton11;
     private javax.swing.JButton jButton12;
+    private javax.swing.JButton jButton13;
+    private javax.swing.JButton jButton14;
+    private javax.swing.JButton jButton15;
     public static javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
@@ -1911,9 +2127,9 @@ public class FrmPaciente extends javax.swing.JInternalFrame {
     private javax.swing.JPanel jPanel6;
     private javax.swing.JPanel jPanel7;
     private javax.swing.JPanel jPanel8;
-    private javax.swing.JPanel jPanel9;
-    private javax.swing.JRadioButton rdbno;
-    private javax.swing.JRadioButton rdbsi;
+    private javax.swing.JTextField jTextField1;
+    private javax.swing.JTextField jTextField2;
+    private javax.swing.JTextField jTextField3;
     public static javax.swing.JTextField txtafinidad;
     public static javax.swing.JTextField txtapellido1;
     public static javax.swing.JTextField txtapellido2;
@@ -1927,7 +2143,7 @@ public class FrmPaciente extends javax.swing.JInternalFrame {
     public static javax.swing.JTextField txtedad;
     public static javax.swing.JTextField txtempresa;
     public static javax.swing.JTextField txtencasonecesario;
-    public static javax.swing.JTextField txtgrupocultural;
+    public static javax.swing.JComboBox txtgrupocultural;
     public static javax.swing.JTextField txthistoriaclinica;
     public static javax.swing.JTextField txtinstitucion;
     public static javax.swing.JComboBox txtinstruccion;
@@ -1938,7 +2154,7 @@ public class FrmPaciente extends javax.swing.JInternalFrame {
     public static javax.swing.JTextField txtnrotelefono;
     public static javax.swing.JTextField txtnrotelefonoreferido;
     public static javax.swing.JTextField txtocupacion;
-    public static javax.swing.JTextField txtparentesco;
+    public static javax.swing.JComboBox txtparentesco;
     public static javax.swing.JComboBox txtparroquia;
     public static javax.swing.JTextField txtparroquiacodlo;
     public static javax.swing.JComboBox txtprovincia;
