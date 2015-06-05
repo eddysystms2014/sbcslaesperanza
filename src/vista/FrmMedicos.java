@@ -618,7 +618,15 @@ public class FrmMedicos extends javax.swing.JInternalFrame {
 
     private void txtNombreMedicoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtNombreMedicoKeyTyped
         // TODO add your handling code here:}
-
+        char caracter = evt.getKeyChar();
+        if (((caracter < 'A') || (caracter > 'Z')) && ((caracter == 'Ñ') || (caracter > 'ñ'))
+                && ((caracter == 'á') || (caracter > 'Á'))
+                && ((caracter == 'é') || (caracter > 'É'))
+                && ((caracter == 'í') || (caracter > 'Í'))
+                && ((caracter == 'ó') || (caracter > 'Ó'))
+                && ((caracter == 'ú') || (caracter > 'Ú'))) {
+            evt.consume();
+        }
     }//GEN-LAST:event_txtNombreMedicoKeyTyped
 
     private void txtTlfKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtTlfKeyTyped

@@ -1661,7 +1661,7 @@ public class FrmPaciente extends javax.swing.JInternalFrame {
         txthistoriaclinica.setText("");
 
         jButton4.setEnabled(false);
-        txthistoriaclinica.setEditable(true);
+        txthistoriaclinica.setEditable(false);
         jButton2.setEnabled(true);
         jButton10.setEnabled(false);
         jButton5.setEnabled(true);
