@@ -6,6 +6,7 @@
 package vista;
 
 import controlador.Conexion;
+import controlador.ControlFormularios;
 import controlador.ControlMedico;
 import controlador.ValidarCedula;
 import controlador.frmcontrol;
@@ -674,7 +675,7 @@ public class FrmMedicos extends javax.swing.JInternalFrame {
             byte[] data = CM.buscarMedico(jTable1.getValueAt(n, 3).toString()).getImagenmedico();
             img = ImageIO.read(new ByteArrayInputStream(data));
             jLabel2.setIcon(new ImageIcon(img));
-        } catch (IOException ex) {
+        } catch (Exception ex) {
 
         }
 
@@ -702,6 +703,7 @@ public class FrmMedicos extends javax.swing.JInternalFrame {
         jButton11.setEnabled(false);
         jButton10.setEnabled(false);
         jButton12.setEnabled(true);
+        jLabel2.setIcon(null);
         habilitar();
     }//GEN-LAST:event_jButton7ActionPerformed
 
@@ -725,11 +727,20 @@ public class FrmMedicos extends javax.swing.JInternalFrame {
                     CM.guardarMedico(esp, txtNombreMedico.getText(), txtid.getText(), txtTlf.getText(), bytesImg, estado);
 
                     Inabilitar();
-                    jButton7.setEnabled(true);
-                    jButton8.setEnabled(false);
-                    jButton11.setEnabled(true);
-                    jButton10.setEnabled(false);
-                    jButton12.setEnabled(false);
+//                    jButton7.setEnabled(true);
+//                    jButton8.setEnabled(false);
+//                    jButton11.setEnabled(true);
+//                    jButton10.setEnabled(false);
+//                    jButton12.setEnabled(false);
+                    this.dispose();
+                    FrmMedicos FE;
+                    try {
+                        FE = new FrmMedicos();
+                        ControlFormularios cf = new ControlFormularios();
+                        cf.ControlaInstancia(FE);
+                    } catch (Exception ex) {
+
+                    }
 
                 } else {
                     JOptionPane.showMessageDialog(null, "Cedula invalida", "Información", 1);
@@ -775,12 +786,23 @@ public class FrmMedicos extends javax.swing.JInternalFrame {
                 CM.ModificarSinFoto(esp, txtNombreMedico.getText(), txtid.getText(), txtTlf.getText(), estado);
 
                 Inabilitar();
-                jButton7.setEnabled(true);
-                jButton8.setEnabled(false);
-                jButton11.setEnabled(true);
-                jButton10.setEnabled(false);
-                jButton12.setEnabled(false);
+                this.dispose();
+                FrmMedicos FE;
+                try {
+                    FE = new FrmMedicos();
+                    ControlFormularios cf = new ControlFormularios();
+                    cf.ControlaInstancia(FE);
+                } catch (Exception ex) {
 
+                }
+
+//                jButton7.setEnabled(true);
+//                jButton8.setEnabled(false);
+//                jButton11.setEnabled(true);
+//                jButton10.setEnabled(false);
+//                jButton12.setEnabled(false);
+//                jLabel2.setIcon(null);
+//                jPanel6.setVisible(false);
             } else if (jRadioButton1.isSelected() == (true) && archivo != null) {
                 Especialidad esp = new Especialidad();
                 int resEsp = FC.buscarEspecialidad(Integer.valueOf(idEspe)).getIdespecialidad();
@@ -800,6 +822,7 @@ public class FrmMedicos extends javax.swing.JInternalFrame {
                 jButton11.setEnabled(true);
                 jButton10.setEnabled(false);
                 jButton12.setEnabled(false);
+                jLabel2.setIcon(null);
 
             } else {
                 JOptionPane.showMessageDialog(null, "Seleccione una foto o no modifique la foto");
@@ -834,6 +857,7 @@ public class FrmMedicos extends javax.swing.JInternalFrame {
                 txtNombreMedico.setText("");
                 txtid.setText("");
                 txtTlf.setText("");
+                jLabel2.setIcon(null);
             }
 
         } catch (Exception e) {

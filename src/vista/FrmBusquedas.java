@@ -280,7 +280,8 @@ public class FrmBusquedas extends javax.swing.JInternalFrame {
             fh.show();
             VistaPrincipal.jDesktopPane1.add(fh);
 
-            ch.cargarTabla();
+//            ch.cargarTabla();
+            ch.fillTabla();
             FrmHistorias.jTextField1.setText(jTextField3.getText());
             FrmHistorias.jTextField1.setText(jTextField3.getText());
             FrmHistorias.jTextField3.setText(jTextField4.getText());

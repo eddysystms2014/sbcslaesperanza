@@ -477,6 +477,9 @@
               </Properties>
             </Component>
             <Component class="javax.swing.JTextField" name="txthistoriaclinica">
+              <Properties>
+                <Property name="editable" type="boolean" value="false"/>
+              </Properties>
               <Events>
                 <EventHandler event="keyReleased" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="txthistoriaclinicaKeyReleased"/>
               </Events>
@@ -1628,9 +1631,9 @@
     <Component class="javax.swing.JButton" name="jButton14">
       <Properties>
         <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-          <Color blue="ff" green="99" red="99" type="rgb"/>
+          <Color blue="cc" green="cc" red="cc" type="rgb"/>
         </Property>
-        <Property name="text" type="java.lang.String" value="FIN MODO BUSQUEDA"/>
+        <Property name="text" type="java.lang.String" value="Busqueda Apellidos , Nom."/>
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton14ActionPerformed"/>

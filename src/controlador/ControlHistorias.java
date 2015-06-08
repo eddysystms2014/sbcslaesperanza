@@ -11,7 +11,9 @@ import java.util.List;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 import javax.swing.JOptionPane;
+import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableModel;
 import modelo.dao.HistoriaJpaController;
 import modelo.entidades.Historia;
 import modelo.entidades.Paciente;
@@ -87,6 +89,34 @@ public class ControlHistorias {
             }
         }
         return r;
+    }
+
+    public TableModel fillTabla() {
+        int txt = Integer.valueOf(FrmBusquedas.jTextField3.getText());
+        DefaultTableModel dtm = (DefaultTableModel) FrmHistorias.jTable1.getModel();
+        Historia h = new Historia();
+        dtm.setRowCount(0);
+
+        for (Historia al : getHistorias()) {
+            if (al.getIdpaciente().getIdpaciente() == txt) {
+                String r;
+                if (al.getTipohistoria()=='P') {
+                    r="Primera vez";
+                } else {
+                    r="Subsecuente";
+                }
+                dtm.addRow(new Object[]{
+                    al.getIdpaciente().getIdpaciente(),
+                    al.getFechahistoria(),
+                    al.getEdadhistoria(),
+                    al.getReferidohistoria(),
+                    r,
+                    al.getCodadmisionista()
+                });
+
+            }
+        }
+        return dtm;
     }
 
 }

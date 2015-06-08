@@ -342,6 +342,7 @@ public class FrmPaciente extends javax.swing.JInternalFrame {
 
         jLabel11.setText("NRO. HISTORIA CLÍNICA *");
 
+        txthistoriaclinica.setEditable(false);
         txthistoriaclinica.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
                 txthistoriaclinicaKeyReleased(evt);
@@ -1150,8 +1151,8 @@ public class FrmPaciente extends javax.swing.JInternalFrame {
         });
         getContentPane().add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 20, 160, -1));
 
-        jButton14.setBackground(new java.awt.Color(153, 153, 255));
-        jButton14.setText("FIN MODO BUSQUEDA");
+        jButton14.setBackground(new java.awt.Color(204, 204, 204));
+        jButton14.setText("Busqueda Apellidos , Nom.");
         jButton14.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton14ActionPerformed(evt);
@@ -1524,68 +1525,72 @@ public class FrmPaciente extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_jButton5ActionPerformed
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+        try {
+            int i = JOptionPane.showConfirmDialog(this, "¿Desear ingresar paciente?", "Confirmar", JOptionPane.YES_NO_OPTION);
+            if (i == 0) {
+                //Control de zonas
+                String zona = "";
+                if (cbxzona.getSelectedItem().toString().equals("U")) {
+                    zona = "URBANO";
+                } else {
+                    zona = "RURAL";
+                }
+                //Control de generos
+                String genero = cbxgenero.getSelectedItem().toString();
 
-        int i = JOptionPane.showConfirmDialog(this, "¿Desear ingresar paciente?", "Confirmar", JOptionPane.YES_NO_OPTION);
-        if (i == 0) {
-            //Control de zonas
-            String zona = "";
-            if (cbxzona.getSelectedItem().toString().equals("U")) {
-                zona = "URBANO";
-            } else {
-                zona = "RURAL";
-            }
-            //Control de generos
-            String genero = cbxgenero.getSelectedItem().toString();
+                //Contro de estado civil
+                String estadocivil = "";
+                if (cbxestadocivil.getSelectedItem().toString().equals("SOL")) {
+                    estadocivil = "SOLTERO";
+                }
+                if (cbxestadocivil.getSelectedItem().toString().equals("CAS")) {
+                    estadocivil = "CASADO";
+                }
+                if (cbxestadocivil.getSelectedItem().toString().equals("DIV")) {
+                    estadocivil = "DIVORCIADO";
+                }
+                if (cbxestadocivil.getSelectedItem().toString().equals("VIU")) {
+                    estadocivil = "VIUDO";
+                }
+                if (cbxestadocivil.getSelectedItem().toString().equals("U-L")) {
+                    estadocivil = "UNIÓN LIBRE";
+                }
+                if (txthistoriaclinica.getText().equals("")) {
+                    JOptionPane.showMessageDialog(rootPane, "Hay un campo obligatorio no ingresado");
 
-            //Contro de estado civil
-            String estadocivil = "";
-            if (cbxestadocivil.getSelectedItem().toString().equals("SOL")) {
-                estadocivil = "SOLTERO";
-            }
-            if (cbxestadocivil.getSelectedItem().toString().equals("CAS")) {
-                estadocivil = "CASADO";
-            }
-            if (cbxestadocivil.getSelectedItem().toString().equals("DIV")) {
-                estadocivil = "DIVORCIADO";
-            }
-            if (cbxestadocivil.getSelectedItem().toString().equals("VIU")) {
-                estadocivil = "VIUDO";
-            }
-            if (cbxestadocivil.getSelectedItem().toString().equals("U-L")) {
-                estadocivil = "UNIÓN LIBRE";
-            }
-            if (txthistoriaclinica.getText().equals("")) {
-                JOptionPane.showMessageDialog(rootPane, "Hay un campo obligatorio no ingresado");
-
-            } else {
+                } else {
 //                if (v.validadorDeCedula(txtcedula.getText()) == false) {
 //                    JOptionPane.showMessageDialog(rootPane, "Cedula Incorrecta");
 //                    txtcedula.setText(null);
 //                } 
 //                else {
-                p.guardarpaciente(txtinstitucion.getText(), txtunidadoperativa.getText(), txtcoduo.getText(), txtparroquiacodlo.getText(),
-                        txtcantoncodlo.getText(), txtprovinciacodlo.getText(), Integer.valueOf(txthistoriaclinica.getText()), txtcedula.getText(), txtapellido1.getText(),
-                        txtapellido2.getText(), txtnombre1.getText(), txtnombre2.getText(), txtdireccion.getText(), txtbarrio.getText(),
-                        txtparroquia.getSelectedItem().toString(), txtcanton.getSelectedItem().toString(), txtprovincia.getSelectedItem().toString(), zona, txtnrotelefono.getText(), jDateChooser1.getDate(),
-                        txtlugarnacimiento.getText(), txtnacionalidad.getText(), txtgrupocultural.getSelectedItem().toString(), Integer.valueOf(txtedad.getText()), genero,
-                        estadocivil, txtinstruccion.getSelectedItem().toString(), jDateChooser2.getDate(), txtocupacion.getText(), txtempresa.getText(), txtsegurosalud.getText(),
-                        txtreferido.getText(), txtencasonecesario.getText(), txtparentesco.getSelectedItem().toString(),
-                        txtafinidad.getText(), txtnrotelefonoreferido.getText(), txtcodadmisionista.getText());
-                moverRegistros = new MoverRegistros(cp.getPacientes());
-                Inabilitar();
-                jButton4.setEnabled(false);
-                jButton10.setEnabled(false);
-                jButton5.setEnabled(true);
-                jButton6.setEnabled(true);
-                jButton7.setEnabled(true);
-                jButton8.setEnabled(true);
-                jButton3.setEnabled(true);
-                jButton12.setEnabled(false);
-                jButton11.setEnabled(true);
-            }
+                    p.guardarpaciente(txtinstitucion.getText(), txtunidadoperativa.getText(), txtcoduo.getText(), txtparroquiacodlo.getText(),
+                            txtcantoncodlo.getText(), txtprovinciacodlo.getText(), Integer.valueOf(txthistoriaclinica.getText()), txtcedula.getText(), txtapellido1.getText(),
+                            txtapellido2.getText(), txtnombre1.getText(), txtnombre2.getText(), txtdireccion.getText(), txtbarrio.getText(),
+                            txtparroquia.getSelectedItem().toString(), txtcanton.getSelectedItem().toString(), txtprovincia.getSelectedItem().toString(), zona, txtnrotelefono.getText(), jDateChooser1.getDate(),
+                            txtlugarnacimiento.getText(), txtnacionalidad.getText(), txtgrupocultural.getSelectedItem().toString(), Integer.valueOf(txtedad.getText()), genero,
+                            estadocivil, txtinstruccion.getSelectedItem().toString(), jDateChooser2.getDate(), txtocupacion.getText(), txtempresa.getText(), txtsegurosalud.getText(),
+                            txtreferido.getText(), txtencasonecesario.getText(), txtparentesco.getSelectedItem().toString(),
+                            txtafinidad.getText(), txtnrotelefonoreferido.getText(), txtcodadmisionista.getText());
+                    moverRegistros = new MoverRegistros(cp.getPacientes());
+                    Inabilitar();
+                    jButton4.setEnabled(false);
+                    jButton10.setEnabled(false);
+                    jButton5.setEnabled(true);
+                    jButton6.setEnabled(true);
+                    jButton7.setEnabled(true);
+                    jButton8.setEnabled(true);
+                    jButton3.setEnabled(true);
+                    jButton12.setEnabled(false);
+                    jButton11.setEnabled(true);
+                }
 //            }
 
+            }
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Error ..");
         }
+
     }//GEN-LAST:event_jButton4ActionPerformed
 
     private void jButton9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton9ActionPerformed
@@ -1604,7 +1609,6 @@ public class FrmPaciente extends javax.swing.JInternalFrame {
         cp.historias();
         txtcodadmisionista.setText(codadmisionista);
         txthistoriaclinica.setEditable(false);
-        jButton2.setEnabled(false);
         jButton12.setEnabled(true);
         jButton4.setEnabled(true);
         jButton10.setEnabled(false);
@@ -1615,6 +1619,7 @@ public class FrmPaciente extends javax.swing.JInternalFrame {
         jButton3.setEnabled(false);
         jButton11.setEnabled(false);
         ccins.parametrosIniciales();
+        txtedad.setEditable(false);
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void cbxgeneroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbxgeneroActionPerformed
@@ -1623,35 +1628,40 @@ public class FrmPaciente extends javax.swing.JInternalFrame {
 
     private void jButton10ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton10ActionPerformed
 //        // TODO add your handling code here:
-        int i = JOptionPane.showConfirmDialog(this, "¿Modificar Paciente?", "Confirmar", JOptionPane.YES_NO_OPTION);
-        if (i == 0) {
+        try {
+            int i = JOptionPane.showConfirmDialog(this, "¿Modificar Paciente?", "Confirmar", JOptionPane.YES_NO_OPTION);
+            if (i == 0) {
 
-            String codadmisionista = VistaPrincipal.mnNomUs.getText();
+                String codadmisionista = VistaPrincipal.mnNomUs.getText();
 
-            p.editarpaciente(txtinstitucion.getText(), txtunidadoperativa.getText(), txtcoduo.getText(), txtparroquiacodlo.getText(),
-                    txtcantoncodlo.getText(), txtprovinciacodlo.getText(), Integer.valueOf(txthistoriaclinica.getText()), txtcedula.getText(), txtapellido1.getText(),
-                    txtapellido2.getText(), txtnombre1.getText(), txtnombre2.getText(), txtdireccion.getText(), txtbarrio.getText(),
-                    txtparroquia.getSelectedItem().toString(), txtcanton.getSelectedItem().toString(), txtprovincia.getSelectedItem().toString(), cbxzona.getSelectedItem().toString(), txtnrotelefono.getText(), jDateChooser1.getDate(),
-                    txtlugarnacimiento.getText(), txtnacionalidad.getText(), txtgrupocultural.getSelectedItem().toString(), Integer.valueOf(txtedad.getText()), cbxgenero.getSelectedItem().toString(),
-                    cbxestadocivil.getSelectedItem().toString(), txtinstruccion.getSelectedItem().toString(), jDateChooser2.getDate(), txtocupacion.getText(), txtempresa.getText(), txtsegurosalud.getText(),
-                    txtreferido.getText(), txtencasonecesario.getText(), txtparentesco.getSelectedItem().toString(), txtafinidad.getText(), txtnrotelefonoreferido.getText(), codadmisionista);
-            jButton4.setEnabled(false);
-            jButton10.setEnabled(false);
-            jButton5.setEnabled(true);
-            jButton6.setEnabled(true);
-            jButton7.setEnabled(true);
-            jButton8.setEnabled(true);
-            jButton3.setEnabled(true);
-            jButton12.setEnabled(false);
-            jButton11.setEnabled(true);
-            Inabilitar();
-            String ruta = "registro.jasper";
-            rp.reportesGeneral("IDPACIENTE", Integer.valueOf(txthistoriaclinica.getText()), ruta);
-            moverRegistros = new MoverRegistros(cp.getPacientes());
+                p.editarpaciente(txtinstitucion.getText(), txtunidadoperativa.getText(), txtcoduo.getText(), txtparroquiacodlo.getText(),
+                        txtcantoncodlo.getText(), txtprovinciacodlo.getText(), Integer.valueOf(txthistoriaclinica.getText()), txtcedula.getText(), txtapellido1.getText(),
+                        txtapellido2.getText(), txtnombre1.getText(), txtnombre2.getText(), txtdireccion.getText(), txtbarrio.getText(),
+                        txtparroquia.getSelectedItem().toString(), txtcanton.getSelectedItem().toString(), txtprovincia.getSelectedItem().toString(), cbxzona.getSelectedItem().toString(), txtnrotelefono.getText(), jDateChooser1.getDate(),
+                        txtlugarnacimiento.getText(), txtnacionalidad.getText(), txtgrupocultural.getSelectedItem().toString(), Integer.valueOf(txtedad.getText()), cbxgenero.getSelectedItem().toString(),
+                        cbxestadocivil.getSelectedItem().toString(), txtinstruccion.getSelectedItem().toString(), jDateChooser2.getDate(), txtocupacion.getText(), txtempresa.getText(), txtsegurosalud.getText(),
+                        txtreferido.getText(), txtencasonecesario.getText(), txtparentesco.getSelectedItem().toString(), txtafinidad.getText(), txtnrotelefonoreferido.getText(), codadmisionista);
+                jButton4.setEnabled(false);
+                jButton10.setEnabled(false);
+                jButton5.setEnabled(true);
+                jButton6.setEnabled(true);
+                jButton7.setEnabled(true);
+                jButton8.setEnabled(true);
+                jButton3.setEnabled(true);
+                jButton12.setEnabled(false);
+                jButton11.setEnabled(true);
+                Inabilitar();
+                String ruta = "registro.jasper";
+                rp.reportesGeneral("IDPACIENTE", Integer.valueOf(txthistoriaclinica.getText()), ruta);
+                moverRegistros = new MoverRegistros(cp.getPacientes());
 
-        } else {
+            } else {
 
+            }
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Error...");
         }
+
 
     }//GEN-LAST:event_jButton10ActionPerformed
 
@@ -1676,9 +1686,9 @@ public class FrmPaciente extends javax.swing.JInternalFrame {
     private void jButton11ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton11ActionPerformed
         // TODO add your handling code here:
         Habilitar();
+   
+        txtedad.setEditable(false);
         txtcodadmisionista.setText(codadmisionista);
-        txthistoriaclinica.setEditable(true);
-        jButton2.setEnabled(false);
         jButton12.setEnabled(true);
         jButton4.setEnabled(false);
         jButton10.setEnabled(true);
@@ -1782,6 +1792,7 @@ public class FrmPaciente extends javax.swing.JInternalFrame {
         // TODO add your handling code here:
         jButton13.setEnabled(false);
         jButton14.setEnabled(true);
+        jButton14.setText("PRESIONE FIN BUSQUEDA");
         try {
 //            moverbus = new MoverRegistros(cp.getbuscarPacientes(jTextField1.getText()));
             modobusqueda = 1;
@@ -1795,6 +1806,7 @@ public class FrmPaciente extends javax.swing.JInternalFrame {
     private void jButton14ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton14ActionPerformed
         // TODO add your handling code here:
         modobusqueda = 0;
+        jButton14.setText("Busqueda Apellidos , Nom.");
         jButton13.setEnabled(true);
         jButton14.setEnabled(false);
     }//GEN-LAST:event_jButton14ActionPerformed
@@ -1977,6 +1989,7 @@ public class FrmPaciente extends javax.swing.JInternalFrame {
     }
 
     private void Habilitar() {
+        txtedad.setEditable(false);
         FrmPaciente.txtinstitucion.setEditable(false);
         FrmPaciente.txtunidadoperativa.setEditable(false);
         FrmPaciente.txtcoduo.setEditable(false);
@@ -1991,29 +2004,20 @@ public class FrmPaciente extends javax.swing.JInternalFrame {
         FrmPaciente.txtnombre2.setEditable(true);
         FrmPaciente.txtdireccion.setEditable(true);
         FrmPaciente.txtbarrio.setEditable(true);
-        FrmPaciente.cbxzona.setEditable(true);
         FrmPaciente.txtnrotelefono.setEditable(true);
         FrmPaciente.jDateChooser1.setEnabled(true);
         FrmPaciente.txtlugarnacimiento.setEditable(true);
         FrmPaciente.txtnacionalidad.setEditable(true);
-        txtgrupocultural.setEditable(true);
         FrmPaciente.txtedad.setEditable(true);
-        FrmPaciente.cbxgenero.setEditable(true);
-        FrmPaciente.cbxestadocivil.setEditable(true);
-        FrmPaciente.txtinstruccion.setEditable(true);
         FrmPaciente.jDateChooser2.setEnabled(true);
         FrmPaciente.txtocupacion.setEditable(true);
         FrmPaciente.txtempresa.setEditable(true);
         FrmPaciente.txtsegurosalud.setEditable(true);
         FrmPaciente.txtreferido.setEditable(true);
         FrmPaciente.txtencasonecesario.setEditable(true);
-        FrmPaciente.txtparentesco.setEditable(true);
         FrmPaciente.txtafinidad.setEditable(true);
         FrmPaciente.txtnrotelefonoreferido.setEditable(true);
         FrmPaciente.txtcodadmisionista.setEditable(false);
-        FrmPaciente.txtprovincia.setEditable(true);
-        FrmPaciente.txtcanton.setEditable(true);
-        FrmPaciente.txtparroquia.setEditable(true);
 
     }
 
