@@ -183,6 +183,7 @@ public class FrmPaciente extends javax.swing.JInternalFrame {
         jButton15 = new javax.swing.JButton();
 
         setBackground(new java.awt.Color(255, 255, 255));
+        setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED)));
         setClosable(true);
         setIconifiable(true);
         setResizable(true);
@@ -192,7 +193,7 @@ public class FrmPaciente extends javax.swing.JInternalFrame {
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
         jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Registro Paciente", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Times New Roman", 0, 10))); // NOI18N
 
-        jPanel2.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        jPanel2.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
 
         jLabel2.setText("APELLIDO PATERNO");
 
@@ -307,7 +308,7 @@ public class FrmPaciente extends javax.swing.JInternalFrame {
                 .addGap(19, 19, 19))
         );
 
-        jPanel3.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        jPanel3.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
 
         jLabel7.setText("INSTITUCIÓN DEL SISTEMA");
 
@@ -435,7 +436,7 @@ public class FrmPaciente extends javax.swing.JInternalFrame {
                 .addGap(0, 12, Short.MAX_VALUE))
         );
 
-        jPanel4.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        jPanel4.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
 
         jLabel12.setText("DIRECCIÓN DE RESIDENCIA HABITUAL (Calle y Nº - Manzana y Casa)");
 
@@ -567,7 +568,7 @@ public class FrmPaciente extends javax.swing.JInternalFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        jPanel5.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        jPanel5.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
 
         jLabel19.setText("FECHA NACIMIENTO");
 
@@ -711,7 +712,7 @@ public class FrmPaciente extends javax.swing.JInternalFrame {
                 .addContainerGap())
         );
 
-        jPanel6.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        jPanel6.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
 
         jLabel38.setText("FECHA DE ADMISIÓN");
 
@@ -810,7 +811,7 @@ public class FrmPaciente extends javax.swing.JInternalFrame {
                 .addGap(20, 20, 20))
         );
 
-        jPanel7.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        jPanel7.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED)));
 
         jLabel43.setText(" EN CASO NECESARIO COMUNICARSE");
 
@@ -1020,6 +1021,8 @@ public class FrmPaciente extends javax.swing.JInternalFrame {
         jButton3.setForeground(new java.awt.Color(204, 204, 204));
         jButton3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/script_add.png"))); // NOI18N
         jButton3.setToolTipText("NUEVO REGISTRO");
+        jButton3.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1)));
+        jButton3.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jButton3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton3ActionPerformed(evt);
@@ -1031,6 +1034,8 @@ public class FrmPaciente extends javax.swing.JInternalFrame {
         jButton4.setForeground(new java.awt.Color(204, 204, 204));
         jButton4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/save_as.png"))); // NOI18N
         jButton4.setToolTipText("GRABAR REGISRTRO");
+        jButton4.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1)));
+        jButton4.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jButton4.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton4ActionPerformed(evt);
@@ -1042,6 +1047,8 @@ public class FrmPaciente extends javax.swing.JInternalFrame {
         jButton5.setForeground(new java.awt.Color(204, 204, 204));
         jButton5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/control_start_blue.png"))); // NOI18N
         jButton5.setToolTipText("PRIMER REGISTRO");
+        jButton5.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1)));
+        jButton5.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jButton5.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton5ActionPerformed(evt);
@@ -1053,6 +1060,8 @@ public class FrmPaciente extends javax.swing.JInternalFrame {
         jButton6.setForeground(new java.awt.Color(204, 204, 204));
         jButton6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/control_rewind_blue.png"))); // NOI18N
         jButton6.setToolTipText("REGISTRO ANTERIOR");
+        jButton6.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1)));
+        jButton6.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jButton6.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton6ActionPerformed(evt);
@@ -1064,6 +1073,8 @@ public class FrmPaciente extends javax.swing.JInternalFrame {
         jButton7.setForeground(new java.awt.Color(204, 204, 204));
         jButton7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/control_fastforward_blue.png"))); // NOI18N
         jButton7.setToolTipText("SIGUIENTE REGISTRO");
+        jButton7.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1)));
+        jButton7.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jButton7.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton7ActionPerformed(evt);
@@ -1075,6 +1086,8 @@ public class FrmPaciente extends javax.swing.JInternalFrame {
         jButton8.setForeground(new java.awt.Color(204, 204, 204));
         jButton8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/control_end_blue.png"))); // NOI18N
         jButton8.setToolTipText("REGISTRO FINAL");
+        jButton8.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1)));
+        jButton8.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jButton8.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton8ActionPerformed(evt);
@@ -1086,6 +1099,8 @@ public class FrmPaciente extends javax.swing.JInternalFrame {
         jButton9.setForeground(new java.awt.Color(204, 204, 204));
         jButton9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/printer.png"))); // NOI18N
         jButton9.setToolTipText("IMPRIMIR REGISTRO");
+        jButton9.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1)));
+        jButton9.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jButton9.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton9ActionPerformed(evt);
@@ -1097,6 +1112,8 @@ public class FrmPaciente extends javax.swing.JInternalFrame {
         jButton10.setForeground(new java.awt.Color(204, 204, 204));
         jButton10.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/script_edit.png"))); // NOI18N
         jButton10.setToolTipText("GRABAR EDICION");
+        jButton10.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1)));
+        jButton10.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jButton10.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton10ActionPerformed(evt);
@@ -1104,9 +1121,11 @@ public class FrmPaciente extends javax.swing.JInternalFrame {
         });
         getContentPane().add(jButton10, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 0, 60, 40));
 
-        jButton11.setBackground(new java.awt.Color(224, 222, 222));
+        jButton11.setBackground(new java.awt.Color(230, 228, 228));
         jButton11.setForeground(new java.awt.Color(204, 204, 204));
         jButton11.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/pencil.png"))); // NOI18N
+        jButton11.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1)));
+        jButton11.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jButton11.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton11ActionPerformed(evt);
@@ -1116,6 +1135,8 @@ public class FrmPaciente extends javax.swing.JInternalFrame {
 
         jButton12.setForeground(new java.awt.Color(204, 204, 204));
         jButton12.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/stop 2.png"))); // NOI18N
+        jButton12.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1)));
+        jButton12.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jButton12.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton12ActionPerformed(evt);
@@ -1123,8 +1144,12 @@ public class FrmPaciente extends javax.swing.JInternalFrame {
         });
         getContentPane().add(jButton12, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 0, 60, 40));
 
+        jButton1.setBackground(new java.awt.Color(230, 228, 228));
+        jButton1.setForeground(new java.awt.Color(204, 204, 204));
         jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/font_red_delete.png"))); // NOI18N
         jButton1.setToolTipText("ELIMINAR REGISTRO");
+        jButton1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1)));
+        jButton1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
@@ -1134,6 +1159,8 @@ public class FrmPaciente extends javax.swing.JInternalFrame {
 
         jButton13.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/magnifier.png"))); // NOI18N
         jButton13.setToolTipText("INICIAR MODO BUSQUEDA");
+        jButton13.setBorder(null);
+        jButton13.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jButton13.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton13ActionPerformed(evt);
@@ -1153,6 +1180,7 @@ public class FrmPaciente extends javax.swing.JInternalFrame {
 
         jButton14.setBackground(new java.awt.Color(204, 204, 204));
         jButton14.setText("Busqueda Apellidos , Nom.");
+        jButton14.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jButton14.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton14ActionPerformed(evt);
@@ -1169,6 +1197,8 @@ public class FrmPaciente extends javax.swing.JInternalFrame {
         getContentPane().add(jTextField2, new org.netbeans.lib.awtextra.AbsoluteConstraints(910, 0, 110, -1));
 
         jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/magnifier.png"))); // NOI18N
+        jButton2.setBorder(null);
+        jButton2.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton2ActionPerformed(evt);
@@ -1185,6 +1215,8 @@ public class FrmPaciente extends javax.swing.JInternalFrame {
         getContentPane().add(jTextField3, new org.netbeans.lib.awtextra.AbsoluteConstraints(1080, 0, 120, -1));
 
         jButton15.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/magnifier.png"))); // NOI18N
+        jButton15.setBorder(null);
+        jButton15.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jButton15.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton15ActionPerformed(evt);
@@ -1248,6 +1280,7 @@ public class FrmPaciente extends javax.swing.JInternalFrame {
             int cedula = Integer.valueOf(jTextField2.getText());
             if (p.paciente(cedula) == null) {
                 JOptionPane.showMessageDialog(null, "No se Encontro", "Información", 1);
+                limp();
 
             } else {
                 txtinstitucion.setText(p.paciente(cedula).getInstpaciente());
@@ -1794,9 +1827,8 @@ public class FrmPaciente extends javax.swing.JInternalFrame {
         jButton14.setEnabled(true);
         jButton14.setText("PRESIONE FIN BUSQUEDA");
         try {
-//            moverbus = new MoverRegistros(cp.getbuscarPacientes(jTextField1.getText()));
             modobusqueda = 1;
-//            p.getbuscarPacientes(jTextField1.getText());
+            limp();
 
         } catch (Exception e) {
         }
@@ -1806,6 +1838,7 @@ public class FrmPaciente extends javax.swing.JInternalFrame {
     private void jButton14ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton14ActionPerformed
         // TODO add your handling code here:
         modobusqueda = 0;
+        limp();
         jButton14.setText("Busqueda Apellidos , Nom.");
         jButton13.setEnabled(true);
         jButton14.setEnabled(false);
@@ -1828,6 +1861,7 @@ public class FrmPaciente extends javax.swing.JInternalFrame {
             String cedula = jTextField3.getText();
             if (p.buscarPacienteCI(cedula) == null) {
                 JOptionPane.showMessageDialog(null, "No se Encontro", "Información", 1);
+                limp();
 
             } else {
                 txtinstitucion.setText(p.buscarPacienteCI(cedula).getInstpaciente());

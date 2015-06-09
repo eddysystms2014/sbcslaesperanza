@@ -174,6 +174,7 @@ public class FrmUsuario extends javax.swing.JInternalFrame {
         jLabel5.setForeground(new java.awt.Color(204, 0, 0));
 
         jLabel6.setForeground(new java.awt.Color(255, 0, 0));
+        jLabel6.setBorder(javax.swing.BorderFactory.createTitledBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED)));
 
         jLabel4.setText("Estado de Usuario");
 

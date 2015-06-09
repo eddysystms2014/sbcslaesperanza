@@ -96,6 +96,7 @@ public class FrmHistorias extends javax.swing.JInternalFrame {
 
         jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/back_alt.png"))); // NOI18N
         jButton1.setText("ATRAS");
+        jButton1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
@@ -149,6 +150,7 @@ public class FrmHistorias extends javax.swing.JInternalFrame {
         jButton3.setForeground(new java.awt.Color(255, 255, 255));
         jButton3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/rep.png"))); // NOI18N
         jButton3.setText("TURNO EMERGECIA");
+        jButton3.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jButton3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton3ActionPerformed(evt);
@@ -212,6 +214,7 @@ public class FrmHistorias extends javax.swing.JInternalFrame {
                 "Num. historia", "Fecha", "Edad", "Referido", "Atencion", "Admisionista"
             }
         ));
+        jTable1.setCursor(new java.awt.Cursor(java.awt.Cursor.WAIT_CURSOR));
         jScrollPane1.setViewportView(jTable1);
 
         javax.swing.GroupLayout fondohistorialLayout = new javax.swing.GroupLayout(fondohistorial);
