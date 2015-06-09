@@ -136,6 +136,7 @@ public class FrmMedicos extends javax.swing.JInternalFrame {
         jPanel3.setBorder(javax.swing.BorderFactory.createTitledBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED)));
 
         cbtEstadoMedico.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Activo", "Inactivo" }));
+        cbtEstadoMedico.setBorder(javax.swing.BorderFactory.createTitledBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED)));
         cbtEstadoMedico.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cbtEstadoMedicoActionPerformed(evt);
@@ -144,6 +145,7 @@ public class FrmMedicos extends javax.swing.JInternalFrame {
 
         jLabel1.setText("Estado Médico");
 
+        cbtIdEspecialidad.setBorder(javax.swing.BorderFactory.createTitledBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED)));
         cbtIdEspecialidad.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cbtIdEspecialidadActionPerformed(evt);
@@ -152,6 +154,7 @@ public class FrmMedicos extends javax.swing.JInternalFrame {
 
         lbl5.setText("Especialidad");
 
+        txtTlf.setBorder(javax.swing.BorderFactory.createTitledBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED)));
         txtTlf.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 txtTlfKeyTyped(evt);
@@ -160,12 +163,14 @@ public class FrmMedicos extends javax.swing.JInternalFrame {
 
         lbl4.setText("Teléfono");
 
+        txtid.setBorder(javax.swing.BorderFactory.createTitledBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED)));
         txtid.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 txtidKeyTyped(evt);
             }
         });
 
+        txtNombreMedico.setBorder(javax.swing.BorderFactory.createTitledBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED)));
         txtNombreMedico.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtNombreMedicoActionPerformed(evt);
@@ -193,7 +198,7 @@ public class FrmMedicos extends javax.swing.JInternalFrame {
         });
 
         jLabel2.setBackground(new java.awt.Color(255, 255, 255));
-        jLabel2.setBorder(javax.swing.BorderFactory.createTitledBorder("Fotografia"));
+        jLabel2.setBorder(javax.swing.BorderFactory.createTitledBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED), "Fotografia"));
 
         btnAbrirE.setText("SUBIR FOTO");
         btnAbrirE.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -271,12 +276,13 @@ public class FrmMedicos extends javax.swing.JInternalFrame {
                                 .addGap(18, 18, 18)
                                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 143, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                    .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 143, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(28, 28, 28))
                             .addGroup(jPanel3Layout.createSequentialGroup()
                                 .addComponent(lbl5)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(cbtIdEspecialidad, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(28, 28, 28)
+                                .addGap(58, 58, 58)
+                                .addComponent(cbtIdEspecialidad, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)))
                         .addComponent(jButton6)
                         .addContainerGap())
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
@@ -471,6 +477,7 @@ public class FrmMedicos extends javax.swing.JInternalFrame {
         jScrollPane1.setViewportView(jTable1);
 
         jComboBox1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "seleccione..", "Activos", "Inactivos" }));
+        jComboBox1.setBorder(javax.swing.BorderFactory.createTitledBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED)));
         jComboBox1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jComboBox1ActionPerformed(evt);
@@ -482,6 +489,7 @@ public class FrmMedicos extends javax.swing.JInternalFrame {
 
         jLabel4.setText("Medicos Activos o Inactivos");
 
+        jTextField2.setBorder(javax.swing.BorderFactory.createTitledBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED)));
         jTextField2.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
                 jTextField2KeyReleased(evt);
@@ -490,6 +498,7 @@ public class FrmMedicos extends javax.swing.JInternalFrame {
 
         jLabel5.setText("Cedula");
 
+        jTextField3.setBorder(javax.swing.BorderFactory.createTitledBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED)));
         jTextField3.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
                 jTextField3KeyReleased(evt);
@@ -711,13 +720,22 @@ public class FrmMedicos extends javax.swing.JInternalFrame {
         return tmpIcon;
     }
     private void jTable1KeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTable1KeyReleased
-        // TODO add your handling code here:
-        int n = jTable1.getSelectedRow();
-        txtNombreMedico.setText(jTable1.getValueAt(n, 2).toString());
-        txtid.setText(jTable1.getValueAt(n, 3).toString());
-        txtTlf.setText(jTable1.getValueAt(n, 4).toString());
-        cbtIdEspecialidad.setSelectedItem(jTable1.getValueAt(n, 1).toString());
-        cbtEstadoMedico.setSelectedItem(jTable1.getValueAt(n, 5).toString());
+        try {
+            // TODO add your handling code here:
+            int n = jTable1.getSelectedRow();
+            txtNombreMedico.setText(jTable1.getValueAt(n, 2).toString());
+            txtid.setText(jTable1.getValueAt(n, 3).toString());
+            txtTlf.setText(jTable1.getValueAt(n, 4).toString());
+            cbtIdEspecialidad.setSelectedItem(jTable1.getValueAt(n, 1).toString());
+            cbtEstadoMedico.setSelectedItem(jTable1.getValueAt(n, 5).toString());
+            byte[] data = CM.buscarMedico(jTable1.getValueAt(n, 3).toString()).getImagenmedico();
+            img = ImageIO.read(new ByteArrayInputStream(data));
+//            jLabel2.setIcon(new ImageIcon(img));
+            jLabel2.setIcon(ajustarImagen(img));
+            jLabel2.setBorder(BorderFactory.createEmptyBorder(0, 0, 0, 0));
+        } catch (IOException ex) {
+            Logger.getLogger(FrmMedicos.class.getName()).log(Level.SEVERE, null, ex);
+        }
 
     }//GEN-LAST:event_jTable1KeyReleased
 
@@ -726,6 +744,9 @@ public class FrmMedicos extends javax.swing.JInternalFrame {
         txtid.setText("");
         txtTlf.setText("");
         jTable1.setEnabled(false);
+        
+        jComboBox1.setSelectedItem("seleccione..");
+        
 
         jButton7.setEnabled(false);
         jButton8.setEnabled(true);
@@ -887,6 +908,7 @@ public class FrmMedicos extends javax.swing.JInternalFrame {
                 txtid.setText("");
                 txtTlf.setText("");
                 jLabel2.setIcon(null);
+                jComboBox1.setSelectedItem("seleccione..");
             }
 
         } catch (Exception e) {
@@ -908,8 +930,6 @@ public class FrmMedicos extends javax.swing.JInternalFrame {
         txtNombreMedico.setEditable(true);
         txtid.setEditable(true);
         txtTlf.setEditable(true);
-        cbtIdEspecialidad.setEditable(true);
-        cbtEstadoMedico.setEditable(true);
         btnAbrirE.setEnabled(true);
         jButton9.setEnabled(false);
     }
@@ -918,8 +938,6 @@ public class FrmMedicos extends javax.swing.JInternalFrame {
         txtNombreMedico.setEditable(false);
         txtid.setEditable(false);
         txtTlf.setEditable(false);
-        cbtIdEspecialidad.setEditable(false);
-        cbtEstadoMedico.setEditable(false);
         btnAbrirE.setEnabled(false);
         jButton9.setEnabled(true);
     }
