@@ -79,6 +79,8 @@ public class VistaPrincipal extends javax.swing.JFrame {
         mnRol = new javax.swing.JMenu();
         mnPass = new javax.swing.JMenu();
         reloj = new javax.swing.JMenu();
+        jMenu4 = new javax.swing.JMenu();
+        jMenuItem4 = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -160,7 +162,7 @@ public class VistaPrincipal extends javax.swing.JFrame {
         jMenu3.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
 
         jMenuItem5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/new doc.png"))); // NOI18N
-        jMenuItem5.setText("Registro");
+        jMenuItem5.setText("Registrar");
         jMenuItem5.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jMenuItem5.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -177,7 +179,7 @@ public class VistaPrincipal extends javax.swing.JFrame {
         jMenu5.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
 
         jMenuItem9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/notebook.png"))); // NOI18N
-        jMenuItem9.setText("Modificar");
+        jMenuItem9.setText("Modificar/Eliminar");
         jMenuItem9.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jMenuItem9.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -295,6 +297,23 @@ public class VistaPrincipal extends javax.swing.JFrame {
         reloj.setForeground(new java.awt.Color(0, 0, 153));
         reloj.setText("reloj");
         jMenuBar1.add(reloj);
+
+        jMenu4.setText("Informacion");
+        jMenu4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenu4ActionPerformed(evt);
+            }
+        });
+
+        jMenuItem4.setText("Acerca de..");
+        jMenuItem4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem4ActionPerformed(evt);
+            }
+        });
+        jMenu4.add(jMenuItem4);
+
+        jMenuBar1.add(jMenu4);
 
         setJMenuBar(jMenuBar1);
 
@@ -419,6 +438,17 @@ public class VistaPrincipal extends javax.swing.JFrame {
 
     }//GEN-LAST:event_jMenuItem5ActionPerformed
 
+    private void jMenu4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenu4ActionPerformed
+
+    }//GEN-LAST:event_jMenu4ActionPerformed
+
+    private void jMenuItem4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem4ActionPerformed
+        // TODO add your handling code here:
+        ControlFormularios cf = new ControlFormularios();
+        informacion inf = new informacion();
+        cf.ControlaInstancia(inf);
+    }//GEN-LAST:event_jMenuItem4ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -463,6 +493,7 @@ public class VistaPrincipal extends javax.swing.JFrame {
     public static javax.swing.JMenu jMenu10;
     private javax.swing.JMenu jMenu2;
     public static javax.swing.JMenu jMenu3;
+    private javax.swing.JMenu jMenu4;
     public static javax.swing.JMenu jMenu5;
     public static javax.swing.JMenu jMenu6;
     private javax.swing.JMenu jMenu7;
@@ -479,6 +510,7 @@ public class VistaPrincipal extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMenuItem17;
     private javax.swing.JMenuItem jMenuItem2;
     private javax.swing.JMenuItem jMenuItem3;
+    private javax.swing.JMenuItem jMenuItem4;
     private javax.swing.JMenuItem jMenuItem5;
     private javax.swing.JMenuItem jMenuItem8;
     private javax.swing.JMenuItem jMenuItem9;

@@ -5,6 +5,8 @@
  */
 package vista;
 
+import java.awt.Dimension;
+
 /**
  *
  * @author JC-PC
@@ -16,6 +18,10 @@ public class informacion extends javax.swing.JInternalFrame {
      */
     public informacion() {
         initComponents();
+        Dimension desktopSize = VistaPrincipal.jDesktopPane1.getSize();
+        Dimension jInternalFrameSize = this.getSize();
+        this.setLocation((desktopSize.width - jInternalFrameSize.width) / 2, 4);
+
     }
 
     /**
@@ -30,7 +36,12 @@ public class informacion extends javax.swing.JInternalFrame {
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
 
+        setClosable(true);
+        setCursor(new java.awt.Cursor(java.awt.Cursor.CROSSHAIR_CURSOR));
+
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/utn.jpg"))); // NOI18N
+
+        jLabel2.setText("Integrantes; ");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);

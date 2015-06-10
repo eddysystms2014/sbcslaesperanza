@@ -342,7 +342,6 @@ public class FrmMedicos extends javax.swing.JInternalFrame {
             .addGap(0, 312, Short.MAX_VALUE)
         );
 
-        jButton7.setBackground(new java.awt.Color(230, 228, 228));
         jButton7.setForeground(new java.awt.Color(204, 204, 204));
         jButton7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/script_add.png"))); // NOI18N
         jButton7.setToolTipText("NUEVO REGISTRO");
@@ -354,7 +353,6 @@ public class FrmMedicos extends javax.swing.JInternalFrame {
             }
         });
 
-        jButton8.setBackground(new java.awt.Color(230, 228, 228));
         jButton8.setForeground(new java.awt.Color(204, 204, 204));
         jButton8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/save_as.png"))); // NOI18N
         jButton8.setToolTipText("GRABAR REGISRTRO");
@@ -366,7 +364,6 @@ public class FrmMedicos extends javax.swing.JInternalFrame {
             }
         });
 
-        jButton11.setBackground(new java.awt.Color(224, 222, 222));
         jButton11.setForeground(new java.awt.Color(204, 204, 204));
         jButton11.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/pencil.png"))); // NOI18N
         jButton11.setToolTipText("EDITAR REGISTRO");
@@ -378,7 +375,6 @@ public class FrmMedicos extends javax.swing.JInternalFrame {
             }
         });
 
-        jButton10.setBackground(new java.awt.Color(230, 228, 228));
         jButton10.setForeground(new java.awt.Color(204, 204, 204));
         jButton10.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/script_edit.png"))); // NOI18N
         jButton10.setToolTipText("GRABAR EDICION");
@@ -402,7 +398,6 @@ public class FrmMedicos extends javax.swing.JInternalFrame {
         });
 
         jButton9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/font_red_delete.png"))); // NOI18N
-        jButton9.setText("jButton9");
         jButton9.setBorder(null);
         jButton9.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jButton9.addActionListener(new java.awt.event.ActionListener() {
