@@ -243,13 +243,45 @@ public class FrmLogin extends javax.swing.JFrame {
 
     private void txtPasswordKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtPasswordKeyPressed
         // TODO add your handling code here:
+        if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
+            String usuario = txtUsuario.getText();
+            String password = new String(txtPassword.getPassword());
+            Usuario validar_usuario = CU.Validar_Usuario(usuario, password);
+            if (validar_usuario == null) {
+
+            } else {
+                if ("Administrador".equals(validar_usuario.getTipousuario())) {
+                    VistaPrincipal VP = new VistaPrincipal();
+                    VP.setVisible(true);
+                    this.setVisible(false);
+                    VistaPrincipal.mnid.setText(CU.buscarRol(usuario, password).getIdusuario().toString());
+                    VistaPrincipal.mnNomUs.setText(CU.buscarRol(usuario, password).getNombreusuario().toString());
+                    VistaPrincipal.mnRol.setText(CU.buscarRol(usuario, password).getTipousuario().toString());
+                    VistaPrincipal.mnPass.setText(CU.buscarRol(usuario, password).getContrasena().toString());
+
+                } else if ("Usuario".equals(validar_usuario.getTipousuario())) {
+                    VistaPrincipal VP = new VistaPrincipal();
+                    VP.setVisible(true);
+                    this.setVisible(false);
+                    VistaPrincipal.mnid.setText(CU.buscarRol(usuario, password).getIdusuario().toString());
+                    VistaPrincipal.mnNomUs.setText(CU.buscarRol(usuario, password).getNombreusuario().toString());
+                    VistaPrincipal.mnRol.setText(CU.buscarRol(usuario, password).getTipousuario().toString());
+                    VistaPrincipal.mnPass.setText(CU.buscarRol(usuario, password).getContrasena().toString());
+                    VistaPrincipal.jMenu3.setVisible(false);
+                    VistaPrincipal.jMenu5.setVisible(false);
+                    VistaPrincipal.jMenu10.setVisible(false);
+                    VistaPrincipal.jMenu6.setVisible(false);
+                }
+
+            }
+        }
 
     }//GEN-LAST:event_txtPasswordKeyPressed
 
     private void txtUsuarioKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtUsuarioKeyReleased
         // TODO add your handling code here:
         String cadena = (txtUsuario.getText()).toUpperCase();
-            txtUsuario.setText(cadena);
+        txtUsuario.setText(cadena);
     }//GEN-LAST:event_txtUsuarioKeyReleased
 
     /**

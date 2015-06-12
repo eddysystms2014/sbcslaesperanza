@@ -1157,6 +1157,7 @@ public class FrmPaciente extends javax.swing.JInternalFrame {
         });
         getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 0, 60, 40));
 
+        jButton13.setForeground(new java.awt.Color(204, 204, 204));
         jButton13.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/magnifier.png"))); // NOI18N
         jButton13.setToolTipText("INICIAR MODO BUSQUEDA");
         jButton13.setBorder(null);
@@ -1166,7 +1167,7 @@ public class FrmPaciente extends javax.swing.JInternalFrame {
                 jButton13ActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton13, new org.netbeans.lib.awtextra.AbsoluteConstraints(840, 0, 60, 40));
+        getContentPane().add(jButton13, new org.netbeans.lib.awtextra.AbsoluteConstraints(850, 0, 60, 40));
 
         jTextField1.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
@@ -1176,7 +1177,7 @@ public class FrmPaciente extends javax.swing.JInternalFrame {
                 jTextField1KeyTyped(evt);
             }
         });
-        getContentPane().add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 20, 160, -1));
+        getContentPane().add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 20, 180, -1));
 
         jButton14.setBackground(new java.awt.Color(204, 204, 204));
         jButton14.setText("Busqueda Apellidos , Nom.");
@@ -1186,7 +1187,7 @@ public class FrmPaciente extends javax.swing.JInternalFrame {
                 jButton14ActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton14, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 0, 160, 20));
+        getContentPane().add(jButton14, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 0, 180, 20));
 
         jTextField2.setBorder(javax.swing.BorderFactory.createTitledBorder("COD. HISTORIA"));
         jTextField2.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -1196,6 +1197,7 @@ public class FrmPaciente extends javax.swing.JInternalFrame {
         });
         getContentPane().add(jTextField2, new org.netbeans.lib.awtextra.AbsoluteConstraints(910, 0, 110, -1));
 
+        jButton2.setForeground(new java.awt.Color(204, 204, 204));
         jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/magnifier.png"))); // NOI18N
         jButton2.setBorder(null);
         jButton2.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -1212,8 +1214,9 @@ public class FrmPaciente extends javax.swing.JInternalFrame {
                 jTextField3KeyTyped(evt);
             }
         });
-        getContentPane().add(jTextField3, new org.netbeans.lib.awtextra.AbsoluteConstraints(1080, 0, 120, -1));
+        getContentPane().add(jTextField3, new org.netbeans.lib.awtextra.AbsoluteConstraints(1070, 0, 130, -1));
 
+        jButton15.setForeground(new java.awt.Color(204, 204, 204));
         jButton15.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/magnifier.png"))); // NOI18N
         jButton15.setBorder(null);
         jButton15.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
